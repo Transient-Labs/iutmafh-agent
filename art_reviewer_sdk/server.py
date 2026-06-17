@@ -24,7 +24,11 @@ app = FastAPI(title="Art Reviewer")
 
 @app.get("/")
 def index():
-    return FileResponse(HERE / "index.html")
+    # Dev tool — never cache the page, so edits show on a plain refresh.
+    return FileResponse(
+        HERE / "index.html",
+        headers={"Cache-Control": "no-store, max-age=0"},
+    )
 
 
 @app.post("/review")
@@ -34,6 +38,8 @@ def post_review(
     temperature: str = Form(default=""),
     top_p: str = Form(default=""),
     max_tokens: str = Form(default=""),
+    description: str = Form(default=""),
+    preferences: str = Form(default=""),
 ):
     model = model or os.environ.get("ART_REVIEWER_MODEL", DEFAULT_MODEL)
     data = image.file.read()
@@ -53,7 +59,7 @@ def post_review(
         raise HTTPException(400, f"bad knob value: {exc}")
 
     try:
-        text = review_image(model, data, mime, knobs)
+        review = review_image(model, data, mime, knobs, description, preferences)
     except Exception as exc:  # surface provider errors to the page
         raise HTTPException(502, f"{type(exc).__name__}: {exc}")
-    return {"model": model, "review": text}
+    return {"model": model, "review": review}

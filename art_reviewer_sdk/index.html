@@ -116,7 +116,7 @@
     color: var(--muted);
     font-weight: 500;
   }
-  select, input[type=number] {
+  select, input[type=number], textarea {
     width: 100%;
     background: var(--panel-2);
     color: var(--ink);
@@ -126,7 +126,12 @@
     font-family: var(--mono);
     font-size: 13px;
   }
-  select:focus, input[type=number]:focus {
+  textarea {
+    resize: vertical;
+    min-height: 64px;
+    line-height: 1.5;
+  }
+  select:focus, input[type=number]:focus, textarea:focus {
     outline: 1px solid var(--green-600);
     outline-offset: 0;
   }
@@ -307,6 +312,12 @@
     </div>
     <input id="file" type="file" accept="image/*" hidden>
 
+    <label for="description">Artwork description</label>
+    <textarea id="description" rows="3" placeholder="Optional — title, medium, artist statement, context…"></textarea>
+
+    <label for="preferences">Collector preferences</label>
+    <textarea id="preferences" rows="3" placeholder="Optional — the collector's taste, what they're looking for, what to weigh…"></textarea>
+
     <label for="model">Model</label>
     <select id="model">
       <optgroup label="Gemini">
@@ -467,9 +478,68 @@ function saveHistory() {
   }
 }
 
+// A structured review (keys/nesting match json-template.json / the server's
+// tool schema): { First Impression, Interpretation, Evaluation{dim:{Score,
+// Reasoning}}, Verdict{Overall Score, Decision, Rational} }. Older history
+// entries may store review (or its sections) as markdown strings — the
+// helpers below tolerate both shapes.
+const REVIEW_SECTIONS = ['First Impression', 'Interpretation', 'Evaluation', 'Verdict'];
+
+function esc(s) {
+  return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+}
+
+function section(title, body) { return '<h2>' + title + '</h2>' + body; }
+
+function renderEvaluation(ev) {
+  if (typeof ev === 'string') return marked.parse(ev);  // legacy
+  return Object.keys(ev).map(dim => {
+    const d = ev[dim] || {};
+    const score = (d.Score !== undefined && d.Score !== '') ? ' — ' + d.Score + '/10' : '';
+    const reason = d.Reasoning ? '<br>' + marked.parseInline(String(d.Reasoning)) : '';
+    return '<p><strong>' + esc(dim) + score + '</strong>' + reason + '</p>';
+  }).join('');
+}
+
+function renderVerdict(v) {
+  // Legacy: Verdict was a single markdown string with **labels** on one line.
+  if (typeof v === 'string') {
+    return marked.parse(String(v)
+      .replace(/\s*(\*{0,2}(?:Overall score|Decision|Rationale)\b)/g, '\n\n$1')
+      .replace(/^\s+/, ''));
+  }
+  const score = v['Overall Score'];
+  const rational = v['Rational'] !== undefined ? v['Rational'] : v['Rationale'];
+  let html = '';
+  if (score !== undefined && score !== '') html += '<p><strong>Overall Score:</strong> ' + esc(score) + '/100</p>';
+  if (v['Decision']) html += '<p><strong>Decision:</strong> ' + esc(v['Decision']) + '</p>';
+  if (rational) html += '<p><strong>Rationale:</strong> ' + marked.parseInline(String(rational)) + '</p>';
+  return html;
+}
+
+function renderReview(review) {
+  if (typeof review === 'string') return marked.parse(review);  // legacy entries
+  let html = '';
+  if (review['First Impression']) html += section('First Impression', marked.parse(String(review['First Impression'])));
+  if (review['Interpretation']) html += section('Interpretation', marked.parse(String(review['Interpretation'])));
+  if (review['Evaluation']) html += section('Evaluation', renderEvaluation(review['Evaluation']));
+  if (review['Verdict']) html += section('Verdict', renderVerdict(review['Verdict']));
+  return html;
+}
+
 function parseVerdict(review) {
-  const decision = (review.match(/Decision:\*{0,2}\s*\*{0,2}(ACQUIRE|PASS)/i) || [])[1] || '';
-  const score = (review.match(/Overall score:\*{0,2}\s*\*{0,2}(\d+)\s*\/\s*100/i) || [])[1] || '';
+  // Preferred: structured Verdict object.
+  const v = review && typeof review === 'object' ? review.Verdict : null;
+  if (v && typeof v === 'object') {
+    const decision = ((v.Decision || '').match(/ACQUIRE|PASS/i) || [''])[0].toUpperCase();
+    const score = String(v['Overall Score'] ?? '').replace(/[^0-9]/g, '');
+    return { decision, score };
+  }
+  // Fallback: scan whatever text we can find (legacy string reviews).
+  const text = typeof review === 'string' ? review
+    : REVIEW_SECTIONS.map(k => review && review[k] ? JSON.stringify(review[k]) : '').join('\n');
+  const decision = (text.match(/Decision:?\*{0,2}\s*\*{0,2}(ACQUIRE|PASS)/i) || [])[1] || '';
+  const score = (text.match(/Overall [Ss]core:?\*{0,2}\s*\*{0,2}(\d+)/i) || [])[1] || '';
   return { decision: decision.toUpperCase(), score };
 }
 
@@ -486,7 +556,7 @@ function modelTag(e) {
 function showEntry(e) {
   histDetailBody.innerHTML = modelTag(e)
     + (e.thumb ? '<img src="' + e.thumb + '" alt="" style="float:right;width:72px;height:72px;object-fit:cover;border-radius:5px;border:1px solid var(--line);margin-left:14px">' : '')
-    + marked.parse(e.review);
+    + renderReview(e.review);
   histBrowse.hidden = true;
   histDetail.hidden = false;
 }
@@ -557,6 +627,8 @@ document.getElementById('newBtn').addEventListener('click', () => {
   file = null;
   fileInput.value = '';
   drop.innerHTML = '<span id="dropHint">Drop an image here<br>or click to browse</span>';
+  document.getElementById('description').value = '';
+  document.getElementById('preferences').value = '';
   go.disabled = true;
   status_.className = '';
   status_.textContent = '';
@@ -570,6 +642,10 @@ go.addEventListener('click', async () => {
   const form = new FormData();
   form.append('image', file);
   form.append('model', model);
+  const description = document.getElementById('description').value;
+  const preferences = document.getElementById('preferences').value;
+  if (description.trim() !== '') form.append('description', description);
+  if (preferences.trim() !== '') form.append('preferences', preferences);
   const knobs = {};
   if (!tempIn.disabled && tempIn.value !== '') {
     form.append('temperature', tempIn.value);
@@ -609,7 +685,7 @@ go.addEventListener('click', async () => {
     saveHistory();
     renderHistory();
 
-    out.innerHTML = modelTag(entry) + marked.parse(entry.review);
+    out.innerHTML = modelTag(entry) + renderReview(entry.review);
     showTab('current');
     status_.textContent = '';
   } catch (err) {
