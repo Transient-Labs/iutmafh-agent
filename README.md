@@ -30,6 +30,25 @@ Knobs (all optional, set in `.env`): `ART_REVIEWER_TEMPERATURE`,
 auto-skipped for models that reject them (Claude 4.7+/Fable, OpenAI
 gpt-5/o-series).
 
+## Web UI (direct build)
+
+`art_reviewer_sdk/server.py` serves a one-page upload UI on top of the
+same `review_image()` the CLI uses. Run it from the repo root:
+
+```bash
+uv run uvicorn art_reviewer_sdk.server:app --port 8000
+```
+
+Then open <http://localhost:8000>. Add `--reload` for auto-restart on
+code changes during development.
+
+To stop it: press `Ctrl+C` in the terminal running it. If it's
+backgrounded or you lost the terminal, kill it by port:
+
+```bash
+lsof -ti:8000 | xargs kill        # add -9 if it won't exit
+```
+
 ## Available models
 
 Vision-capable chat models relevant to art review. Gemini and OpenAI
