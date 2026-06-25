@@ -135,9 +135,6 @@
     outline: 1px solid var(--green-600);
     outline-offset: 0;
   }
-  input[type=number]:disabled { opacity: .4; }
-  .knobs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-  .knobs label { margin: 18px 0 6px; }
   .hint { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
   button {
     width: 100%;
@@ -322,39 +319,28 @@
     <select id="model">
       <optgroup label="Gemini">
         <option value="gemini-2.5-flash" selected>gemini-2.5-flash</option>
+        <option value="gemini-2.5-flash-lite">gemini-2.5-flash-lite</option>
         <option value="gemini-2.5-pro">gemini-2.5-pro</option>
         <option value="gemini-3-pro-preview">gemini-3-pro-preview</option>
         <option value="gemini-3.5-flash">gemini-3.5-flash</option>
       </optgroup>
       <optgroup label="OpenAI">
         <option value="gpt-4o">gpt-4o</option>
+        <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+        <option value="gpt-5-mini">gpt-5-mini</option>
         <option value="gpt-5.1">gpt-5.1</option>
         <option value="gpt-5.2">gpt-5.2</option>
         <option value="gpt-5.5">gpt-5.5</option>
       </optgroup>
       <optgroup label="Claude">
+        <option value="claude-haiku-4-5">claude-haiku-4-5</option>
         <option value="claude-sonnet-4-6">claude-sonnet-4-6</option>
         <option value="claude-opus-4-8">claude-opus-4-8</option>
         <option value="claude-fable-5">claude-fable-5</option>
       </optgroup>
     </select>
 
-    <div class="knobs">
-      <div>
-        <label for="temperature">Temperature</label>
-        <input id="temperature" type="number" min="0" max="2" step="0.1" value="0.2">
-      </div>
-      <div>
-        <label for="top_p">Top-p</label>
-        <input id="top_p" type="number" min="0" max="1" step="0.05" placeholder="default">
-      </div>
-      <div>
-        <label for="max_tokens">Max tokens</label>
-        <input id="max_tokens" type="number" min="1" step="1" placeholder="default">
-      </div>
-    </div>
-    <div class="hint" id="knobHint">Blank = provider default. Low temperature
-    (0.0–0.3) recommended for consistency experiments.</div>
+    <div class="hint">Each model runs at its own default settings.</div>
 
     <button id="go" disabled>Review</button>
     <div id="status"></div>
@@ -417,24 +403,7 @@ document.addEventListener('paste', e => {
   if (item) setFile(item.getAsFile());
 });
 
-// Models that reject temperature/top_p at the API level — grey the
-// knobs out so it's visible in the UI (the server skips them anyway).
-const NO_SAMPLING = ['claude-opus-4-7', 'claude-opus-4-8', 'claude-fable',
-                     'claude-mythos', 'gpt-5', 'o1', 'o3', 'o4'];
 const modelSel = document.getElementById('model');
-const tempIn = document.getElementById('temperature');
-const topPIn = document.getElementById('top_p');
-const knobHint = document.getElementById('knobHint');
-
-function syncKnobs() {
-  const noSampling = NO_SAMPLING.some(p => modelSel.value.startsWith(p));
-  tempIn.disabled = topPIn.disabled = noSampling;
-  knobHint.textContent = noSampling
-    ? modelSel.value + ' does not accept temperature/top-p — these knobs are ignored.'
-    : 'Blank = provider default. Low temperature (0.0–0.3) recommended for consistency experiments.';
-}
-modelSel.addEventListener('change', syncKnobs);
-syncKnobs();
 
 // ---- tabs ----
 const tabCurrent = document.getElementById('tabCurrent');
@@ -544,12 +513,7 @@ function parseVerdict(review) {
 }
 
 function modelTag(e) {
-  const knobBits = [];
-  if (e.knobs && e.knobs.temperature !== undefined) knobBits.push('temp ' + e.knobs.temperature);
-  if (e.knobs && e.knobs.top_p !== undefined) knobBits.push('top_p ' + e.knobs.top_p);
-  if (e.knobs && e.knobs.max_tokens !== undefined) knobBits.push('max ' + e.knobs.max_tokens);
   return '<div class="modeltag">' + e.model + ' · ' + e.secs + 's'
-    + (knobBits.length ? ' · ' + knobBits.join(' · ') : '')
     + ' · ' + new Date(e.ts).toLocaleString() + '</div>';
 }
 
@@ -646,20 +610,6 @@ go.addEventListener('click', async () => {
   const preferences = document.getElementById('preferences').value;
   if (description.trim() !== '') form.append('description', description);
   if (preferences.trim() !== '') form.append('preferences', preferences);
-  const knobs = {};
-  if (!tempIn.disabled && tempIn.value !== '') {
-    form.append('temperature', tempIn.value);
-    knobs.temperature = parseFloat(tempIn.value);
-  }
-  if (!topPIn.disabled && topPIn.value !== '') {
-    form.append('top_p', topPIn.value);
-    knobs.top_p = parseFloat(topPIn.value);
-  }
-  const maxTok = document.getElementById('max_tokens').value;
-  if (maxTok !== '') {
-    form.append('max_tokens', maxTok);
-    knobs.max_tokens = parseInt(maxTok, 10);
-  }
 
   go.disabled = true;
   status_.className = '';
@@ -674,8 +624,9 @@ go.addEventListener('click', async () => {
     const entry = {
       ts: Date.now(),
       model: body.model,
-      knobs,
       filename: file.name || 'pasted-image',
+      description: description.trim(),
+      preferences: preferences.trim(),
       secs: ((Date.now() - t0) / 1000).toFixed(1),
       review: body.review,
       thumb: await makeThumb(file),

@@ -16,6 +16,7 @@ Model IDs are plain provider IDs (no prefix needed):
 
 import argparse
 import base64
+import io
 import json
 import mimetypes
 import os
@@ -364,6 +365,45 @@ def review_openai(model: str, image: bytes, mime: str, k: dict, prompt: str) -> 
     return json.loads(calls[0].function.arguments)
 
 
+MAX_IMAGE_EDGE = 1024  # downscale uploads so the long edge is at most this many pixels
+
+
+def resize_image(data: bytes, mime: str, max_edge: int = MAX_IMAGE_EDGE) -> tuple[bytes, str]:
+    """Downscale an image so its long edge is at most max_edge pixels, re-encoding
+    in its original format. Returns (data, mime) unchanged if the image already
+    fits, isn't a decodable raster image, or can't be re-encoded — so it always
+    degrades gracefully to sending the original bytes."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return data, mime
+    try:
+        img = Image.open(io.BytesIO(data))
+        img.load()
+    except Exception:
+        return data, mime
+
+    if max(img.size) <= max_edge:
+        return data, mime
+
+    fmt = img.format  # "JPEG", "PNG", "WEBP", "GIF", ...
+    img.thumbnail((max_edge, max_edge))  # preserves aspect ratio, never upscales
+
+    save_kwargs = {}
+    if fmt in ("JPEG", "WEBP"):
+        save_kwargs["quality"] = 90
+        if img.mode not in ("RGB", "L"):
+            img = img.convert("RGB")  # JPEG/WEBP can't store alpha or palette modes
+    out = io.BytesIO()
+    try:
+        img.save(out, format=fmt or "PNG", **save_kwargs)
+    except Exception:
+        return data, mime
+
+    new_mime = Image.MIME.get(fmt, mime) if fmt else mime
+    return out.getvalue(), new_mime
+
+
 def review_image(
     model: str,
     image: bytes,
@@ -384,6 +424,8 @@ def review_image(
     """
     k = knobs if knobs is not None else env_knobs()
     prompt = build_user_prompt(description, preferences)
+    # Shrink large uploads to a 1024px long edge before sending to any provider.
+    image, mime = resize_image(image, mime)
     # Tolerate LiteLLM-style "provider/model" IDs from the ADK build.
     model = model.split("/", 1)[-1]
     if model.startswith("gemini"):
