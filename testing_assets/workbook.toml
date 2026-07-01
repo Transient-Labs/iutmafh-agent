@@ -1,0 +1,46 @@
+# One workbook = one artwork. Copy this file per artwork you test.
+# Run:  uv run python art_reviewer_sdk/run_workbook.py testing_assets/workbook.toml
+
+artwork_id    = "ART-003"
+artwork_title = "Top of the Ninth"
+
+# List price in USD (sent to the model and recorded; blank = omitted)
+artwork_price = "50"
+
+# Maximum spend in USD — the most the collector would pay for a single artwork
+# (sent to the model and recorded; blank = omitted)
+max_spend     = "100"
+
+# Artist name — used in Conditions C, D, and E (sent to the model in those
+# conditions and recorded; blank = omitted)
+artist        = "Michael Sidofsky"
+
+# Work type — sent to the model and recorded. One of:
+#   "Digitally native (NFT / digital asset)"
+#   "Digital representation of a physical work"
+work_type     = "Digitally native (NFT / digital asset)"
+
+# Which system prompt to use: review_prompt_<N>.py (used for the reviews AND
+# recorded in the results JSON).
+review_prompt = 2
+
+# Path to the image, resolved relative to THIS file's folder (or an absolute path).
+artwork_path  = "top-ninth.jpeg"
+
+# Used in Conditions B, D, and E.
+description = """
+Time passed by inning by inning, season by season. The years had carried him in many directions. Those nights felt farther and farther away. One evening, he made the time. And for a moment, everything was right there in front of him.
+"""
+
+# Used in Condition E. Add as many named entries as you want — each one is run
+# as its own pass (Condition E repeats once per entry). The entry's name
+# (e.g. related) is recorded with each review as preference_variant.
+# Rename the keys to whatever is meaningful for your test.
+[preferences]
+related = """
+I enjoy collecting cinematic photography with strong atmosphere, dramatic lighting, and a sense of mystery or quiet storytelling.
+"""
+
+unrelated = """
+I primarily collect colorful abstract and geometric artwork with bold compositions and energetic visual patterns.
+"""

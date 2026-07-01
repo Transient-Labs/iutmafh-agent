@@ -28,7 +28,7 @@ def resolve_model(model_id: str):
 
 
 # Shared with art_reviewer_sdk — single source of truth for the persona.
-from review_prompt import INSTRUCTION
+from review_prompt_1 import INSTRUCTION
 
 def generation_config() -> types.GenerateContentConfig | None:
     """Sampling knobs, all optional, all driven by env vars so a test

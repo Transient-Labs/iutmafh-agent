@@ -12,7 +12,9 @@ OpenAI models.
 |---|---|
 | `art_reviewer_sdk/review.py` | Thin build: one script, official SDKs, no framework |
 | `art_reviewer_adk/` | Google ADK build (dev web UI via `uv run adk web`) |
-| `review_prompt.py` | The shared reviewer system prompt — single source of truth |
+| `review_prompt_<N>.py` | Versioned reviewer system prompts — the workbook TOML's `review_prompt = <N>` selects one |
+| `art_reviewer_sdk/run_workbook.py` | Workbook test harness — runs conditions A–E per model, writes `results/` |
+| `WORKBOOK.md` | The Chapter 1 experimental record (conditions + observation guide) |
 
 ## Usage (direct build)
 
@@ -87,10 +89,10 @@ Re-query: `client.models.list()` filtered to `generateContent` support.
 (Account also has image/audio/realtime/embedding models — not relevant
 for reviews.) Re-query: `OpenAI().models.list()`.
 
-### Claude (not yet verified — `ANTHROPIC_API_KEY` is empty)
+### Claude
 
-Current lineup per Anthropic docs; verify with
-`anthropic.Anthropic().models.list()` once a key is added.
+Current lineup per Anthropic docs; re-check with
+`anthropic.Anthropic().models.list()`.
 
 | Model | Notes |
 |---|---|

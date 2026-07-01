@@ -30,7 +30,7 @@ from dotenv import load_dotenv
 
 load_dotenv(REPO_ROOT / ".env")
 
-from review_prompt import INSTRUCTION
+from review_prompt_1 import INSTRUCTION
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 USER_PROMPT = "Review this artwork."
@@ -38,7 +38,10 @@ USER_PROMPT = "Review this artwork."
 
 # The review is returned as structured tool input following this schema —
 # keys and nesting match json-template.json exactly so the web UI can render
-# and store them directly. Descriptions mirror the rubric in review_prompt.py.
+# and store them directly. Descriptions are deliberately neutral (structure
+# only, no calibration or rubric language): the selected review_prompt_<N>
+# system prompt must be the ONLY instruction source, or prompt-version
+# comparisons in the workbook are confounded.
 REVIEW_TOOL_NAME = "submit_review"
 REVIEW_TOOL_DESCRIPTION = (
     "Submit the structured art review, following the reviewer rubric. Score "
@@ -61,7 +64,7 @@ def _dimension_schema(measures: str) -> dict:
         "properties": {
             "Score": {
                 "type": "integer",
-                "description": f"1-10 rating of {measures} (5 average, 8 rare, 10 once-in-a-career).",
+                "description": f"1-10 rating of {measures}.",
             },
             "Reasoning": {
                 "type": "string",
@@ -108,11 +111,11 @@ def review_schema() -> dict:
                     "Decision": {
                         "type": "string",
                         "enum": ["ACQUIRE", "PASS"],
-                        "description": "ACQUIRE or PASS. Roughly half of competent works should still be PASS.",
+                        "description": "ACQUIRE or PASS.",
                     },
                     "Rational": {
                         "type": "string",
-                        "description": "2-3 sentences justifying the decision. Take a position; do not hedge.",
+                        "description": "2-3 sentences justifying the decision.",
                     },
                 },
                 "required": ["Overall Score", "Decision", "Rational"],
@@ -142,6 +145,43 @@ def _gemini_schema(node: dict, types):
     if "enum" in node:
         kwargs["enum"] = node["enum"]
     return types.Schema(type="STRING", **kwargs)
+
+
+# Claude requires tool input_schema property keys to match
+# ^[a-zA-Z0-9_.-]{1,64}$ — no spaces. Our display keys (e.g. "First Impression",
+# "Overall Score") contain spaces, so for Claude we send a space->underscore
+# sanitized schema and restore the display keys on the way back. Gemini and
+# OpenAI accept the spaced keys directly.
+_DISPLAY_KEYS = [
+    "First Impression", "Interpretation", "Evaluation", "Verdict",
+    *DIMENSIONS, "Score", "Reasoning", "Overall Score", "Decision", "Rational",
+]
+_DISPLAY_FROM_SANITIZED = {k.replace(" ", "_"): k for k in _DISPLAY_KEYS}
+
+
+def _sanitize_schema_keys(node: dict) -> dict:
+    """Recursively replace spaces in object property keys with underscores,
+    returning a copy (the original review_schema is left untouched)."""
+    if not isinstance(node, dict):
+        return node
+    if node.get("type") == "object" and "properties" in node:
+        node = dict(node)
+        node["properties"] = {
+            key.replace(" ", "_"): _sanitize_schema_keys(sub)
+            for key, sub in node["properties"].items()
+        }
+        if "required" in node:
+            node["required"] = [r.replace(" ", "_") for r in node["required"]]
+    return node
+
+
+def _restore_keys(obj):
+    """Recursively map sanitized underscore keys back to their display form."""
+    if isinstance(obj, dict):
+        return {_DISPLAY_FROM_SANITIZED.get(k, k): _restore_keys(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_restore_keys(x) for x in obj]
+    return obj
 
 
 def _reorder(d: dict, keys) -> dict:
@@ -187,11 +227,30 @@ def _error_review(message: str) -> dict:
     }
 
 
-def build_user_prompt(description: str = "", preferences: str = "") -> str:
+def build_user_prompt(
+    description: str = "",
+    preferences: str = "",
+    artwork_name: str = "",
+    artist: str = "",
+    price: str = "",
+    work_type: str = "",
+    max_spend: str = "",
+) -> str:
     """Compose the user message: the base ask plus any optional context
-    (artwork description, collector preferences) provided via the web UI.
-    The system prompt (INSTRUCTION) stays the shared source of truth."""
+    (artwork name, artist, work type, price, maximum spend, description,
+    collector preferences) provided via the web UI. The system prompt
+    (INSTRUCTION) stays the shared source of truth — blank fields are omitted."""
     parts = [USER_PROMPT]
+    if artwork_name and artwork_name.strip():
+        parts.append("Artwork title: " + artwork_name.strip())
+    if artist and artist.strip():
+        parts.append("Artist: " + artist.strip())
+    if work_type and work_type.strip():
+        parts.append("Work type: " + work_type.strip())
+    if price and price.strip():
+        parts.append("Listed price (USD): " + price.strip())
+    if max_spend and max_spend.strip():
+        parts.append("Maximum spend on this work (USD): " + max_spend.strip())
     if description and description.strip():
         parts.append(
             "Artwork description (provided by the submitter):\n"
@@ -199,10 +258,28 @@ def build_user_prompt(description: str = "", preferences: str = "") -> str:
         )
     if preferences and preferences.strip():
         parts.append(
-            "Collector preferences to weigh in your judgment:\n"
+            "The collector's stated preferences (tendencies, not rules — "
+            "exceptional work outside them can still merit acquisition):\n"
             + preferences.strip()
         )
     return "\n\n".join(parts)
+
+
+def load_instruction(version) -> str:
+    """Import review_prompt_<version>.py and return its INSTRUCTION text.
+    `version` may be a bare number (1 -> review_prompt_1) or a full module name.
+    Raises ValueError if the module or its INSTRUCTION is missing."""
+    import importlib
+
+    name = f"review_prompt_{version}" if str(version).strip().isdigit() else str(version).strip()
+    try:
+        mod = importlib.import_module(name)
+    except ModuleNotFoundError as exc:
+        raise ValueError(f"review-prompt module '{name}' not found") from exc
+    instruction = getattr(mod, "INSTRUCTION", "")
+    if not instruction:
+        raise ValueError(f"{name} defines no INSTRUCTION")
+    return instruction
 
 # Models that reject temperature/top_p at the API level (Claude 4.7+ and
 # Fable removed sampling params; OpenAI's gpt-5/o-series reasoning models
@@ -236,7 +313,8 @@ def allows_sampling(model: str) -> bool:
     return not model.startswith(NO_SAMPLING_PREFIXES)
 
 
-def review_gemini(model: str, image: bytes, mime: str, k: dict, prompt: str) -> dict:
+def review_gemini(model: str, image: bytes, mime: str, k: dict, prompt: str,
+                  instruction: str = INSTRUCTION) -> dict:
     from google import genai
     from google.genai import types
 
@@ -251,7 +329,7 @@ def review_gemini(model: str, image: bytes, mime: str, k: dict, prompt: str) -> 
         ]
     )
     config = types.GenerateContentConfig(
-        system_instruction=INSTRUCTION,
+        system_instruction=instruction,
         temperature=k.get("temperature"),
         top_p=k.get("top_p"),
         max_output_tokens=k.get("max_tokens"),
@@ -273,7 +351,8 @@ def review_gemini(model: str, image: bytes, mime: str, k: dict, prompt: str) -> 
     return dict(calls[0].args)
 
 
-def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str) -> dict:
+def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str,
+                  instruction: str = INSTRUCTION) -> dict:
     import anthropic
 
     kwargs = {}
@@ -286,12 +365,12 @@ def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str) -> 
     response = client.messages.create(
         model=model,
         max_tokens=k.get("max_tokens", 16000),
-        system=INSTRUCTION,
+        system=instruction,
         tools=[
             {
                 "name": REVIEW_TOOL_NAME,
                 "description": REVIEW_TOOL_DESCRIPTION,
-                "input_schema": review_schema(),
+                "input_schema": _sanitize_schema_keys(review_schema()),
             }
         ],
         tool_choice={"type": "tool", "name": REVIEW_TOOL_NAME},
@@ -318,10 +397,11 @@ def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str) -> 
     block = next((b for b in response.content if b.type == "tool_use"), None)
     if block is None:
         return _error_review("[Claude returned no structured review.]")
-    return dict(block.input)
+    return _restore_keys(dict(block.input))
 
 
-def review_openai(model: str, image: bytes, mime: str, k: dict, prompt: str) -> dict:
+def review_openai(model: str, image: bytes, mime: str, k: dict, prompt: str,
+                  instruction: str = INSTRUCTION) -> dict:
     from openai import OpenAI
 
     kwargs = {}
@@ -337,7 +417,7 @@ def review_openai(model: str, image: bytes, mime: str, k: dict, prompt: str) -> 
     response = client.chat.completions.create(
         model=model,
         messages=[
-            {"role": "system", "content": INSTRUCTION},
+            {"role": "system", "content": instruction},
             {
                 "role": "user",
                 "content": [
@@ -411,6 +491,12 @@ def review_image(
     knobs: dict | None = None,
     description: str = "",
     preferences: str = "",
+    artwork_name: str = "",
+    artist: str = "",
+    price: str = "",
+    work_type: str = "",
+    max_spend: str = "",
+    instruction: str | None = None,
 ) -> dict:
     """Core dispatch — used by both the CLI below and the web UI server.
 
@@ -419,21 +505,26 @@ def review_image(
 
     knobs: optional {temperature, top_p, max_tokens}; falls back to the
     ART_REVIEWER_* env vars when not given.
-    description / preferences: optional free-text context appended to the
-    user message (the system prompt stays fixed).
+    description / preferences / artwork_name / artist / price: optional
+    free-text context appended to the user message (the system prompt stays
+    fixed); blank fields are omitted.
+    instruction: optional system-prompt override (e.g. the workbook harness
+    selecting a review_prompt_N variant); defaults to the module INSTRUCTION.
     """
     k = knobs if knobs is not None else env_knobs()
-    prompt = build_user_prompt(description, preferences)
+    system = instruction if instruction is not None else INSTRUCTION
+    prompt = build_user_prompt(description, preferences, artwork_name, artist, price,
+                               work_type, max_spend)
     # Shrink large uploads to a 1024px long edge before sending to any provider.
     image, mime = resize_image(image, mime)
     # Tolerate LiteLLM-style "provider/model" IDs from the ADK build.
     model = model.split("/", 1)[-1]
     if model.startswith("gemini"):
-        result = review_gemini(model, image, mime, k, prompt)
+        result = review_gemini(model, image, mime, k, prompt, system)
     elif model.startswith("claude"):
-        result = review_claude(model, image, mime, k, prompt)
+        result = review_claude(model, image, mime, k, prompt, system)
     else:
-        result = review_openai(model, image, mime, k, prompt)
+        result = review_openai(model, image, mime, k, prompt, system)
     return canonicalize_review(result)
 
 

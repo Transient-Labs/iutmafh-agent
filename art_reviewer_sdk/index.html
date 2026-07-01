@@ -116,7 +116,7 @@
     color: var(--muted);
     font-weight: 500;
   }
-  select, input[type=number], textarea {
+  select, input[type=number], input[type=text], textarea {
     width: 100%;
     background: var(--panel-2);
     color: var(--ink);
@@ -131,7 +131,7 @@
     min-height: 64px;
     line-height: 1.5;
   }
-  select:focus, input[type=number]:focus, textarea:focus {
+  select:focus, input[type=number]:focus, input[type=text]:focus, textarea:focus {
     outline: 1px solid var(--green-600);
     outline-offset: 0;
   }
@@ -231,6 +231,13 @@
     padding: 4px 10px;
     margin-bottom: 14px;
   }
+  .ctxmeta {
+    font-size: 13px;
+    color: var(--muted);
+    margin: -6px 0 14px;
+    line-height: 1.5;
+  }
+  .ctxmeta b { color: var(--ink-strong); font-weight: 500; }
 
   /* past reviews */
   .hist-head {
@@ -309,8 +316,27 @@
     </div>
     <input id="file" type="file" accept="image/*" hidden>
 
+    <label for="artwork_name">Artwork name</label>
+    <input id="artwork_name" type="text" placeholder="Optional — title of the work">
+
+    <label for="artist">Artist name</label>
+    <input id="artist" type="text" placeholder="Optional — the artist">
+
+    <label for="work_type">Work type</label>
+    <select id="work_type">
+      <option value="" selected>Optional — not specified</option>
+      <option value="Digitally native (NFT / digital asset)">Digitally native (NFT / digital asset)</option>
+      <option value="Digital representation of a physical work">Digital representation of a physical work</option>
+    </select>
+
+    <label for="price">Price (USD)</label>
+    <input id="price" type="text" placeholder="Optional — list price in USD, e.g. 5000">
+
+    <label for="max_spend">Maximum spend (USD)</label>
+    <input id="max_spend" type="text" placeholder="Optional — most the collector would pay for this work, e.g. 25000">
+
     <label for="description">Artwork description</label>
-    <textarea id="description" rows="3" placeholder="Optional — title, medium, artist statement, context…"></textarea>
+    <textarea id="description" rows="3" placeholder="Optional — medium, artist statement, context…"></textarea>
 
     <label for="preferences">Collector preferences</label>
     <textarea id="preferences" rows="3" placeholder="Optional — the collector's taste, what they're looking for, what to weigh…"></textarea>
@@ -338,6 +364,12 @@
         <option value="claude-opus-4-8">claude-opus-4-8</option>
         <option value="claude-fable-5">claude-fable-5</option>
       </optgroup>
+    </select>
+
+    <label for="review_prompt">Review prompt</label>
+    <select id="review_prompt">
+      <option value="1" selected>review_prompt_1</option>
+      <option value="2">review_prompt_2 (price-aware)</option>
     </select>
 
     <div class="hint">Each model runs at its own default settings.</div>
@@ -517,9 +549,26 @@ function modelTag(e) {
     + ' · ' + new Date(e.ts).toLocaleString() + '</div>';
 }
 
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+function contextMeta(e) {
+  const bits = [];
+  if (e.artwork_name) bits.push('<b>Artwork:</b> ' + esc(e.artwork_name));
+  if (e.artist) bits.push('<b>Artist:</b> ' + esc(e.artist));
+  if (e.work_type) bits.push('<b>Work type:</b> ' + esc(e.work_type));
+  if (e.price) bits.push('<b>Price (USD):</b> ' + esc(e.price));
+  if (e.max_spend) bits.push('<b>Maximum spend (USD):</b> ' + esc(e.max_spend));
+  if (e.review_prompt) bits.push('<b>Prompt:</b> review_prompt_' + esc(e.review_prompt));
+  return bits.length ? '<div class="ctxmeta">' + bits.join(' &nbsp;·&nbsp; ') + '</div>' : '';
+}
+
 function showEntry(e) {
   histDetailBody.innerHTML = modelTag(e)
     + (e.thumb ? '<img src="' + e.thumb + '" alt="" style="float:right;width:72px;height:72px;object-fit:cover;border-radius:5px;border:1px solid var(--line);margin-left:14px">' : '')
+    + contextMeta(e)
     + renderReview(e.review);
   histBrowse.hidden = true;
   histDetail.hidden = false;
@@ -591,6 +640,12 @@ document.getElementById('newBtn').addEventListener('click', () => {
   file = null;
   fileInput.value = '';
   drop.innerHTML = '<span id="dropHint">Drop an image here<br>or click to browse</span>';
+  document.getElementById('artwork_name').value = '';
+  document.getElementById('artist').value = '';
+  document.getElementById('work_type').value = '';
+  document.getElementById('price').value = '';
+  document.getElementById('max_spend').value = '';
+  document.getElementById('review_prompt').value = '1';
   document.getElementById('description').value = '';
   document.getElementById('preferences').value = '';
   go.disabled = true;
@@ -606,8 +661,20 @@ go.addEventListener('click', async () => {
   const form = new FormData();
   form.append('image', file);
   form.append('model', model);
+  const artworkName = document.getElementById('artwork_name').value;
+  const artist = document.getElementById('artist').value;
+  const workType = document.getElementById('work_type').value;
+  const price = document.getElementById('price').value;
+  const maxSpend = document.getElementById('max_spend').value;
   const description = document.getElementById('description').value;
   const preferences = document.getElementById('preferences').value;
+  const reviewPrompt = document.getElementById('review_prompt').value;
+  form.append('review_prompt', reviewPrompt);
+  if (artworkName.trim() !== '') form.append('artwork_name', artworkName);
+  if (artist.trim() !== '') form.append('artist', artist);
+  if (workType.trim() !== '') form.append('work_type', workType);
+  if (price.trim() !== '') form.append('price', price);
+  if (maxSpend.trim() !== '') form.append('max_spend', maxSpend);
   if (description.trim() !== '') form.append('description', description);
   if (preferences.trim() !== '') form.append('preferences', preferences);
 
@@ -625,6 +692,12 @@ go.addEventListener('click', async () => {
       ts: Date.now(),
       model: body.model,
       filename: file.name || 'pasted-image',
+      review_prompt: reviewPrompt,
+      artwork_name: artworkName.trim(),
+      artist: artist.trim(),
+      work_type: workType.trim(),
+      price: price.trim(),
+      max_spend: maxSpend.trim(),
       description: description.trim(),
       preferences: preferences.trim(),
       secs: ((Date.now() - t0) / 1000).toFixed(1),
@@ -636,7 +709,7 @@ go.addEventListener('click', async () => {
     saveHistory();
     renderHistory();
 
-    out.innerHTML = modelTag(entry) + renderReview(entry.review);
+    out.innerHTML = modelTag(entry) + contextMeta(entry) + renderReview(entry.review);
     showTab('current');
     status_.textContent = '';
   } catch (err) {

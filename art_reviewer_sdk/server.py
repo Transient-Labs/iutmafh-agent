@@ -17,7 +17,7 @@ sys.path.insert(0, str(HERE))
 from fastapi import FastAPI, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 
-from review import DEFAULT_MODEL, review_image
+from review import DEFAULT_MODEL, load_instruction, review_image
 
 app = FastAPI(title="Art Reviewer")
 
@@ -40,12 +40,26 @@ def post_review(
     max_tokens: str = Form(default=""),
     description: str = Form(default=""),
     preferences: str = Form(default=""),
+    artwork_name: str = Form(default=""),
+    artist: str = Form(default=""),
+    price: str = Form(default=""),
+    work_type: str = Form(default=""),
+    max_spend: str = Form(default=""),
+    review_prompt: str = Form(default=""),
 ):
     model = model or os.environ.get("ART_REVIEWER_MODEL", DEFAULT_MODEL)
     data = image.file.read()
     if not data:
         raise HTTPException(400, "empty upload")
     mime = image.content_type or "image/jpeg"
+
+    # Optional system-prompt selection (review_prompt_<N>.py); blank = default.
+    instruction = None
+    if review_prompt.strip():
+        try:
+            instruction = load_instruction(review_prompt.strip())
+        except ValueError as exc:
+            raise HTTPException(400, str(exc))
 
     knobs = {}
     try:
@@ -59,7 +73,9 @@ def post_review(
         raise HTTPException(400, f"bad knob value: {exc}")
 
     try:
-        review = review_image(model, data, mime, knobs, description, preferences)
+        review = review_image(model, data, mime, knobs, description, preferences,
+                              artwork_name, artist, price, work_type, max_spend,
+                              instruction=instruction)
     except Exception as exc:  # surface provider errors to the page
         raise HTTPException(502, f"{type(exc).__name__}: {exc}")
-    return {"model": model, "review": review}
+    return {"model": model, "review": review, "review_prompt": review_prompt}
