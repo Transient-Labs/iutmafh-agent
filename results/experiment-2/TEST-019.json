@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-019",
+    "artwork": "seeing",
+    "artwork_title": "Seeing",
+    "artist": "Bear Otto",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/bad/seeing.jpeg",
+    "models": [
+      "gpt-5",
+      "gemini-3-flash-preview"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-14T16:22:02-06:00",
+    "updated_at": "2026-07-15T09:11:03-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:22:23-06:00",
+          "seconds": 21.4,
+          "review": {
+            "First Impression": "A puckered island of glitter and resin domes clings to a smoky black ground under a hot orange slash. It’s equal parts playful and icky—spawn made from party supplies. I’m intrigued, then faintly repelled.",
+            "Interpretation": "The work rides the border of camp and abject: craft-store glitter and what read as googly-eye lenses are redeployed as ovum or surveillance nodes, glued into a sticky, contaminated patch. The searing orange wedge bears down like an external threat or spotlight, sharpening the anxiety of being watched or of uncontrolled reproduction. It proposes a techno-organic body whose glamour skins over something feral, asking whether decoration can produce dread.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Intentional messiness suits the abject mood, but adhesive pooling and uneven setting feel more accidental than controlled. The materials are handled with energy yet lack finesse."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central cluster against a broad dark field, counterweighted by the orange cut, creates real tension and focus. Negative space is used well, though the top edge reads slightly heavy."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Kitsch materials used to evoke the biological isn’t new, but re-casting ‘eyes’ as eggs adds a sly twist. The hybrid of glamour and ooze feels lively if not groundbreaking."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It elicits a clear mix of curiosity and mild disgust—effective but not devastating. The mood lingers, though it doesn’t deepen substantially."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Ideas of gaze, reproduction, and surface deceit are present and legible, yet remain at the level of a sharp gesture rather than a complex system."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "The piece charms with its tacky/visceral friction and a taut color dynamic, but it leans heavily on the novelty of its materials and feels more like a strong study than a resolved statement. I want greater control and a clearer expansion of its ideas beyond the initial gag and gross-out. I’ll pass, though I’d watch where this line of inquiry goes."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:22:41-06:00",
+          "seconds": 17.8,
+          "review": {
+            "First Impression": "A clutch of googly eyes congealed in glitter and resin sits on a bruised black field cleaved by a slash of hot orange. It’s equal parts goofy and bodily—like spawn, surveillance, and party detritus in one sticky heap. The cheap sparkle clashes provocatively with the severe ground.",
+            "Interpretation": "The piece courts the uncanny by collapsing craft-store kitsch into abject biology: the eyes read as eggs, cells, or a many-headed gaze leaking onto a color-field remnant. The bright orange lip at the top sharpens the tension, interrupting the darkness with a hard, modernist flare while the glitter puddle misbehaves below. Materially it argues for low materials (glitter, googly eyes, glue) claiming high-art drama, poking at hierarchies between the sublime and the childish. Humor shades into menace as the viewer is both looked at and repelled by the ooze. It’s camp as a strategy for thinking about how we see and are seen.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The handling of resin/glue and glitter is deliberately messy but controlled enough to keep the cluster legible; the surface scratches and pooling feel intentional yet a bit blunt."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The off-center cluster plays well against the orange wedge and the dark negative space, creating push–pull and a clear focal heat. It risks heaviness at the center but holds."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter as critique of taste is not new, though the collision with a color-field edge adds a distinctive note."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It provokes a mix of amusement and mild disgust, and the sense of being watched lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Themes of gaze, surveillance, and the art/craft divide are present, though not argued with great subtlety."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "PASS",
+              "Rational": "The work is witty and visually punchy, but it feels closer to a sharp gesture than a fully realized statement. Its materials and conceit are engaging yet familiar, and the craft does not transcend the gag. I admire the nerve, but I don’t feel compelled to stake an acquisition on it."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:23:05-06:00",
+          "seconds": 24.4,
+          "review": {
+            "First Impression": "A clutch of glossy, googly pupils congeals in a puddle of glitter on scorched-looking black, under a hard cut of emergency orange. It’s goofy and a little grotesque—part birthday spill, part spawn. The piece looks back at you while seeming to melt.",
+            "Interpretation": "The work stages a collision between kitsch and the abject: surveillance-eyes fashioned from craft-store detritus coagulate like eggs or tumors, their sugary sparkle turning toxic against the sooty ground. The harsh orange wedge reads as alarm or hazard, amplifying the sense of being watched and contaminated at once. By leaning into low materials and mess, it toys with taste—how glamour curdles, how attention feels sticky.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Materials are handled with intent but remain rudimentary—adhesive bleeds and glitter scatter look deliberate yet basic. The finish supports the concept more than it demonstrates technical refinement."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The cluster sits on an irregular black ‘island’ under a sharp orange field, producing strong contrast and a focal knot of energy. Slightly awkward spacing keeps the image alive, though it skirts clutter."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter are familiar post-internet/kitsch signifiers; clustering them as spawn over a ruinous ground gives a modest twist but not a breakthrough."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece provokes a tangible mix of delight and unease—playful gaze turning uncanny. It lingers as a sticky, watchful presence."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Ideas of surveillance, taste, and the abject are present and readable, though not deeply elaborated beyond the initial hit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "PASS",
+              "Rational": "I like its shameless embrace of cheap sparkle and its sly menace; the gaze-as-spawn conceit is memorable. Still, the work feels like a strong sketch rather than a fully resolved statement, repeating familiar gestures without pushing them far enough. I’ll pass and watch for a version that sharpens the idea and the build."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:23:55-06:00",
+          "seconds": 49.3,
+          "review": {
+            "First Impression": "An unsettling mound of plastic eyes staring back from a galaxy of pink glitter. It feels like a primary school art project that took a dark, surreal turn into the territory of biological horror.",
+            "Interpretation": "This piece operates at the intersection of kitsch and the abject. By clustering mass-produced googly eyes within a messy slurry of glitter and adhesive, the work transforms cheap craft supplies into a singular, multi-eyed entity that feels like an emergent lifeform. The dark background and the harsh orange divide suggest a void, making this ocular mass feel like a specimen or a discarded fragment of a larger, unseen being. It attempts to subvert the 'fun' associations of its materials to create a sense of being surveilled by the inanimate.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The execution is haphazard; the application of adhesive and glitter feels like a hasty assembly rather than an intentional use of texture or materiality."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central cluster of eyes feels somewhat unmoored on the dark expanse, though the diagonal orange band at the top provides a much-needed graphic tension to the frame."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The use of googly eyes as a stand-in for the \"monstrous\" or the \"unseen\" is a well-worn trope in both outsider and contemporary kitsch art."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There is a minor \"uncanny valley\" effect from the multiple eyes, but the kitschiness of the glitter and plastic keeps the experience firmly in the realm of the playful rather than the profound."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work touches on themes of surveillance and the gaze, but does so in a very literal, surface-level manner that lacks further inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "The work relies too heavily on the inherent quirkiness of its materials without transforming them into something more profound. It lacks the technical rigor and conceptual development necessary to sustain interest beyond the initial visual punch."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:24:27-06:00",
+          "seconds": 32.1,
+          "review": {
+            "First Impression": "A frantic, sparkly pile of eyes staring back from a dark void. It feels like a playful craft project that has taken on a slightly manic, unsettling energy.",
+            "Interpretation": "By clustering mass-produced googly eyes within a nebula of glitter, the work transforms cheap, disposable materials into a singular, multi-lensed organism. It toys with the concept of the gaze, turning the viewer's act of looking back onto themselves through a dozen plastic pupils. The stark color blocking of the background suggests a staged, artificial world, framing this glittery entity as a specimen of 'low-art' absurdity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The application of materials is messy, with visible adhesive and a lack of technical control over the glitter and paint."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central massing of the eyes provides a clear focus, but the placement feels incidental rather than a deliberate exploration of space."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The use of googly eyes as a quirky artistic trope is extremely common and this iteration adds very little new to that visual vocabulary."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "There is a minor, humorous 'uncanny' effect from the cluster of eyes, but it's fleeting and lacks depth."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "While it touches on themes of the 'gaze' or surveillance through a kitsch lens, it doesn't push the idea far enough to reward sustained contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 30,
+              "Decision": "PASS",
+              "Rational": "The work fails to transcend its hobbyist materials, offering a visual gag rather than a developed artistic statement. It lacks the craft and conceptual rigor necessary to move beyond the realm of whimsical assemblage."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:24:42-06:00",
+          "seconds": 14.9,
+          "review": {
+            "First Impression": "An immediate sense of chaotic amateurism. It looks like a craft project gone wrong, or perhaps right, but without any clear artistic intent beyond the tactile.",
+            "Interpretation": "The work attempts to bridge the gap between childhood play and the grotesque by clustering googly eyes in a glittery, resinous mass. It explores a kind of 'monstrous kitsch,' using cheap, mass-produced materials to create a multi-eyed entity that stares back at the viewer. However, the lack of formal control means the materials dominate the message, resulting in a piece that feels more like a residue of an activity than a completed thought.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 1,
+                "Reasoning": "The execution is messy, with visible glue smears and a lack of control over the medium that suggests amateurishness rather than a deliberate 'bad art' aesthetic."
+              },
+              "Composition": {
+                "Score": 2,
+                "Reasoning": "The central cluster of eyes provides a focal point, but the surrounding splatter of glitter and the abrupt orange wedge at the top feel disjointed and accidental rather than purposeful."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The use of googly eyes and glitter is a well-worn trope in both kindergarten classrooms and internet 'weirdcore,' and this piece adds nothing new to that lexicon."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "There is a mild, fleeting sense of the uncanny due to the numerous eyes, but it is too bogged down by its 'craft-store' materiality to elicit a deep response."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "While it hints at themes of surveillance or the monstrous, it lacks the visual complexity to sustain an investigation; it exhausts itself at first glance."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The work fails to transcend its mundane materials. It lacks the technical skill, compositional strength, or conceptual novelty required for inclusion in a serious collection. It is an artifact of play, not a work of art."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "You can never have too many eyes"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:25:03-06:00",
+          "seconds": 21.4,
+          "review": {
+            "First Impression": "A cheeky, sticky clump of googly eyes rises from a soot-dark field, dusted in candy-colored glitter. The bright slash of orange above feels like a warning light, giving the silliness a faintly menacing edge. It’s playful but also a little gross—in a productive way.",
+            "Interpretation": "Using dollar-store craft vernacular—googly eyes, glitter, and glue—the work turns kitsch into a meditation on surveillance and attention. The cluster of pupils operates like a grape of gazes, a compact organism that both looks back and refuses a single point of view. The torn boundary between orange and charcoal reads as an alarm or hazard zone, heightening the sense of exposure. The sticky halos and scattered glitter suggest overflow: too much vision, too much spectacle, the mess of being watched and watching. It lands in the uneasy space where camp, cuteness, and paranoia meet.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Materials are handled with intentional roughness, but the glue pools and uneven finishes sometimes feel more accidental than directed. The tactile messiness serves the theme, yet the execution lacks refinement."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The off-center eye cluster has a satisfying internal rhythm, anchored by the tense orange/black horizon. Negative space and the torn edge generate good visual pull."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter are familiar tropes in contemporary craft-influenced art, but the warning-signal palette and condensed ‘grape’ formation give it a personal twist."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It toggles effectively between cute and uncanny, prompting a felt mix of amusement and discomfort. The title amplifies that hum of paranoia."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The surveillance/attention-economy read is clear and apt, though not especially layered beyond the immediate metaphor. It invites return, but doesn’t keep unfolding new meanings."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "The piece charms and unsettles in equal measure, and the compositional tension with the orange slash is smart. However, the craft feels under-articulated and the concept stops short of the depth I look for in an acquisition. I’d watch the artist’s trajectory, but this work itself doesn’t quite clear the bar."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:25:25-06:00",
+          "seconds": 22.4,
+          "review": {
+            "First Impression": "A sticky constellation of googly eyes and glitter congeals on a black, tarry pool under a sharp slash of orange. It’s playful at first glance and then queasily organic—like frogspawn bedazzled for a party that went wrong. I’m both amused and a little repulsed, which is a promising tension.",
+            "Interpretation": "The work leverages cheap craft materials—googly eyes, glitter, glue—to stage a kitsch-panopticon: surveillance rendered as candy. The clustered eyes read as spawn or barnacles, suggesting proliferation and the loss of individuality as they fuse into a single organism. The jagged black field against the orange ground heightens alarm, like a hazard sign or wound, while the sticky, pooling medium implies excess and leakage. The title’s insistence, “You can never have too many eyes,” curdles into irony: oversaturation of looking becomes blindness, spectacle smothering sight.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Material handling is intentionally crude—glue pools and glitter scatter—but the roughness serves the concept. Some passages feel accidentally messy rather than decisively placed."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The cluster forms a convincing organic triangle anchored in a dark mass, set off by the blunt orange field. Still, the placement tends toward the literal center and could benefit from a more dynamic asymmetry."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Kitschy surveillance via googly eyes is a familiar trope, but the body-horror spawn quality and tar-glitter contrast add a fresher register. It nudges the cliché rather than fully reinventing it."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The push-pull of humor and disgust lands; it’s hard to look away from the sticky multiplicity. The color contrast amplifies a low-grade alarm."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There’s a clear critique of attention and surveillance culture, with an organic metaphor that opens interpretive space. The idea is solid if not especially layered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "PASS",
+              "Rational": "I like the collision of sparkle and sludge and the way excess seeing collapses into a single, blind mass. But the piece leans on the novelty of materials and doesn’t fully resolve its composition or craft into something unforgettable. I’ll pass, though I’d be keen to see this line pushed toward greater precision and risk."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:26:02-06:00",
+          "seconds": 36.8,
+          "review": {
+            "First Impression": "A knot of googly eyes congeals in a glittery spill on a bruised black ground, hemmed by a fierce slice of orange‑red. It’s goofy and a little feral, like surveillance masquerading as craft‑store candy. The materials feel willfully messy, which gives the piece a nervous energy.",
+            "Interpretation": "By multiplying a kitsch object—the googly eye—the work turns cuteness into unease, proposing a swarm of gazes that both watch and demand to be watched. The muscular red field reads as an alarm or hazard signal pressing against a dark, abraded void, while the glittery seep suggests liquidity—tears, resin, or digital noise. It’s a playful but pointed riff on attention economies and the claustrophobia of overexposure.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The handling of adhesive, glitter, and plastic is intentionally loose; the slippage and pooling add texture but land more as accident than mastery. Edges and finishes are serviceable rather than refined."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The diagonal red wedge counterbalances the central cluster, creating tension between flat color field and lumpy material mass. The cluster’s grape‑like arrangement gives the eye a clear anchor amid the spatter."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Googly eyes and glitter as subversive tools are well‑trodden; this iteration benefits from the bold color‑field contrast but doesn’t ultimately escape familiar terrain."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The oscillation between camp humor and low‑grade dread lands; the piece is at once silly and watchful, and that friction is felt immediately."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Ideas of surveillance, spectacle, and compulsive looking are present and legible, though not extensively developed beyond the initial conceit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "It’s visually punchy and conceptually clear, but after the first hit there isn’t quite enough complexity to sustain repeated looking. The reliance on novelty materials keeps the gesture at the surface, and the rough craft doesn’t transform them into something larger. I appreciate the cheek and the pressure of the red‑black field, yet it stops short of a keeper."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:26:36-06:00",
+          "seconds": 34.1,
+          "review": {
+            "First Impression": "A chaotic clash of craft-store materials that feels like an explosion in a kindergarten art closet. The jarring contrast between the neon orange and the glittery cluster is immediate and slightly overwhelming.",
+            "Interpretation": "The work attempts to subvert the 'innocence' of googly eyes and glitter by clustering them into a mass of surveillance. By using 'low' materials to create a many-eyed entity, it touches on themes of the uncanny and the gaze, trying to find a middle ground between childhood play and cosmic horror. The torn, dark paper acts as a void from which these eyes emerge, pushing back against the flat, oppressive orange background.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The execution is rudimentary, with messy glue application and uneven glitter distribution that suggests a lack of technical control over the chosen materials."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The diagonal tension between the orange and the dark ground provides a basic structure, but the central mass of eyes and glitter feels disorganized rather than intentionally chaotic."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Using googly eyes to create a many-eyed monster or a sense of surveillance is a very common trope in contemporary kitsch."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "There is a minor, 'creepy-cute' effect from the staring eyes, but it's not strong enough to overcome the piece's craft-bin aesthetic."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the literal interpretation of the title, there is little to engage with; it remains a surface-level visual pun."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 32,
+              "Decision": "PASS",
+              "Rational": "The work is too derivative and lacks the formal rigor or conceptual freshness I require. It functions more as a casual material experiment than a resolved piece of art, relying on kitsch tropes that have already been explored more effectively elsewhere."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:26:56-06:00",
+          "seconds": 20.3,
+          "review": {
+            "First Impression": "It is an unsettling pile of craft supplies. The immediate visual noise of the glitter and the multiple pupils creates a frantic, slightly paranoid energy that is simultaneously playful and cheap.",
+            "Interpretation": "The piece attempts to weaponize the benign innocence of kindergarten craft materials—googly eyes and pink glitter—to explore themes of over-observation and sensory overload. By clumping the eyes into a singular, irregular mass against a void-like black background, it creates a 'low-rent panopticon' where the viewer is watched by a dozen plastic gazes. The sliver of orange at the top acts as a sharp, discordant horizon, suggesting this ocular cluster exists in a space of manufactured or artificial light. Ultimately, it’s a study in the grotesque through the lens of the trivial.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The application of materials is rudimentary and relies on the inherent properties of glitter and plastic rather than a demonstrated command of the medium."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central cluster feels haphazardly placed against the stark black and orange background, lacking a clear intentionality in its spatial arrangement."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The use of googly eyes and glitter to create 'creepy-cute' imagery is a well-worn path in contemporary craft and internet art aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There is a mild, twitchy energy to the cluster that successfully evokes a slight sense of unease, though it is undermined by the 'cutesy' nature of the materials."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work is a literal interpretation of its title; beyond the immediate metaphor for surveillance or paranoia, there is little to sustain prolonged intellectual engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "While the piece captures a certain manic energy, it fails to transcend its origins as a collection of store-bought trinkets. The execution is too close to a schoolroom project to be taken seriously as a sculptural or conceptual object, and it lacks the subversive edge required to make its use of kitsch feel meaningful."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T09:11:03-06:00",
+          "seconds": 26.0,
+          "review": {
+            "First Impression": "An aggressive, almost frantic assemblage of craft-store castoffs that vibrates with a juvenile, manic energy. It is immediately recognizable as a 'creature' of sorts, albeit one that feels desperately improvised.",
+            "Interpretation": "The work operates within the realm of the 'low-fi uncanny,' utilizing googly eyes—a symbol of commercialized whimsy—to construct a poly-ocular entity. The messy, glittering ground suggests an entropic birth or a dissolving form, while the sharp diagonal of the orange background serves as a flat, uncaring environment for this emerging chaos. It attempts to subvert the 'cute' by sheer volume, turning an object meant to personify things into a swarm that depersonalizes the viewer. However, the execution remains tethered to the materials' origins, never quite transcending its status as a glue-and-paper experiment.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The application is clumsy and lacks intentionality; the visible glue and uneven glitter feel like technical failures rather than expressive choices."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "A centered mass against a divided background is a safe, uninspired arrangement that fails to activate the negative space effectively."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This aesthetic is a staple of 'weird' internet culture and amateur collage, offering no new perspective on the 'eyes-as-surveillance' or 'eyes-as-monster' tropes."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "While it triggers a primal 'stared-at' response, the effect is shallow and lacks the sustained unease of more sophisticated surrealism."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "The piece is entirely surface-level, following its own descriptive prompt literally without inviting deeper metaphorical or formal investigation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The work lacks the technical rigor or conceptual novelty required for serious consideration. It is a derivative exercise in craft that fails to elevate its mundane materials into a compelling visual or intellectual experience."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Bear Otto"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:28:00-06:00",
+          "seconds": 33.3,
+          "review": {
+            "First Impression": "A cluster of googly eyes coagulates in a glittery scab on a soot-black ground, bisected by a hot flare of red. It’s simultaneously funny and a little gross—craft-store sweetness curdling into something feral.",
+            "Interpretation": "The work leans into the tension between cuteness and menace: the infantilized gaze (googly eyes, glitter) becomes a swarm, like eggs or a lesion, implicating surveillance and bodily abjection. The stark red tear across the top sharpens the drama, while the sticky, imperfect materiality foregrounds the piece’s embrace of low materials and DIY entropy. It reads as a knowingly trashy memento mori for attention culture: everything is watching, and it’s made of sugar and glue.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Materials are handled with intent, but the adhesive pools and glitter clumping feel more opportunistic than controlled. The roughness suits the concept yet doesn’t transcend it."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The off-center mass of eyes has a strong gravitational pull, counterweighted by the red wedge that activates the field. Negative space is used well, though the lower half could use a secondary rhythm."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter are well-trodden, but the cluster-as-lesion metaphor gives the cliché a bite. It’s witty, if not groundbreaking."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It provokes an immediate laugh-then-shiver response—campy delight turning uneasy. The swarm effect lingers in the mind."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The cuteness/abjection and surveillance themes are present, but the idea resolves quickly. There are hints of more, yet not enough layers to keep unfolding."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "The piece delivers a sharp visual hook and a clear mood, but leans heavily on the novelty of its materials and a single read. I enjoy its nasty-sparkly wit, though the craft and conceptual stack stop short of something I’d stand behind long-term. I’ll pass and watch where the material language goes next."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:28:18-06:00",
+          "seconds": 18.5,
+          "review": {
+            "First Impression": "A puckered, glitter-slick mass of “eyes” huddles on a soot-dark ground under a slash of traffic-cone orange. It’s at once goofy and a little nauseating—the comedy of craft-store detritus turning feral. The cluster reads like spawn or a wound that’s staring back.",
+            "Interpretation": "Bear Otto leverages low materials—glitter, adhesive, and googly-eye hemispheres—against a severe color field to stage the tension between kitsch and the abject. The massing of circular pupils evokes surveillance and swarm biology, while the oily black pool and ragged edge under the orange band suggest a toxic spill or cauterized cut. By colliding childlike craft with bodily unease, the work plays in the register of camp horror, implicating our appetite for spectacle and the way looking itself can feel contaminated.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Material handling is intentionally rough, which serves the abject mood, but the adhesives and edges occasionally read as careless rather than chosen. The surface has energy, yet the techniques are straightforward."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The off-center cluster set against a stark orange cap creates good tension and directional pull. Negative space is used effectively, though the upper band threatens to upstage the focal mass."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter in abject configurations are a known trope; however, the toxic-spawn reading and the chromatic severity lend it some freshness."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece provokes a sharp mix of humor and revulsion—the stare-down is memorable. It lingers as an itch behind the eyes."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are clear ideas about gaze, contamination, and camp, but the gesture feels more punchline than inquiry. It invites return, though it doesn’t keep unfolding far beyond the initial conceit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "This is a brash, memorable image with a smart collision of materials and mood, but it leans heavily on craft-store irony and doesn’t quite deepen beyond its first jolt. I admire the tension it strikes between play and rot, yet the conceptual chassis feels light. I’ll pass and watch for a body of work that pushes these instincts into a more developed language."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:28:39-06:00",
+          "seconds": 21.1,
+          "review": {
+            "First Impression": "A puckered cluster of googly eyes congeals in a puddle of glitter on a soot-dark ground, clipped by a hot slice of red at the top. It’s funny and a little gross—campy materials weaponized into something vaguely biological. I’m intrigued but cautious about the craft-store theatrics.",
+            "Interpretation": "The work sets the childish language of googly eyes and glitter against an ominous, nearly charred field, using the red swath as a warning flare. The clustered eyes read as eggs, spores, or a surveillance hive—attention as organism—while the glitter performs a toxic glamour that both attracts and contaminates. By leaning into abjection and kitsch, the piece considers how looking is commodified and how delight can curdle into unease.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Intentional messiness and resinous pooling suit the abject theme, but the adhesive smears and errant scratches feel more accidental than controlled. The materials are handled competently, not incisively."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The off-center cluster counters the bold red wedge, with generous negative space keeping the eye in play. The central mass flattens slightly, diluting tension, but the push–pull works overall."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter are familiar post-internet tropes; here they’re combined with a color-field interruption to freshen the gesture, though not to a revelatory degree."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The collision of cute and bodily gives a real prickle—equal parts amusement and discomfort. It lingers as a sticky, watchful presence."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Themes of gaze, surveillance, and kitsch-as-abject are legible and viable, but the piece stops short of deep elaboration or surprise in its argument."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "I admire the nerve and the uneasy glamour, and the composition has bite. But the reliance on novelty materials and the uneven finish keep it closer to a compelling sketch than a resolved statement. I’ll pass, while noting the promising tension the artist mines between seduction and rot."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:29:27-06:00",
+          "seconds": 47.8,
+          "review": {
+            "First Impression": "A jarring collision of nursery school materials and Lovecraftian horror. It feels like a small, glittery nightmare that just crawled out of a craft bin.",
+            "Interpretation": "This piece attempts to subvert the innocence of hobbyist materials—glitter, glue, and googly eyes—by clustering them into a form that suggests a biological specimen or a panopticon of the mundane. The high-contrast orange and black background isolates the object, forcing a confrontation with its many unblinking stares. It leans into the 'creepy-cute' aesthetic, trying to find a dark heart within the messiness of play.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The application of materials is clumsy, looking more like an unfinished experiment than a purposeful subversion of technique."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central mass is anchored by a diagonal color split, but the arrangement of the eyes feels haphazard rather than a deliberate study in chaos."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The 'eldritch googly eye' motif is a common trope in contemporary lowbrow art and digital culture, offering nothing new here."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It triggers a minor 'uncanny' response through the repetition of eyes, but the effect is fleeting and shallow."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "Beyond the initial joke of turning craft supplies into a monster, there is little to sustain intellectual interest."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 32,
+              "Decision": "PASS",
+              "Rational": "The work fails to transcend its 'craft project' origins, relying on the inherent quirkiness of its materials rather than technical or conceptual rigor. It is a one-note visual gag that lacks the depth and execution necessary for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:30:29-06:00",
+          "seconds": 61.9,
+          "review": {
+            "First Impression": "A frantic, glittering cluster of eyes staring back with a hollow, plastic intensity. It feels like a piece of craft-room detritus that has suddenly gained an unsettling form of sentience.",
+            "Interpretation": "The piece utilizes \"trash\" materials—googly eyes, craft glitter, and torn paper—to construct a makeshift deity of surveillance. By congregating these cheap, mass-produced symbols of sight into a singular, oozing mass, Otto highlights the absurdity of a hyper-observed reality. The contrast between the vibrant orange and the void-like grey background suggests a rift or an emergence, as if this glittery entity is leaking into our space from a cruder, more frantic dimension. The messiness rejects the polish of \"fine art\" in favor of a raw, almost childish urgency that borders on the grotesque.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The execution is deliberately messy, utilizing basic school supplies in a way that doesn't elevate the medium beyond its hobbyist roots."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The central cluster is anchored reasonably well within the frame, and the diagonal split of the background provides a necessary tension."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Using googly eyes as a commentary on sight or the uncanny is a well-worn path in contemporary assemblage and \"bad art\" aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There is a genuine sense of the \"uncanny valley\" here; the cluster of unblinking eyes is bothersome in a way that sticks."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the immediate shock of the \"many-eyed monster,\" there is little to sustain a deeper inquiry into the work's meaning or intent."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "While the work possesses a certain raw energy, it ultimately fails to transcend the sum of its parts. It feels more like a captured moment of play than a rigorous exploration of form or concept, leaving the viewer with a visual punchline that loses its impact almost immediately."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:30:50-06:00",
+          "seconds": 21.3,
+          "review": {
+            "First Impression": "A frantic, glittery mess that feels like the aftermath of a craft store explosion. It has the raw energy of a child's creation, but lacks the intentionality of a finished work of art.",
+            "Interpretation": "This work attempts to evoke a sense of an 'emerging entity' out of consumer waste, using the googly eye as a stand-in for consciousness. The contrast between the void-like black background and the neon orange suggests a state of emergency or a hazardous environment, but the messiness of the glitter glue undermines any serious tension. It is a 'glitter-clot' that tries to stare back, yet it remains firmly stuck in the realm of the kitsch.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The application is haphazard and lacks any sense of material control; it is indistinguishable from a casual craft project."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The central pile of eyes is stagnant, and the diagonal slash of orange feels like an unconsidered leftover rather than a purposeful structural choice."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Using googly eyes to create a 'monster' or 'entity' is a well-worn trope that feels dated and uninspired here."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "The 'creepy-cute' aesthetic is too thin to evoke a genuine reaction, feeling more like a visual pun than an emotional statement."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "It plays with the 'gaze' in the most literal and superficial way possible, offering no second layer of meaning beyond the initial visual gag."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 22,
+              "Decision": "PASS",
+              "Rational": "The work lacks the technical execution and conceptual gravity required to move beyond its status as a decorative curiosity. It relies on the inherent quirkiness of its cheap materials rather than transforming them into something larger than the sum of their parts."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "You can never have too many eyes",
+        "artist": "Bear Otto"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:31:40-06:00",
+          "seconds": 50.2,
+          "review": {
+            "First Impression": "A clutch of googly eyes and glitter huddles on a tarry black island beneath a slice of alarm-orange. It’s funny and a little feral—the craft-store kitsch feels like it’s mutating into a creature.",
+            "Interpretation": "The work stages the gaze as both swarm and spectacle: many eyes coagulate in a sticky, glittering nest that is equal parts party confetti and biological brood. The sharp red-orange field reads like siren light or a warning banner, heightening the sense of surveillance and vigilance. By leaning into low materials—googly eyes, glitter, glue—the piece plays the line between childhood craft and anxious adulthood, where being seen (or seeing everything) is both intoxicating and exhausting. It’s a compact meditation on attention and paranoia disguised as something cute.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "The finish is intentionally rough; glue pools and glitter scatter suit the concept but limit technical refinement. The material handling is effective but modest."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The off-center cluster against the matte black, capped by a decisive orange band, creates tension and focus. Negative space and the tear-like edge add useful drama."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes are a familiar trope, yet their clustering with a color-field slash and tarry substrate gives the cliché a fresh, slightly sinister twist."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It provokes an uneasy chuckle that curdles into dread—cute turning uncanny. The sparkly lure paired with the watchful mass lands viscerally."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Ideas of the gaze, attention economies, and surveillance are legible and coherent, though not deeply elaborated beyond the central conceit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "PASS",
+              "Rational": "Clever and visually punchy, the piece hits an appealing note of comic menace with economical means. Yet it leans heavily on the novelty of its materials and a single read, leaving limited room for sustained engagement. I’ll pass, while noting the promising instinct for balancing kitsch and unease."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:32:30-06:00",
+          "seconds": 49.4,
+          "review": {
+            "First Impression": "A clutch of glitter-slick “eyes” huddles on a scorched black island beneath a searing red band. It’s playful and queasy at once—kitsch becoming creature, craft supplies turned into something that stares back.",
+            "Interpretation": "The work weaponizes hobby-store materials—googly eyes, glitter, glue—against a stark color-field to suggest a culture of overexposure and surveillance. The warm red edge reads like an emergency flare while the black ground absorbs light, turning the sugary sparkle into something abject, almost biological, like a spawn cluster. By letting mess and seepage remain visible, the piece treats looking as sticky and contagious: every eye breeds more eyes. It’s a sly conflation of cuteness and menace.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Material handling is intentionally rough—pooled adhesive, torn edges—which supports the concept but limits refinement. The tactile contrasts are effective, if not technically meticulous."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The hot red cap against the deep black establishes strong tension, and the cluster of eyes forms a persuasive focal mass. Negative space is used well, though the placement could be even bolder."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly eyes and glitter are familiar post-pop tactics, but the organismal, abject turn gives them a slightly fresher bite. It’s inventive without breaking new ground."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece lands a memorable mix of humor and unease; it makes you smile and recoil. The title amplifies that tension."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There’s a clear read on surveillance, attention, and the proliferation of gaze, with a nice low/high material friction. The ideas are pointed but not profoundly layered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 70,
+              "Decision": "PASS",
+              "Rational": "I like the playful menace and the way cheap materials are made to feel alive, and the color tension is keen. Yet the work stops short of a breakthrough—its conceptual and formal risks feel modest rather than necessary. Strong, memorable, but not essential for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:33:54-06:00",
+          "seconds": 83.7,
+          "review": {
+            "First Impression": "A cluster of glossy, staring pupils congeals in a puddle of glittery ooze on a charcoal field, under a hot slash of orange. It’s playful and a little feral—craft‑store camp mutating into something watchful and mildly menacing.",
+            "Interpretation": "Using googly eyes and glitter — materials coded as juvenile and kitsch — the work stages a swarm that reads like an egg clutch or a panopticon organism. The black, torn island and the emergency orange edge sharpen the sense of alarm, turning cuteness into threat. It plays on the compulsion to look and be looked at, folding humor into surveillance, virality, and crowd vision. The sticky excess and scatter feel intentionally abject, making the gaze tactile and messy rather than sleek or technical.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Material handling is deliberate but rough: adhesive seep and glitter scatter support the abject tone but flirt with sloppiness. The finish reads intentional but not refined."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The dense cluster anchored in a dark island against the orange wedge creates strong contrast and a clear focal pull. Elliptical repetition and negative space generate tension and rhythm."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Googly‑eye assemblage is a familiar trope, yet the toxic sparkle and hazard‑orange intrusion give it a distinct, slightly sinister register."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It toggles deftly between cute and unsettling; the many eyes feel funny until they begin to stare back."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Suggestive of surveillance culture, collective vision, and spectacle, but the idea feels sketched rather than probed; more development would reward return viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 67,
+              "Decision": "PASS",
+              "Rational": "This is a sharp, cheeky gesture with a memorable visual hook, but its conceptual stakes remain light and the craft leans toward one‑off effect rather than sustained inquiry. I enjoy the menace in the kitsch, yet I don’t feel enough depth to warrant acquisition. If expanded into a series or pushed materially beyond novelty, it could mature into something I’d endorse."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T16:34:33-06:00",
+          "seconds": 39.0,
+          "review": {
+            "First Impression": "This feels like a frantic, glitter-drenched descent into a craft store's clearance aisle. It’s loud, messy, and possesses an almost aggressive cheerfulness that verges on the grotesque.",
+            "Interpretation": "The work attempts to manifest a sense of hyper-vigilance through the literal accumulation of plastic googly eyes. By embedding these kitsch objects in a slurry of glitter and dark pigment, the artist creates a tactile, glittering void. The eyes, arranged in a disorganized cluster, look in various directions, suggesting a fractured perspective or a multi-eyed entity emerging from a rift. The sharp, torn boundary between the black and orange backgrounds heightens the sense of an unwanted intrusion or a portal opening. It is an exploration of the 'all-seeing' through the lens of cheap, disposable materials.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, utilizing basic craft store materials with no apparent effort toward technical refinement or innovative use of the medium."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The central cluster of eyes provides a focal point, but the surrounding spill of glitter and the torn paper boundary feel more accidental than curated."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "Googly eyes and glitter are staples of hobbyist craft and ironic 'bad art,' and this piece doesn't subvert those tropes in a meaningful way."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It captures a certain jittery, 'creepy-cute' energy that is briefly amusing, but it fails to leave a lasting impact."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "The theme of surveillance or 'many eyes' is presented literally, offering little for the viewer to unpack beyond the immediate visual pun."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 28,
+              "Decision": "PASS",
+              "Rational": "While there is a raw, unpretentious energy to the work, it fails to transcend its modest materials. It functions more as a playful artifact than a sustained artistic statement, lacking the technical or conceptual depth required for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T16:34:56-06:00",
+          "seconds": 23.5,
+          "review": {
+            "First Impression": "This is a frantic explosion of tactile curiosity, immediate and unpretentious. The googly eyes staring out from a glittery sludge have a charmingly eerie, DIY quality that demands a quick smile before the messiness sinks in.",
+            "Interpretation": "The work is an exercise in additive absurdity. By clustering mass-produced craft materials—googly eyes, pink glitter, and glue—the artist creates a low-relief entity that bridges the gap between a childhood monster and a psychedelic vision. The black background functions as a void, making the central cluster pop as a site of hyper-visibility, suggesting a frantic, multi-directional gaze that is both playful and slightly neurotic.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, relying on basic school supplies used in a messy, unrefined manner where the glue and glitter feel incidental."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The central cluster is somewhat static and lacks a sophisticated relationship with the surrounding negative space, though the orange corner provides a necessary, albeit disconnected, pop of color."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "Using googly eyes to create a many-eyed creature is a common trope in DIY and folk art, and this iteration doesn't bring a new perspective to the medium."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "There is a minor, amusing jolt of 'creepy-cute' energy, but the effect is fleeting and relies heavily on the inherent humor of the materials."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "The work is a very literal translation of its title, offering little in the way of subtext or metaphorical resonance beyond the surface level."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 28,
+              "Decision": "PASS",
+              "Rational": "The work possesses a raw, uncurated energy, but it ultimately fails to transcend its mundane materials or move beyond a basic craft aesthetic. It remains a charmingly whimsical object rather than a compelling, resolved piece of art."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T16:35:21-06:00",
+          "seconds": 25.4,
+          "review": {
+            "First Impression": "This is an unapologetic collision of elementary school craft supplies and a vaguely unsettling obsession with surveillance. It’s messy, sticky, and stares back with a mindless, plastic intensity that is hard to ignore.",
+            "Interpretation": "Otto’s work functions as a shrine to the 'googly eye'—the ultimate symbol of cheap, manufactured life. By clustering them together in a field of jagged glitter and pooling adhesive, the artist transforms a single comic gag into a grotesque, multifaceted organ. The contrast between the orange field and the dark substrate suggests a horizon line, placing this 'creature' or cluster in a physical space, yet the execution remains anchored in the tactile reality of the materials themselves. It’s an attempt to find the sublime in the dollar-store bin, though it struggles to shed the weight of its own literalness.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is haphazard, with the adhesive and glitter appearing more like a spill than a deliberate application, and the substrate shows unintentional wear."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central massing of eyes provides a focal point, and the orange wedge in the upper left corner offers a necessary counterweight to the dark negative space, preventing a total collapse of the frame."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The use of googly eyes for surrealist or 'weird' effect is a well-trodden path in contemporary craft and internet art, and this piece doesn't offer a significant new twist."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "There is a minor, prickling sense of being watched, but the inherent 'cuteness' of the materials prevents the work from achieving a truly visceral or uncanny effect."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the literalness of the title, the work doesn't offer much to chew on; it stays on the surface of its own aesthetic gag."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 32,
+              "Decision": "PASS",
+              "Rational": "The work relies too heavily on the inherent quirkiness of its materials without providing the necessary craft or conceptual framing to elevate them. It feels like a moment of play captured rather than a finished artistic statement that demands a permanent place in a collection."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "You can never have too many eyes",
+        "artist": "Bear Otto"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Abstract Painting\",\n    \"Color Field\",\n    \"Geometric Abstraction\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"colorAndAesthetics\": 2,\n    \"originality\": 3,\n    \"emotionalImpact\": 4,\n    \"conceptOrMeaning\": 5,\n    \"technicalExecution\": 6,\n    \"innovation\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I collect non-representational work — gestural, color field, and geometric abstraction — where composition, rhythm, color, and spatial tension carry all of the meaning. I want surfaces, palettes, and structures that keep resolving into something new the longer I look, without ever needing a subject.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Mark Rothko\",\n    \"Julie Mehretu\",\n    \"Sean Scully\",\n    \"Agnes Martin\",\n    \"Helen Frankenthaler\"\n  ],\n  \"avoid\": \"Literal realism, illustrative narrative, decorative pattern without visual tension, and artwork that depends on recognizable subjects to work.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"AI-Assisted Art\",\n    \"Machine Learning / Neural Art\",\n    \"Human-AI Collaboration\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"innovation\": 2,\n    \"conceptOrMeaning\": 3,\n    \"technicalExecution\": 4,\n    \"composition\": 5,\n    \"emotionalImpact\": 6,\n    \"colorAndAesthetics\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I collect work where AI is genuinely the medium — custom-trained models, artist-built datasets, deliberate latent-space exploration, and human-machine collaboration with a clear authorial hand. The interesting question is always authorship: I want to feel the artist steering the model, not the model steering the artist.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Claire Silver\",\n    \"Refik Anadol\",\n    \"Sougwen Chung\",\n    \"Botto\",\n    \"Holly Herndon\"\n  ],\n  \"avoid\": \"Generic prompt outputs, trend-chasing AI aesthetics, style mimicry of existing artists, and work where the model made all the decisions.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/abstract.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/ai.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-14T16:36:04-06:00",
+          "seconds": 42.7,
+          "review": {
+            "First Impression": "A puckish cluster of googly eyes sits in a glittery, tar-like spill under a searing band of orange. It’s cheeky and tactile, edging on the grotesque, but it also feels more craft-store prank than resolved painting. The humor is immediate; the aftertaste is thin.",
+            "Interpretation": "The piece riffs on surveillance and hyper-visibility—too many gazes at once—couched in camp materials. The black puddle reads as a wound or leak, while the hot orange slice alarms from above; glitter domesticates the menace into kitsch. By leaning on pre-fabricated eyes, the work literalizes its metaphor and limits the formal play that might have carried it further into abstraction.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "Materials are left largely as-is; adhesive residue and glitter scatter feel incidental rather than transformed. The eyes sit on top of the surface rather than being integrated into it."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "A single central cluster anchors everything, with the orange wedge providing a token counterweight, but the spatial dialogue is shallow and stops quickly. The image doesn’t resolve beyond focal-point plus corner accent."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "Googly-eye assemblage is a familiar trope, and this iteration doesn’t push the device materially or conceptually. The novelty rests on the readymade gag."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There’s a quick flicker of unease and humor in the swarm of gazes, but it doesn’t deepen with looking."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The idea—too many eyes, surveillance tempered by camp—lands immediately and is exhausted just as fast. Little invites a second reading beyond the pun."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "I prioritize composition-led abstraction and surfaces that keep unfolding; this piece relies on the literal presence of eyes and a one-note gag. The color and structure don’t generate sustained tension or discovery, and the materials never transcend their kitschness. It’s a witty gesture, but not one I’d stand behind for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-14T16:37:02-06:00",
+          "seconds": 57.9,
+          "review": {
+            "First Impression": "A pile of googly eyes embedded in glitter sprawls across a dark field, capped by a searing wedge of orange. It’s funny and a little sinister—craft-store camp pressed against color-field drama.",
+            "Interpretation": "The piece plays with the gaze: surveillance multiplied until it becomes comic and grotesque. By choosing cheap, playful materials (googly eyes and glitter) against a stark, almost color-field ground, it undercuts authority and seriousness while still flirting with them. The cluster reads like a biological clutch or a grape—something fecund and slightly contaminated—suggesting desire to see everything and the mess that entails. The torn edge of black against orange adds a stage-like tension, as if this swarm of seeing has spilled into view.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Assembly is competent, but adhesives and glitter read as casual; the finish feels intentionally rough yet still somewhat sloppy."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The hot orange against the matte black creates a strong field, and the eye-cluster sits off-center with decent massing. Still, the grape-like lump is static and the surrounding space isn’t activated enough to keep the eye moving."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Readymade googly eyes and glitter are familiar tropes; the color-field backdrop complicates them but doesn’t fully transcend novelty."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The swarm is witty and mildly menacing—unease tempered by kitsch sparkle—producing a clear if limited charge."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "Themes of seeing/being seen and the critique of surveillance via camp are present, but the idea arrives quickly and doesn’t unfold much beyond its first read."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "I admire the collision of high/low materials and the punch of the red–black field, but the work leans on literal eyes to carry meaning. The composition has moments yet resolves too quickly into a gag, without the formal complexity I want to keep looking at. I’ll pass, though there’s a promising direction here if the material play is pushed into a more rigorous abstract structure."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-14T16:37:35-06:00",
+          "seconds": 32.5,
+          "review": {
+            "First Impression": "A cheeky, slightly macabre cluster of plastic eyes set in glitter sits on a matte black field under a slash of emergency red. The materials feel raw and crafty—sticky, sparkly, and a little grotesque. My first reaction is more amusement than awe, with a hint of unease.",
+            "Interpretation": "The work leans on the gag of the gaze: too many eyes as a metaphor for surveillance, attention, and spectacle. Glitter and resin play up seduction while the black ooze reads like a spill or wound; the red wedge above feels like an alarm. It flirts with camp, letting material tackiness perform the tension between looking and being looked at, but the literalness of the motif keeps the reading narrow.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "Adhesive pools, stray glitter, and uneven adhesion dominate the surface; the handling feels intentionally messy but not convincingly controlled. The materials overwhelm rather than serve the image."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The triangular cluster of eyes against a torn black shape and a hard red edge sets up basic contrast, yet the placement is static and overly centralized. The spatial tension between elements is modest and resolves too quickly."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Googly eyes and glitter are familiar signifiers of kitsch; their use here doesn’t push them far enough to feel new. The concept stops at the pun rather than transforming the materials."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There’s a real, if brief, shiver—playful horror that tilts toward humor. The feeling fades once the gimmick is registered."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Ideas of surveillance and spectacle are present, but they’re stated rather than probed. Little invites sustained re-reading beyond the initial conceit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "The piece relies on a literal motif and kitsch materials without resolving them into a compelling formal structure. Its brief frisson doesn’t translate into enduring visual or conceptual complexity. I’m looking for abstraction whose composition and surface keep unfolding; this lands as a one-liner."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-14T16:38:08-06:00",
+          "seconds": 33.3,
+          "review": {
+            "First Impression": "This feels like a schoolroom craft project that has wandered into an art gallery. The immediate impact is one of chaotic kitsch rather than deliberate aesthetic intent.",
+            "Interpretation": "The work attempts to explore the idea of a collective gaze or surveillance through the literal application of mass-produced googly eyes and glitter. Formally, it relies on the stark contrast between the matte black void and the reflective, messy center, but the materials are so recognizable and common that they remain anchored in their own 'dollar-store' identity rather than being transformed into a cohesive artistic statement. It is a representational work masquerading as an assemblage, where the 'subject' is merely the sum of its parts.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The technique is reminiscent of basic craft-store assembly, lacking a refined or intentional handling of materials."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "A centered, amorphous mass that fails to meaningfully engage with the frame or create a compelling spatial dialogue."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The use of googly eyes as a shorthand for 'eyes' is a tired trope that offers no new perspective."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "While it possesses a minor 'uncanny' quality, the use of kitsch materials prevents any deep or lasting emotional connection."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "The work is a literal illustration of its title with no subtext or layered meaning to discover upon further viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "This work is fundamentally at odds with the collector's preference for non-representational, sophisticated abstraction. It relies entirely on a recognizable subject and lacks the formal rigor, technical craft, and spatial tension required for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-14T16:38:44-06:00",
+          "seconds": 35.7,
+          "review": {
+            "First Impression": "This feels like a frantic, unpolished experiment from a child's craft table. The clash of high-vibrancy orange against the messy glitter cluster is jarring rather than provocative.",
+            "Interpretation": "The work attempts to bridge the gap between 'low' craft materials and 'high' abstract composition, but it fails to transcend the literal nature of its components. By clustering googly eyes in a pool of glitter, the artist is making a literalist joke about surveillance or 'the gaze' that lacks the nuance required for a non-representational collection. The formal choices—the harsh diagonal divide and the centered mass—feel coincidental rather than calculated.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is messy and amateurish, with the glue and glitter appearing as an accidental spill rather than a controlled or expressive gesture."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The diagonal split between the orange and black provides a basic structural tension, but the central cluster of glitter and eyes is clumsily placed, lacking any rhythmic or spatial sophistication."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Using googly eyes as a 'subversive' or 'absurdist' element is a common trope in hobbyist craft and low-effort irony, offering nothing new to the discourse of abstraction."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "Beyond a brief moment of kitschy amusement, the work fails to evoke a significant felt response or any lasting resonance."
+              },
+              "Conceptual Depth": {
+                "Score": 1,
+                "Reasoning": "The work is a literal realization of its title; once you see the eyes, there is no further intellectual or visual discovery to be made."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "This piece is antithetical to a collection focused on the sophisticated spatial tension of artists like Rothko or Martin. It relies on a literal, recognizable subject (the eyes) to function, and its technical execution lacks the refinement or intentionality required for serious acquisition. It is a gimmicky assemblage that offers no formal or conceptual depth to return to."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-14T16:39:20-06:00",
+          "seconds": 36.8,
+          "review": {
+            "First Impression": "This is a chaotic explosion of craft-store materials that feels more like a primary school project than a serious piece of abstraction. The cluster of googly eyes is immediate, kitschy, and somewhat jarring against the dark, torn paper.",
+            "Interpretation": "The work is a literal manifestation of its title, using mass-produced 'googly eyes' to create a focal point of unsettling, frantic surveillance. By embedding these eyes in a pool of glitter and glue, the artist attempts a form of 'low-brow' gestural collage, but the reliance on the representational nature of the eyes prevents the work from achieving the spatial or rhythmic tension found in high abstraction. It exists in the realm of the grotesque-cute, where the messiness of the medium suggests a desperate, unrefined urgency.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The handling of the glue and glitter is clumsy, lacking the deliberate control needed to make a 'messy' aesthetic feel purposeful."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The central cluster is static and lacks dynamic rhythm; the orange band at the top feels like an afterthought rather than a structural component of the space."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The use of googly eyes as a commentary on surveillance or identity is a common trope in amateur and craft art circles."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "It elicits a brief, superficial reaction to the kitsch elements but fails to sustain any deeper psychological or aesthetic impact."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "The work is entirely literal, where the title explains the piece and the piece explains the title with no leftover mystery."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "This piece is a direct violation of the collector's preference for non-representational work, as it relies entirely on a recognizable and literal subject. The execution lacks the compositional rigor and formal sophistication required to stand alongside masterworks of color field or geometric abstraction."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-14T16:40:19-06:00",
+          "seconds": 58.3,
+          "review": {
+            "First Impression": "A puckered island of glitter and glue, studded with a cluster of glossy eyes, sits on a soot-matte field interrupted by a slash of orange. It’s cheeky and a little grotesque—craft‑store fun flirting with body horror.",
+            "Interpretation": "The work plays with the idea of omnividence and the social-media gaze: too many eyes, too much attention, and the lure of sparkle as bait. Cheap, kid-adjacent materials (googly eyes, glitter) are deployed to mock the spectacle while also indulging in it, producing a kitschy unease rather than a fully argued critique. The torn edge and spill-like form suggest a wound or stain—attention as a mess that leaks and sticks.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "Adhesive smears, uneven surfaces, and visible glue lines feel more accidental than intentional. The material handling doesn’t rise beyond basic assemblage."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The dense circular cluster against broad matte ground and the hot orange corner create readable tension and contrast. Still, the shape is awkwardly resolved and the negative space feels incidental."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Googly eyes and glitter as symbols of gaze and spectacle are familiar territory; the gesture reads as a literal pun rather than a new proposition. The treatment doesn’t significantly extend that discourse."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There’s a quick jolt of humor and creepiness that lands, but it doesn’t sustain a deeper affect. The mood remains surface-level camp."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The surveillance/attention-economy subtext is present but underdeveloped, with limited layering beyond materials-as-metaphor."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 46,
+              "Decision": "PASS",
+              "Rational": "Playful and a touch macabre, the piece is more witty craft than resolved artwork, leaning on a literal conceit without the innovation or rigor to carry it. It also falls outside the collection’s emphasis on AI as medium, and doesn’t present an exceptional counterargument through form or concept. I’m passing."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-14T16:41:30-06:00",
+          "seconds": 70.9,
+          "review": {
+            "First Impression": "A sticky constellation of googly eyes glints out of a glittery spill on matte black, punctured by a jagged slash of hot orange. It’s playful and a little grotesque—craft-table delight tipping into mild body horror.",
+            "Interpretation": "By clustering toy eyes inside a shimmering ooze, the work riffs on surveillance and spectacle: seeing proliferates, but insight doesn’t necessarily deepen. The kitsch materials are deliberate, framing vision as cheap, promiscuous, and attention-seeking, more accumulation than focus. The torn red wedge reads like an alarm, while the dark ground absorbs specificity, so the gaze multiplies even as meaning thins.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Adhesive bleed, uneven setting, and rough edges feel intentionally messy, but the finish reads casual rather than incisively controlled. Material handling is serviceable, not refined."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The off-center eye-cluster counterbalanced by the red wedge uses negative space effectively. Still, the central mass remains literal and flattens spatial play."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Googly eyes and glitter as a critique of surveillance or spectacle is familiar territory. The piece doesn’t push the language or system far beyond a clever gesture."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It toggles between camp humor and low-grade unease, which lands. The sensation is quick and doesn’t linger."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The thesis—more eyes do not equal more seeing—is legible but thin. It would benefit from a clearer structural conceit or contextual frame to deepen the read."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 56,
+              "Decision": "PASS",
+              "Rational": "A punchy, tactile vignette with a readable angle on spectacle and surveillance, but it relies heavily on kitsch tropes and doesn’t quite break new ground. Given the stated focus on AI as a medium and authored human–machine collaboration, this sits outside the core inquiry and lacks the conceptual push to override that misalignment. I’ll pass."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-14T16:42:41-06:00",
+          "seconds": 71.1,
+          "review": {
+            "First Impression": "A mischievous cluster of googly eyes congeals in a glittery spill on matte black, pressed by a hot slice of orange from above. It’s funny and a little feral—craft-night detritus turning strangely biological. The push-pull between play and menace lands immediately.",
+            "Interpretation": "The work leverages low-fi, schoolroom materials to probe the compulsion to look and be looked at. The eyes gather like an egg sac or tumor, suggesting surveillance and swarm intelligence wrapped in kitsch. Glitter acts as lure and contamination, while the viscous adhesive reads bodily—secretion, residue, aftermath. The sharp orange field is a warning flare, a hazard banner that heightens the anxiety of overexposure. Altogether it proposes a pop-grotesque meditation on hyper-visibility without pretending to be pristine or technological.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "The handling is deliberately crude—pooled glue, uneven glitter, and store‑bought eyes—but the tactility is effective. Technique serves the idea, yet remains basic."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The hot orange wedge counters the dense central cluster and activates the negative space. The torn, irregular black field creates tension and keeps the eye moving."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Googly eyes and glitter are familiar tropes; the insect‑egg/surveillance twist adds some freshness but not a leap. The gesture feels witty rather than groundbreaking."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It strikes a clear chord of humor laced with unease—a quick, bodily reaction. The repulsion-attraction dynamic sustains a brief linger."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "Themes of gaze, kitsch, and surveillance are present, but the piece reads as a strong one-liner. Without further development, there’s limited complexity to return to."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 54,
+              "Decision": "PASS",
+              "Rational": "Clever, tactile, and cheekily uncanny, this piece turns craft materials into a pop-grotesque about too much seeing. Yet the conceptual move remains concise and the material language, while apt, is modest; it also sits far from the collection’s focus on AI authorship and collaboration. I’m passing, while appreciating its uneasy humor and frankness."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-14T16:43:27-06:00",
+          "seconds": 46.1,
+          "review": {
+            "First Impression": "A kitschy, tactile explosion of hobby-store materials that feels like a cross between a childhood craft project and a low-budget horror prop. It is immediately playful but feels fleeting in its impact.",
+            "Interpretation": "The work attempts to literalize the 'all-seeing' gaze through the most mundane materials possible: plastic googly eyes and glitter. By using these symbols of juvenile play, it strips the idea of the Panopticon or the 'Biblically accurate angel' of its terror, reducing cosmic or systemic observation to a messy, sparkly joke. The high-contrast background suggests a sense of urgency or alarm, but the goofy nature of the eyes undermines any genuine threat, creating a tension between the 'stare' and the 'stuff'.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The technique is rudimentary, relying on the basic application of glitter and glue with little evidence of technical mastery or material innovation."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The diagonal division of the background provides a necessary tension, and the central cluster of eyes is balanced, though somewhat predictable."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The 'multitude of eyes' motif is a well-worn trope in both surrealist and internet aesthetics, here executed in a very standard DIY fashion."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It achieves a certain 'creepy-cute' charm that is mildly engaging, though the effect is more decorative than profound."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the literal interpretation of the title, the work doesn't offer much to investigate; it's a one-note visual pun on surveillance and craft."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "This piece fails to meet the collector's preference for AI-driven or technologically innovative art, offering instead a very traditional (and somewhat amateurish) craft aesthetic. While it has a certain whimsical charm, it lacks the conceptual depth and technical 'steering' required to be a significant addition to a serious collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-14T16:44:02-06:00",
+          "seconds": 35.0,
+          "review": {
+            "First Impression": "A jarring collision of craft-closet materials and existential dread. It looks like a 'panic project' from a primary school art class, yet there's an intentionality to the mess that feels claustrophobic.",
+            "Interpretation": "The work plays with the 'all-seeing' trope but strips it of its divine or technological power, reducing the 'gaze' to cheap, plastic googly eyes embedded in a glittery, viscous bog. It is an anti-aesthetic statement, rejecting the polished for the tacky and the literal. If this is indeed an AI-assisted piece (as the collector’s context suggests), it is a sophisticated simulation of physical failure—an 'un-canny' valley of craft that mocks the precision usually associated with the medium. It represents a 'Biblically accurate angel' for the dollar-store era, where surveillance is not a high-tech feat but a cluttered, messy accumulation of dumb sensors.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "There is a compelling mastery of texture here—the contrast between the matte black, the viscous glitter-slurry, and the hard plastic of the eyes is rendered with visceral clarity."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The composition is heavily weighted in the center, creating a static focal point that feels somewhat claustrophobic, though the orange diagonal at the top provides a necessary, if jarring, counter-balance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "In an era of hyper-clean digital aesthetics, this embrace of the 'tacky' and the physically repellent feels like a deliberate and somewhat rare departure."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The work succeeds in creating a sense of 'sticky' discomfort and minor trypophobia, evoking the messy, tactile reality of a child's craft project gone wrong."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The theme of 'too many eyes' is a well-worn path in both surrealism and internet art; the work doesn't provide enough subversion or context to elevate the concept beyond its literal description."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "While the textural simulation is impressive, the work ultimately feels like a visual gag that lacks the conceptual rigor or technical innovation the collector prizes. It fails to demonstrate the 'authorial hand' steering a complex model, feeling more like a singular, albeit gritty, aesthetic experiment than a significant contribution to the field of AI-human collaboration."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-14T16:44:30-06:00",
+          "seconds": 28.7,
+          "review": {
+            "First Impression": "Tactile, chaotic, and somewhat unsettling in its literalism. The immediate reaction is a mix of curiosity and a slight repulsion toward the sticky, glittering surface and the cluster of unblinking plastic gazes.",
+            "Interpretation": "'You can never have too many eyes' is an exercise in low-brow assemblage that attempts to transform mundane craft supplies—googly eyes and glitter—into a singular, monstrous entity. The central mass acts as a rupture against the stark, graphic planes of orange and black paper, suggesting a creature emerging from a void. It is a work about the anxiety of being seen, articulated through the lens of a child’s nightmare or a frantic, domestic ritual. However, the formal choices emphasize materiality over mystery; the visible edges of the glue and the uneven distribution of glitter anchor the piece in the mundane, resisting the very cosmic horror it seems to court.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "The execution is rudimentary, relying on the inherent 'quirkiness' of the materials rather than any sophisticated manipulation. The visible adhesive and scattered glitter feel haphazard."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The diagonal division of the background provides a basic sense of movement, but the central clustering of the eyes is uninspired and lacks a rhythmic or structural payoff."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Googly eyes and glitter are staples of kitsch and classroom projects; the work fails to recontextualize them in a way that feels fresh or subversive."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "There is a slight, initial creepiness to the gaze, but it is quickly neutralized by the familiarity and cheapness of the medium."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "Beyond the literal interpretation of the title, there is little to engage with; the piece lacks the layers of meaning needed to sustain prolonged interest."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "This work is fundamentally misaligned with the collector’s focus on the sophisticated intersection of AI and human authorship. Even judged on its own merits as a physical object, it lacks the technical maturity and conceptual weight to justify inclusion in a serious collection."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

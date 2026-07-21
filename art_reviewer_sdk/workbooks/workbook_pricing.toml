@@ -1,0 +1,83 @@
+# Pricing variant of the workbook — includes artwork_price and max_spend
+# (the main workbook.toml omits pricing from the model input entirely).
+# One workbook = one artwork. Copy this file per artwork you test.
+# TIP: instead of filling artwork fields inline, you can reference an entry in
+# artworks.json via `artwork = "<id>"` (see workbook.toml) — inline fields
+# here still win over the catalog, so keeping price/max_spend local works.
+# Run:  uv run python art_reviewer_sdk/run_workbook.py art_reviewer_sdk/workbooks/workbook_pricing.toml
+
+artwork_id    = "TEST-001"
+artwork_title = "Building 2092"
+
+# List price in USD (sent to the model and recorded; blank = omitted)
+artwork_price = "50"
+
+# Maximum spend in USD — the most the collector would pay for a single artwork
+# (sent to the model and recorded; blank = omitted)
+max_spend     = "100"
+
+# Artist name — used in Conditions C, D, and E (sent to the model in those
+# conditions and recorded; blank = omitted)
+artist        = "Michael Sidofsky"
+
+# Work type — sent to the model and recorded. One of:
+#   "Digitally native (NFT / digital asset)"
+#   "Digital representation of a physical work"
+work_type     = "Digitally native (NFT / digital asset)"
+
+# Models to test — exact API IDs; each runs every condition. Omit this line
+# to use the harness default (MODELS in run_workbook.py).
+#
+# Usable vision-capable models (verified against our keys 2026-07-06; see
+# README "Available models" to re-query):
+#   OpenAI:  gpt-5.5, gpt-5.5-pro, gpt-5.4, gpt-5.4-mini, gpt-5.2, gpt-5.1,
+#            gpt-5, gpt-5-mini, gpt-5-nano, gpt-4.1, gpt-4.1-mini, gpt-4o,
+#            gpt-4o-mini, o3, o4-mini
+#   Gemini:  gemini-3.5-flash, gemini-3.1-pro-preview, gemini-3-pro-preview,
+#            gemini-3-flash-preview, gemini-2.5-pro, gemini-2.5-flash,
+#            gemini-2.5-flash-lite
+#   Claude:  claude-opus-4-8, claude-fable-5, claude-opus-4-7,
+#            claude-sonnet-4-6, claude-haiku-4-5
+#            (exact IDs as written — no date suffixes)
+models = ["gpt-5-mini", "gemini-3.5-flash", "gemini-3-flash-preview"]
+
+# Which system prompt to use: review_prompt_<N>.py (used for the reviews AND
+# recorded in the results JSON).
+review_prompt = 3
+
+# Path to the image, resolved relative to THIS file's folder (or an absolute path).
+artwork_path  = "../../testing_assets/nft-art/top-ninth.jpeg"
+
+# Used in Conditions B, D, and E.
+description = """
+Time passed by inning by inning, season by season. The years had carried him in many directions. Those nights felt farther and farther away. One evening, he made the time. And for a moment, everything was right there in front of him.
+"""
+
+# Used in Condition E. Add as many named entries as you want — each one is run
+# as its own pass (Condition E repeats once per entry). The entry's name
+# (e.g. related) is recorded with each review as preference_variant.
+# Rename the keys to whatever is meaningful for your test.
+# By default the standard A–E conditions run, with price/max_spend sent in all
+# of them. To make PRICE the varied input instead, define your own conditions —
+# uncomment below (keys/labels are yours to choose; `send` picks which inputs
+# each condition sends: description, artist, preferences, price, max_spend,
+# work_type):
+#
+# [[conditions]]
+# key   = "NP"
+# label = "Artwork Only (no price)"
+# send  = []
+#
+# [[conditions]]
+# key   = "P"
+# label = "Artwork + Price + Max Spend"
+# send  = ["price", "max_spend"]
+
+[preferences]
+related = """
+I enjoy collecting cinematic photography with strong atmosphere, dramatic lighting, and a sense of mystery or quiet storytelling.
+"""
+
+unrelated = """
+I primarily collect colorful abstract and geometric artwork with bold compositions and energetic visual patterns.
+"""

@@ -1,0 +1,1529 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-001",
+    "artwork": "proof-of-war",
+    "artwork_title": "Proof of War",
+    "artist": "xcopy",
+    "work_type": "",
+    "media_note": "The artwork is animated; the image provided is a static screenshot/rendition of the work.",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/nft-art/proof-of-war.png",
+    "models": [
+      "gpt-5-mini",
+      "gemini-2.5-flash"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-10T09:47:18-06:00",
+    "updated_at": "2026-07-10T09:57:43-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "media_note": "The artwork is animated; the image provided is a static screenshot/rendition of the work."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:47:36-06:00",
+          "seconds": 18.6,
+          "review": {
+            "First Impression": "A punchy, graphic scream: the image hits immediately with a confrontational skull-like head, hot pink flame-eyes and a gaping, tooth-filled mouth. The gritty stencil texture and stark black-white-pink palette give it a streetwise, urgent energy.",
+            "Interpretation": "This work compresses horror and pop iconography into a single emblematic face: a skull-shaped form rendered in rough, spray-painted white, punctured by three flaming pink eyes and an open maw that itself contains a stylized flame. The limited palette and high-contrast composition simplify the subject into an almost logo-like symbol, while the grain, drips and ragged edges keep it raw and hand-made. As an animation (not visible in the still) the flames likely flicker and the grain might shimmer, turning the static aggression into active menace—suggesting themes of inner fire, multiplicity of gaze, and vocalized rage or warning.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident use of stencil/print aesthetics and texture; the grain, edge fraying and controlled drips suggest skilled handling of screen-print or digital emulation. Execution is strong though deliberately rough, so the technique serves the concept rather than showcasing virtuoso mark-making."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A compact, centered composition with a clear visual hierarchy — three eyes form a horizontal anchor and the mouth provides vertical counterpoint — gives the piece immediate readability and iconic force."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The skull/flame vocabulary is familiar in punk and street art contexts, but the three-flame-eye motif and the logo-like simplification give it a distinct twist that keeps it from feeling derivative."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work produces an instant visceral response — unease mixed with adrenaline — through its aggressive iconography, saturated pink accents and the suggestion of motion; it lingers visually even from a single frame."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are suggestive ideas (burning gaze, multiplicity, mouth-as-consumption), but they remain at the level of potent motif rather than unpacked narrative; the piece trades depth for immediacy."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 71,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a strong, emblematic work that communicates with economy and attitude. Its formal clarity, punchy color, and animated potential make it a memorable piece worth adding despite a relatively modest conceptual complexity."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:47:58-06:00",
+          "seconds": 21.7,
+          "review": {
+            "First Impression": "Immediate and confrontational: a skull-like face rendered in high-contrast black and white with neon-pink flame-eyes that feel both menacing and mischievous. The grainy spray texture and drips give it an urgency — like a poster or a tag that interrupted the visual noise and refused to be ignored.",
+            "Interpretation": "This piece stages a shriek: a stylized skull with three flaming eyes and a gaping maw housing a smaller flame. The artist pares the image to a bold silhouette and a two-tone accent (neon pink) so the message becomes pure affect — anger, hunger, or spectral energy — rather than literal narrative. The visible mark-making (grainy, halftone-like texture, spray drips) aligns it with street/DIY aesthetics; as an animation, those flames and drips likely flicker and bleed, turning static menace into kinetic intensity. Overall it reads as a meditation on spectacle and raw feeling — an icon of unrest that looks intentionally handmade rather than polished.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates confident control of the chosen graphic medium: grainy textures and controlled drips are used consistently to create atmosphere. The technical approach is effective though intentionally limited — it's a stylized, posterized technique rather than a display of varied technical virtuosity."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, symmetrical silhouette and high-contrast palette make for immediate legibility and visual punch; the trio of flame-eyes creates a horizontal axis that balances with the vertical drop of the mouth. The composition is bold and economical, though fairly straightforward and reliant on a single strong motif."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The work synthesizes familiar visual languages — skulls, flames, punk/poster art — so it doesn’t reinvent motifs. That said, the color flip (neon pink flames) and the aggressive, raw mark-making give it a distinct personality within those conventions."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It hits quickly and viscerally: the open mouth and flaming eyes provoke unease and adrenaline, and the neon pink complicates the menace with a pop-cultural playfulness. The piece is memorable and likely to provoke a physical, immediate response."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The work gestures toward themes (spectacle, consumption, rage) but stops at suggestion; it works primarily as a mood-object rather than a layered conceptual investigation. The animation might add narrative or temporal nuance, but the static image gives limited depth."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 72,
+              "Decision": "ACQUIRE",
+              "Rational": "I recommend acquiring this piece because it succeeds decisively at what it sets out to do: produce a vivid, aggressive icon that lingers visually and emotionally. Its confident graphic language and kinetic potential (as an animation) ensure repeated viewings retain energy, even if the conceptual field remains intentionally narrow."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:48:25-06:00",
+          "seconds": 27.1,
+          "review": {
+            "First Impression": "Jagged, primal and attention-grabbing — the image reads like a neon scream. The three flaming eyes and the gaping, tooth-filled mouth hit immediately as a bold emblem of menace given a pop-punk twist.",
+            "Interpretation": "This work compresses street-art and cartoon-horror into a single iconic head: a skull-like white silhouette on black, punctured by three square sockets each filled with a hot-pink, flame-shaped eye, and a cavernous mouth that contains fang shapes and a smaller pink flame motif. The limited palette (black/white/pink), heavy grain/spray texture, and drips suggest stencil or screen techniques and lend an urgent, lo-fi energy; compositionally it centers on a vertical axis that reads like a scream or alarm. Formally the piece trades subtlety for immediacy — it stages a confrontation between visibility (the three eyes) and appetite/consumption (the open maw), producing a single, memorable symbol that oscillates between menace, humor and spectacle. The animated original likely amplifies this with motion; the static screenshot already delivers a strong, emblematic statement.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The handling of texture, edge and flat color is confident — the grainy spray and drips are controlled and intentional, and the mark-making feels coherent with the aesthetic. It reads as a well-executed graphic/print or frame from a considered animation, though it deliberately avoids fine detail in favor of bold strokes."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralization and symmetry create a powerful silhouette that functions at many scales; the three eyes arranged across the brow and the vertical mouth create a strong visual rhythm and clear focal hierarchy."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The motifs — skull, flames, multiple eyes — are familiar in contemporary street and pop-horror vocabularies, but their particular combination, neon/punk colorway and stencil-like execution give the piece a fresh, idiosyncratic spin."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It produces an immediate visceral reaction — alarm, excitement, a wink of dark humor — and its boldness makes the feeling stick. The color choice tempers pure horror with an energetic, almost playful aggression."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The work gestures toward themes (surveillance/vision, appetite/destruction, spectacle) but largely favors iconic impact over layered exposition; there is suggestive material to unpack, but it’s not relentlessly developed."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece performs its promise exceptionally: it is a well-made, arresting visual emblem that distills menace and pop energy into a single, repeatable image. It may not be philosophically dense, but its clarity of voice, strong formal control and memorable silhouette make it worth acquiring."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:48:37-06:00",
+          "seconds": 11.7,
+          "review": {
+            "First Impression": "This image is immediately striking, a burst of raw energy. The screaming skull, rendered in a rough, stencil-like manner, feels both aggressive and slightly playful with its vibrant pink accents. It commands attention with its stark contrast and chaotic vibe.",
+            "Interpretation": "The artwork depicts a stylized, screaming skull, strongly reminiscent of urban graffiti or punk iconography. The subject's eyes are rendered as bright pink, flaming bombs, suggesting an internal explosion or a furious self-immolation rather than an external threat. The formal choices — a limited palette of stark white, black, and hot pink; rough, splattered textures; and dripping paint effects — amplify a sense of urgency, decay, and rebellious energy. The composition is centered and confrontational, drawing the viewer into its frenetic expression. The 'animated' note implies this static image is merely a fragment of a more dynamic and perhaps even more unsettling experience, where the flames and drips would likely possess kinetic energy, enhancing the work's inherent volatility.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The execution of the stencil-like aesthetic with deliberate texture and drip effects is well-managed, creating a cohesive visual language that suits the subject matter."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central, confrontational framing of the skull is effective in conveying immediate impact, though it leans towards a conventional poster-like arrangement."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While the flaming skull motif is common, the specific incorporation of bomb-like eyes and the bold, almost acidic pink hue gives it a contemporary and distinct, albeit niche, aesthetic."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece powerfully evokes feelings of aggression, rebellion, and a sense of explosive, contained rage, making a strong and immediate emotional impression."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The work effectively communicates themes of inner turmoil and destructive energy, yet it doesn't delve much beyond a visceral expression into more complex narrative or philosophical territory."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 65,
+              "Decision": "PASS",
+              "Rational": "While the artwork possesses undeniable raw energy and a compelling aesthetic, its conceptual depth and originality, while present, do not elevate it to a level I would consider for acquisition. It is a well-executed piece within its genre, but it doesn't offer the lasting intellectual or emotional engagement required for my collection."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:48:47-06:00",
+          "seconds": 9.7,
+          "review": {
+            "First Impression": "This image immediately hits with a raw, almost visceral intensity. The stark black and white, punctuated by that searing pink, creates a powerful, confrontational presence. It feels like a scream captured in a moment, evoking a sense of urgency and distress.",
+            "Interpretation": "The work depicts a distressed, skull-like entity, rendered with the coarse texture of a stencil or spray-painted graphic. Its eyes are not eyes but three actively burning, pink bombs, and its gaping maw reveals stylized flames within. The choice of bombs for eyes and internal flames transforms the traditional memento mori into an active expression of internal inferno and destructive potential. The dripping white paint suggests decay or urgency, reinforcing the raw, unrefined energy; it reads as a raw, almost punk-rock protest against unseen pressures.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The digital rendition successfully mimics the gritty, spontaneous aesthetic of street art or printmaking, with intentional textural imperfections and drips. The limited color palette is wielded effectively to create impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement and large scale of the figure make it confrontational and dominant. The triangular arrangement of the eyes draws the gaze effectively, and the dripping elements add dynamic tension."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the 'skull with a twist' is a recurring motif in visual culture, the specific iconography of bomb-eyes and internal flames, combined with the neon pink, offers a sufficiently fresh and impactful take on the theme of inner turmoil."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image evokes a strong sense of alarm, anger, and perhaps a touch of despair. The burning bombs for eyes and the screaming mouth communicate an intense, unbridled emotion that is hard to ignore."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The work delves into themes of internal conflict, destructive forces, and existential distress. The transformation of a skull into a vessel of volatile, burning elements suggests a deeper commentary on the human condition or societal pressures, inviting reflection on what it means to be on fire from within."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece possesses a compelling raw energy and a strong visual language that resonates deeply. Its impactful blend of graphic aesthetics and profound emotionality makes it a standout work, offering a potent commentary that feels relevant and urgent."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:48:58-06:00",
+          "seconds": 11.3,
+          "review": {
+            "First Impression": "This is immediately striking, a bold and somewhat unsettling image. The stark contrast and vibrant pink create an aggressive, almost punk aesthetic that grabs attention instantly.",
+            "Interpretation": "The artwork presents a stylized, screaming skull, rendered in a manner reminiscent of stencil art or spray paint graffiti. The eyes are not merely aflame, but contain crude bomb-like forms, suggesting an explosive inner state or a volatile external threat. The limited color palette—white, black, and a jarring, almost saccharine pink—amplifies its intensity, while the drips along the lower edge of the white form further emphasize a raw, spontaneous act of creation. The overall effect is one of primal scream, protest, or visceral distress, imbued with a punk sensibility.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The execution of the stencil-like aesthetic is strong and intentional, with rough edges and drips contributing effectively to its raw energy. The texture within the pink flames adds a gritty, shimmering quality that enhances the visual impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the skull is undeniably impactful, leveraging the stark contrast to create an immediate focal point. It is simple but highly effective in its aggressive directness and balance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skull iconography and flame motifs are pervasive, the specific combination with bomb-eyes and the unexpected, almost electric pink gives this piece a distinct character. The implied animation further suggests a dynamic uniqueness beyond the static image."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The work is highly emotive, conjuring strong feelings of anger, frustration, and volatile energy. The screaming mouth and flaming, bomb-filled eyes create an intense, visceral reaction."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece speaks to themes of destruction, inner turmoil, and perhaps the urgency of a message or protest. The explosive imagery within the eyes elevates it beyond a mere expression of pain, suggesting a readiness to ignite or confront; its animated nature would undoubtedly extend this depth."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This work possesses a raw, visceral power that commands immediate attention. Its bold aesthetic, compelling symbolism, and strong emotional resonance make it a potent piece that, especially considering its animated nature, offers layers of engaging visual impact and conceptual provocation. It is a striking statement."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The OG Network",
+        "media_note": "The artwork is animated; the image provided is a static screenshot/rendition of the work."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:49:20-06:00",
+          "seconds": 21.7,
+          "review": {
+            "First Impression": "Immediate, punchy, and a little feral — the image hits with high-contrast graphics and a neon flare that feels both retro and streetwise. The skull motif and flaming eyes read like a shout: aggressive, playful, and unmistakably designed to provoke.",
+            "Interpretation": "This work compresses iconography of threat (skull, fangs) and attention/virality (pink flaming eyes) into a stencil-like, halftone graphic. The choice of stark white against deep black with hot-pink accents makes the image read as a broadcasted emblem — a warning or logo broadcast across a dark field. The sprayed, grainy texture and dripping edges suggest street art or printed zine culture; knowing the piece is animated, those graphic elements likely translate into rhythmic flicker or burning motion, reinforcing themes of viral attention, online flame, or an aggressive media personality. It reads as a critique and celebration of noisy networked visibility: frightening because it watches, seductive because it glows.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Technically confident: the halftone/grain texture, clean silhouettes, and controlled drips indicate a deliberate, practiced approach to stencil/print aesthetics and animation-friendly graphics."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Strong, centralized structure with tension created by the three flaming eyes and a cavernous mouth; negative space and the vertical drips guide the eye effectively and keep the composition dynamic."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The skull-with-flames trope is familiar, but the specific fusion of broadcast/logo language with zine-like texture and animated potential gives it a distinctive voice without overturning the motif."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece produces a clear emotional effect — alarm mixed with dark humor — and its neon-pink fire as an eye motif is viscerally memorable."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There are readable ideas about visibility, virality, and aggression, but they remain at the level of strong surface metaphor rather than layered, ambiguous inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 72,
+              "Decision": "ACQUIRE",
+              "Rational": "The work delivers a memorable visual identity and crafts a coherent, energetic image that will hold attention in both static and animated form. Its conceptual limits are real but do not undercut the piece's immediate power and graphic excellence, making it worth acquiring for its communicative clarity and presence."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:49:39-06:00",
+          "seconds": 19.2,
+          "review": {
+            "First Impression": "This reads like a punk-era emblem: a rough, stencil-like skull/ghost with three hot-pink flaming eyes and a gaping maw that also contains a stylized flame. The graphic is immediate and confrontational — playful and menacing at once.",
+            "Interpretation": "The work stages an icon of alarm and appetite: a skull-like silhouette rendered in gritty, spray-print texture whose three flaming eyes and inward flame suggest contagion, broadcast, or an appetite for attention. Formally it relies on a drum-tight limited palette (black, white, neon pink), heavy negative space, hard-edged shapes and deliberate noise/grain to evoke print, poster, and street-art registers; the drips and halftone texture point to process and temporality. Read with the title 'The OG Network,' the three eye-like squares read as screens or nodes — the piece seems to conflate biological menace and media circulation, turning attention itself into something combustible.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The image demonstrates confident, controlled use of a print/stencil aesthetic: the grain, drips and crisp silhouettes are intentional and well-handled, though the technique is straightforward rather than virtuoso."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong central axis and bold silhouette make the composition instantly legible; the placement of the three eyes and the open jaw create a dynamic vertical rhythm that keeps the viewer's eye moving."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Skulls, flames and stencil tropes are familiar territory, but the specific arrangement — triple flaming eyes and a flame within the mouth — gives the motif a distinct, memorable twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece elicits an immediate visceral response: it is alarming and playful, tapping into both punk urgency and cartoonish menace in a way that lingers visually."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There is a readable conceptual vector (media as contagion/consumption) and the title reinforces it, but the idea is presented economically rather than explored in sustained complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "ACQUIRE",
+              "Rational": "This work stakes a bold, unmistakable visual identity: it combines streetwise craft and graphic immediacy with an idea — attention/media as combustible — that rewards reflection. While it is not conceptually encyclopedic, its iconography is strong, the execution is confident, and the animation (implied by the media note) likely amplifies its punch, making it worth acquiring."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:49:59-06:00",
+          "seconds": 20.5,
+          "review": {
+            "First Impression": "Immediate visceral hit: a spray‑painted skull assembled from bright static screens and neon flames. It reads like punk‑zine iconography reworked through a broadcast/viral‑media lens.",
+            "Interpretation": "The work conflates a skull motif with television/monitor rectangles and stylized flames, turning media screens into eyes and a mouth that consumes or spews fire. The limited palette (high‑contrast white and black with a saturated neon pink) and grainy, stencilled mark‑making read as deliberate, DIY aesthetics — the animation likely adds flicker or breathing that enacts the 'network' in motion. Formally it relies on silhouette, repetition (three eye‑squares), and a dripping spray texture to suggest decay and noise; conceptually it points at transmission, contagion, and the macabre comic of media culture.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The grainy spray/stencil effect and clean neon accents show confident handling of screen/print textures; technical choices feel intentional and become the work’s language rather than limitations."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong central silhouette and a triangular rhythm between the three eye‑blocks guide the eye efficiently; the negative space and drips give the piece tension and movement."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Skulls, flames and screen imagery are familiar visual tropes, but their combination here — as a literalized ‘networked’ skull — is a clear, if not revolutionary, recalibration."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece delivers an immediate, visceral reaction: it’s playful and threatening at once, the neon flames inside the mouth give it a gleeful menace that lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There’s a readable critique or commentary about media, contagion and nostalgia (analogue screens as organs), and the animation would deepen that reading; the concept is suggestive and returns value on second looks."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a bold, iconic image that balances attitude and craft; its graphic clarity and suggestive concept make it memorable and repeatable. The animation component promises to amplify what the static still already does well, so I recommend acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:50:10-06:00",
+          "seconds": 10.8,
+          "review": {
+            "First Impression": "My immediate reaction is that it's a stark, almost confrontational image. The fluorescent pink against the gritty white and black gives it a raw, street-art sensibility, evoking a sense of punk energy or digital rebellion. It's loud and unapologetic.",
+            "Interpretation": "The artwork presents a stylized, almost skeletal head, rendered with the gritty texture of spray paint or a heavily pixelated digital brush. Its \"eyes\" are not eyes but rather three distinct, bomb-like forms engulfed in vibrant pink flames, while its wide-open mouth reveals jagged teeth and an inner glow of similarly colored fire. The dripping white paint suggests an ephemeral, hastily applied quality, reinforcing a connection to street art or protest graphics. This work appears to be a visual manifesto for a digital counter-culture, possibly \"The OG Network,\" using aggressive, anarchic imagery—the flaming bombs hinting at both destructive force and passionate intensity—to embody a raw, unadulterated online presence or collective. The animation (as noted) likely enhances this sense of dynamic, untamed energy.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The deliberate rough texture, reminiscent of spray paint, is well-executed, contributing effectively to the rebellious aesthetic. The clean lines of the pink flames contrast sharply with the grainy white, demonstrating controlled application of the chosen digital medium."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, frontal composition of the screaming head is bold and impactful, creating an immediate focal point. The balance between the heavy white shape and the energetic pink elements is well-maintained, drawing the eye across the face."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "While the skull and flame iconography is common in counter-culture art, the specific rendering with the bomb-like eyes and fluorescent pink, combined with the \"OG Network\" title, offers a distinct, if not wholly novel, aesthetic for a digital age."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The work powerfully conveys aggression, defiance, and a raw, almost desperate energy. The flaming elements and screaming mouth evoke a strong, visceral reaction of intensity and perhaps a sense of being overwhelmed or outraged."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The concept seems relatively straightforward—a visual representation of a defiant, perhaps destructive, network or spirit. While it has a strong initial impact, it may not offer layers of meaning that encourage prolonged intellectual engagement or re-interpretation beyond its immediate punk aesthetic and implied digital rebellion."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "While the piece possesses a compelling raw energy and strong visual impact, its iconography and message feel somewhat familiar within the realm of protest art and digital counter-culture. It succeeds in its immediate communication but offers limited conceptual or formal novelty that would warrant acquisition for a discerning collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:50:20-06:00",
+          "seconds": 9.9,
+          "review": {
+            "First Impression": "A raw, almost visceral image of a screaming skull, rendered with a gritty, spray-painted aesthetic. The hot pink flaming eyes, which seem to contain bombs, and the bright pink flames in its mouth immediately seize attention, conveying a sense of urgent distress or defiance.",
+            "Interpretation": "This work appears to be a stark commentary on systems or origins, perhaps the titular \"OG Network,\" portraying it as something that incites primal fear, destruction, or an overwhelming emotional response. The skull, a universal symbol of mortality and rebellion, is depicted here in a style reminiscent of street art or punk rock aesthetics, suggesting a grassroots, perhaps anarchic, critique. The \"bomb\" eyes and internal flames speak to an internal combustion, a burning frustration or explosive reaction, which would undoubtedly be amplified by its animated nature, creating a sense of dynamic chaos and unease.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The execution of the spray paint effect is convincing, with appropriate drips and texture, lending authenticity to the street art aesthetic. The stark contrast and limited color palette are handled effectively."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, bold placement of the skull creates an immediate and powerful focal point. The elements within, though asymmetrical with the eyes, are balanced to maintain a strong, confrontational presence."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While the skull motif and graffiti style are well-trodden paths in contemporary art, the specific imagery of \"bomb\" eyes and the implied animation combined with the \"OG Network\" title offers a slightly distinct narrative angle."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image undeniably evokes a strong, visceral reaction – a sense of alarm, anger, or existential scream. The hot pink against black and white creates an aggressive visual tension that demands attention."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The title \"OG Network\" in conjunction with the distressed, destructive imagery of the skull hints at a critique of foundational systems or digital structures, suggesting a layer of social commentary beyond pure aesthetic shock."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece, despite its stylistic familiarity, possesses a raw energy and an urgent message that resonates powerfully. Its strong composition and evocative imagery, combined with the intriguing conceptual hook provided by its title, make it a compelling acquisition that holds attention and provokes thought."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:50:30-06:00",
+          "seconds": 10.1,
+          "review": {
+            "First Impression": "The artwork immediately strikes me as aggressive and urgent, with its screaming skull and fiery, bomb-like eyes. The raw, gritty texture suggests a street art sensibility, creating a powerful, unsettling visual.",
+            "Interpretation": "This work presents a distressed, skull-like visage, rendered with a coarse, stenciled effect, as if spray-painted. The 'eyes' are particularly arresting, depicted as small, ignited bombs, while the open mouth reveals a stylized flame motif. The limited palette of black, white, and a vibrant, almost neon pink amplifies the confrontational nature of the piece, suggesting chaos, rebellion, or imminent destruction. The drips of white paint further contribute to a sense of decay or an uncontrolled application, underscoring the raw emotional impact. Titled 'The OG Network,' the piece potentially critiques foundational or original systems, portraying them as volatile, destructive forces, or perhaps celebrates a rebellious, disruptive original network.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates a strong command over the chosen medium and technique, effectively creating a gritty, stenciled aesthetic with deliberate texture and impactful color choices."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is remarkably strong, with the central, confrontational placement of the skull and the dynamic balance created by the three 'bomb-eyes' and open mouth."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While drawing on established street art motifs, the specific iconography of bomb-eyes rendered in vibrant pink within this distressed skull offers a distinctive and memorable visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork powerfully evokes feelings of alarm, anger, and volatile energy, largely due to its aggressive imagery and the jarring contrast of the neon pink against black and white."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The cryptic title 'The OG Network' combined with the imagery of a burning, screaming skull with explosive eyes introduces a compelling conceptual layer, inviting interpretations about foundational systems and their destructive or rebellious nature."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork delivers a potent and visceral statement, utilizing a raw, graphic aesthetic and compelling symbolism to great effect. Its strong visual impact and the intriguing, open-ended conceptual framework make it a compelling acquisition that would enrich any collection focused on contemporary social commentary."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "xcopy",
+        "media_note": "The artwork is animated; the image provided is a static screenshot/rendition of the work."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:50:50-06:00",
+          "seconds": 20.1,
+          "review": {
+            "First Impression": "Visceral and immediate: a screaming, skull-like face rendered in high-contrast white and black and punctuated by neon-pink flames. The image reads like a punk poster animated into motion — loud, raw, and unapologetically graphic.",
+            "Interpretation": "This work stages a confrontation between appetite and visibility: a simplified skull/ghost shape whose three flaming eyes and cavernous, fang-lined mouth read as simultaneous consumption and spectacle. The limited palette (black, white, neon pink), heavy grain and stencil-like edges, and drips summon screenprint and street-art idioms while the animation (only implied here) would accentuate flicker and menace. Formally minimal but texturally rich, the piece trades in memetic iconography — the viral stare, a mouth that devours attention — turning a familiar skull motif into a digitally amplified emblem of rage, attention-economy spectacle, and spectral identity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The image demonstrates confident control of digital mark-making: crisp silhouettes, intentional grain, and effective use of limited color for maximum punch. Even as a static screenshot the choices read as technically assured and tailored to animation."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong, centered composition with a clear focal hierarchy (eyes then mouth) and purposeful asymmetries that sustain tension. It is compact and iconic, though the structure is straightforward rather than formally surprising."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The skull-and-flame vocabulary is familiar, but the fusion of neon, grit, and staccato graphic gestures gives it a distinct, contemporary voice. It feels like a confident restatement rather than a wholly unprecedented invention."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image hits viscerally: the flaming eyes and open maw provoke unease and adrenaline. The color dissonance (neon pink against grave black and white) heightens that emotional punch."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are suggestive ideas about consumption, spectacle, and digital identity, but they remain fairly broad and impressionistic. The work rewards repeated viewing for texture and attitude more than for layered conceptual revelation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece is a striking, technically assured emblem of contemporary digital grit — memorable, immediate, and energetically composed. While its conceptual reach is modest, its visual force and the implied animation give it compelling presence worth acquiring."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:51:10-06:00",
+          "seconds": 20.1,
+          "review": {
+            "First Impression": "Immediate and confrontational: a grainy, stencil-like skull yawns with three molten, pink eyes and a tongue of fire, all rendered in high-contrast noir. The image feels like a digital scream — abrasive, kinetic, and oddly playful despite its menace.",
+            "Interpretation": "The work stages a collision between death-iconography and net-era spectacle: a simplified skull silhouette functions as a stage for neon-pink flame motifs that read as both eyes and viral apertures. Formally it relies on extreme contrast, halftone/grain texture, dripping marks and bold, flat color to produce a DIY, screen-printed aesthetic translated into digital animation (the source is animated, and one imagines jittering flames and staccato flicker). The repetition of three flaming eyes and the exaggerated open maw suggest themes of contagion, appetite, and spectacle — an image of consumption that is at once comedic and threatening. The artist uses reduction and repetition to turn a familiar trope (the skull) into a contemporary emblem of online intensity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The digital execution is confident — controlled noise, convincing screen-printed texture, and clear, purposeful mark-making. Even as a screenshot the work reads as a polished animation style with strong handling of contrast and color."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Centrally composed and iconic, the skull silhouette is an excellent staging device; the placement of the three eyes and the open maw create a strong vertical axis and readable negative space, while drips and irregular edges keep the composition dynamic."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While the piece has a distinctive voice, it recycles familiar iconography (skulls, flames, neon palette) seen frequently in contemporary digital/NFT work; the combination is effective but not radically new."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The image hits viscerally — the neon flames and gaping mouth provoke unease and adrenaline, and the gritty texture gives the piece a tactile bite that lingers after viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There are readable layers — commentary on spectacle, consumption, and online virality — and the reduced imagery rewards repeated looking, though the conceptual thread is more suggestive than rigorously developed."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "I recommend acquisition: the work is a confident, concentrated expression of a distinct digital voice with strong formal control and potent emotional impact. It may not rewrite visual language, but it crystallizes a contemporary set of anxieties and energies with force and clarity, making it a valuable piece to hold onto."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:51:29-06:00",
+          "seconds": 18.5,
+          "review": {
+            "First Impression": "A brash, high‑contrast scream: a spray‑textured white skull with three hot‑pink flame‑eyes and a flaming tongue that feels equal parts street poster and corrupted avatar. The image is immediate, aggressive, and unmistakably digital.",
+            "Interpretation": "This work stages a confrontation between mortality and attention: a simplified skull motif rendered in gritty, halftone spray marks and saturated neon pink flames that read as both eyes and viral beacons. Formally it relies on extreme contrast (white on black) and a tightly limited palette, with angular flame shapes and dripping marks that suggest movement and decay; as an animation the flicker, burn and drip would emphasize consumption and entropy. The piece transforms a familiar icon (skull) into a hyperactive avatar — part threat, part spectacle — implicating digital visibility and the aesthetic of online rage/virality.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "There is confident command of digital mark‑making: grainy spray textures, crisp silhouette edges and controlled use of a limited palette; the work reads as technically polished and would likely translate well into animation timing and effects."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, symmetrical skull with three flame‑eyes establishes a clear visual hierarchy and focal tension; negative space and the vertical mouth create a strong, readable silhouette that holds attention."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While it draws from well‑trodden skull, flame and neon tropes common to street and NFT aesthetics, the specific fusion of abrasive texture, three‑eyed configuration and neon violence gives it a distinct, personal signature."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece produces an immediate visceral reaction — unease, adrenaline, a feeling of being shouted at — and the exaggerated mouth and staring flame‑eyes make it memorable."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Readable themes (mortality, spectacle, digital attention) are present, but the work stays primarily at the level of a striking visual metaphor rather than developing layered conceptual complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "The artwork's visual intensity and assured handling of digital texture give it a potent, lasting presence; its visceral impact and formal clarity outweigh limits in conceptual layering. I would acquire it for its distinctive voice and the way it effectively condenses contemporary anxieties about attention and decay into a single, unforgettable image."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:52:13-06:00",
+          "seconds": 44.0,
+          "review": {
+            "First Impression": "A stark, aggressive image immediately assaults the viewer with its high-contrast aesthetic and violent iconography. The digital grit and stark black-and-white, punctuated by the vivid, almost neon pink, creates an intense visual punch that feels both raw and calculated.",
+            "Interpretation": "This work presents a stylized, almost stencil-like skull with gaping maw and eyes aflame with '666' motifs, rendered in a harsh, digital-native aesthetic. The dripping white paint effect suggests a spontaneous, rebellious act akin to graffiti, while the pixelated texture and sharp lines are characteristic of digital art. The fiery pink eyes, described as animated, imply a restless, almost demonic energy, reinforcing themes of digital angst, rebellion, and a contemporary take on memento mori, infused with a punk rock sensibility.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The command over the digital medium is evident in the precise yet gritty execution, the controlled 'drips,' and the compelling use of a limited, high-impact color palette. The implied animation, even from a static image, suggests a mastery of kinetic expression within the digital space."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The skull is centrally placed, dominating the frame, with its asymmetrical 'eyes' creating a dynamic tension. The strong contrast against the black background ensures immediate legibility and impactful presence, forming a potent visual anchor."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While drawing on established punk and graffiti aesthetics, xcopy's distinct glitch art, GIF-driven approach, and signature digital textures offer a unique and widely influential contribution to contemporary digital art. This particular motif feels like a definitive statement within his body of work."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The work evokes a powerful sense of confrontation, aggression, and unease. The flaming eyes and screaming mouth convey an intense, visceral emotion that resonates deeply with feelings of digital overload and existential frustration."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Beyond its immediate visual impact, the work probes themes of digital identity, mortality in the networked age, and contemporary rebellion. The '666' motif, combined with the skull, suggests a critique or embrace of digital infernos and societal anxieties, offering layers for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a strong representation of xcopy's distinctive aesthetic and conceptual concerns, embodying the raw energy and digital commentary he is known for. Its visual impact is undeniable, and its resonance with contemporary digital culture ensures its continued relevance and depth. It represents a significant piece from a pivotal artist in the digital art landscape."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:52:24-06:00",
+          "seconds": 11.1,
+          "review": {
+            "First Impression": "This piece immediately hits with a raw, visceral energy. The stark black and white, punctuated by violent pink, creates a sense of urgent distress or controlled chaos. It feels like a contemporary punk-rock take on a memento mori.",
+            "Interpretation": "The work presents a screaming, skull-like visage rendered with the immediacy and grit of street art, using what appears to be a spray-paint or stencil aesthetic. The dripping white paint suggests decay or a hasty execution, while the coarse texture adds to its raw appeal. The \"eyes\" are not just flames but contain small, dark, bomb-like forms, suggesting an internal combustion or a destructive gaze. The mouth, a jagged cavern of sharp teeth and further pink flames, amplifies a sense of primal scream or existential anguish. Knowing it is animated, the static image hints at an ongoing, perhaps cyclical, torment or a powerful, explosive expression of discomfort with the digital age, a common thread in xcopy's work.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The command of the digital medium to emulate a distressed, analog aesthetic is strong, with effective use of texture and drip effects. The simplicity of form belies a clear intent."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, confrontational framing of the screaming skull is highly effective. The balance of black, white, and neon pink creates a dynamic and impactful visual hierarchy."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skull imagery and graffiti aesthetics are common, xcopy's specific visual language, especially the animated aspect and signature pixelated/textured style, offers a distinctive contemporary voice."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image powerfully conveys anguish, rage, or a sense of existential alarm. The burning eyes and screaming mouth evoke a strong, immediate emotional response of disquiet and intensity, which would only be amplified by animation."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Beyond its immediate impact, the work touches on themes of mortality, societal angst, and the destructive potential of digital or internal forces, offering layers for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 80,
+              "Decision": "ACQUIRE",
+              "Rational": "This work, even in its static representation, possesses a potent and immediate impact that aligns with a contemporary critique of digital existence. xcopy's distinctive aesthetic and the work's raw emotional force make it a significant piece worth acquiring for its critical voice and powerful execution."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:52:31-06:00",
+          "seconds": 7.3,
+          "review": {
+            "First Impression": "My immediate reaction is to a raw, almost visceral digital scream. The stark black and white, punctuated by the aggressively vibrant pink flames, creates a powerful, unsettling image that feels both primitive and thoroughly contemporary. It's abrasive and impactful.",
+            "Interpretation": "This work presents a stylized, screaming skull, rendered with a gritty, almost stencil-like aesthetic that mimics street art or low-fidelity digital graphics. The eyes are replaced by three vibrant pink flames, subtly forming the '666' motif, which introduces a layer of infernal or ominous symbolism. The digital grain and dripping effects suggest decay or a breakdown, reinforcing a theme of digital angst or the chaotic undercurrents of online existence. It's a contemporary memento mori, reflecting on mortality and distress within a distinctly digital vernacular, amplified by the implied animation (as noted in the media information).",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The command of the digital medium is evident in the deliberate use of grain, pixelation, and stencil-like brushwork to achieve a specific, raw aesthetic. The dripping effect and sharp lines are executed with precision, contributing to the overall impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is strong and direct, with the screaming skull dominating the frame. The placement of the three flaming eyes creates a dynamic tension, and the balance of black and white with the vibrant pink is highly effective in drawing the viewer's gaze."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skulls and expressions of angst are common, xcopy's distinct visual language – combining digital grit, stark contrast, and the specific use of color – gives this a signature and recognizable originality within the digital art space."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The work immediately evokes strong feelings of alarm, distress, and a raw, almost primal scream. The jarring pink and the aggressive expression create a palpable sense of unease and urgency."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece touches on themes of digital suffering, the modern memento mori, and perhaps even a commentary on pervasive online anxiety. The '666' motif adds a layer of deeper, darker symbolism that invites further contemplation about contemporary existence."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a compelling example of contemporary digital expression, perfectly encapsulating a sense of modern angst with a unique visual vocabulary. Its powerful emotional resonance and distinct aesthetic make it a significant piece that deserves a place in the collection. It speaks to current cultural anxieties through a refined, albeit raw, digital craft."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The OG Network",
+        "artist": "xcopy",
+        "media_note": "The artwork is animated; the image provided is a static screenshot/rendition of the work."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:52:53-06:00",
+          "seconds": 21.2,
+          "review": {
+            "First Impression": "Immediate and confrontational — a ghostly skull rendered in stark white and hot magenta against a pitch-black field, the image hits like a neon warning sign. The grainy, stenciled texture and flaming eyes give it a raw, punk-electric energy that feels both playful and menacing.",
+            "Interpretation": "This work reads as a compressed allegory of digital attention and network mythology: three flaming 'eyes' framed like nodes stare outward while a gaping maw consumes or vocalizes a smaller flame. The limited palette (black, white, magenta), heavy silhouette, and spray/stencil textures evoke street-art and screen-noise, translating analog vandalism into a net-native aesthetic. Formally, repetition (flames-as-eyes-and-tongue), high contrast, and dripping marks create a sense of decay and velocity; if animated, the flicker and stutter typical of the artist would amplify the sense of broadcast/glitch and make the piece feel like a living signal rather than a static emblem. The title, The OG Network, positions the image as commentary on origin stories — mythic, volatile, and shaped by attention and spectacle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The image demonstrates confident control of digital mark-making: convincing spray/stencil texture, crisp silhouettes, and well-weighted negative space. Even in a static frame the implied animation (flicker, flare) reads as intentional and technically assured."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A bold central silhouette organizes the image efficiently; the three eyes and open mouth form a triangular rhythm that keeps the eye moving. Small asymmetries and drips prevent formal stiffness and add necessary dynamism."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The visual language is unmistakably of this artist and strong, but it builds on already-familiar crypto/vaporpunk iconography — visceral and effective rather than formally revolutionary."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece produces a quick, physical reaction — unease mixed with a perverse thrill — thanks to its aggressive contrasts and anatomical distortion. The flaming motifs amplify a sense of urgency and spectacle."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There is a clear, readable concept about networks, attention, and origin myths that rewards at least a couple of viewings; it hints at richer readings but stays concise rather than deeply layered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a taut, memorable statement that turns net-native anxieties into a powerful visual shorthand. Its assured craft, iconic silhouette, and capacity to escalate when animated make it a decisive and culturally resonant work worth acquiring."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:53:13-06:00",
+          "seconds": 20.5,
+          "review": {
+            "First Impression": "A punchy, confrontational image — it hits immediately with its high-contrast, gritty stencil look and lurid hot-pink flames. The skull-like head and gaping maw feel like a digital scream: aggressive, playful, and unmistakably contemporary.",
+            "Interpretation": "This work turns a simplified skull/masquerade motif into a sign of networked hunger: three flaming eyes across the forehead and a fanged, flame-bearing mouth read as excess perception and devouring appetite. Formally it relies on a strict three-color economy (black, white, neon pink), heavy grain and spray-stencil texture, and bold, arresting negative space; those choices make the image feel like a viral emblem — raw, talismanic, and slightly vandalistic. Because the piece is animated in its original form, the static stillness here suggests only part of the work: the reduced graphic vocabulary and repeatable motif imply a looping, stuttering animation that would intensify the sense of menace and compulsive attention.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The digital mark-making shows confident control: crisp silhouettes, deliberate grain and drip effects, and an economy of line that reads like skilled stencil work translated to pixels. The animation (not visible here) is likely to be tightly integrated with the graphic vocabulary, further evidencing craft."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The piece has a strong, centered hierarchy — eyes across the top lead the viewer down into the enormous vertical mouth; repeated motifs and the downward drips create rhythm and directional force. The simplicity is structurally robust and very legible at a distance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the vocabulary (neon on black, gritty stencil, flaming eyes) sits within known digital-punk/neo-graffiti languages, the particular configuration and emblematic clarity feel personal and memetic — a recognizable xcopy twist on familiar iconography."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image provokes immediate visceral responses — alarm, dark amusement, and a sense of being watched/consumed — which is precisely its power. Its simplicity makes the emotional hit direct and repeatable."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There is a clear allegory about voracious systems of attention or networked predation suggested by the title and imagery, but beyond that the work trades more on mood and symbol than on layered, ambiguous conceptual complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a bold, efficacious image that works as both a striking visual emblem and a pointed comment on hunger and attention in networked culture. Its crisp graphic intelligence, assured execution, and the amplification an animation would provide make it a strong acquisition despite limited conceptual subtlety."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:53:32-06:00",
+          "seconds": 19.0,
+          "review": {
+            "First Impression": "A jolting, punk‑ish skull that feels like a neon scream — abrasive, playful, and instantly legible. The grainy stencil texture and hot-pink flames give it a raw, streetwise energy that demands attention.",
+            "Interpretation": "This work retools the skull icon into a digital-age hazard sign: three flaming, eye-like motifs sit in windowed rectangles above a cavernous, fanged mouth that itself contains a stylized flame. The limited palette (black, white, hot pink), aggressive stencil/grain mark-making, and dripping edges read like a hybrid of screenprint and low‑fi glitch aesthetics; the rectangular framing of the eyes suggests screens or network nodes, turning bodily horror into a commentary on networked attention or contagion. As a still capture of an animated piece, the composition courts repetition and flicker — the static image promises an even more insistent, rhythmic experience in motion.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The handling of texture, flat color, and hard silhouette is confident and controlled; the grainy spray and drips are deliberate rather than accidental, producing a convincing screenprint/glitch hybrid. Execution is tight for digital animation-derived work."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Strong focal hierarchy and a compact, iconic structure — triangular eye arrangement leading down into the gaping mouth — creates immediacy and movement. Negative space and the dripping edges anchor the figure against the black field, though the symmetry is familiar."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Uses well-worn skull and flame motifs, but recombines them with screen/window framing and a punk, lo‑fi digital texture that feels distinct. It’s recognizably within a particular contemporary visual language rather than wholly unprecedented."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Immediate and visceral: the neon pink flames against stark black and white produce a jolt, and the open maw reads as both threatening and exuberant. The image is memorable and elicits a pulse of unease mixed with dark humour."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The title and the windowed-eye motif allow readings about networks, attention, and digital contagion, giving the piece interpretive room beyond surface shock. It suggests critique but does not unfold a complex argument on its own."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a confident, iconic work that distills digital-era anxieties into a compact, visually forceful image. Its technical control, strong visual identity, and suggestive conceptual framing make it a compelling acquisition — bold, memorable, and likely to hold up in repeated viewings."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T09:53:43-06:00",
+          "seconds": 11.3,
+          "review": {
+            "First Impression": "A raw, almost graffiti-like image of a screaming, skull-like face with vibrant pink, flaming bombs for eyes. The stark black and white, punctuated by the lurid pink, creates an immediate sense of urgency and distress. It's aggressive, direct, and immediately captivating.",
+            "Interpretation": "This work presents a stylized, screaming visage, rendered with a gritty, stencil-like aesthetic reminiscent of street art. The white form, suggestive of a skull or a distorted mask, is set against a stark black background, emphasizing its starkness. Its eyes are replaced by vivid pink flaming bomb shapes, and smaller pink flames emanate from its wide, sharp-toothed mouth. This iconography strongly suggests themes of destruction, anger, or an explosive emotional state. The texture, with its simulated drips and uneven edges, reinforces a sense of raw, immediate creation. When considered alongside the title \"The OG Network,\" the artwork shifts from a general expression of distress to a potent commentary on foundational systems. The 'original network' is depicted not as a neutral or benign structure, but as something inherently volatile, perhaps even self-destructive or causing immense distress, a critical lens on the underpinnings of digital or societal constructs.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates strong command over the chosen digital aesthetic, effectively simulating a gritty, spray-paint or stencil texture. The limited color palette is used strategically to maximize visual impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the figure creates an immediate and undeniable focal point. The composition is simple, direct, and powerfully balanced, allowing the raw emotion to dominate the frame."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While drawing on familiar motifs, the artist's distinct visual language—particularly the combination of the specific stylized rendering, the flaming bomb eyes, and the aggressive color palette—makes this piece feel fresh and characteristic of their unique contribution."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork delivers a powerful emotional punch, immediately conveying a sense of alarm, rage, or overwhelming anguish through the screaming mouth and fiery, explosive eyes."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The title \"The OG Network\" elevates the piece beyond mere expression, introducing a layer of critical commentary on foundational systems. The imagery suggests an inherent chaos or destructive potential within these 'original' structures."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a compelling example of the artist's impactful style, effectively blending a raw, visceral aesthetic with a potent conceptual critique. Its emotional intensity and strong visual signature make it a significant acquisition, offering both immediate appeal and layered meaning."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T09:53:58-06:00",
+          "seconds": 14.8,
+          "review": {
+            "First Impression": "A stark and aggressive image that immediately grabs attention. The combination of the skull motif with the vibrant pink, explosive eyes creates an unsettling yet compelling visual. It feels like a digital scream.",
+            "Interpretation": "This work, 'The OG Network,' employs a raw, almost stencil-like aesthetic to depict a skull with incendiary 'eyes' and an open, flaming mouth. The distressed white against the dark, textured background, combined with the neon pink, evokes a sense of street art infused with digital angst. The title suggests a commentary on foundational digital structures – perhaps the internet or blockchain networks – interpreting them as inherently volatile or even destructive. The bomb-like eyes and internal flames symbolize an explosive potential, a critical or rebellious stance towards these underlying systems, or a reflection on the often aggressive nature of digital interaction.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The command of the digital medium to simulate a gritty, stencil-like texture and spray paint drips is effective and consistent with the intended aesthetic. The limited color palette is used with striking impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, confrontational placement of the skull provides a strong, immediate visual impact. The balance of the three prominent 'eyes' and the open mouth creates a dynamic and cohesive focal point."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skull imagery is pervasive, xcopy's distinctive digital-punk aesthetic, combined with the specific 'bomb-flame' motif and the context of 'The OG Network,' offers a unique and recognizable voice within contemporary digital art."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece powerfully evokes feelings of unease, tension, and aggressive energy. The stark contrasts and incendiary elements create a visceral and unforgettable felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The combination of the skull as a symbol of mortality and the title 'The OG Network' invites significant conceptual reflection on the foundational, and potentially volatile, aspects of digital existence and networked society. It provides a strong entry point for intellectual engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece powerfully encapsulates xcopy's signature aesthetic and thematic concerns, offering a potent, visually arresting commentary on the volatile nature of 'the network.' Its raw energy, pointed symbolism, and clear voice make it a compelling acquisition that speaks directly to contemporary digital anxieties and the artist's significant contribution to the crypto art movement."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T09:54:10-06:00",
+          "seconds": 11.7,
+          "review": {
+            "First Impression": "This image immediately strikes with its raw, almost primal energy. The stark contrast and aggressive iconography of a screaming, flaming skull-like figure demand attention, suggesting a powerful, if somewhat unsettling, declaration. There's a clear sense of rebellion and urgent intensity conveyed through the graffiti aesthetic and bold color choices.",
+            "Interpretation": "The artwork presents a stylized, skull-like face rendered in a rough, spray-painted or stenciled manner against a deep black background. The prominent features are three eyes, each containing a small bomb and engulfed in vibrant pink flames, and a wide-open mouth from which more stylized pink flames emanate, suggesting a scream or roar. The white paint appears distressed and dripping, enhancing the gritty, street-art feel. The work evokes a sense of intense distress, outrage, or explosive energy. The \"OG Network\" title, coupled with the artist's known association with crypto art, suggests an interpretation rooted in digital culture: perhaps a representation of the raw, unpolished, and often volatile spirit of early online communities, or a commentary on the \"original\" voices and disruptive forces within a digital network. The bombs in the eyes signify not just observation, but active, potentially destructive, engagement.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The execution of the digital graffiti style is strong, effectively conveying a raw, almost handmade aesthetic despite its digital nature. The distressed textures and drips are convincingly rendered."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is direct and powerful, centered around the iconic, screaming form. The balance of negative space and the stark contrast of white and black, punctuated by the vivid pink, creates an impactful visual hierarchy."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the iconography of a screaming skull is not entirely novel, xcopy's distinct visual language and its particular application within the digital art space, particularly with the \"bomb\" eyes and the \"OG Network\" context, give it a recognizable and somewhat fresh identity."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork powerfully communicates a sense of urgency, anger, and explosive energy. The flaming eyes and screaming mouth are immediately evocative of strong, perhaps volatile, emotions."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Beyond the initial visual impact, the piece offers layers of interpretation tied to digital identity, rebellion, and the dynamics of online networks, especially when considering the artist's broader body of work and the title \"The OG Network.\" It prompts reflection on authenticity and disruption in digital spaces."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 80,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece embodies a raw, unapologetic energy that resonates deeply within contemporary digital culture. Its striking visual language and conceptual undertones, particularly concerning digital identity and network dynamics, make it a compelling acquisition that speaks to the zeitgeist."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The OG Network",
+        "artist": "xcopy",
+        "media_note": "The artwork is animated; the image provided is a static screenshot/rendition of the work."
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Glitch Art\",\n    \"Databending / Corruption Aesthetics\",\n    \"Experimental Digital\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"innovation\": 2,\n    \"technicalExecution\": 3,\n    \"conceptOrMeaning\": 4,\n    \"colorAndAesthetics\": 5,\n    \"composition\": 6,\n    \"emotionalImpact\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm fascinated by work that embraces digital failure as a material — databending, compression artifacts, corrupted signals, broken renderers, and misused tools. I gravitate toward artists who push systems until they break interestingly and find real beauty and meaning inside distortion, noise, and error.\",\n  \"favoriteArtistsOrWorks\": [\n    \"XCOPY\",\n    \"Rosa Menkman\",\n    \"JODI\",\n    \"Sarah Zucker\",\n    \"Domenico Barra\"\n  ],\n  \"avoid\": \"Overly polished commercial aesthetics, off-the-shelf glitch filters, generic AI imagery, and work that wears experimentation as a surface style.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Photography\",\n    \"Fine Art Photography\",\n    \"Documentary / Street Photography\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"emotionalImpact\": 2,\n    \"originality\": 3,\n    \"technicalExecution\": 4,\n    \"conceptOrMeaning\": 5,\n    \"colorAndAesthetics\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to photography that rewards slow looking — patient light, decisive timing, honest color, and a strong sense of place. I care about what was actually in front of the lens and the photographer's judgment in that moment, more than technical perfection or dramatic post-processing.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Todd Hido\",\n    \"Hiroshi Sugimoto\",\n    \"Michael Kenna\",\n    \"Gregory Crewdson\",\n    \"Fan Ho\"\n  ],\n  \"avoid\": \"Overprocessed edits, cliché travel imagery, excessive HDR, and heavily composited scenes that abandon the truth of the photographic moment.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/glitch.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/photography.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-10T09:54:36-06:00",
+          "seconds": 25.8,
+          "review": {
+            "First Impression": "Immediate and aggressive: the image hits like a digital scream — a skull-like glyph with three hot-pink flame-eyes and a gaping, fang-filled mouth. Its rough, grainy stencil and dripping marks feel both street-stenciled and electronically corrupted.",
+            "Interpretation": "This work stages a brutal emblem: a skull/ghost head reduced to high-contrast graphic planes, with three flaming eyes and an open maw that reads as both consumption and emission. Formally it relies on a binary palette (black/white) punctuated by neon pink, heavy grain/noise, and spray/drip marks that sit between screen‑print and corrupted digital texture; the animation (not shown here) likely adds a jitter or flicker that completes the sense of an unstable signal. Read together with the title 'The OG Network,' the piece gestures at attention economies and network contagion — eyes as nodes, flames as viral energy, mouth as ravenous protocol — using deliberate roughness and digital-noise aesthetics to make the network itself feel monstrous and alive.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technical control is strong: the stamp-like marks, controlled grain/noise, and convincing ‘paint-drip’ effects show a confident handling of digital tools and animation-ready composition."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, symmetrical silhouette is an economical, powerful choice; the three-eye motif and the open mouth create a clear visual hierarchy and a biting focal point, while drips and texture provide vertical movement."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The vocabulary is unmistakably within XCOPY’s established lexicon — corrupted, staccato GIF/graphic horror — which is potent but not a radical departure from his own and the broader glitch/crypto-art idiom."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work produces a visceral reaction — alarm, excitement, dread — through its aggressive contrasts, threatening teeth, and the lurid, feverish pink flames."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There’s a compact conceptual clarity: network critique, virality as menace, and the aesthetics of digital decay. It’s strong and repeatable, though not exceptionally layered or ambiguous."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "While not a formal reinvention of glitch art, this is a mature, high‑impact work that embodies the collector’s interest in digital breakdown and corrupted signal aesthetics. Its technical assurance, clear conceptual framing, and strong emotional charge make it a defensible acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-10T09:54:59-06:00",
+          "seconds": 23.3,
+          "review": {
+            "First Impression": "A confrontational, lo-fi skull blasted in neon pink and chalky white against a deep black — it hits like a punk poster animated into a scream. The image feels both playful and hostile, like a corrupted broadcast trying to be heard through static.",
+            "Interpretation": "This work stages a meltdown of iconography: a skull (mortality/identity) becomes a broadcast device whose eyes are flames and whose mouth is an open feed. Formally it relies on high-contrast stencilling, heavy grain/noise, drips and neon accents to simulate analog degradation and crude print processes; if animated, the loop likely accentuates jitter, flicker and a sense of digital abrasion. Together those choices read as a commentary on networked attention, burn-out, and the aestheticized failure of digital systems — an OG (original) network reduced to screaming signals and corrupted signifiers.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The command of digital mark-making and texture is confident: grain, spray, and deliberate edge-bleed are handled with control. If animated (as the media note states) the likely timing and loop design would add another layer of craft in pacing and rhythm."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A compact, central composition gives immediate impact; the symmetry of the skull and the three flaming eye-motifs create a stable but aggressive rhythm that reads well at a glance and at scale."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The piece bears XCOPY's distinct visual signature — that is valuable but also places it within an established idiom. It doesn't reinvent glitch as material here, but it applies familiar tropes with force."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The neon flames and open maw produce an immediate visceral response: alarm, urgency, and mischievous menace. The rough texture amplifies that affect into something physical and abrasive."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There is a clear conceptual spine — networked collapse, attention as combustion — but the statement is economical rather than intricately developed; it pivots on recognizable metaphors more than novel theoretical interrogation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a strong, emblematic piece by an artist who has consistently refined a distinct digital voice. While it does not radically rework databending as a material, its execution, immediacy, and cultural resonance make it worth acquiring — it delivers the visceral, corrupted aesthetics the collector prizes while retaining high formal control."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-10T09:55:20-06:00",
+          "seconds": 20.7,
+          "review": {
+            "First Impression": "Immediate, visceral hit: a ghostly, halftone skull-like form glares from a velvety black field, its eyes and mouth erupting in electric pink flame. The image feels simultaneously playful and predatory — candy-coloured violence rendered with digital grit.",
+            "Interpretation": "This piece stages a collision between death iconography and neon, corrupted signal aesthetics. Formally it relies on high-contrast silhouette, grainy screen-halftone texture, and a limited palette (white, black, vivid magenta) to compress complex feeling into an emblematic figure. The three flaming eyes and the flame-inside-the-mouth motif read as allegories of networked contagion — attention, consumption, and the feedback loops of digital media — while the distressed edges and dripping marks evoke decay, compression noise, and deliberate material failure. Given the original is animated, the screenshot preserves the work's freeze-frame violence but implies stuttering, flicker, or jitter in motion that would emphasize its glitch-adjacent temperament.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "There is clear technical mastery of digital-image aesthetics: controlled grain, convincing halftone and spray textures, and a disciplined palette that reads well in still and likely in motion. The execution suggests confident animation techniques (looping, strobe, or frame-based corruption) even if the screenshot cannot show them directly."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralized skull-form is formally strong — bold negative space, rhythmic repetition (three eyes), and a vertical mouth axis that draws the eye down through the piece. The simplicity is purposeful and the dripping gestures provide counterpoint to the compactness of the head."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The visual language is firmly within XCOPY's recognizable lexicon of neon-macabre GIFs and corrupted aesthetics. It's distinctive and potent, but not radically new relative to his established oeuvre or the broader glitch canon."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work provokes an immediate physiological response — unease mixed with manic energy — through its teeth-and-flame iconography and abrasive texture. The neon pink against soot-black compels attention and leaves a lingering, slightly queasy afterimage."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There are layered readings — mortality, attention economy, networked contagion, and the beauty of digital failure — accessible without heavy exposition. While resonant, the concept relies on well-worn metaphors and could invite deeper interrogation in a series or as part of a broader project."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece aligns strongly with a practice that treats digital error as a material and aesthetic asset; it shows clear technical command and a compelling, immediate voice. It may not reinvent the glitch canon, but it distills XCOPY's strengths — rhythm, grit, and neon menace — into a concise, high-impact work worth adding to a collection prioritizing experimental digital failure."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-10T09:55:33-06:00",
+          "seconds": 12.8,
+          "review": {
+            "First Impression": "The immediate impact is one of raw, aggressive energy. The screaming skull, with its fiery, bomb-like eyes and vibrant pink accents, feels both visceral and digitally charged, like a graffiti tag brought to life on a screen.",
+            "Interpretation": "The work presents a stylized, menacing skull, a classic symbol of mortality or rebellion, rendered with a gritty, almost stencil-like aesthetic. The rough edges, drips, and granular texture evoke street art or a digitally degraded image, aligning with XCOPY’s signature style. The 'eyes' are depicted as hot pink, sparkling, almost explosive forms, possibly bombs, suggesting destruction or an intense internal inferno. Within the gaping maw, abstracted pink flame-like elements reinforce this sense of internal combustion or scream. Titled 'The OG Network,' the piece could be interpreted as a raw, almost primal scream from the foundational layers of digital existence, a comment on the inherent chaos, vulnerability, or even rebellious spirit within networks, pushing against the pristine facade of digital progress. The animation, though not visible here, would undoubtedly amplify its glitchy, confrontational energy, emphasizing the 'digital failure' aesthetic the collector seeks.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The apparent simplicity belies a sophisticated understanding of digital textures and visual impact. The rough, spray-paint effect and granular pink elements are deliberate, not accidental, showcasing control over a chosen, 'broken' aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The composition is direct and impactful. The central, screaming skull dominates the frame, creating a strong focal point. The balance of stark white, black, and vibrant pink is effective in creating tension and visual interest, despite its straightforwardness."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "XCOPY's aesthetic, while now influential, was groundbreaking in its early iterations, and this piece embodies that distinctive, raw, and often confrontational digital style. It's a hallmark of an artist who defined a genre rather than followed it."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work powerfully conveys raw emotion – aggression, desperation, a primal scream. The fiery eyes and open, yelling mouth create an immediate and unsettling impact, evoking feelings of warning or distress."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The 'OG Network' title, coupled with the skull motif and the artist's known focus on digital degradation, suggests a deeper commentary on the foundational, often chaotic, nature of digital systems or a primal cry within a networked world. It invites contemplation on digital existence, decay, and rebellion."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is an exemplary piece by an artist explicitly favored by the collector, perfectly embodying the desired aesthetic of 'digital failure' and raw, experimental digital art. Its aggressive visual language and thematic depth regarding networks make it a highly desirable acquisition for this collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-10T09:55:48-06:00",
+          "seconds": 15.4,
+          "review": {
+            "First Impression": "This piece immediately strikes with its raw, almost primal energy. The screaming, skull-like form rendered in a stark, graffiti-esque style with vibrant pink accents instantly conveys a sense of urgency and distress. The texture hints at a deliberate digital rawness, amplified by the knowledge that this is an animation.",
+            "Interpretation": "This work, \"The OG Network,\" by XCOPY, reads as a visceral commentary on the foundational, perhaps chaotic, nature of digital existence. The central motif is a highly stylized, skeletal face, screaming and shedding what appear to be tears or drips of white paint, with fiery pink 'eyes' that resemble explosive devices. The deliberate digital grain and distressed edges evoke a sense of decay, corruption, or perhaps a primal scream emanating from the very fabric of the \"original network.\" The limited color palette—monochrome with a jolt of disruptive pink—amplifies the starkness and highlights the volatile elements within the composition. It's a digital punk aesthetic, finding beauty and meaning in the rupture of conventional form, speaking to the inherent tension and potential for breakdown within digital systems.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist demonstrates exceptional command over digital tools to emulate a raw, distressed, and spray-paint aesthetic. The textures, drips, and stark contrasts are deliberately crafted to convey a specific lo-fi, yet impactful, visual language, particularly impressive given the work's animated nature."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is powerfully centralized, drawing the eye immediately to the screaming visage. The balance of negative space with the bold white form and piercing pink accents creates a strong, unsettling presence that is both direct and memorable."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "XCOPY is a pioneering voice in the digital art and NFT space, and this work exemplifies his highly distinctive style which embraces digital failure and a raw, punk sensibility. It stands apart from much contemporary digital art through its unapologetic embrace of glitch and street art aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image evokes a potent sense of anxiety, frustration, and perhaps a cathartic release through its screaming, burning form. The starkness and violent color pop create an immediate and unsettling emotional impact."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "“The OG Network” extends beyond a mere aesthetic exercise, delving into themes of digital infrastructure, chaos, and the inherent fragility or aggression within online systems. It thoughtfully engages with the collector's interest in digital failure as a material for meaning."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This is an exemplary work by an artist explicitly favored by the collector, directly engaging with preferred mediums and conceptual interests. The piece brilliantly embodies the aesthetic of \"digital failure as a material,\" delivering a raw, impactful visual and a resonant commentary on the nature of digital networks."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-10T09:55:59-06:00",
+          "seconds": 11.1,
+          "review": {
+            "First Impression": "My immediate reaction is to its raw, almost aggressive energy. The stark contrast and vibrant pink against the black create an arresting, punk-rock aesthetic that feels both rebellious and urgent. It possesses an iconic quality, like a digital street art stencil come to life.",
+            "Interpretation": "This work presents a screaming, skull-like visage, rendered with a gritty, spray-paint or stencil-like texture. The eyes are depicted as flaming bombs, while jagged teeth and hot pink flames erupt from its open mouth. The artist, XCOPY, is known for exploring digital failure and glitch aesthetics, and this piece embodies that spirit through its deliberate rawness, simulating material imperfection in a digital medium. The animation, though unseen in this static rendition, would undoubtedly amplify the sense of chaotic energy and digital disruption, reflecting on themes of online identity, network volatility, and the inherent chaos within digital systems, fitting the title 'The OG Network.'",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The deliberate raw, graffiti-like aesthetic is expertly executed, effectively conveying a sense of digital grit and urban urgency through seemingly simple forms and stark contrast."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, stark composition with high contrast immediately grabs attention, creating an iconic and powerfully unsettling image that effectively utilizes negative space."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While part of XCOPY's recognizable style, this work showcases the distinct visual language he has pioneered, embodying the intentional embrace of digital rawness and disruption that few artists achieve with such impactful simplicity."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The imagery immediately conveys a potent sense of chaotic distress, rebellion, or digital breakdown, eliciting a visceral and urgent emotional response through its aggressive iconography and stark color palette."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The work delves into contemporary themes of digital identity, systemic breakdown, and online volatility, using its raw aesthetic to reflect on the inherent chaos and potential for disruption within digital networks."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece is a quintessential example of XCOPY's groundbreaking digital punk aesthetic, perfectly aligning with the collector's stated fascination with digital failure as a material and their appreciation for artists who find beauty in distortion and error. Its raw power, iconic imagery, and conceptual engagement with network culture make it a compelling acquisition that directly speaks to the collection's core interests."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-10T09:56:19-06:00",
+          "seconds": 20.2,
+          "review": {
+            "First Impression": "Immediate and confrontational: a stenciled skull howling with hot-pink, flame-shaped eyes, like a pop-spray scream arrested mid-shock. The static screenshot reads as an aggressive graphic emblem — crude and precise at once.",
+            "Interpretation": "The work stages a digital-era memento mori: a skull-like head composed in rough spray/halftone texture with three flaming eyes and a wide, fang-filled maw that contains a stylized flame. The limited palette (black/white/hot pink), heavy grain, and stencil/drip marks read as street-art translated into the screen — an appropriation of graffiti and punk-iconography for the language of crypto-era animation. Formally it trades subtlety for immediacy: high contrast and repeated flame motifs turn the image into a logo for volatility, rage, or the fever of 'the network' (the submitter's title suggests a commentary on early internet/crypto culture). The animation (not visible here) likely reinforces a looped, insistent energy; the stills emphasize texture and bold silhouette instead of nuanced tonal modulation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technically assured in digital paint/animation language — the grain, drips, and halftone treatment are deliberate and well controlled, producing a convincing translated 'print' look in pixels."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Strong, centralized composition with powerful silhouette and rhythm (three eyes above an elongated mouth) that locks the viewer's gaze; economy of elements gives the piece focus and visual punch."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While the piece combines motifs in a personally recognizable way, its visual vocabulary (flaming eyes, skull, stencil texture) sits squarely within an already-familiar crypto/NFT/graffiti lexicon rather than breaking new ground."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Visceral and immediate: the snarling mouth and hot-pink flames provoke unease and adrenaline — a sustained, emphatic affect even in still form."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are readable layers (internet/crypto commentary, mortality-as-iconography) but the idea is conveyed through gesture and symbol rather than sustained, interrogative complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 70,
+              "Decision": "PASS",
+              "Rational": "The piece is a well-executed exemplar of xcopy's aggressive, screen-native idiom — visually arresting and emotionally immediate — but it sits outside the collector's stated priorities (audiovisual/digital animation versus slow-looking, documentary photography) and offers more emblematic energy than the reflective depth your preferences prize. I recommend passing; admire its command and place within digital-art culture, but don't acquire it if your collecting intent is to build a photographic practice that rewards patient looking."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-10T09:56:34-06:00",
+          "seconds": 14.7,
+          "review": {
+            "First Impression": "A raw, confrontational image — a skull-like mask with three flaming pink eyes glares from high-contrast black and white grain. The work reads like a punk poster translated into digital animation: immediate, noisy, and defiantly crude in its visual rhetoric.",
+            "Interpretation": "This piece leans into iconography of menace and networked identity: a centrally placed skull with three flaming eyes and a toothy maw becomes both emblem and scream. Formally it relies on bold, reduced shapes, heavy grain/halftone texture, and a limited palette (black, white, neon pink) to produce visceral contrast; mark-making mimics spray-stencil and print glitch, giving a sense of mechanical reproduction and digital decay. As an animated work (here seen as a still), the implied motion of the flames and possible jitter of the grain would intensify its aggressive, meme-aware personality — positioning the piece as commentary on virality, identity, or the cultish language of 'OG' networks rather than a quietly observational image.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The execution shows confident control of a limited visual vocabulary — the halftone/grain and crisp negative shapes are deliberate and effective. As a static capture, some of the animation's technical sophistication is lost, but the print-stencil aesthetic is well handled."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralized skull and the triangular arrangement of the three eyes create a compact, iconic composition that reads immediately at thumbnail scale. Negative space and the stark palette reinforce focus and make the image highly legible."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The work synthesizes punk, street-stencil, and GIF-era internet imagery in a confident way but does not invent a visual language so much as remix existing tropes. It feels fresh in execution rather than conceptually unprecedented."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "There is a quick, visceral reaction — amusement mixed with unease — produced by the flaming eyes and the aggressive mouth. The effect is immediate and memorable, if not quietly lingering."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are readable referents (network, OG status, viral iconography) and the work gestures toward commentary on digital identity and reproduction, but the statement is more emblematic than deeply interrogative."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "PASS",
+              "Rational": "Visually striking and expertly executed within its stylistic lane, the piece delivers bold, immediate impact. However, it is materially and conceptually distant from the collector's stated photography-focused preferences, and its conceptual ambitions feel surface-level rather than the kind of slow-looking, documentary subtlety the collector prizes — so I recommend passing."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-10T09:56:59-06:00",
+          "seconds": 25.6,
+          "review": {
+            "First Impression": "Brash, punkish and immediately legible — a skull rendered like a stenciled sticker that has been looped into life. The neon-pink flames cut through the black-and-white grain with aggressive clarity; it feels like a GIF shouting in a crowded feed.",
+            "Interpretation": "This work recodes skull iconography through the language of low-fi digital street graphics and GIF culture. The artist uses a deliberately limited palette (black, white, hot pink) and heavy halftone/grain to evoke spraypaint, photocopy and early web aesthetics; the three flaming eyes and gaping maw establish a stacked, emblematic composition that reads as both threat and logo. The title, \"The OG Network,\" gestures toward notions of provenance, tribal identity and perhaps crypto/online networks — the skull-as-brand suggests that belonging to a network is at once an initiation and a spectacle. Formally, the piece trades subtlety for immediacy: bold silhouette, repeated flame-motifs, and dripping marks create motion and a sense of the handmade even though the medium is digital; the animation (not visible in the still) likely amplifies the jitter and looped menace intrinsic to the subject.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident control of pixel, grain and screenprint-like texture gives the image tactile presence; the limited palette is used economically and effectively. The craft is clearly skilled in the language of digital-stencil/GIF work, though it is not craft in the photographic sense the collector prioritizes."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, tightly focused central composition — the triangular placement of the three eyes and the vertical pull of the mouth create immediate visual hierarchy and rhythm. Negative space and drips are handled to keep the icon isolated and striking against black."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Within contemporary crypto/digital GIF cultures this has a signature xcopy personality, but it recycles familiar motifs (skull, flames, neon) rather than inventing a new visual lexicon. It’s original as a refined iteration rather than as a conceptual breakthrough."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Visceral and direct — the piece elicits unease, adrenaline and a mischievous grin simultaneously; the neon-pink flames give it an almost ecstatic cruelty that sticks with you. Its immediacy makes it memorable even from a single frame."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are suggestive ideas — network identity, branding, online tribalism — but the work stops short of layered interrogation. Its power is primarily emblematic and affective rather than discursive."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "PASS",
+              "Rational": "Technically assured and viscerally effective, this is a strong example of digital-street/GIF aesthetics, but it sits outside the collector’s stated priorities for photographic, slow-looking work. The piece is arresting, yet its conceptual surface and medium mismatch lead me to pass on acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-10T09:57:14-06:00",
+          "seconds": 14.9,
+          "review": {
+            "First Impression": "A jolt of vibrant pink against stark black and white, this piece immediately screams with a raw, punk energy. It feels confrontational and urgent, demanding attention with its aggressive iconography.",
+            "Interpretation": "This work presents a visceral, almost confrontational digital persona, rendered with the gritty immediacy of a stencil or spray paint. The skull-like visage, ablaze with bomb-shaped eyes and three small flames within its mouth, suggests an entity both enraged and empowered by its connection to 'The OG Network.' It speaks to the chaotic, often volatile nature of digital identity and the foundational, perhaps anarchic, spirit of early online communities, channeling a sense of rebellious energy and raw, unbridled expression. The intentional 'glitch' aesthetic and distressed textures further underscore a theme of digital decay or resistance within the network.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist expertly manipulates digital tools to mimic the aesthetic of stencil art and screen printing, achieving a distinct, raw texture and effective drips. The execution is precise for the intended style, demonstrating strong command of the chosen medium."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is remarkably strong and impactful, centered with an almost brutal directness. The high contrast and bold forms immediately draw the eye and convey the artwork's aggressive energy."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While operating within a recognized aesthetic, xcopy's application of this style and specific iconography has become highly distinctive and influential in digital art. The integration of the bomb motif with the expressive face offers a fresh take on common themes."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork powerfully evokes feelings of aggression, defiance, and a certain electric volatility. The screaming mouth and fiery eyes create an immediate, visceral emotional response of intensity and urgency."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The title 'The OG Network' provides a strong conceptual anchor, inviting contemplation on the origins and inherent nature of digital communities, power, and identity. The imagery itself allows for interpretations concerning digital rebellion, information overload, or the raw spirit of online interaction."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 50,
+              "Decision": "PASS",
+              "Rational": "While possessing undeniable raw power and a compelling aesthetic, this artwork falls significantly outside the collector's expressed preference for photography that rewards patient observation of reality. Its highly stylized, digital, and graphic nature, focused on a constructed rather than captured reality, makes it an unsuitable addition for this collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-10T09:57:28-06:00",
+          "seconds": 13.7,
+          "review": {
+            "First Impression": "A raw, almost primal digital scream emanates from this image, immediately striking with its high-contrast aesthetic and aggressive pink highlights. It feels like a visual assault, capturing a moment of intense, almost chaotic energy frozen in a stark, graphic form.",
+            "Interpretation": "The artwork presents a screaming, skull-like visage rendered in a stark, spray-paint or stencil-like white against a black background, with three intensely pink, flame-like forms containing bombs serving as eyes and a fiery outline within the gaping mouth. The artist, xcopy, frequently explores themes related to digital culture, anonymity, and the chaotic undercurrents of online existence, and this piece, titled 'The OG Network,' clearly aligns with that sensibility. Formally, the piece leverages a limited, high-impact color palette and a deliberately rough, pixelated texture, mimicking a distressed digital aesthetic or urban graffiti. This combination of raw imagery and digital presentation suggests a commentary on the visceral, often volatile, nature of early digital networks or contemporary online discourse, where identity can be fragmented and emotions amplified.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The intentional rough and glitchy aesthetic is well-executed, demonstrating a clear command of digital tools to achieve the desired raw, almost punk-rock texture and impactful visual style."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralized, confrontational composition is highly effective, drawing the viewer's eye directly to the screaming face and its intense features, creating an immediate and undeniable impact."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While drawing on established street art and punk aesthetics, xcopy's distinctive digital rendering and the specific context of 'The OG Network' lend the work a unique and influential voice within the realm of contemporary digital art."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The imagery of a burning, screaming skull with explosive eyes immediately evokes strong feelings of urgency, anxiety, and aggressive energy, producing a visceral and direct emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The artwork thoughtfully addresses themes of digital identity, network volatility, and raw expression within online spaces, offering a compelling critique of the chaotic energies inherent in digital culture."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 30,
+              "Decision": "PASS",
+              "Rational": "This artwork, while possessing significant artistic merit and a powerful aesthetic within its own genre, fundamentally diverges from the collector's articulated preferences for authentic, unmanipulated photography rooted in the 'truth of the photographic moment.' Its highly stylized, digital, and processed nature directly contradicts the collection's focus on patient observation and realism in photographic works."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-10T09:57:43-06:00",
+          "seconds": 14.4,
+          "review": {
+            "First Impression": "This piece immediately strikes with a raw, aggressive energy. The screaming face and flaming eyes, rendered in stark white and vibrant pink against black, create an arresting and somewhat confrontational image.",
+            "Interpretation": "The artwork presents a stylized, almost skeletal figure, reminiscent of graffiti or protest art. The crude, spray-paint texture and dripping lines convey a sense of urgency and rebellion. The \"bomb\" iconography replacing eyes, coupled with the fiery elements, suggests a destructive gaze or incendiary thoughts, while the gaping mouth and internal flames communicate a profound, perhaps exasperated, cry. Titled \"The OG Network,\" it likely functions as a commentary on the intensity, anonymity, and often volatile nature of digital existence and online communities.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist effectively uses digital tools to mimic the gritty, immediate aesthetic of street art, with intentional imperfections like grain and drips that enhance the raw impact of the piece."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, bold placement of the figure creates immediate visual impact, using strong contrast and a limited color palette to maintain focus and convey its aggressive energy directly."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While the general punk-graffiti aesthetic is established, XCOPY infuses it with a distinctive digital edge and potent iconography, particularly the bomb-eyes, giving it a recognizable and somewhat unique voice within its genre."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The screaming visage and fiery elements powerfully evoke feelings of anger, alarm, or intense emotional outcry, creating a visceral and immediate connection with the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Beyond its initial visual punch, the work subtly gestures towards themes of digital identity, network dynamics, and the impact of online rhetoric, offering layers for further contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 30,
+              "Decision": "PASS",
+              "Rational": "While possessing a potent visual language and clear conceptual underpinnings, this digital artwork fundamentally diverges from the collector's articulated preference for photography rooted in authentic observation and an unadorned aesthetic. Its heavily stylized, graphic nature and departure from the \"truth of the photographic moment\" make it an unsuitable addition to a collection focused on patient light and honest color."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

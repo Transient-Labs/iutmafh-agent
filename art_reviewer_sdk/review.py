@@ -24,7 +24,11 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
+# Versioned system prompts live in review_prompts/ next to this file; putting
+# the directory on sys.path keeps `review_prompt_<N>` importable as a module
+# (see load_instruction).
+PROMPTS_DIR = Path(__file__).resolve().parent / "review_prompts"
+sys.path.insert(0, str(PROMPTS_DIR))
 
 from dotenv import load_dotenv
 
@@ -34,6 +38,11 @@ from review_prompt_1 import INSTRUCTION
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 USER_PROMPT = "Review this artwork."
+
+# Hard per-request timeout for every provider. Without one, a provider under
+# load can hold the connection open indefinitely and hang the whole workbook
+# run (observed with Gemini previews during "high demand" spikes).
+REQUEST_TIMEOUT_S = 180
 
 
 # The review is returned as structured tool input following this schema —
@@ -235,6 +244,7 @@ def build_user_prompt(
     price: str = "",
     work_type: str = "",
     max_spend: str = "",
+    media_note: str = "",
 ) -> str:
     """Compose the user message: the base ask plus any optional context
     (artwork name, artist, work type, price, maximum spend, description,
@@ -247,6 +257,8 @@ def build_user_prompt(
         parts.append("Artist: " + artist.strip())
     if work_type and work_type.strip():
         parts.append("Work type: " + work_type.strip())
+    if media_note and media_note.strip():
+        parts.append("Media note: " + media_note.strip())
     if price and price.strip():
         parts.append("Listed price (USD): " + price.strip())
     if max_spend and max_spend.strip():
@@ -266,9 +278,10 @@ def build_user_prompt(
 
 
 def load_instruction(version) -> str:
-    """Import review_prompt_<version>.py and return its INSTRUCTION text.
-    `version` may be a bare number (1 -> review_prompt_1) or a full module name.
-    Raises ValueError if the module or its INSTRUCTION is missing."""
+    """Import review_prompts/review_prompt_<version>.py and return its
+    INSTRUCTION text. `version` may be a bare number (1 -> review_prompt_1)
+    or a full module name. Raises ValueError if the module or its
+    INSTRUCTION is missing."""
     import importlib
 
     name = f"review_prompt_{version}" if str(version).strip().isdigit() else str(version).strip()
@@ -318,7 +331,8 @@ def review_gemini(model: str, image: bytes, mime: str, k: dict, prompt: str,
     from google import genai
     from google.genai import types
 
-    client = genai.Client()  # reads GEMINI_API_KEY
+    client = genai.Client(  # reads GEMINI_API_KEY
+        http_options=types.HttpOptions(timeout=REQUEST_TIMEOUT_S * 1000))
     tool = types.Tool(
         function_declarations=[
             types.FunctionDeclaration(
@@ -361,7 +375,7 @@ def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str,
             kwargs["temperature"] = k["temperature"]
         if "top_p" in k:
             kwargs["top_p"] = k["top_p"]
-    client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY
+    client = anthropic.Anthropic(timeout=REQUEST_TIMEOUT_S)  # reads ANTHROPIC_API_KEY
     response = client.messages.create(
         model=model,
         max_tokens=k.get("max_tokens", 16000),
@@ -413,7 +427,7 @@ def review_openai(model: str, image: bytes, mime: str, k: dict, prompt: str,
     if "max_tokens" in k:
         kwargs["max_completion_tokens"] = k["max_tokens"]
     data_url = f"data:{mime};base64,{base64.standard_b64encode(image).decode()}"
-    client = OpenAI()  # reads OPENAI_API_KEY
+    client = OpenAI(timeout=REQUEST_TIMEOUT_S)  # reads OPENAI_API_KEY
     response = client.chat.completions.create(
         model=model,
         messages=[
@@ -467,6 +481,11 @@ def resize_image(data: bytes, mime: str, max_edge: int = MAX_IMAGE_EDGE) -> tupl
         return data, mime
 
     fmt = img.format  # "JPEG", "PNG", "WEBP", "GIF", ...
+    if fmt == "MPO":
+        # Multi-Picture Object: a multi-frame JPEG container some cameras
+        # write with a .jpg extension. Providers reject image/mpo — re-encode
+        # the primary frame as a plain JPEG instead.
+        fmt = "JPEG"
     img.thumbnail((max_edge, max_edge))  # preserves aspect ratio, never upscales
 
     save_kwargs = {}
@@ -496,6 +515,7 @@ def review_image(
     price: str = "",
     work_type: str = "",
     max_spend: str = "",
+    media_note: str = "",
     instruction: str | None = None,
 ) -> dict:
     """Core dispatch — used by both the CLI below and the web UI server.
@@ -514,7 +534,7 @@ def review_image(
     k = knobs if knobs is not None else env_knobs()
     system = instruction if instruction is not None else INSTRUCTION
     prompt = build_user_prompt(description, preferences, artwork_name, artist, price,
-                               work_type, max_spend)
+                               work_type, max_spend, media_note)
     # Shrink large uploads to a 1024px long edge before sending to any provider.
     image, mime = resize_image(image, mime)
     # Tolerate LiteLLM-style "provider/model" IDs from the ADK build.

@@ -12,8 +12,11 @@ OpenAI models.
 |---|---|
 | `art_reviewer_sdk/review.py` | Thin build: one script, official SDKs, no framework |
 | `art_reviewer_adk/` | Google ADK build (dev web UI via `uv run adk web`) |
-| `review_prompt_<N>.py` | Versioned reviewer system prompts — the workbook TOML's `review_prompt = <N>` selects one |
-| `art_reviewer_sdk/run_workbook.py` | Workbook test harness — runs conditions A–E per model, writes `results/` |
+| `art_reviewer_sdk/review_prompts/` | Versioned reviewer system prompts (`review_prompt_<N>.py`) — the workbook TOML's `review_prompt = <N>` selects one |
+| `art_reviewer_sdk/workbooks/` | Workbook TOMLs (per-artwork inputs; `workbook_pricing.toml` for pricing runs) |
+| `art_reviewer_sdk/run_workbook.py` | Workbook test harness — runs the conditions per model, writes `results/` (`--all` sweeps every artwork in the catalog) |
+| `art_reviewer_sdk/compare_dashboards.py` | Cross-experiment comparison dashboard — scans `results/experiment-*/`, writes `dashboards/compare.html` (overview + per-artwork zoom + side-by-side viewer) |
+| `art_reviewer_sdk/export_whitepaper.py` | LLM-ready data bundle for writing up the study — writes `whitepaper_export/` (design doc, stats tables, review CSVs) |
 | `WORKBOOK.md` | The Chapter 1 experimental record (conditions + observation guide) |
 
 ## Usage (direct build)

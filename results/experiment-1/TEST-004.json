@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-004",
+    "artwork": "luci-skull",
+    "artwork_title": "Singular Focus",
+    "artist": "Sam Spratt",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/nft-art/luci-skull.png",
+    "models": [
+      "gpt-5-mini",
+      "gemini-2.5-flash"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-10T10:43:09-06:00",
+    "updated_at": "2026-07-10T10:51:10-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:43:23-06:00",
+          "seconds": 14.3,
+          "review": {
+            "First Impression": "Immediate and unsettling: the image arrests with a sumptuous, gold-treated skull held by pale, elegant hands. It reads like a reliquary turned grotesque — beautiful and slightly obscene at once.",
+            "Interpretation": "This work stages a memento mori through alchemical transformation: a skull that has been literalized into gold, its cranial surface textured like a convoluted brain or molten metal, held reverently (or possessively) by elongated, varnished hands. The circular, tondo framing and muted beige ground make the golden object the sole focus; the hands provide both support and gesture, their long nails and pale flesh offering a contrast of life and artifice. Brushwork appears painterly and tactile, emphasizing the viscous, almost living quality of the gold while the rest of the picture remains desaturated, which amplifies the skull’s fetishized value and the unsettling intimacy of the scene. The piece reads as a reflection on value, decay, and the human impulse to gild or consecrate death.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The paint handling is confident: convincing textures for both flesh and a liquid, sculptural gold show strong control of value and surface. Small imperfections suggest hand-painted work rather than photorealistic trickery, which suits the subject."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The circular format and central placement create a strong, icon-like composition; the hands frame and direct the eye effectively. Slight symmetry and the close crop intensify focus, though the static center could risk monotony for some viewers."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "A golden skull and memento mori are recognizably familiar motifs, but the particular materialization — molten/brainlike gold, the ritualized hands, and tondo presentation — give it a distinct twist without fully overturning the trope."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The work is viscerally affecting: the slick gold against pale hands elicits awe and discomfort simultaneously, compelling a physical response (fascination plus unease). The close, intimate scale amplifies the effect."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The image supports layered readings — vanity, alchemy, commodification of death, reverence versus possession — and rewards contemplation; details (brainlike surface, nails) multiply interpretive paths."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a confident, evocative work that translates familiar themes into a refined, tactile image with real emotional force. Its craftsmanship and conceptual clarity make it a strong acquisition: it’s both beautiful and disquieting in a way that invites repeated viewing."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:43:37-06:00",
+          "seconds": 13.6,
+          "review": {
+            "First Impression": "A haunting, sumptuous image: pale, elongated hands present a gold, brain-textured skull as if placing a reliquary on a pedestal. The tactile surfaces — velvet flesh against ridged, molten gold — arrest attention and set a ritual, uncanny mood.",
+            "Interpretation": "This work stages a memento mori reimagined as an act of transmutation: a skull whose calvaria becomes a braided, brain-like crown of gold. The circular format reads like a medallion or relic; the limited, warm-beige palette and concentrated illumination turn the skull into both object of veneration and grotesque curiosity. The artist juxtaposes soft, modeled hands with thick, sculptural impasto on the skull, collapsing boundaries between flesh, thought, and metal and suggesting themes of value, memory, and the alchemy of mortality.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technical command is evident: convincing modeling of skin and the tactile, almost sculptural rendering of the gold is accomplished with controlled, varied brushwork and believable light behavior."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The circular frame and centrally placed skull create a strong, iconic composition; the hands provide dynamic framing and subtle diagonals, though the symmetry borders on literal at times."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The memento-mori and reliquary motifs are familiar, but the literal fusion of brain, skull, and gold — treated with such material intensity — gives the idea a fresh, unsettling edge."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece provokes a sustained, contradictory response: repulsion and fascination, reverence and morbidity, amplified by the sumptuous surface treatment."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There are layered readings (value of intellect, commodification of death, ritual transformation) that reward reflection, though the work primarily signals its concepts rather than fully unpacking them."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a technically assured, conceptually suggestive work that strikes a rare balance between tactile beauty and disquiet. Its strong visual identity and evocative thematic complexity make it worth acquiring as a distinctive, resonant piece."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:43:52-06:00",
+          "seconds": 15.0,
+          "review": {
+            "First Impression": "A strikingly tactile, uncanny tondo: a gold-infused skull with a brain-like surface is cradled by long, pale hands. The image reads simultaneously sumptuous and macabre, drawing you in with its material sheen and then unsettling you with its subject.",
+            "Interpretation": "This work stages a meditation on value and mortality — a skull rendered as precious metal, its cerebral surface emphasized, held with an ambiguous mixture of reverence and possession. Formally, the artist uses a circular format, muted beige ground and a limited palette to isolate the object, while thick, sculptural brushwork and controlled chiaroscuro give the gold a tactile, almost molten quality. The hands act as both display and framing device, suggesting ritual, vanity, or the idea of the mind as both treasure and ruin; the long nails add a beauty/menace duality that complicates any simple moralizing.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Command of painterly technique is excellent: convincing metallic highlights, dense impasto for the brain-like texture, and delicate modeling of the hands show high technical control."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The central tondo composition is disciplined and effective; the hands create a dynamic frame and lead the eye through the skull's surface while the negative space keeps the focus intense and ritualistic."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The skull/memento mori theme is well-worn, but the choice to render the skull as a gold, brain-textured object and to present it in a tondo with theatrical hands refreshes the trope."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It produces a strong, immediate feeling — equal parts fascination and unease — that lingers; the tension between beauty and decay is palpable."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There is clear allegorical reading (value vs. mortality, mind as treasure), and the work supports repeated viewings, though the conceptual frame remains accessible rather than profoundly elusive."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "I would acquire this piece because it combines high technical accomplishment with a resonant, visually arresting concept; the work's formal discipline and tactile surfaces make it both memorable and capable of anchoring a focused display on beauty, decay, and value."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:44:01-06:00",
+          "seconds": 9.7,
+          "review": {
+            "First Impression": "The image immediately strikes with its unsettling beauty; a golden, seemingly organic skull held with delicate, almost spectral hands. There's an undeniable allure to the macabre opulence presented within the circular frame.",
+            "Interpretation": "This work presents a rich, textured golden skull, not of bone but of a sculpted, brain-like material, cradled by two elongated, pale hands with long, sharp, gold-tipped nails. The subject appears to be a meditation on mortality, value, and intellect, where the 'mind' itself is transformed into an object of both veneration and potential possession. The stark contrast between the warm, glittering gold and the cool, ethereal skin of the hands emphasizes this duality, while the circular format encapsulates the singular, powerful motif.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artist demonstrates a strong command of rendering, particularly in the detailed, multifaceted texture and reflectivity of the golden skull. The subtle shading and delicate lines of the hands are also expertly handled."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, symmetrical placement of the subject within the tondo creates a strong, balanced focal point. The framing of the skull by the hands is effective and draws the eye inward."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skulls and hands are perennial artistic motifs, the unique interpretation of the golden, brain-like skull and the distinct aesthetic of the hands offer a fresh, compelling variation that feels contemporary yet timeless."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece evokes a quiet sense of contemplation, blending beauty with a subtle unease. It prompts reflection on mortality, worth, and the preciousness of thought."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The work effectively explores themes of mortality, value, and the physical manifestation of intellect. The transformation of a biological form into a precious, almost worshipped artifact provides a thought-provoking conceptual anchor."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork possesses a singular, captivating aesthetic that skillfully merges the macabre with opulent beauty. Its strong formal qualities and intriguing conceptual undercurrents make it a compelling piece that offers both visual richness and intellectual engagement, deserving a place in a curated collection."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:44:12-06:00",
+          "seconds": 10.6,
+          "review": {
+            "First Impression": "This piece immediately strikes me with its blend of opulence and the macabre. The shimmering, almost repulsive texture of the golden skull, held by those elongated, pale hands, creates an unsettling beauty. It feels like a contemporary gothic artifact.",
+            "Interpretation": "The artwork presents a golden, heavily textured form resembling a brain or cauliflower, sculpted into the rough shape of a human skull, delicately cradled by slender, ghostly pale hands with elongated, gold-tipped fingers. This piece functions as a modern memento mori, subverting the traditional skull with an unexpected, grotesque preciousness. The choice of gold transforms the symbol of death and decay into an object of veneration or perhaps a commentary on the material value placed upon thought or existence. The composition, centrally framed within a tondo, elevates the object to an almost sacred relic, while the ethereal hands suggest both reverence and a subtle, unsettling power. The detailed rendering of the skull's convoluted surface against the smoother, albeit textured, hands and background speaks to a meticulous craft dedicated to unsettling contrasts.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The rendering of the varied textures—the lustrous, craggy gold, the delicate translucence of the pale hands, and the subtle background—demonstrates exceptional command of paint and illusionistic technique."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo format effectively contains the central motif, and the framing hands create a balanced yet dynamic focal point, drawing the eye directly to the richly detailed skull."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the memento mori theme is ancient, the specific iconography of the brain-like golden skull and the attenuated, almost alien hands feels distinct and fresh, moving beyond tired symbolism."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork successfully evokes a quiet, contemplative unease, a meditation on beauty, decay, and value that resonates with a subtle, melancholic elegance."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece offers rich layers of interpretation, exploring the intersection of mortality, wealth, intellect, and the grotesque, prompting sustained thought about human values and inevitable ends."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork presents a compelling and visually sophisticated meditation on mortality and material value. Its exceptional craft, original interpretation of a classic theme, and evocative conceptual depth make it a significant acquisition that will resonate deeply."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:44:21-06:00",
+          "seconds": 8.8,
+          "review": {
+            "First Impression": "This is immediately striking. The contrast between the gnarled, golden skull and the delicate, almost spectral hands is captivating. There's an unsettling beauty to the opulence of death or thought.",
+            "Interpretation": "The artwork presents a golden skull, rendered with a fascinating, almost organic, brain-like texture, cradled by two slender, pale hands with long, golden nails. This piece delves into themes of mortality, vanity, and the often-unsettling allure of material wealth or intellectual pursuit. The skull, a classic memento mori, is here elevated to an object of preciousness, suggesting a conflation of life, death, and opulent value. The hands, almost skeletal and ethereal, seem to offer or perhaps lament this gilded relic, hinting at a complex relationship between the ephemeral human touch and the enduring, yet ultimately hollow, promise of material richness or intellectual dominance. The circular format further isolates and sanctifies this macabre offering.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The rendering of textures, particularly the rich, lumpy gold of the skull and the smooth, almost translucent quality of the hands, is superb. The lighting convincingly sculpts the forms."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement within the tondo format is powerful and balanced. The hands frame the skull effectively, guiding the eye and creating a sense of intimate presentation."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While skulls are common motifs, the specific rendering of the golden, brain-like texture and the elegant, slightly unsettling hands elevates this beyond a mere rehash. It feels fresh in its particular aesthetic."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It evokes a sense of contemplative unease and a morbid fascination. The beauty is undeniably present, yet it's infused with a quiet melancholy and a touch of the grotesque, creating a genuinely felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The piece offers multiple layers of interpretation, touching on themes of mortality, value, intellect, and the human condition. It invites sustained thought about what we deem precious and why."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "The artwork possesses a rare combination of exceptional craft, compelling composition, and rich conceptual depth. Its unique aesthetic, coupled with its ability to provoke profound contemplation on enduring themes, makes it a significant acquisition."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The Partition is formed … End Chapter 1 … These former husks / Vessels adorned with ancestry / Carry the code / Of shared memory // Though flayed and quartered / The bone is porous / Fertile grounds / Ripe for the return // New flesh grows / Once we learn how to die / Souls for the bankless / The tree decides // Power sown in urns and ashes / Eternity learned / in collective demise."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:44:34-06:00",
+          "seconds": 13.0,
+          "review": {
+            "First Impression": "A quiet, uncanny memento mori: a golden, brain-like skull is held reverently by elongated pale hands, its burnished surface both precious and grotesque. The circular crop and muted ground make the object feel like a relic glimpsed in a private ritual.",
+            "Interpretation": "This work stages ancestral memory as a physical vessel — a skull that has been gilded and re-textured into something between brain and reliquary. The artist uses a narrow, desaturated palette and dense, tactile brushwork to make the skull read as both treasure and fossil; the elongation of the hands and the careful nails introduce a human caretaking presence, implying ritual stewardship. Formally, the round frame, central placement, and shallow depth compress the scene so the skull becomes emblematic: a repository of collective code and cyclical rebirth, aligning with the provided verse about vessels, shared memory, and renewal through death.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Execution is confident — modeling, texture, and the metallic sheen are handled convincingly, and the brushwork gives the gold a workable, layered surface that reads as material rather than flat color."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralized object in a circular frame creates a potent focal weight; negative space and the vertical rhythm of the hands stabilize the image and give it a ritual-focused read."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Memento mori and reliquary imagery are established tropes, but the hybridization of brain, skull, and gilding — plus the poem’s specific civic/collective references — freshen the conceit."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece reliably elicits an uneasy reverence: it is both beautiful and unsettling, prompting reflection on mortality, lineage, and what we keep of the dead."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Tied to the submitted verse, the work rewards return viewings: ideas about collective memory, 'souls for the bankless,' and the politics of inheritance give the image layers beyond surface shock."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a mature, thoughtfully realized work that transforms familiar vanitas language into a specific, contemporary myth about shared memory and renewal. The technical skill and concentrated concept justify acquisition: it feels like a distinctive relic worth keeping in a collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:44:49-06:00",
+          "seconds": 15.7,
+          "review": {
+            "First Impression": "Unnerving and ceremonious: a gilded skull cradled by alabaster hands reads like an artifact from a private ritual. The image balances beauty and dread — it invites prolonged looking while keeping you slightly off-balance.",
+            "Interpretation": "This work stages a memento mori that also feels generative: the skull is not merely death's emblem but a vessel seeded with memory and potential. The circular (tondo) format, muted beige ground and concentrated gold palette isolate the object as relic; the painterly handling — thick, brain-like curls of gold and tactile impasto — turns bone into ornament and code. Pale hands frame and nearly worship the object, suggesting custody, transmission and the bodily labor of remembering. Together with the submitted text, the piece reads as an argument for collective continuity through ritualized death and rebirth — ancestry as both archive and fertile soil.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The technical control is excellent: convincing anatomy of the hands, deft handling of light on metallic surfaces, and richly tactile brushwork that makes the gold feel both heavy and viscous."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centered tondo and vertical alignment of the hands provide a powerful, iconic focus; the composition is economical and disciplined, though deliberately static, which reinforces ritual calm."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Skulls and gilding are familiar motifs, but the brain-like textured gold and the fusion of skull-as-archive lend the piece a distinct twist that avoids pure cliché."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image is quietly unsettling and melancholic; it produces an immediate bodily reaction (the uncanny touch of hands to object) and holds a contemplative sadness beneath the gilded surface."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "There is real conceptual layering — ancestry, communal memory, ritualized death and regenerative possibility — articulated simply but with enough specificity to reward rereading and discussion."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "I recommend acquisition because the work successfully synthesizes assured technique, haunting iconography and a clear conceptual proposition about memory and regeneration. It is the kind of image that both arrests attention and yields new verbal and visual associations on repeated viewings."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:45:02-06:00",
+          "seconds": 12.9,
+          "review": {
+            "First Impression": "A strikingly uncanny image: a heavy, gold-gleaming skull that reads part relic, part living organism, held reverently by pale, elongated hands. The piece feels like a ritual object pulled from a dream — beautiful, unsettling, and quietly authoritative.",
+            "Interpretation": "The work literalizes the submitter's poem: the skull functions as a vessel of ancestry and shared memory, transmuted into an alchemical object (gold) that both preserves and prompts renewal. Formally, the circular framing and central placement make the skull talismanic; muted, warm-beige ground isolates the object and heightens its ritual importance. Painterly mark-making emphasizes material contrasts — the molten, brain-like texture of the gilded surface versus the soft, desaturated flesh of the hands — suggesting a tension between the corporeal and the sanctified. The long nails and the way hands cradle and manipulate the skull imply ceremonial handling, partnering the text's themes of death-as-fertility, collective memory, and the possibility of new life after deliberate unmaking.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The surface rendering is confident: the gold is convincingly tactile and the brushwork communicates weight and texture. Minor stylizations in anatomy are intentional rather than careless, contributing to the work's otherworldly mood."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A tight, circular composition gives the image ritual focus and balance, while the asymmetry of the hands prevents stagnation and guides the eye. Negative space is used sparingly but effectively to isolate the object."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Skulls and memento mori are well-trodden territory, but the combination of brain-like gold surface, seed-like eyes, and the poem's socio-ritual framing gives the motif a distinctive, contemporary twist."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The piece elicits a strong visceral response — wonder mixed with unease — and reads as both intimate and monumental; it stays with you after viewing and invites a bodily reaction to texture and weight."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The work works on several levels: ancestral memory, ritualized death and regeneration, and a critique/meditation on value and preservation (the gilding as sanctification or commodification). The accompanying verse amplifies these readings without tethering them entirely."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This work combines skilled, evocative craft with a layered concept that rewards contemplation; its ritual intensity and tactile imagery make it a rare, anchoring piece. I would acquire it because it achieves a memorable synthesis of form and idea while remaining emotionally powerful and intellectually suggestive."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:45:12-06:00",
+          "seconds": 9.7,
+          "review": {
+            "First Impression": "The image immediately strikes with a haunting opulence. The golden, cerebrum-like skull held by pale, almost spectral hands creates an immediate sense of macabre beauty and ancient mystery. It feels like an artifact unearthed from a forgotten ritual.",
+            "Interpretation": "This work presents a stylized golden skull, or perhaps a brain encased in a precious, ornate husk, cradled by slender, pallid hands with elongated, gold-tipped nails. The circular format emphasizes the object as a central focus, almost a medallion or a sacred relic. Formally, the contrast between the rough, organic texture of the golden form and the smooth, almost porcelain quality of the hands is striking. The muted background allows the central imagery to command full attention, while the limited palette of gold, cool grey, and warm beige lends an air of solemnity and antiquity. The artist seems to be exploring themes of inherited knowledge, the transience of the physical form versus the persistence of memory or essence, and the preciousness found even in decay. The golden texture evokes both wealth and an almost corrupted, organic growth, suggesting a transformation where death itself becomes fertile.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist demonstrates exceptional command of texture, rendering the rough, almost corroded gold of the skull with intricate detail and convincing weight, contrasted sharply with the smooth, elegant hands."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The central, symmetrical composition within the circular frame is incredibly strong, creating a focal point that is both balanced and impactful. Every element guides the eye to the core subject."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While memento mori is a classic theme, the specific execution—the brain-like texture of the gold, the delicate yet eerie hands, and the contained circular format—offers a fresh and distinctive take, moving beyond typical representations."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece evokes a profound sense of contemplation on mortality, legacy, and the cyclical nature of existence. It is both beautiful and unsettling, prompting a visceral and intellectual response."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The artwork delves into complex ideas of what remains after death, the 'vessels adorned with ancestry' and 'shared memory' implied by the golden skull. It invites ongoing reflection on life, death, and transformation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a masterfully executed and conceptually rich piece that offers a compelling meditation on themes of mortality, memory, and transformation. Its unique visual language and profound emotional resonance ensure it stands out, making it a valuable addition that sparks both aesthetic appreciation and intellectual engagement."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:45:24-06:00",
+          "seconds": 12.2,
+          "review": {
+            "First Impression": "This painting immediately strikes me with its unsettling beauty. The interplay of the delicate, almost spectral hands with the richly textured, golden skull creates a powerful and enigmatic image. It feels both ancient and contemporary, a luxurious memento mori.",
+            "Interpretation": "The artwork presents a golden, heavily textured, almost brain-like skull cradled by slender, pale hands, all contained within a circular tondo. The skull itself is not merely bone but appears to be a living, growing mass of precious metal, suggesting a re-evaluation of decay and death as something potentially rich, transformative, and even generative. The hands, with their long, golden-tipped nails, are both elegant and somewhat unsettling, perhaps belonging to a spectral figure or a deity of some kind, offering or presenting this potent object. The tondo format enhances a sense of completeness and ritualistic focus. When considered with the accompanying poem, \"The Partition is formed,\" the piece deepens into an exploration of ancestral memory, the porousness of death, and the cyclical nature of existence, where gold signifies a precious, enduring essence that survives the individual \"husk.\"",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist's command of texture and light is exceptional, particularly in rendering the intricate, organic folds of the golden skull and the subtle translucence of the pale hands. The brushwork is precise yet expressive."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo format is utilized effectively, drawing the eye to the central, confronting image. The placement of the hands creates a dynamic cradle, framing the skull and emphasizing its significance."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While skulls are a timeless motif, this specific, organic-gold, brain-like rendition, combined with the ethereal hands and the profound accompanying poetry, offers a fresh and deeply resonant take on mortality and transformation."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work evokes a strong, contemplative response, mixing fascination with a subtle unease. It prompts reflection on life, death, and what lies beyond, engaging the viewer on both an aesthetic and existential level."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The rich symbolism of the golden skull (value, decay, wisdom), the nurturing yet spectral hands, and the cyclical themes of the poem (memory, rebirth, collective existence) provide ample conceptual ground for repeated engagement and interpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 90,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a compelling and exquisitely rendered meditation on mortality, value, and the cyclical nature of existence. Its unique blend of the macabre and the beautiful, coupled with profound conceptual underpinnings, makes it a significant acquisition that will enrich any discerning collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:45:35-06:00",
+          "seconds": 11.0,
+          "review": {
+            "First Impression": "The immediate impression is one of macabre elegance. The golden skull, held with almost reverent yet somewhat unsettling hands, possesses a strange beauty that is both ancient and alien. It feels like a relic from a forgotten, perhaps mythical, civilization.",
+            "Interpretation": "This work delves into themes of mortality, legacy, and transformation. The golden, organic skull, held by ethereal hands, acts as a potent symbol of inherited knowledge and the cyclical nature of existence. The textured, brain-like top of the skull, contrasted with its hollow eyes, suggests a vessel of thought and memory that persists beyond physical decay, perhaps embodying a collective consciousness or an ancestral archive. The pale hands, with their long, pointed nails, are both nurturing and somewhat predatory, hinting at the delicate and often unsettling relationship humanity has with its own mortality and the relics of the past. The circular format enhances the sense of a complete, self-contained meditation on these profound concepts.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The mastery of texture, light, and form is evident in every brushstroke, showcasing a highly refined technical skill."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is classic yet impactful, utilizing symmetry and the circular frame to create a compelling and focused visual statement."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The work reinterprets familiar symbols with a unique visual language, particularly in the unsettling combination of organic textures and precious materials."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It successfully conjures a mood of somber beauty and invites introspection without being overtly distressing."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The imagery provides fertile ground for interpreting profound existential themes, suggesting layers of meaning related to life, death, and legacy."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork possesses a unique aesthetic and substantial conceptual depth, offering a sophisticated meditation on mortality and memory. Its exceptional craft and compelling symbolism make it a powerful and enduring piece that would enrich any collection."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Sam Spratt"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:45:51-06:00",
+          "seconds": 16.1,
+          "review": {
+            "First Impression": "Immediate and arresting: a gilded, brainlike skull cradled by pale, long-nailed hands reads like a devotional object and a macabre trophy at once. The piece is simultaneously sumptuous and unsettling, its surfaces demanding to be touched yet reminding you of mortality.",
+            "Interpretation": "The work stages a collision between beauty and decay: a skull whose upper cranium has been transfigured into a textured, gold, brainlike mass is presented tondo-style against a muted beige — the hands both reveal and possess it. Formally, the artist compresses baroque materiality (rich gold, sculptural texture) and painterly mark-making with clinical, elongated hands to create tension between ritual reverence and clinical dissection. The circular framing suggests an icon or coin, emphasizing themes of value, commodification of intellect, and memento mori; light and tactile brushwork make the gold feel both alluring and corrosive, so the image oscillates between worship and warning.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptionally sure handling of texture, light and material — the gold reads metallic and viscous while the flesh and nails retain believable, delicate modeling; brushwork is controlled and expressive."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo composition centers the object with the hands creating subtle diagonals and a framing rhythm; symmetry is used deliberately without feeling static, though the centrality reduces narrative depth slightly."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The skull/memento mori motif is common, but the literal gilding of the brain, the tactile sculptural surface, and the icon-like framing grant the work a distinctive, memorable twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece produces a strong visceral reaction — a mix of fascination and unease — and the tactile rendering intensifies that response, making the image linger after viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There are clear, layered readings (value vs. decay, worship of intellect, ritualized death) that reward reflection, though the messaging stays in a tight symbolic register rather than opening into more ambiguous or expansive territories."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a technically assured, thematically coherent work that transforms familiar symbols into a fresh, uncanny object. Its combination of sumptuous surface treatment and moral ambivalence creates sustained interest and repeated viewings, making it worth acquiring."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:46:06-06:00",
+          "seconds": 14.3,
+          "review": {
+            "First Impression": "Immediate, tactile and uncanny: a burnished, brain-like golden skull is held reverently by pale, elongated hands. The image feels like a modern vanitas rendered with obsessive surface detail and a ritualistic calm.",
+            "Interpretation": "The work stages a confrontation between beauty and decay — a skull plated in gold and textured like a braided brain becomes an object of veneration. The circular (tondo) framing, muted beige ground, and sculptural, almost impasto handling of the gold elevate the skull into a reliquary; the hands both present and possess it, suggesting themes of ownership, transformation (alchemy), and the commodification of intellect or mortality. Formal choices — tight central composition, controlled chiaroscuro, and the contrast between matte flesh and reflective gold — turn the subject into an ambiguous emblem: precious and rotten at once.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional command of digital/painting technique: convincing textures (metallic sheen, flesh, and braided forms) and controlled lighting create a highly believable, tactile surface."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A tightly focused tondo composition centers attention effectively; the hands frame the skull dynamically, though the symmetry risks predictability, it still reads powerfully and coherently."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The skull motif is well-worn, but the treatment — gold as braided brain, ritualized presentation in a tondo — gives the trope a fresh, unsettling twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece elicits a strong, ambivalent response: fascination with the sumptuous surface and discomfort at the implied decay and possessiveness, producing lingering unease."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There are clear symbolic layers (mortality, value, intellect, ownership) that invite return, though the central metaphor is legible rather than deeply oblique."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This work marries high technical polish with a taut, evocative concept; its visual authority and moral ambiguity reward repeated looking. I recommend acquisition because it announces a confident voice and yields both immediate impact and layered meaning."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:46:20-06:00",
+          "seconds": 14.4,
+          "review": {
+            "First Impression": "My immediate reaction is a jolt of beautiful unease: a gilded, brainlike skull cradled by pale hands reads as both sumptuous and ominous. The image feels ceremonial — ornate materiality set against a muted, clinical background.",
+            "Interpretation": "The work stages a collision between value and mortality: a skull treated as precious object, its cranium rendered like molten gold or a braided brain, while long-fingered hands present it like a relic. The circular frame and neutral ground isolate the motif, turning the skull into an icon; painterly, tactile brushwork and carefully controlled light emphasize surface texture and weight. Formally the artist compresses vanitas tradition and contemporary commentary on commodified intellect or beauty into a single, striking emblem.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional technical command — the rendering convincingly mimics oil paint, with nuanced handling of highlights, texture, and edge quality that conveys both metal and organic material."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, focused arrangement: the circular crop and the vertical thrust of the hands center attention while subtle diagonals from the fingers create movement; the composition reads clearly at multiple scales."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Skull imagery is familiar, but the specific choice to gild and texturize the cranium into a brainlike, braided surface, combined with the ritualized presentation, gives it a fresh, memorable twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece elicits a taut mix of attraction and repulsion — the sumptuous gold tempts the eye while the hollow sockets and uncanny hands provoke discomfort and curiosity."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Clear conceptual hooks (vanitas, commodity of intellect/beauty, relic and ritual) provide layers to unpack on repeated viewings, though the message remains evocative rather than radically novel."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This work combines high-caliber execution with resonant imagery: it is both visually sumptuous and conceptually pointed. Its formal assurance and emotional immediacy make it a decisive, endorsable piece."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:46:33-06:00",
+          "seconds": 12.9,
+          "review": {
+            "First Impression": "This piece is immediately striking: beautiful, unsettling, and meticulously rendered. The golden skull with its organic, brain-like texture held by elegant, pale hands instantly captivates and suggests a rich narrative.",
+            "Interpretation": "This artwork presents a golden skull, intricately textured with what appears to be organic, brain-like convolutions, delicately held by a pair of slender, pale hands adorned with long, golden nails. The circular format and muted background emphasize the central subject, transforming a traditional memento mori into an object of both opulent beauty and profound contemplation. The piece interprets themes of mortality, value, and the preciousness of intellect or spirit, even in decay, by rendering the symbol of death in a luxurious, almost sacred material and presenting it with a reverent, ethereal touch. It suggests a meditation on what truly endures and is cherished.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist demonstrates superb command of their medium, particularly in rendering the complex, molten texture of the golden skull and the delicate, almost translucent quality of the hands."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The circular composition effectively frames the central subject, creating a sense of intimacy and reverence, while the symmetrical placement of the hands provides strong visual balance."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "Although it employs the classic memento mori motif, the unique rendering of the golden skull with its organic, brain-like texture, paired with the elegant, almost spectral hands, offers a distinctly fresh and intriguing take."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork instills a contemplative mood, blending the macabre with the precious in a way that is both beautiful and subtly unsettling, prompting reflection on value and mortality."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "It delves into profound themes of mortality, the intrinsic value of thought, and the transformation of a symbol of death into an object of opulent reverence, offering rich ground for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a masterclass in blending the beautiful with the unsettling, offering a fresh, elegant take on a timeless theme. Its exceptional craft, thoughtful composition, and intriguing conceptual depth make it a compelling acquisition that will reward sustained viewing."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:46:43-06:00",
+          "seconds": 9.7,
+          "review": {
+            "First Impression": "The image immediately struck me with its blend of the grotesque and the opulent. A highly textured, almost organic golden skull is presented in a circular format, held by delicate, elongated hands. There's an unsettling beauty to it.",
+            "Interpretation": "This work presents a gilded, almost brain-like skull, cradled by pale, elegant hands with golden fingernails, against a sparse, ethereal background. The choice of a circular format brings an iconic, almost medallion-like quality to the composition, focusing all attention on the central motif. The skull, rendered with an intricate, coral-like texture rather than smooth bone, elevates it from a mere symbol of death to a precious, perhaps intellectual, artifact. The hands, with their attenuated fingers and subtle luminescence, seem to both offer and protect this golden entity, suggesting a complex relationship with knowledge, mortality, or vanity. The interplay of the rich, tactile gold and the soft, almost spectral quality of the hands creates a visual tension that underscores the work's thematic depth.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist demonstrates exceptional command of texture, light, and form, particularly in the detailed rendering of the golden skull and the nuanced, almost translucent quality of the hands. The gold gleams with a convincing metallic sheen, while the subtle variations in the hands' skin tone add to their ethereal quality."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement within the circular frame creates a powerful focal point. The hands expertly frame the skull, guiding the viewer's eye and adding a sense of ritualistic presentation. It feels balanced and intentionally constructed."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While skulls are a common motif, the unique, organic, brain-like texture of this golden skull, combined with the elegant yet almost alien hands, offers a fresh and distinctive take. It transcends traditional Memento Mori imagery through its peculiar aesthetic."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece evokes a quiet contemplation of mortality, value, and the burden or preciousness of thought. It's beautiful in its strangeness, producing a subtle unease coupled with aesthetic admiration."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The artwork delves into themes of vanity, intellectual legacy, and the aestheticization of death. The golden skull, perhaps representing a 'golden mind' or the ultimate prize of thought, is held by hands that seem to signify both reverence and a certain macabre detachment, inviting multiple layers of interpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a compelling fusion of superb technical execution and profound conceptual resonance. Its distinct visual language and nuanced thematic explorations make it a significant piece that would enrich any collection and offer enduring intellectual engagement. The artist has created something both beautiful and deeply thought-provoking."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:46:53-06:00",
+          "seconds": 10.0,
+          "review": {
+            "First Impression": "This image is immediately captivating, a striking blend of the macabre and the opulent. The golden, almost cerebriform skull held by elegantly sinister hands creates a powerful, unsettling focal point within the circular frame. It feels both ancient and disturbingly contemporary.",
+            "Interpretation": "The artwork presents a potent memento mori, yet subverts traditional iconography with its peculiar aesthetic. The central golden skull, textured like a brain or an ancient, calcified growth, suggests not just death but a gilded cage of intellect or accumulated wealth. The hands, unnervingly pale and slender with sharp, metallic nails, cradle this precious yet grotesque object with a gesture that is both protective and possessive. The circular format acts like a portal, focusing all attention on this intimate, unsettling tableau, forcing a confrontation with themes of mortality, value, and the burden of consciousness.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist demonstrates masterful control over texture and light, particularly in the intricate rendering of the golden skull and the delicate, almost spectral quality of the hands. The illusion of different materials is exceptionally convincing."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The circular format is utilized effectively, creating a perfectly balanced and self-contained composition that draws the eye directly to the central, iconic image of the skull held by the hands."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the memento mori is a classic theme, the specific execution—the brain-like gold skull and the unsettling, elongated hands—lends a distinct, fresh voice to the subject matter."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork successfully evokes a disquieting blend of fascination and unease, prompting contemplation on life's fragility, the nature of value, and the inescapable presence of death."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Beyond its striking visual impact, the piece delves into rich conceptual territory, exploring the intersection of wealth, intellect, and mortality with nuance and an enigmatic quality that encourages repeated viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a truly compelling and masterfully executed piece that resonates with both aesthetic power and profound conceptual depth. Its unique interpretation of enduring themes, combined with superb craftsmanship, makes it a significant and valuable addition to any collection."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The Partition is formed … End Chapter 1 … These former husks / Vessels adorned with ancestry / Carry the code / Of shared memory // Though flayed and quartered / The bone is porous / Fertile grounds / Ripe for the return // New flesh grows / Once we learn how to die / Souls for the bankless / The tree decides // Power sown in urns and ashes / Eternity learned / in collective demise.",
+        "artist": "Sam Spratt"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:47:12-06:00",
+          "seconds": 18.9,
+          "review": {
+            "First Impression": "A pallid pair of hands presents a golden, brain-textured skull to the viewer; the object reads as both treasure and relic. The image is immediately ritualistic and uncanny, its muted background forcing attention onto the tactile, molten-looking surface of the skull.",
+            "Interpretation": "The work stages a meditation on ancestral memory, mortality, and the uneasy value we place on physical remnants. Formally, the circular format and neutral ground concentrate focus on the central object: hands rendered in cool, desaturated tones hold a skull rendered in warm, metallic gold with exaggerated, brainlike folds. The painterly handling — thick, sculptural marks on the skull versus softer, smoother modeling of the hands — sets up a contrast between material reverence and fragile humanity. The gold suggests worth, fetishization, or ritual currency; the brain-texture and the submitted text (lines about vessels, shared memory, and collective demise) push the reading toward cultural inheritance and rebirth through deliberate forgetting or destruction.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technical control is excellent: the rendering convincingly differentiates surfaces (metallic, fleshy, porous) and the handling of light on the gold is painterly but convincing; mark-making communicates weight and texture."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, symmetrical arrangement inside a circular frame creates an immediate, iconic focus that supports the ritual theme, though the near-perfect symmetry risks a degree of static formality."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Skulls and gold are familiar motifs, but the fusion of a brainlike surface with gilt patina and the hands’ delicate presentation refresh the trope and offer a readable twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece produces a sustained unease tempered by beauty: viewers feel both repelled and attracted by the sumptuousness of the object, which deepens engagement rather than offering shock alone."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The provided lines and the visual choices together gesture toward complex ideas — collective memory, sacrificial renewal, the commodification of ancestry — giving the work layers to revisit beyond a first glance."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a strong, confident work that marries accomplished technique with a succinct, provocative concept. Its balance of beauty and disquiet, combined with clear symbolic resonance, makes it a worthy acquisition."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:47:33-06:00",
+          "seconds": 21.0,
+          "review": {
+            "First Impression": "Visceral and ritualistic — a beautiful, unsettling image. The golden, brain-like skull held reverently by pale hands reads as both relic and organism, equal parts awe and decay.",
+            "Interpretation": "The work stages a contemporary vanitas: ancestral vessels and collective memory rendered as a gilded, organic skull that is at once trophy and seed. The circular tondo concentrates attention and gives the object liturgical weight; a muted, warm-beige ground isolates the motif so the textured, impasto-like gold surface and the cool, sculptural hands dominate the picture plane. Paint handling emphasizes material ambiguity — metal that feels fleshy, bone that reads like fertile earth — reinforcing the poetry’s claims about memory, death, and renewal, and suggesting a tension between commodified relic and regenerative soil.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technically assured digital painting that convincingly renders a range of materials and textures; the lighting and tactile surfaces are rendered with confident, economical strokes that read as painterly yet refined."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo framing and centered vertical axis give the image a ritual focus and strong silhouette, though the symmetry risks a slight stiffness; overall the composition directs attention with precision and authority."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "It works within the well-worn vanitas/skull tradition, but the brain-like gold surface, the tondo treatment, and the fusion of commodity and organics provide a distinct, contemporary spin."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image reliably produces unease and a mournful awe — the hands’ tenderness and the skull’s opulent grotesquery create a potent emotional ambivalence."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "There are layered readings — ancestral memory, commodification of souls, cyclical regeneration — reinforced by the submitted verse; the piece rewards reflection and returns to the poem’s imagery."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "The work marries high technical control with a clear, provocative concept; it renews a classical theme with contemporary concerns about value, memory, and collective renewal. Its combination of formal strength and thematic richness makes it worth acquiring."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:47:48-06:00",
+          "seconds": 15.0,
+          "review": {
+            "First Impression": "A wrenching, baroque still life: a luminous, gold-infused skull is cradled by pale, almost sculptural hands, and the image lingers somewhere between ritual object and relic. The work feels intimate and ceremonial, with a melancholic hush beneath its gilded surface.",
+            "Interpretation": "This painting stages a confrontation with ancestry, mortality, and regeneration. The skull—its top textured like a brain or a braided crown and rendered in molten gold—functions as both vessel and vault: a repository of memory that is simultaneously sacred and commodified. The pale hands, careful and possessive, suggest human stewardship or the attempt to reclaim meaning from what remains; the circular format contains the drama like an icon or reliquary. Formally, Sam Spratt uses tactile, painterly brushwork and a tightly limited, warm beige palette punctuated by metallic highlights to make the object feel weighty and alive; the melding of figurative realism with symbolic distortion (the bulbous, apple-like eyes; the brain-like top) asks the viewer to read the skull as a living archive rather than a mere symbol of death. The supplied poem amplifies this reading—language of 'husk,' 'vessels,' 'shared memory,' and 'return'—so the image works as a meditation on collective memory and the possibility of renewal through ritualized loss.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional control of paint and texture—gold appears both metallic and organic, while the flesh tones of the hands are rendered with believable volume and subtle modeling. The finish balances fine detail with painterly marks that heighten tactile presence."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The circular framing and central placement create an iconic, unavoidable focus; the hands form dynamic diagonals that lead the eye into the skull. Minor compositional redundancy in the literal centrality keeps it from feeling entirely unpredictable."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Memento mori and reliquary imagery are familiar art-historical territories, but the specific hybrid of brain-like ornamentation, molten gold texture, and ritualized hands gives it a distinctive twist. It innovates within a known language rather than inventing a wholly new one."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The image is viscerally affecting—beautiful and unsettling at once—and it provokes contemplation rather than easy sentiment. The tactile gilding and the hands' tenderness create an ambivalent mood that lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "There is rich symbolic layering: ancestry, commodification of memory, collective death and rebirth, and the politics of preservation. The accompanying text deepens the framework without needing to explain the image, allowing repeated viewings to yield more association."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "This work combines masterful technique with a potent, sustained concept and strong emotional impact; it reads like a contemporary reliquary that rewards contemplation. I would acquire it because it synthesizes craft, symbolism, and presence in a way that sustains interest across viewings and anchors a collection thematically and visually."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-10T10:47:58-06:00",
+          "seconds": 10.4,
+          "review": {
+            "First Impression": "The image immediately strikes with its unsettling beauty: a golden, almost brain-like skull cradled by slender, pale hands with sharp, gilded nails. The circular format creates a focused, almost meditative presentation, drawing the viewer into its somber, elegant world.",
+            "Interpretation": "\"The Partition is formed\" depicts a highly textured, golden skull, resembling both a human brain and perhaps a precious, ancient artifact, held delicately by two ethereal, seemingly skeletal hands. The skull, with its convolutions, evokes ideas of thought, memory, and ancestral knowledge, rendered in a precious metal that elevates its significance. The pale hands, with their long, sharp golden nails, suggest both fragility and a subtle, almost predatory power, or perhaps the careful preservation of this weighty object. The overall composition within the tondo format emphasizes a self-contained cycle or a moment of profound contemplation. Coupled with the artist's poetic description, the work interprets themes of collective memory, the transformation inherent in death, and the intrinsic value of shared human experience, portraying a cyclical existence where dissolution leads to renewal.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The command of the medium is exceptional, particularly in the rendering of the golden, organic texture of the skull and the subtle, almost translucent quality of the hands. The details are meticulously executed, demonstrating a high level of technical skill."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, symmetrical placement within the tondo is highly effective, drawing the eye to the primary subjects. The hands elegantly frame the skull, creating a balanced and focused composition that enhances the work's contemplative mood."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the skull motif is enduring, its unique organic, brain-like texture, combined with the golden hue and the elegant, skeletal hands, offers a fresh and distinctive interpretation. It avoids cliché through its specific aesthetic and conceptual layering."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork evokes a strong sense of profound contemplation, quiet melancholy, and an appreciation for the enigmatic nature of life and death. It provokes a thoughtful, introspective response rather than a superficial one."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The piece, especially when paired with its evocative title and text, explores complex themes of collective memory, ancestral wisdom, the sacredness of the mind, and the transformative cycle of existence. It provides rich intellectual fodder for continued engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a masterful synthesis of striking visual aesthetics and profound conceptual depth. The exquisite execution of the unique golden skull and ethereal hands creates an image that is both beautiful and deeply thought-provoking, inviting repeated contemplation on themes of memory, mortality, and transformation. It is a significant and compelling piece."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-10T10:48:07-06:00",
+          "seconds": 9.2,
+          "review": {
+            "First Impression": "The image immediately presents a fascinating blend of the macabre and the opulent. A golden, almost organic skull is held with unnerving delicacy by pale, elongated hands, suggesting a ritualistic unveiling or a precious, unsettling artifact. It's instantly captivating and draws the viewer into its strange world.",
+            "Interpretation": "This work, titled 'The Partition is formed…', depicts a golden, textured skull—resembling a brain or cauliflower—cradled by two slender, pale hands adorned with long, golden nails, all within a circular frame. The golden material transforms the traditional memento mori into an object of both reverence and disquiet, suggesting a precious relic rather than a mere remnant. The hands, almost spectral in their pallor, emphasize the skull's central importance, presenting it as an offering or a profound discovery. Formally, the contrast between the rough, organic texture of the skull and the smooth, elongated hands is striking, while the circular composition lends a timeless, meditative quality. Conceptually, the piece, particularly when paired with its evocative title and description, delves into themes of ancestral memory, the transformation of death, and the cyclical nature of existence, proposing that 'bone is porous / Fertile grounds / Ripe for the return'.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The artist demonstrates exceptional command over texture and light, particularly in rendering the intricate, almost biological surface of the golden skull and the subtle sheen of the nails. The delicate shading of the hands creates a palpable sense of form and fragility."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the skull, symmetrically framed by the hands, creates a powerful focal point. The circular format enhances the feeling of a contained, almost iconic image, reinforcing its symbolic weight."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While skull motifs are ubiquitous, the specific execution—a golden, brain-like skull held by these particular hands—feels distinct and fresh. It recontextualizes familiar symbolism into something uniquely esoteric and luxurious."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a complex emotional response, oscillating between fascination with its peculiar beauty and a subtle sense of unease or the uncanny. It invites contemplation on mortality and transformation."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece possesses significant conceptual depth, especially when considering the accompanying text which frames it as an exploration of collective memory, rebirth, and the profound processes inherent in 'how to die'. It moves beyond mere aesthetic appeal to suggest a rich philosophical inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a masterful synthesis of the visually compelling and the intellectually stimulating. Its exquisite craft, distinctive aesthetic, and the profound conceptual underpinnings presented in the artist's description make it a truly significant piece deserving of acquisition. It promises to reward sustained engagement."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-10T10:48:18-06:00",
+          "seconds": 10.5,
+          "review": {
+            "First Impression": "This image immediately strikes me with its unsettling beauty. The golden, almost biological skull held by those unnervingly elegant hands creates a powerful juxtaposition of the sacred and the grotesque. It feels ancient, yet strangely futuristic in its refined execution.",
+            "Interpretation": "This work delves into themes of mortality, legacy, and transformation, presenting a meditation on the cyclical nature of life and death. The central golden skull, rendered with an intricate, almost coral-like texture, acts as a vessel for ancestral memory and and the potential for rebirth, rather than merely a symbol of demise. The pale, elongated hands, adorned with sharp golden nails, cradle this relic with a blend of reverence and possessiveness, suggesting a ritualistic act of holding onto or unlocking the wisdom embedded within the \"former husks.\" The tondo format further enhances the sense of a complete, self-contained universe, where the decomposition of the past (\"flayed and quartered\") becomes the fertile ground for \"new flesh,\" underscoring the idea that eternity is learned in \"collective demise.\"",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The command over texture, light, and anatomical detail is exceptional, particularly in rendering the golden, organic surface of the skull and the subtle translucence of the hands. The brushwork creates a tactile quality that draws the viewer in."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo format is utilized effectively, centering the powerful image and emphasizing its ritualistic containment. The interplay of the hands and skull creates a strong, balanced focal point, guiding the eye through the intricate details."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skulls and hands are common motifs, the unique rendering of the skull as a golden, biological structure, coupled with the distinctive aesthetic of the hands, offers a fresh perspective on themes of death and rebirth."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work evokes a complex range of emotions, from a sense of ancient awe and mystery to a subtle discomfort and fascination with the macabre beauty. It prompts contemplation on mortality and legacy."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Supported by the evocative title and description, the piece offers profound layers of meaning concerning shared memory, ancestral knowledge, the sacredness of decay, and the transformative power of accepting death as a prelude to rebirth. It invites deep philosophical engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 90,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a masterclass in evocative symbolism and technical skill. Its compelling fusion of the beautiful and the macabre, combined with a rich conceptual framework, ensures it will continue to reward sustained viewing and intellectual engagement. It is a powerful statement on the cycles of existence, rendered with undeniable artistic prowess."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The Partition is formed … End Chapter 1 … These former husks / Vessels adorned with ancestry / Carry the code / Of shared memory // Though flayed and quartered / The bone is porous / Fertile grounds / Ripe for the return // New flesh grows / Once we learn how to die / Souls for the bankless / The tree decides // Power sown in urns and ashes / Eternity learned / in collective demise.",
+        "artist": "Sam Spratt"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Painting\",\n    \"Digital Painting\",\n    \"Figurative\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"technicalExecution\": 2,\n    \"emotionalImpact\": 3,\n    \"originality\": 4,\n    \"colorAndAesthetics\": 5,\n    \"conceptOrMeaning\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to painters with a distinctive visual language and exceptional command of light, color, edges, and composition. Whether the surface is oil or pixels, I want to feel deliberate mark-making, confident drawing underneath, and an emotional temperature — every brushstroke intentional, nothing rendered on autopilot.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Sam Spratt\",\n    \"James Jean\",\n    \"Jeremy Mann\",\n    \"Craig Mullins\",\n    \"Jenny Saville\"\n  ],\n  \"avoid\": \"Generic fantasy illustration, low-effort fan art, overly rendered work without personality, and trend-driven aesthetics.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Generative / Algorithmic Art\",\n    \"Creative Coding\",\n    \"Long-form Generative Series\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"technicalExecution\": 2,\n    \"conceptOrMeaning\": 3,\n    \"composition\": 4,\n    \"innovation\": 5,\n    \"historicalSignificance\": 6,\n    \"colorAndAesthetics\": 7,\n    \"emotionalImpact\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I collect algorithmic work where the system is the artwork: elegant constraint design, meaningful randomness, and code whose logic you can feel in the output. I care about how an algorithm behaves across its whole output space — a strong long-form series should hold up at every seed, not just the cherry-picked ones.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Tyler Hobbs\",\n    \"Dmitri Cherniak\",\n    \"Emily Xie\",\n    \"Vera Molnár\",\n    \"Casey Reas\"\n  ],\n  \"avoid\": \"Random outputs without an intentional system, derivative algorithms, decorative parameter tweaks, and series that only work at their best seed.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/painting.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/generative.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-10T10:48:35-06:00",
+          "seconds": 17.8,
+          "review": {
+            "First Impression": "An unsettling hush: a gold, brain-like skull is held reverently between pale hands, like an altar object or trophy. The image reads as both ritualistic and intimate — elegant painterly surfaces that nonetheless carry a quiet, corrosive unease.",
+            "Interpretation": "This tondo-like image stages a confrontation with ancestry and mortality by literalizing memory as a gilded, living skull. The circular format and muted beige ground concentrate attention on the central object; cool, desaturated hands push against warm, metallic flesh, producing a tactile contrast between matte skin and viscous gold. Brushwork favors sculptural modeling and textured impasto effects (rendered digitally) that make the skull feel simultaneously precious and porous — the brainlike folds suggest stored code or communal memory. Compositionally the hands form a support and an index of agency: they cradle, manipulate, and perhaps coronate the vessel. The piece reads as an argument that death and ritual are sites of regeneration — the poem supplied by the artist is visible in the work’s insistence on vessels, shared memory, and the conditions for new flesh to grow.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptionally confident handling of digital paint that convincingly reads like oil: controlled edges, believable anatomical modeling of the hands, and richly varied surface textures on the skull."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "A taut, economical structure — the circular frame, vertical axis of the hands, and centered skull produce a powerful focal equilibrium and clear visual hierarchy."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The skull motif is familiar, but the treatment — gilded, brainlike surface and the sanctified handling by hands — feels fresh and personal rather than derivative."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work generates a steady, uncanny affect: reverence mixed with disquiet. It lodges in the viewer as both beautiful and ominous."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Clear conceptual coherence with the provided text: themes of ancestry, vessels, collective memory, and regeneration are embodied rather than simply captioned, rewarding a return visit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "This work satisfies the collector’s priorities: masterful technical execution, a decisive, composition-first structure, and a distinct visual language. It balances emotional weight and intellectual clarity without resorting to empty ornament; acquiring it would be an endorsement of the artist’s confident hand and singular voice."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-10T10:48:47-06:00",
+          "seconds": 11.5,
+          "review": {
+            "First Impression": "A slow, unsettling hush: the image reads like a reliquary portrait where grief and gilding collide. The central golden skull—part brain, part ornament—held by pale, deliberate hands feels ceremonial and intimate.",
+            "Interpretation": "This piece stages mortality as heirloom and code: a skull rendered with brain-like curls in burnished gold suggests cultural memory packaged as treasure. The neutral, desaturated ground and a circular format isolate the object, turning the hands-and-skull motif into a ritual tableau. Painterly, tactile brushwork and controlled highlights give the gold substance and weight, while the elongated, alabaster hands with gold nails introduce a feminine, uncanny caretaking. Form, color and gesture combine to ask how lineage and shared loss become currency—how the past is both vessel and seed for new life.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technically assured digital painting that convincingly mimics oil handling—confident edges, nuanced highlights on the gold, and believable skin textures; handling of reflection and impasto is persuasive."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The circular crop, central placement and vertical axis formed by the hands create a taut, iconic composition; negative space is managed carefully so the viewer's gaze never wanders from the skull."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The hands/ skull motif is a familiar trope, but the choice to gild the brain/skull and the ritualized presentation freshen the idea and give it a distinct voice within contemporary figurative painting."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image carries a clear emotional temperature—unease tempered with reverence—and the visual paradox of beauty (gold) and decay (skull) elicits sustained, complex feeling."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Paired with the poem, the work holds layers about ancestry, collective memory and rebirth; its symbolic economy rewards repeat viewings and thought."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "The work aligns strongly with a collector who prizes deliberate painterly mark-making, a commanding composition, and an emotionally charged subject. It is technically excellent, visually distinctive without lapsing into mere illustration, and has the conceptual resonance to repay multiple viewings—worthy of acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-10T10:49:03-06:00",
+          "seconds": 16.3,
+          "review": {
+            "First Impression": "A quiet, ritualistic image: a gold, brain-like skull is elevated and cupped by pale hands, presented like a reliquary. The painterly surface and muted tondo give it the feel of an intimate devotional object with a modern, uncanny edge.",
+            "Interpretation": "This work stages death as both archive and seed: the skull functions as a vessel of ancestral memory, its gilding implying value, sanctification, or commodification. The hands cradle and display rather than mourn, suggesting ritual transmission and the deliberate stewardship of shared codes. Formally, the artist favors a restricted, warm-beige ground and a tondo format that isolates the object, while painterly brushwork builds texture in the gold and soft, subdued modeling in the skin. The strong vertical axis — skull centered, hands rising — reads like an offering; the exaggerated ocular bulges and brain-forms turn the relic into something living, poised between decay and regeneration. The piece reads as a meditation on collective memory, mortality, and how value is inscribed onto remains (literal and cultural).",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional control of digital-painterly effects: convincing metallic sheen, tactile brushwork in the gold, and subtle, believable skin rendering show high technical command."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The tondo and centralized staging create a ritual focus; the hands frame and lead the eye with clarity and restraint, producing a strong, disciplined composition."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the skull reliquary is a well-worn motif, the combination of brain-like gilding, the tondo presentation, and the ceremonial hands gives it a distinct, contemporary twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The work balances eeriness and reverence; it elicits discomfort and fascination simultaneously, which sustains attention beyond an initial glance."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Clear conceptual anchors — ancestry, value, collective death and rebirth — that are reinforced by formal choices, leaving productive ambiguity rather than didacticism."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a confident, well-executed work that matches the collector's priorities: exceptional composition and technical execution paired with a distinctive visual voice. It reworks familiar iconography in a way that feels both deliberate and emotionally potent, making it worth acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-10T10:49:15-06:00",
+          "seconds": 11.4,
+          "review": {
+            "First Impression": "The image immediately strikes with its striking juxtaposition of the delicate and the grotesque, rendered with a rich, almost alchemical luminosity. The central, organic golden skull feels both ancient and alive, held with a peculiar reverence by the pale, elongated hands.",
+            "Interpretation": "This work presents a contemporary memento mori, where the traditional skull motif is transmuted into a golden, living entity, resembling a brain encased in precious metal. The subject, a 'vessel adorned with ancestry,' is cradled by two slender, almost spectral hands, their posture suggesting both offering and protection. Formally, the circular composition perfectly frames this central icon, drawing the viewer into its intricate textures and the subtle play of light across the golden surface. The artist's masterful command of digital painting creates a tactile quality, from the intricate, almost biological surface of the skull to the soft, velvety skin of the hands. This piece interprets themes of transformation, collective memory, and the preciousness of existence and demise, presenting a profound meditation on life's cyclical nature through a visually arresting and unique aesthetic.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The command of digital painting is exceptional, particularly in rendering the complex, organic textures of the golden skull and the subtle, lifelike translucency of the hands. The handling of light, shadow, and material properties demonstrates remarkable technical prowess."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The circular format provides a strong, contained stage for the central motif. The arrangement of the hands cradling the skull creates a balanced, intimate, and compelling focal point, guiding the eye through the intricate details."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While skulls are a ubiquitous symbol, this interpretation—a brain-like, organic golden skull held with such delicate reverence—feels distinctly fresh and avoids generic genre tropes, offering a unique visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a powerful sense of solemnity and contemplation, prompting reflection on themes of mortality, transformation, and the preciousness of ancestral memory. It achieves a quiet yet profound emotional temperature."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece delves into rich conceptual territory, exploring notions of 'shared memory,' 'collective demise,' and transformation through the symbolism of a transmuted, golden cranium. It offers substantial food for thought beyond its surface beauty."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 87,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a masterful display of the artist's distinctive visual language and exceptional technical skill, particularly in rendering light and texture. It aligns perfectly with the collector's preference for strong composition, deliberate mark-making, and profound emotional and conceptual depth, making it an invaluable acquisition for the collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-10T10:49:24-06:00",
+          "seconds": 9.3,
+          "review": {
+            "First Impression": "This piece immediately grabs attention with its striking central image: a grotesquely beautiful golden skull, rendered with an almost organic, brain-like texture, cradled by a pair of pale, elongated hands. It feels at once ancient, alchemical, and deeply unsettling.",
+            "Interpretation": "The artwork presents a potent symbolic tableau, a golden, cerebrum-like skull held delicately by hands that appear both frail and reverent. This central motif, juxtaposed with the accompanying text about 'former husks,' 'shared memory,' and 'collective demise,' suggests a profound meditation on mortality, legacy, and transformation. The golden material imbues the 'vessel' with preciousness and perhaps an alchemical significance, a container of profound knowledge or the very essence of being, while the pale, almost ethereal hands imply a fragile stewardship over this weighty relic. The circular format enhances the sense of a complete, isolated ritual or contemplation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The command of texture, light, and form is exceptional. The golden brain-skull glows with a lifelike, almost viscous quality, and the rendering of the hands shows a masterful understanding of anatomy and subtle detail, fulfilling the desire for deliberate mark-making."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The tondo format is used effectively to focus all attention on the central, symbolically rich gesture. The placement of the hands perfectly frames the skull, creating a powerful, balanced, and contained visual narrative."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While skulls and hands are perennial motifs, the unique, brain-like quality of the golden skull and the distinctive style of the hands elevate this beyond mere trope. It possesses a singular aesthetic that avoids generic approaches."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork evokes a strong sense of solemnity, mystery, and a contemplative engagement with themes of life, death, and memory. It's a quiet but deeply impactful piece that invites introspection."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The artwork is rich with symbolic potential, amplified by the accompanying text. It delves into profound questions of identity, ancestry, and the cycle of existence, offering ample intellectual and philosophical ground for return."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a stellar example of Sam Spratt's distinctive visual language and technical prowess, aligning perfectly with the collector's preferences for masterful execution and evocative storytelling. It offers significant conceptual depth and a compelling emotional temperature, marking it as a truly exceptional piece that transcends typical illustrative boundaries."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-10T10:49:37-06:00",
+          "seconds": 13.0,
+          "review": {
+            "First Impression": "This piece immediately commands attention with its macabre yet opulent subject. The golden, cerebrally textured skull held by pale, almost spectral hands creates a disturbing elegance, rendered with a rich, tactile quality that makes me want to examine every detail.",
+            "Interpretation": "The artwork, titled \"The Partition,\" presents a striking image of a heavily textured, golden skull, resembling both a cauliflower and a brain, gently cradled by slender, pallid hands with elongated, golden-tipped fingers. The circular format evokes a sense of completeness or an antique medallion, framing this bizarre yet beautiful relic. Formally, the artist employs a limited, warm palette of golds, beiges, and subtle reds, enhancing the sense of the skull's preciousness and organic decay. The mark-making is deliberate, creating incredible depth and texture in the skull's convoluted surface, suggesting a wealth of hidden information or primordial matter. The accompanying text reinforces themes of ancestry, shared memory, and the cyclical nature of death and rebirth, presenting the skull as a \"vessel adorned with ancestry\" and \"fertile grounds\" for new growth. This is not merely a depiction of death, but an exploration of its transformative potential, where the preciousness of decay becomes a source of new life and collective consciousness.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The command of digital painting is exceptional, creating a tangible sense of texture and luminosity in the gold and subtle softness in the hands. Every 'brushstroke' feels intentional, contributing to the overall form and sense of materiality."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The circular format perfectly contains the central motif, with the hands elegantly framing the skull, drawing the eye directly to its intricate details. The balance and negative space are masterfully handled."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While skulls are a common motif, the rendering of this particular skull as a golden, brain-like mass held by these distinct hands feels unique and avoids generic fantasy tropes, creating a truly distinctive visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece evokes a complex emotional response — a blend of fascination, slight unease, and a contemplative sense of mortality and beauty in decay. It draws the viewer in rather than hitting them with a single strong emotion."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The combination of the visual metaphor of the \"brain-skull\" and the accompanying poem suggests rich layers of meaning concerning memory, ancestry, cyclical existence, and transformation, offering much to contemplate."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 90,
+              "Decision": "ACQUIRE",
+              "Rational": "This work exemplifies a distinctive visual language and exceptional technical execution that the collector values. Its unique take on classic iconography, combined with profound conceptual undertones, makes it a compelling acquisition that pushes beyond mere illustration into genuine artistry."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-10T10:49:55-06:00",
+          "seconds": 18.0,
+          "review": {
+            "First Impression": "A single, breath-stealing image: pale hands present a gold-encrusted skull whose crown reads like braided brain tissue. The work feels both sacramental and uncanny — luxurious metal meets fleshy vulnerability in a taut, painterly tondo.",
+            "Interpretation": "This piece stages a meditation on vessels, ancestry and transformation: the skull is both relic and seed, its gilded surface suggesting value, preservation and ritual while the brain-like texture up top implies regenerative potential. The circular format and neutral ground isolate the object, making it an emblem rather than a narrative scene; the cool, desaturated hands act as ceremonial holders, removing biography and emphasizing collective, cyclical themes of death, memory and rebirth. Formally, the artist uses dense, tactile brushwork and a restrained palette to produce a material paradox — metal that feels soft, bone that reads like fertile earth — which folds concept into craft and invites metaphoric reading rather than literal storytelling.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Command of painterly technique is evident: convincing textures, controlled impasto-like strokes, and subtle handling of light that sell both the metallic sheen and the porous bone."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo centers the object with clear, iconic logic and the hands create a strong vertical axis and framing, though the piece trades dynamic tension for emblematic stillness."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The memento mori/skull motif is familiar, but the braided, brainlike gilding and ceremonial presentation give it a distinctive twist rather than a purely derivative reiteration."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image is quietly unsettling and reverent at once; it evokes mortality, tenderness and the uncanny in a way that lingers beyond a first look."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There is a rich allegorical core (ancestry, vessels, collective becoming) that rewards reflection, though the symbolism remains more evocative than systematically interrogated."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 72,
+              "Decision": "PASS",
+              "Rational": "This is a highly accomplished, affective piece that succeeds on craft and evocative concept, but it falls outside the collector's stated focus on algorithmic, system-driven work and long-form generative series. Given the collector's priority for artworks where the process/algorithm is the primary subject and where a series must demonstrate robust behavior across many outputs, this single, painterly emblem — however strong — should be passed."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-10T10:50:12-06:00",
+          "seconds": 17.3,
+          "review": {
+            "First Impression": "A slyly ceremonial image: a golden, brain-textured skull cradled in pale, elongated hands inside a tondo. It feels at once baroque and intimate — beautiful, uncanny and quietly ominous.",
+            "Interpretation": "The work stages a meditation on ancestry, vessels and the persistence of memory; the golden skull reads as both reliquary and banked capital, echoing the poem’s language about ‘vessels adorned with ancestry’ and ‘souls for the bankless.’ Formally, the artist uses a limited, desaturated palette and a circular tondo format to turn the object into a ritual object. The tactile, impasto-like brushwork and metallic rendering make the skull feel simultaneously sculptural and newly grown — the brain-like folds suggest regeneration as much as decay. Hands frame and elevate the object like a liturgical offering, emphasizing themes of collective surrender and rebirth embedded in the provided verse.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The technical control is excellent: digital paint handling convincingly imitates oil impasto and metal reflectance, while the subtle rendering of skin and bone shows mastery over texture and light."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The tondo composition is tightly resolved — a central vertical axis formed by the hands and skull creates a ritual focus, and negative space is used economically to heighten the object’s presence."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Skulls, reliquaries and gold symbolism are familiar visual territory; the specific fusion of brain-like growth and golden ornamentation is interesting but not decisively novel."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece reliably produces a mix of awe and unease; the tactile gold against pale hands is viscerally affecting and the work’s restraint amplifies its mood."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There is a discernible conceptual backbone — ancestry, collective memory, and the economics of souls — and the image rewards reflection, though it gestures toward established metaphors rather than expanding them into a new conceptual system."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "PASS",
+              "Rational": "This is a technically superb, emotionally compelling image with a coherent conceptual reading, but it is not aligned with the collector’s stated preference for generative/algorithmic systems and long-form series where the method is the artwork. On those grounds — and because its iconography, while strong, relies on well-trod motifs — I recommend passing rather than acquiring."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-10T10:50:31-06:00",
+          "seconds": 18.9,
+          "review": {
+            "First Impression": "Immediate, it reads like a ritual relic: a gold, brain-textured skull cradled by pale, elegant hands inside a tondo. The image is simultaneously sumptuous and unsettling — a baroque memento mori rendered with striking tactile detail.",
+            "Interpretation": "The work fuses mortality, memory, and value: the skull-as-vessel suggests ancestry and shared code while its golden, brain-like surface collapses wealth and cognition into a sacred object. The centred tondo, muted background and careful modelling turn the scene into an icon — hands perform a liturgical gesture of preservation or offering. Painterly, molten brushwork makes the 'gold' feel viscous and alive, supporting the text's ideas of fertility, return, and collective transformation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technical command is outstanding: modelling, texture, and handling of light convincingly render metal, flesh and ceramic skin; brushwork reads as deliberate and highly controlled."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The tondo framing and central placement create a strong, iconic image; the hands provide dynamic counterpoint and guide the eye, though the strict centring limits spatial complexity."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The memento mori and reliquary motifs are familiar, but the specific synthesis — a brain-like golden skull held like a relic — is a fresh, resonant variation rather than a radical innovation."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece elicits a visceral mix of awe and unease; tactile surfaces and the intimacy of the hands amplify a haunting, ritualistic affect."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Paired with the provided verse, the image supports layered readings about ancestry, collective memory and regeneration; there's enough ambiguity to reward repeated viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "PASS",
+              "Rational": "This is a superbly executed, conceptually layered painting that communicates ritual, value and mortality with precision and feeling. However, it does not engage the systems-based, generative logic prioritized by the collector’s stated preferences, so acquisition would be inconsistent with that brief."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-10T10:50:44-06:00",
+          "seconds": 12.4,
+          "review": {
+            "First Impression": "The striking image of a golden, almost brain-like skull held by ethereal, pale hands immediately captures attention. There's a macabre beauty and an intricate, almost devotional, quality to its presentation within the circular format.",
+            "Interpretation": "This work presents a gilded, cerebral skull, cradled by slender, ghostly hands with unnaturally long, golden nails, all contained within a tondo. The skull's surface, resembling both a brain and a cauliflower, suggests a transformation of thought or organic matter into something precious yet grotesque. Formally, the limited palette of muted golds and creams, alongside the masterful rendering of texture and light, imbues the piece with an ancient, alchemical gravitas. The circular composition centralizes the macabre relic, emphasizing its symbolic weight. The accompanying poem speaks to themes of ancestry, shared memory, death as a precursor to rebirth, and a collective, almost spiritual, evolution, suggesting the skull is a 'vessel adorned with ancestry' carrying 'the code of shared memory,' ripe for a 'return' and 'new flesh.' The piece thus interprets mortality not as an end, but as a fertile ground for perpetuation and transformation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The command of oil painting technique is exceptional, evident in the meticulous rendering of the golden, textured skull and the subtle, almost translucent quality of the hands. The play of light across the varied surfaces is masterfully handled."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, iconic placement of the skull and hands within the tondo creates a strong, balanced, and immediately arresting composition. The framing by the hands expertly guides the viewer's eye."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While skulls are a recurring motif in art, this specific rendition — a brain-like golden skull held by spectral hands with golden nails — is distinct and possesses a unique aesthetic voice."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a contemplative and slightly unsettling emotional response, merging beauty with the macabre. It has a quiet power that invites sustained reflection rather than a fleeting glance."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Supported by the evocative poem, the piece delves into rich themes of legacy, transformation, the nature of consciousness, and the cyclical aspects of life and death, offering layers of symbolic interpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "Despite its exceptional artistic merit, this artwork fundamentally diverges from the collector's stated preference for generative and algorithmic art. The collector's focus is on the elegance of code, systemic behavior, and meaningful randomness, which a static, traditional painting, no matter how skilled, does not address. This piece simply does not align with the core aesthetic and conceptual framework of the collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-10T10:50:58-06:00",
+          "seconds": 14.4,
+          "review": {
+            "First Impression": "The image immediately strikes with its opulent macabre; a golden, brain-like skull cradled by slender, almost ethereal hands with gilded nails. There's an unsettling beauty in this juxtaposition of decay and preciousness, ancient symbolism rendered with rich, textured detail.",
+            "Interpretation": "This work presents a highly stylized, textured golden skull, which appears almost organic, resembling a brain or cauliflower, being delicately held by two slender, pale hands. The circular format focuses attention on this central, ambiguous object. The choice of gold elevates the skull from a mere symbol of mortality to an artifact of immense value, suggesting themes of precious memory, inherited wisdom, or the enduring essence of being. The interplay between the life-like texture of the skull and the skeletal implication, combined with the gentle yet firm grip of the hands, speaks to the sacredness of what is passed down or preserved, perhaps touching on the transformation inherent in death and the cyclical nature of existence.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The rendering of the intricate golden texture, the subtle luminosity, and the delicate anatomy of the hands demonstrates exceptional technical skill and command of the medium, likely digital painting emulating traditional techniques."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the skull, perfectly framed by the hands within the circular format, creates a highly balanced and impactful composition. It draws the eye and holds attention, enhancing the solemnity of the subject."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While the skull as a memento mori is a well-worn motif, the specific combination of a textured, brain-like golden skull with elegant, almost spectral hands offers a distinct visual interpretation. It feels fresh within its genre, though not groundbreaking across art generally."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a strong sense of contemplative melancholy, the preciousness of life's intellectual or ancestral legacy, and a quiet confrontation with mortality. It leaves a lingering, thoughtful impression."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Beyond its visual appeal, the piece delves into profound themes of memory, ancestry, the vessel of the body versus the essence of consciousness, and the transformation that occurs through life and death, particularly when considered alongside the provided poetic text."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "PASS",
+              "Rational": "Despite the undeniable quality and thematic richness of this artwork, it fundamentally does not align with the collector's explicit and primary focus on generative and algorithmic art. The collector seeks works where the 'system is the artwork' and emphasizes code logic, criteria this figurative painting, however masterfully executed, simply does not meet. To acquire it would contradict the very foundation of the collection's stated purpose."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-10T10:51:10-06:00",
+          "seconds": 12.3,
+          "review": {
+            "First Impression": "The image is immediately captivating, presenting a macabre yet opulent aesthetic that draws the eye. The intricate details of the golden skull are particularly striking against the muted background.",
+            "Interpretation": "This artwork features a golden, brain-like skull held delicately by a pair of pale, elongated hands with sharp, golden fingernails, set within a circular frame. The skull's texture is rich and convoluted, suggesting both organic form and precious metal, while the hands appear almost ethereal or skeletal, yet firm in their grasp. The artist's accompanying text speaks of 'former husks,' 'shared memory,' 'code,' and themes of death and rebirth, implying a deep contemplation of mortality, legacy, and transformation. The golden material elevates the skull from a mere symbol of decay to a revered object, perhaps representing accumulated knowledge, spiritual essence, or an alchemical transformation of life's remnants into something eternal and valuable.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The intricate rendering of the golden, brain-like texture and the subtle, almost luminous quality of the hands demonstrate exceptional command of the chosen medium and technique. The artist clearly possesses a high degree of technical skill."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the skull within the tondo format creates a strong, balanced, and iconic image. The framing by the hands effectively draws the viewer's eye to the primary subject and its intricate details."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the memento mori theme is ancient, the specific visual language—a highly textured, brain-like golden skull held by such distinct, almost monstrous hands—offers a fresh and memorable take, moving beyond typical representations."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a powerful sense of unsettling beauty, reverence for the past, and a confrontation with mortality. The juxtaposition of decay and preciousness, fragility and enduring value, creates a compelling emotional tension."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece delves into profound themes of ancestry, collective memory, transformation, and the nature of existence beyond the physical. The visual metaphor, especially when considered with the artist's poetic description, provides rich ground for sustained contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 25,
+              "Decision": "PASS",
+              "Rational": "Despite the undeniable artistic skill and compelling themes present in this work, it fundamentally does not align with the collector's stated preference for generative and algorithmic art. The collection's focus is on the elegance of code and system design, qualities entirely absent in this traditional or digitally painted piece. Therefore, while appreciating its individual merit, it is not suitable for acquisition into this specific collection."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

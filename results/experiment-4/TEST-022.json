@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-022",
+    "artwork": "volunteer",
+    "artwork_title": "The Volunteer",
+    "artist": "Nawhsan",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/nft-art/volunteer.jpg",
+    "models": [
+      "gpt-5",
+      "gemini-3-flash-preview"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 5,
+    "system_prompt": "You review artworks for acquisition by a human art collector. If collector\npreferences are provided, take them into account.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression**\n- **Interpretation**\n- **Evaluation** — for each of the five dimensions (Craft, Composition,\n  Originality, Emotional Resonance, Conceptual Depth), an integer Score\n  from 1-10 and brief Reasoning.\n- **Verdict**:\n  - **Overall Score** — an integer 0-100.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — brief explanation.\n",
+    "started_at": "2026-07-15T18:29:40-06:00",
+    "updated_at": "2026-07-15T18:42:49-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:30:07-06:00",
+          "seconds": 27.5,
+          "review": {
+            "First Impression": "A jolt of neon menace: a rabbit with radioactive eyes stands in a flooded street, cradling a belt‑fed weapon against a blistering magenta sky. The gritty halftone texture and lurid palette make it feel like a post‑internet pulp cover—satirical yet unsettling. I’m immediately struck by the absurdity wrapped in dread.",
+            "Interpretation": "The piece leverages a pop-surreal juxtaposition—cute/feral, prey/predator—to question how innocence is weaponized in a chaotic world. The halftone, VHS-noise texture and vaporwave colors evoke media saturation and propaganda aesthetics, suggesting violence as spectacle. The flooded roadway and silhouetted utility poles hint at collapse—environmental or civic—turning a street scene into an apocalyptic stage. It reads as dark humor masking anxiety about normalization of conflict and catastrophe.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident command of digital collage/glitch tools and color grading; the halftone and glow are deliberate and effective. Some coarse noise and edge artifacts feel intentional but slightly blunt the finesse."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, centered silhouette anchors the frame; telephone poles and ammo belt create directional lines. The high-contrast sky and water reflections add depth and focus."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The armed-animal trope exists, but the vaporwave-apocalyptic treatment and street-flood setting refresh it. It blends pulp, meme culture, and dystopian kitsch with personality."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Simultaneously funny and ominous; the glowing eyes and absurd mismatch provoke a sharp, uneasy chuckle that lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Clear themes—innocence corrupted, spectacle of violence, collapse—but they rely on a single, striking juxtaposition rather than layered symbolism."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "High-impact pop-surreal image with memorable color and composition; it reads instantly and holds attention. While the concept leans on a bold gag, the execution elevates it beyond novelty and would be a conversation magnet in a contemporary collection. Acquire if seeking edgy, post-internet iconography with bite."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:30:25-06:00",
+          "seconds": 17.3,
+          "review": {
+            "First Impression": "A jolt of neon menace and absurdity: a rabbit with glowing green eyes cradles a belt-fed gun in a flooded street under a hot pink sky. The halftone/grain texture and poster-like palette make it feel like a dystopian pop screen print—at once funny, ominous, and unforgettable.",
+            "Interpretation": "The work weaponizes cuteness to critique or satirize our normalization of violence and catastrophe. The flooded urban setting and power lines silhouette a world in breakdown, while the synthwave colors and halftone treatment evoke media nostalgia—suggesting how spectacle can aestheticize crisis. The rabbit, prey turned predator, reads as a trickster emblem of survival, panic, and dark humor in a post-apocalyptic carnival.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Controlled use of halftone/grain and neon contrast creates a cohesive surface and striking silhouette. Some edges and values feel deliberately rough, enhancing the poster effect but limiting fine-detail nuance."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong central silhouette locks the eye; vertical poles and the ammo belt act as stabilizing and directional elements. The heavy centering is bold and legible, even if a touch static."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The cute-animal-with-weapon trope exists, but this particular floodlit, neon-dystopia treatment feels fresh and memorable. Its pop-screenprint vibe updates familiar imagery with a distinctive palette."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Produces an immediate mix of dread and dark amusement; the glowing eyes and flooded street linger. The chromatic aggression amplifies the unease."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are compelling readings—spectacle versus crisis, inversion of innocence—but the piece leans more on punchy image than layered narrative. It invites conversation, though it may not unfold much beyond the initial conceit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually commanding and culturally pointed, this is a memorable pop-dystopian image that would hold a wall and spark discussion. While not conceptually dense, its synthesis of humor, menace, and media-savvy style captures a contemporary mood and would be a strong accent in a collection focused on post-internet or pop-surreal aesthetics."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:30:49-06:00",
+          "seconds": 24.5,
+          "review": {
+            "First Impression": "A feral, neon-lit rabbit grips a belt‑fed gun, its eyes blazing toxic green against a saturated magenta sky. It lands like a poster from a lost dystopian grindhouse film—garish, funny, and a little unnerving.",
+            "Interpretation": "The work fuses pop-poster aesthetics—halftone grain, hard posterization, and acid pink/green complements—with a cinematic, post-disaster streetscape. Arming a cute, mythic animal flips innocence into menace, satirizing how media and meme culture weaponize mascots and sanitize violence. The electric palette keeps it kitsch while intensifying threat, and the flood reflections with receding poles add reportage grit. The centralized silhouette reads like propaganda or a game splash screen, blurring entertainment and catastrophe. Altogether it points to the absurdity of militarized culture and spectacle in the internet age.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The deliberate halftone texture, color-channel pushing, and glow effects are confidently handled. Some posterization flattens detail, but it feels intentional and serves the concept."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A commanding central silhouette with flanking poles creates a strong frame, and the ammo belt/gun diagonals add motion. The strict centrality slightly reduces tension and discovery."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Weaponized-cute imagery is a known trope, yet the flooded street setting and searing colorway give it a distinct, post‑internet apocalyptic twist."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The clash of adorable and lethal produces an immediate jolt—darkly comic and unsettling—and the glowing eyes against the pink sky is unforgettable."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece reads as critique of spectacle, innocence, and violence with media-era irony. The symbolism is clear, though not deeply layered in a single frame."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "A striking, memorable statement piece that bridges pop surrealism and social satire with confident execution. It will anchor a wall and spark conversation, especially within a collection interested in post‑internet color and dystopian humor. While it risks gimmickry out of context, the mood and craft justify acquisition."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:31:10-06:00",
+          "seconds": 20.8,
+          "review": {
+            "First Impression": "Violent, neon-drenched, and intentionally distorted. It is an aggressive piece of digital 'glitch' art that feels like it originated in an underground internet subculture.",
+            "Interpretation": "This work subverts the rabbit’s traditional symbolism of innocence and vulnerability by reimagining it as a radioactive insurgent in a scorched-earth landscape. The heavy dithering, saturated reds, and neon greens suggest a world of digital decay or environmental collapse, where nature has been forced into a high-caliber transformation to survive.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "The 'deep-fried' and dithered aesthetic is a deliberate and well-executed stylistic choice that effectively mimics digital corruption."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central framing and the use of the telephone pole to balance the horizontal line of the weapon create a stable, iconic structure."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The 'militant animal' trope is quite common in internet subcultures, making this feel like a stylistic iteration of an existing meme genre."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It produces a sharp, visceral reaction of dark humor and unease, though the effect is somewhat superficial."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the initial shock of the cute-versus-violent juxtaposition, there is little narrative or philosophical substance to explore."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "While the work is visually arresting and captures a specific contemporary digital zeitgeist, it lacks the technical depth and conceptual longevity typically required for a serious art collection. It functions better as a digital artifact or social media ephemera than as a lasting investment piece."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:31:19-06:00",
+          "seconds": 9.3,
+          "review": {
+            "First Impression": "An aggressive explosion of digital noise and neon heat. The subversion of a typically harmless animal into a heavily armed combatant is immediate and jarring.",
+            "Interpretation": "This work operates at the intersection of internet 'glitch' aesthetics and post-apocalyptic imagery. By saturating the scene in toxic greens and searing reds, the artist suggests a world where nature has been corrupted or forced to militarily adapt to a hostile environment. The low-fidelity, pixelated texture acts as a metaphor for digital decay or a corrupted signal from a chaotic reality. It is a portrait of defiance in a landscape of technological and social ruin.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The artist successfully employs a 'deep-fried' or high-compression digital aesthetic, using dithered textures and radioactive color shifts to achieve a specific, grimy look."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the figure creates a direct, confrontational focus, while the telephone pole and the horizon line provide just enough environmental context to ground the scene."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The 'weaponized cute' trope is well-trodden in internet subcultures, though the specific mutated color palette adds a personal touch."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It produces a visceral, chaotic energy through its acidic palette and jarring subject matter, though it lacks a more nuanced emotional register."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "While it subverts the concept of the 'innocent rabbit,' the piece remains largely on the surface level of shock value and digital trendiness."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "While visually striking and well-executed within its specific niche of internet-native art, the piece feels somewhat derivative of broader 'edgy' digital trends. It lacks the longevity or unique conceptual hook required for a primary collection focus."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:31:37-06:00",
+          "seconds": 17.4,
+          "review": {
+            "First Impression": "A blast of hyper-saturated, radioactive chaos that feels like a 'deep-fried' internet meme brought to life. It is immediately aggressive, utilizing a jarring neon-and-crimson palette that demands attention through sheer visual volume.",
+            "Interpretation": "This work subverts the rabbit—a traditional symbol of vulnerability and fertility—by transforming it into a radioactive insurgent. The digital artifacts, heavy pixelation, and dithering suggest a world corrupted by technology or nuclear fallout, positioning the creature as a product of a broken environment. It functions as a piece of digital-native nihilism, celebrating a 'cursed image' aesthetic that mocks traditional notions of beauty or fine art.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The work employs digital dithering and saturation filters effectively to achieve a specific 'low-fi' or 'deep-fried' aesthetic, though it lacks manual technical complexity."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central framing is classic for an action-oriented subject, utilizing vertical lines from the telephone pole to ground the scene, though it remains quite static."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The 'violent bunny' trope is a well-worn path in pop-surrealism, and the digital glitch style is a common internet subculture aesthetic."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The aggressive color palette and juxtaposition of innocence with weaponry create a visceral, if somewhat jarring, sense of post-apocalyptic dread."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the immediate shock value of a 'warrior rabbit,' there is little to engage with intellectually; it functions primarily on a surface-level aesthetic of chaos."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "While the work captures a specific zeitgeist of internet 'glitch' culture, it lacks the formal rigour and conceptual longevity required for a permanent collection. It is a high-impact, low-sustenance piece that serves better as a digital ephemeral than a collectible asset."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The Volunteer"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:31:59-06:00",
+          "seconds": 22.3,
+          "review": {
+            "First Impression": "A neon-soaked, halftone rabbit with glowing green eyes grips a belt-fed gun in a flooded street. It’s absurd, menacing, and darkly funny—like a propaganda poster beamed in from a glitchy, dystopian arcade. The palette scorches the eye while the silhouette reads instantly.",
+            "Interpretation": "Titled “The Volunteer,” the piece flips a symbol of innocence and prey into a self-weaponized avatar, probing how zeal, propaganda, and online myth-making lure subjects into violence. The halftone texture and poster-like framing nod to agitprop print culture, while the toxic magenta/green scheme suggests contamination—moral and environmental. The flooded urban setting reads as societal breakdown, making the rabbit’s swagger both heroic pose and tragic delusion.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The digital-analog hybrid (halftone grain, glow, and silhouette) is confidently handled and visually cohesive. A few muddy edges seem intentional to keep the poster feel."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A totemic central figure anchors the frame; the rifle and ammo belt cut dynamic diagonals. Utility poles and horizon lights counterbalance, though the frontal symmetry slightly flattens space."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Weaponized-cute imagery and vaporwave colorways are present in contemporary art, yet the fusion with disaster milieu and pointed title sharpens the concept."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The cute–lethal clash is jarring and memorable, oscillating between satire and dread. The radioactive palette heightens the unease."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "It invites readings on volunteerism, propaganda aesthetics, and the prey-to-predator fantasy in meme culture. The setting layers ecological and civic collapse onto the critique."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "Striking on first encounter yet layered in meaning, this work offers strong wall presence and timely commentary on militarized identity and media spectacle. While it flirts with shock value, its craft and symbolic interplay give it staying power and conversation-generating potential in a contemporary collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:32:25-06:00",
+          "seconds": 26.3,
+          "review": {
+            "First Impression": "A jolt of neon menace: a rabbit with glowing green eyes grips a heavy gun in a flooded street under a searing magenta sky. The pulp-halftone texture and oversaturated palette feel like a corrupted propaganda poster. It’s absurd, darkly funny, and unsettling all at once.",
+            "Interpretation": "By pairing a symbol of innocence with a machine gun, the work stages the seduction and absurdity of militarism. The title, The Volunteer, hints at the language of recruitment and self-mythologizing heroism, while the flooded roadway and silhouetted utility poles suggest a destabilized, possibly post‑apocalyptic civic space. The halftone/grain and lurid synthwave colors echo mass-media aesthetics, implying how violence is packaged and consumed as spectacle. The ammo belt across the body reads as both costume and burden, complicating the idea of agency in “volunteering.”",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The halftone, posterized color, and glow effects are intentional and consistent with a degraded-print aesthetic. Some edges and value transitions are muddy by design, which slightly limits nuance but supports the concept."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding central figure anchors the scene, with diagonals from the weapon and ammo belt adding tension. Depth from the receding poles and reflections stabilizes the frame, though the symmetry verges on static."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "Anthropomorphic-armed animals are a known trope, yet the drowning-city setting, propaganda texture, and recruitment subtext feel freshly fused. The color language pushes it toward a distinctive, corrupted-pop register."
+              },
+              "Emotional Resonance": {
+                "Score": 9,
+                "Reasoning": "The cute/menacing clash creates immediate cognitive dissonance—simultaneously funny and alarming. The glowing eyes and radioactive palette leave a strong afterimage."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Multiple readings—innocence weaponized, media-slick militarism, disaster-era vigilantism—invite return viewing. The title sharpens the critique without over-determining it."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually unforgettable and thematically timely, the piece strikes a potent balance between pop impact and critical commentary. It will polarize, but that friction gives it strong wall power and conversation value within a contemporary collection. Recommended, especially as a high-quality print or edition to preserve the intended texture and glow."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:32:55-06:00",
+          "seconds": 29.7,
+          "review": {
+            "First Impression": "A jolt of neon menace: a rabbit with glowing green eyes grips a belt‑fed gun under an acid pink sky. It’s absurd and unsettling at once, like a bootleg poster for a war that shouldn’t exist. The lo‑fi halftone grain amplifies its streetwise, agit‑prop energy.",
+            "Interpretation": "The Volunteer weaponizes cuteness to question the romance of militarism. A central, almost icon-like bunny becomes a stand‑in for innocence conscripted—or seduced—by spectacle, with night‑vision eyes and a belt of ammo reading as propaganda chic. The flooded street and telephone poles hint at civic breakdown or climate disaster, situating the figure inside a dystopian everyday. The saturated vaporwave palette and print texture implicate mass media and meme culture—war as merchandise, violence as shareable image. The title needles further: in a world of structural pressure, who truly volunteers?",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident control of halftone texture, posterized color, and silhouette; the neon palette is handled with intention. Minor roughness feels purposeful and in keeping with the bootleg aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A bold, centered iconography creates immediate impact; flanking poles and horizon stabilize the scene. The symmetry borders on static, but it suits the work’s confrontational, emblematic stance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Cute‑meets‑lethal is a known trope, yet the vaporwave dystopia and recruitment subtext give it a fresher angle. The media‑saturated treatment distinguishes it from straightforward satire."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The clash of adorable and armed produces laughter that curdles into dread. Its confrontational stare and garish glow linger after viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Offers layered reads—propaganda, climate anxiety, and meme culture—though it stops short of a singularly novel thesis. Still, the title and formal choices sustain reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "A striking, memorable image that fuses pop vernacular with political bite, capable of anchoring conversations about spectacle and militarism. While not wholly unprecedented, its execution and satirical edge make it a strong fit for a collection attuned to contemporary, media‑savvy image culture."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:33:24-06:00",
+          "seconds": 29.1,
+          "review": {
+            "First Impression": "A jarring, high-energy explosion of color and digital noise. It is an aggressive image that pairs an innocent animal with heavy weaponry in a way that feels both humorous and vaguely threatening.",
+            "Interpretation": "'The Volunteer' subverts the rabbit—a symbol of vulnerability—into a militant figure, suggesting a world where even the most harmless are forced or choose to take up arms. The choice of a heavily dithered, high-contrast aesthetic suggests a corrupted digital transmission or a fragment of underground propaganda. The neon accents imply a sci-fi or post-apocalyptic setting, turning a meme-like concept into a gritty narrative snapshot about the pervasive nature of conflict.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist shows a strong command of the 'deep-fried' digital aesthetic, using dithering and high-saturation color channels to create a vibrant, textured surface."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The composition is centered and balanced, using the verticality of the telephone pole to counter the horizontal line of the weapon. It functions well as an iconic, character-focused image."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The 'cute animal with a gun' trope is a common internet mainstay, though the specific execution here is more polished and atmospheric than typical examples."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The piece produces a sense of kinetic, chaotic energy; it is visually loud and successfully translates the grit of a war zone through a digital lens."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The title 'The Volunteer' adds a layer of narrative weight to an otherwise absurd image, prompting questions about duty and the loss of innocence in a militarized context."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "PASS",
+              "Rational": "While visually striking and technically proficient in its chosen digital style, the work relies heavily on established internet-culture tropes. It serves as a strong piece of digital pop art but lacks the formal or conceptual novelty typically sought for a long-term fine art collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:33:33-06:00",
+          "seconds": 8.9,
+          "review": {
+            "First Impression": "This is a jarring, high-contrast digital assault on the senses that feels like a transmission from a dystopian corner of the internet. The neon-green glow of the rabbit's eyes against the scorched red background is immediate and aggressive.",
+            "Interpretation": "'The Volunteer' presents a subversion of the rabbit as a symbol of vulnerability, transforming it into a combatant through the 'deep-fried' lens of digital nihilism. The title suggests a commentary on the loss of choice or the corruption of nature in the face of total war, where even the most docile must arm themselves. The pixelated, distorted medium reinforces the idea of a reality that has been processed and degraded by violence and information overload.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The work utilizes 'deep-fried' digital degradation and high-saturation filters; while effective for its specific aesthetic, it lacks technical complexity or fine-tuned control."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central positioning of the figure creates a strong, iconic silhouette, while the horizontal line of the weapon and the verticality of the telephone pole provide a solid structural framework."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The juxtaposition of cute animals with heavy weaponry is a well-established trope in pop-surrealism and internet meme culture."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It has a high-octane, chaotic energy that is immediately felt, successfully evoking a sense of dread mixed with the absurd."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "It explores the 'radicalized innocence' trope, but the message is delivered with a heavy hand, leaving little room for nuanced discovery after the initial shock."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 54,
+              "Decision": "PASS",
+              "Rational": "The piece is a striking example of digital 'glitch' aesthetic and carries a visceral punch, but it relies too heavily on established internet tropes to warrant a place in a permanent collection. Its impact is high but its longevity as a piece of fine art is limited by its derivative stylistic choices."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:33:41-06:00",
+          "seconds": 8.5,
+          "review": {
+            "First Impression": "A jarring, high-voltage assault on the senses. The juxtaposition of a small animal with heavy weaponry in a radioactive-looking landscape is immediately confrontational and darkly humorous.",
+            "Interpretation": "The work subverts the rabbit as a symbol of vulnerability, transforming it into a 'volunteer' in a scorched-earth setting. The heavy digital dithering and saturated red-green palette evoke a sense of technological decay or post-nuclear fallout, suggesting a world where the natural order has been violently recalibrated. It functions as a critique of militarization and perhaps a nihilistic nod to the loss of innocence in an era of constant conflict.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The artist shows a strong command of the 'low-fi' or 'deep-fried' digital aesthetic, using dithering and color saturation to create a sense of radiation and noise."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the subject creates a powerful, iconographic silhouette, balanced by the vertical line of the utility pole and the horizontal thrust of the weapon."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While it draws heavily from contemporary internet subcultures and meme aesthetics, the specific blend of grit and absurdity is distinctive."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The jarring contrast between the rabbit's form and its lethal equipment, paired with the acidic color palette, produces an immediate sense of unease and aggressive energy."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The title 'The Volunteer' provides a cynical edge to the imagery, suggesting a forced or tragic mobilization of the innocent, though it remains somewhat surface-level in its critique."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "While visually striking and culturally relevant to digital-native aesthetics, its specific 'deep-fried' style may lack the longevity or formal complexity required for a permanent high-end collection. It is a potent piece of social commentary for the current moment but feels somewhat tied to transient digital trends."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Nawhsan"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:34:11-06:00",
+          "seconds": 29.3,
+          "review": {
+            "First Impression": "A fluorescent, apocalyptic pink sky frames a rabbit with glowing green eyes gripping a belt‑fed gun in a flooded street. It hits like a torn punk poster—absurd, menacing, and immediately sticky to the eye. The clash of cuteness and firepower is jarring and darkly funny.",
+            "Interpretation": "The work plays on the inversion of prey into predator, weaponizing innocence to comment on how violence is aestheticized in pop culture. The halftone/grain and hyper‑neon palette recall zines, arcade screens, and protest posters—mass‑circulation images designed to shout. The flooded roadway and power poles hint at a dystopian climate or infrastructural collapse, heightening the unease. Humor becomes a lure that delivers moral dissonance, asking what it means when cute becomes complicit. It reads as pop‑surrealism with a cyberpunk tint and a satirical edge.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident digital handling of halftone, glow, and palette mapping; textures feel intentional and cohesive. Minor posterization and crunchy edges slightly limit polish but suit the zine aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A commanding central silhouette anchors the frame; vertical poles and the ammo-belt diagonal guide the eye. Centering is effective but predictable, offering power more than nuance."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Cute‑animal‑with‑a‑gun is a familiar pop and street trope. The irradiated palette, flood setting, and printlike surface give it some freshness without fully escaping the meme lineage."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image lands with a sharp mix of menace and absurdity; the glowing eyes and soaked street amplify dread. It’s memorable and conversation‑starting."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Clear satire on militarized culture and commodified cuteness, with dystopian undertones. The concept reads quickly but doesn’t unfold many further layers on close study."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 76,
+              "Decision": "ACQUIRE",
+              "Rational": "A bold, high‑impact pop‑surreal image that will energize a contemporary collection and spark dialogue. While not radically original, its execution and cultural timeliness make it a strong statement piece. Acquire if you value provocative, graphic works that sit between humor and unease."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:34:27-06:00",
+          "seconds": 16.0,
+          "review": {
+            "First Impression": "A jarring, neon-drenched scene: a towering rabbit with radioactive green eyes grips a belt-fed gun in a flooded street. The clash of cute and menacing hits immediately, amplified by the gritty halftone texture and magenta sky. It feels like a post‑apocalyptic pop poster—absurd, funny, and a little terrifying.",
+            "Interpretation": "The work stages a collision between innocence and militarism, using the rabbit as an avatar of vulnerability turned predator. The lurid magenta/green palette and VHS/risograph grain situate it in a cyberpunk, meme-age vernacular, suggesting media-saturated violence and climate-chaos aftermath (flooded road, power poles). The weapon’s hard horizontals counter the rabbit’s vertical silhouette, turning the figure into a totem of cultural dissonance—cute culture armed to the teeth, humor masking dread.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The digital/print-like halftone, chromatic abrasion, and glow effects are handled decisively to create a cohesive retro-futurist surface. Some roughness feels intentional, though detail control is secondary to vibe."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding central figure with strong verticals and diagonals (ears, ammo belt, gun) stabilizes the image; background poles and reflections echo the structure without clutter. The silhouette reads instantly at distance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Weaponized-cute is a known trope, but the flooded streetscape and searing palette give it a distinctive, contemporary edge. It synthesizes pop, dystopia, and street-art textures effectively."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image provokes a sharp mix of amusement and unease; the glowing eyes and incongruous scale produce memorable tension. It lingers as a charged, slightly apocalyptic joke."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The primary engine is juxtaposition, supported by hints of environmental collapse and media critique. It invites readings but doesn’t push a complex narrative beyond the central irony."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually arresting and zeitgeist-aware, this piece is a compelling conversation starter that bridges pop surrealism and dystopian humor. Its color authority and iconic silhouette make it display-strong, even if its concept leans on a familiar trope. A smart addition for a collection seeking bold, irreverent contemporary imagery."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:35:01-06:00",
+          "seconds": 33.8,
+          "review": {
+            "First Impression": "A neon-apocalyptic punch: a rabbit with glowing green eyes grips a belt‑fed gun in a flooded street under a radioactive pink sky. The halftone grit and acid palette feel like a poster—simultaneously absurd and menacing.",
+            "Interpretation": "The work weaponizes cuteness, setting an emblem of innocence against mechanized violence so the initial joke curdles into dread. The lurid magenta atmosphere and watery street suggest societal or environmental collapse, while the halftone treatment nods to print culture and internet-era glitch aesthetics. It reads as a comment on how violent imagery circulates as spectacle and meme, numbing us even as it shocks.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Digital/print-hybrid textures are confidently handled: the halftone screen, green glow, and color-fringe effects feel intentional. Some edges are muddy and detail is sacrificed to style."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding central silhouette; the ears and ammo belt drive vertical energy while the gun creates a stabilizing horizontal. Utility poles and reflections build depth without clutter."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The “cute animal with a big gun” trope is familiar in pop and meme art, though the toxic colorway and analog-print grain give it a distinct voice."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It triggers a quick laugh that slides into unease; the glowing eyes and flooded setting linger. Strong wall impact."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The innocence/violence inversion is clear and suggestive but not deeply layered. It opens questions about media, spectacle, and aggression without offering new arguments."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "As a statement piece it delivers instant graphic punch, dark humor, and zeitgeist appeal—ideal for a pop‑surreal or post‑internet context. While conceptually mid-depth, the image is memorable and display-strong. Recommended for a collection that values bold, ironic works with high visual voltage."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:35:20-06:00",
+          "seconds": 19.3,
+          "review": {
+            "First Impression": "Immediate visual overload. A radioactive, gritty, and intentionally distorted image of a rabbit wielding a machine gun, vibrating with an aggressive digital energy.",
+            "Interpretation": "The piece operates at the intersection of 'vaporwave' and 'deep-fried' meme aesthetics, utilizing heavy saturation and dithering to simulate digital artifacts and decay. By placing a rabbit—a symbol of harmlessness—in a war-torn urban environment with a heavy weapon, the artist explores the loss of innocence and the pervasive nature of violence in contemporary media. The acidic greens and burning oranges suggest a world that has been chemically or digitally poisoned, reflecting a state of modern hyper-reality.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The intentional use of dithering, pixelation, and extreme color saturation shows a clear command of the 'glitch' or 'deep-fried' aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the rabbit is framed effectively by the silhouettes of the telephone pole and buildings, while the vertical line of the ammunition belt provides a strong anchor."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The 'armed cute animal' motif is a common staple of digital subcultures and streetwear, making this feel like a variation on a well-established theme."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It effectively conveys a sense of frantic, hyper-modern anxiety and hostility, though its impact is somewhat dampened by its reliance on internet tropes."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work plays with irony and digital decay, but it remains largely on the surface of these ideas without delving into deeper social or philosophical territory."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "While the work is a striking example of a specific digital subculture's aesthetic, its heavy reliance on familiar tropes and surface-level irony makes it feel more like a fleeting digital artifact than a robust long-term acquisition. It captures a 'vibe' perfectly but lacks the depth required for a serious collection."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:35:37-06:00",
+          "seconds": 17.6,
+          "review": {
+            "First Impression": "An aggressive, high-contrast assault on the senses that feels like a corrupted digital transmission from a post-apocalyptic future. The neon-green glow against the 'deep-fried' red landscape is immediately arresting and unsettling.",
+            "Interpretation": "The work explores the corruption of innocence through the lens of digital decay. By arming a rabbit—the quintessential symbol of vulnerability—and placing it in a radioactive, industrial wasteland, the artist subverts natural hierarchies. The heavy glitching and dithering suggest a world where both the physical environment and the digital record of it are breaking down under the weight of extreme violence and technological entropy.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The 'deep-fried' digital aesthetic is executed with a clear intent, successfully mimicking the look of low-bitrate compression and radioactive color shifts. While effective, it relies heavily on digital filters and automated dithering patterns."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the subject is classic, balanced by the vertical line of the telephone pole and the horizontal line of the weapon. The use of ground reflections provides necessary depth in a highly flattened, high-contrast style."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The work sits squarely within established digital genres like weirdcore and glitch art. It executes these styles well but does not offer a significant departure from existing aesthetic trends in the space."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The acidic color palette and aggressive imagery create an immediate sense of anxiety and high-voltage energy. It successfully evokes the chaotic, nihilistic tone of modern internet subcultures."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The juxtaposition of a prey animal with heavy weaponry is a well-worn trope that doesn't go much deeper than surface-level shock or irony. It functions primarily as a stylistic mood piece rather than a deep narrative or philosophical inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "PASS",
+              "Rational": "While it is a visually striking and stylistically consistent piece of digital art, it lacks the conceptual or technical uniqueness required for a long-term investment. It is a solid genre piece that will appeal to fans of glitch aesthetics, but it doesn't stand out enough from the digital crowd for a primary collection acquisition."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:35:59-06:00",
+          "seconds": 21.2,
+          "review": {
+            "First Impression": "A high-voltage digital assault that immediately grabs attention with its vibrating, toxic color palette. It feels like a corrupted file from a surrealist, 16-bit action game or a late-night internet fever dream.",
+            "Interpretation": "By juxtaposing the inherent fragility of a rabbit with the brutal hardware of a machine gun, Nawhsan explores a digital-age nihilism where innocence is discarded for survival. The dithered, low-fidelity treatment acts as a metaphor for the degradation of nature and information in a hyper-mediated, post-industrial environment. The choice of neon green against a burning red sky suggests a radioactive landscape where the biological has been forced to weaponize.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The deliberate use of dithering and color compression shows a strong command of the 'deep-fried' aesthetic, though it relies heavily on digital filters."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, confrontational framing creates a powerful and immediate icon, while the vertical telephone pole and background structures provide an effective sense of depth."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The aesthetic is very on-trend for certain online subcultures, but the 'armed animal' trope is quite common in contemporary digital surrealism."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It successfully provokes a visceral response of shock and chaotic energy, effectively blending humor with a sense of radioactive dread."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The work functions primarily as a stylistic exercise in digital nihilism; it lacks a deeper narrative or layered meaning that rewards long-term study."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "The piece is a strong example of 'internet-native' glitch art, but it feels more like a fleeting digital artifact than a lasting investment. It prioritizes immediate aesthetic impact and memetic potential over the formal and conceptual depth typically sought for a permanent collection."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The Volunteer",
+        "artist": "Nawhsan"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:36:25-06:00",
+          "seconds": 25.9,
+          "review": {
+            "First Impression": "A neon-soaked, post-apocalyptic street is interrupted by a rabbit with glowing green eyes cradling a heavy weapon. The candy-pink sky and coarse halftone texture read like a retro glitch poster—playful and menacing at once. The image lands fast as an icon and feels disquieting after the initial laugh.",
+            "Interpretation": "The work weaponizes the dissonance between innocence (the rabbit) and militarized spectacle, pointing to how “volunteering” can be aestheticized or coerced. Its radioactive palette and posterized, dithered finish nod to propaganda prints and gaming UIs, implicating entertainment in normalizing conflict. The flooded street and skeletal utility poles hint at infrastructural collapse and climate anxiety, making the bunny a stand-in for conscripted civilians or memetic mascots of war.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident digital handling of halftone, glow, and color separation; the silhouette is crisp and the grain feels purposeful. Some shadow areas read muddy, but it suits the atmosphere."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding central silhouette against a hot, near-flat field; the ammo belt and gun create directional rhythm while poles bracket the figure. Slight right-heavy weight adds tension without breaking balance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The cute-versus-violent trope is familiar, yet the toxic palette, flooded setting, and propaganda-glitch treatment forge a distinctive emblem."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It is jarring, funny, and unsettling at once; the stare and saccharine color linger beyond the gag. The mood accumulates rather than relying on pure shock."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Offers a readable critique of spectacle, manufactured consent, and environmental dread, though it still leans on juxtaposition more than layered narrative."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "A memorable, wall-power image with sharp formal control and timely critique. While not revolutionary conceptually, it fuses pop-surrealism and political subtext effectively and would spark conversation in a contemporary collection."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:36:49-06:00",
+          "seconds": 24.7,
+          "review": {
+            "First Impression": "A jolt of neon menace and humor: a rabbit with glowing eyes grips a belt‑fed gun, centered like an icon against a scorching magenta sky. The halftone grit and chromatic fringing give it a posterized, lo‑fi punch. It’s absurd, memorable, and a little unsettling.",
+            "Interpretation": "The work stages an intentional clash between innocence and militarism: the rabbit, a symbol of vulnerability and fertility, becomes a swaggering combatant. The acid palette and halftone texture evoke mass‑media posters and propaganda, suggesting how imagery recruits or glamorizes violence—fitting the title, The Volunteer. The flooded street, silhouetted poles, and radioactive glows imply a post‑disaster urban theater, turning the cute mascot into a dark emblem of survivalism and memetic warfare.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident control of halftone grain, silhouette, and high‑contrast color separation; the image reads immediately at multiple scales. Some deliberate roughness and banding keep it lo‑fi rather than polished, which suits the concept but limits finesse."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding central figure balanced by vertical poles and the diagonal ammo belt; reflections and horizon lines create depth. The saturated negative space amplifies the iconographic stance."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Militarized-animal pop surrealism has precedents, yet the urban flood setting and scorching palette push it toward a distinct voice."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The cute/menacing dissonance lands; the radioactive eyes and scorched sky generate unease and dark humor that lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Strong read on propaganda, volunteerism, and the glamorization of violence via media aesthetics, though the ideas remain punchy more than intricate."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually arresting and thematically sharp, this piece offers contemporary pop‑satire with strong wall presence. Its fusion of lo‑fi poster aesthetics and dystopian narrative makes a compelling conversation starter and a solid addition for a collection interested in bold, culturally pointed work."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:37:17-06:00",
+          "seconds": 27.6,
+          "review": {
+            "First Impression": "A neon fever dream: a rabbit with glowing eyes cradles a belt‑fed gun in a flooded street under a radioactive sky. The collision of cute and lethal is immediate, darkly funny, and unsettling. The gritty halftone texture pushes it toward punk‑propaganda aesthetics.",
+            "Interpretation": "Titled The Volunteer, the piece suggests a willful step into violence or self‑defense, using a prey animal as stand‑in for innocence turning militant. The acid magenta sky and toxic green highlights read as alarm signals, while the flooded roadway hints at collapse—climate, civic, or moral. The central, backlit silhouette turns the bunny into an icon, while the ammo belt doubles as a ribcage, implying life merged with machinery. The coarse, screen‑print grain and overdriven color channel mass-media culture and the memetic spread of militarized images. It reads as a sardonic commentary on how crises manufacture ‘volunteers’ and how spectacle normalizes menace.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident handling of halftone grain, glow effects, and extreme color separation. The textures and reflections feel intentional and controlled, not merely noisy."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong central silhouette anchors the scene; the gun’s horizontal counterbalances the vertical ammo belt and utility poles. Negative space and horizon lines direct focus cleanly to the figure."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Armed animal iconography exists in pop‑surrealism, but the flooded urban setting and hyperacid palette with propaganda textures give it a distinctive twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The jolt of absurdity quickly turns uneasy, lingering as a mix of humor, menace, and dread."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Clear metaphors—innocence weaponized, crisis culture, media spectacle—offer layers to revisit, though it stays emblematic rather than deeply narrative."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually arresting with strong wall power, it bridges pop appeal and political undertone in a way that invites conversation. The image’s icon-like clarity and acidic palette feel current yet collectible, and it could anchor or complement a contemporary pop‑surrealist or protest‑adjacent grouping."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T18:37:43-06:00",
+          "seconds": 26.2,
+          "review": {
+            "First Impression": "An aggressive, neon-drenched explosion of digital noise that immediately grabs the attention with its jarring contrast. The central figure of an armed rabbit in a war-torn landscape is both absurd and menacing.",
+            "Interpretation": "'The Volunteer' subverts the typical symbolism of the rabbit—innocence and vulnerability—by transforming it into a heavily armed combatant. The high-saturation reds and toxic greens, combined with intentional digital degradation (dithering and compression artifacts), suggest a world that is fundamentally broken or seen through a distorted, hyper-violent lens. The title implies a choice, perhaps a satirical look at the 'volunteer' status of those caught in cycles of perpetual conflict, or a transformation from prey to predator in a post-human wasteland.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Effective use of digital degradation and high-contrast color palettes to achieve a specific 'glitch' aesthetic, though it borders on sensory overload."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central figure is well-anchored, with the horizontal weapon and vertical utility pole providing a balanced, albeit chaotic, structural framework."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The militarized animal trope is common in internet subcultures, but the specific neon-saturated, lo-fi execution gives it a recognizable personality."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The jarring combination of a 'cute' animal with heavy weaponry in a hellish landscape creates a potent sense of unease and absurdity."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "It explores the subversion of innocence and the nature of conscription, though it prioritizes visceral impact over deep narrative complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 65,
+              "Decision": "PASS",
+              "Rational": "The piece is a strong example of modern digital 'glitch' aesthetics, but its niche appeal and reliance on familiar tropes make it a less versatile acquisition for a general collection. It is a striking visual statement that may lack long-term conceptual staying power."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T18:37:53-06:00",
+          "seconds": 10.1,
+          "review": {
+            "First Impression": "A jarring, high-contrast assault on the senses that feels like a transmuted internet meme or a 'found' artifact from a digital apocalypse. It is aggressive, darkly humorous, and strangely compelling in its saturated ugliness.",
+            "Interpretation": "'The Volunteer' subverts the archetype of the rabbit as a symbol of vulnerability, recasting it as a heavily armed combatant in a hellish, pixel-degraded landscape. The acidic greens and blood-reds suggest an environment that is either physically or ideologically toxic. By using a 'deep-fried' digital style, the artist comments on the way images and innocence are distorted through the machinery of internet culture and modern conflict. The rabbit’s glowing eyes and heavy armament suggest a loss of self in the service of a cause, echoing the grim reality of the 'volunteer' in desperate circumstances.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artist displays a strong command over digital degradation techniques, using dithering and extreme saturation to create a specific, intentional 'cursed' aesthetic that feels unified rather than accidental."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central placement of the subject creates a direct confrontation, while the vertical element of the telephone pole and the horizontal line of the weapon provide a basic but effective structural balance."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "It operates within the established 'deep-fried' meme aesthetic, but elevates it through cinematic framing and a somber tone that distinguishes it from mere internet humor."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The work provokes an immediate, visceral reaction—a mix of dark humor and genuine unease—that is hard to ignore."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "While it plays on familiar tropes of 'innocent animal as soldier,' the title 'The Volunteer' and the irradiated aesthetic hint at a darker commentary on forced radicalization or the decay of civil society."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 72,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece is a quintessential example of post-internet 'glitch' or 'deep-fried' art, capturing a specific zeitgeist of digital anxiety and dark irony. It would be a strong addition for a collector interested in how internet aesthetics are evolving into serious, if abrasive, contemporary statements."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T18:38:07-06:00",
+          "seconds": 13.5,
+          "review": {
+            "First Impression": "This is a visceral, high-octane image that feels like a transmission from a radioactive fever dream. The clashing neon greens and saturated reds create an immediate sense of sensory overload and urgency.",
+            "Interpretation": "'The Volunteer' serves as a dark satire on conflict and environmental collapse. By arming a rabbit—a creature typically synonymous with fragility—and placing it in a decaying urban landscape, the artist highlights the loss of innocence in the face of systemic violence. The digital artifacts, dithering, and high contrast suggest a 'found footage' or CCTV quality, as if we are witnessing a mutation or a desperate uprising in a world where the natural order has completely dissolved. It is a commentary on both the absurdity of war and the adaptation required to survive a hostile environment.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates a strong command of digital 'distressing' techniques, using dithering and color-crushing to create a specific, gritty atmosphere."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the rabbit is balanced by the vertical line of the utility pole and the horizontal reach of the firearm, creating a stable but dynamic silhouette."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While 'armed animals' are a known trope, the specific 'deep-fried' Internet-native aesthetic and the selection of a rabbit provide a fresh take."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The acidic color palette and the rabbit's glowing, stoic gaze create a sense of immediate, visceral unease."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The work subverts the traditional symbolism of the rabbit (innocence/prey) to comment on the militarization of the vulnerable and the toxicity of conflict."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece is a compelling example of contemporary digital glitch-art that successfully captures a specific cultural zeitgeist of anxiety and subversion. Its strong visual identity and effective use of irony make it a worthy addition for a collector interested in internet-native aesthetics and socio-political commentary."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "The Volunteer",
+        "artist": "Nawhsan"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Glitch Art\",\n    \"Databending / Corruption Aesthetics\",\n    \"Experimental Digital\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"innovation\": 2,\n    \"technicalExecution\": 3,\n    \"conceptOrMeaning\": 4,\n    \"colorAndAesthetics\": 5,\n    \"composition\": 6,\n    \"emotionalImpact\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm fascinated by work that embraces digital failure as a material — databending, compression artifacts, corrupted signals, broken renderers, and misused tools. I gravitate toward artists who push systems until they break interestingly and find real beauty and meaning inside distortion, noise, and error.\",\n  \"favoriteArtistsOrWorks\": [\n    \"XCOPY\",\n    \"Rosa Menkman\",\n    \"JODI\",\n    \"Sarah Zucker\",\n    \"Domenico Barra\"\n  ],\n  \"avoid\": \"Overly polished commercial aesthetics, off-the-shelf glitch filters, generic AI imagery, and work that wears experimentation as a surface style.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Photography\",\n    \"Fine Art Photography\",\n    \"Documentary / Street Photography\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"emotionalImpact\": 2,\n    \"originality\": 3,\n    \"technicalExecution\": 4,\n    \"conceptOrMeaning\": 5,\n    \"colorAndAesthetics\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to photography that rewards slow looking — patient light, decisive timing, honest color, and a strong sense of place. I care about what was actually in front of the lens and the photographer's judgment in that moment, more than technical perfection or dramatic post-processing.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Todd Hido\",\n    \"Hiroshi Sugimoto\",\n    \"Michael Kenna\",\n    \"Gregory Crewdson\",\n    \"Fan Ho\"\n  ],\n  \"avoid\": \"Overprocessed edits, cliché travel imagery, excessive HDR, and heavily composited scenes that abandon the truth of the photographic moment.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/glitch.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/photography.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-15T18:38:47-06:00",
+          "seconds": 40.8,
+          "review": {
+            "First Impression": "A jolt of absurd menace: a rabbit, eyes burning neon green, cradles a belt‑fed gun against a blistering magenta sky. The halftone/dither texture and chromatic noise read like a corrupted broadcast from a flooded street. It’s visually punchy and immediately unsettling.",
+            "Interpretation": "The work weaponizes cuteness—an emblem of innocence—by arming it and placing it in a ruinous, waterlogged streetscape. The title, The Volunteer, tilts the reading toward complicity and self‑selection into violence, as if the mascot of a culture has chosen to serve. The hot, synthetic palette and screen‑level noise evoke failed transmission, propaganda bleed, or meme warfare—violence refracted through media. The rabbit becomes a proxy avatar: a cartoon soldier minted by the network, where error and spectacle swallow context. It’s a pop‑apocalypse with a satirical edge.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Convincing use of halftone/dither, channel shifting, and noise to integrate figure and ground; the silhouette holds together well. Some effects feel preset rather than idiosyncratically engineered, muting the sense of technical singularity."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "A strong, iconic central silhouette and clean horizon create clarity, but the dead‑center placement and parallel verticals read somewhat static. Depth cues are minimal, keeping the scene emblematic rather than spatially engaging."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The militarized lagomorph against a corrupted neon field is a striking combination. However, ‘cute‑meets‑menace’ and faux‑broadcast glitch are familiar territories, so it stops short of feeling genuinely unprecedented."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The glowing eyes, candy‑acid palette, and absurd firearm generate a sharp jolt of unease and dark humor. The mood lingers as a tense, cartoonish dread."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Innocence versus militarism filtered through media corruption offers a readable critique, and the title adds a layer of agency. Without process context or a series arc, the idea feels more emblematic than deeply probed."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 67,
+              "Decision": "PASS",
+              "Rational": "The piece aligns with a corruption‑aesthetic palette and delivers an immediate, unsettling pop‑apocalypse image. Yet for a collection prioritizing originality and innovation in glitch processes, the techniques read closer to off‑the‑shelf textures than to system‑breaking experimentation. If the artist can demonstrate a distinctive process or situate this within a method‑driven series, it would merit reconsideration."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-15T18:39:18-06:00",
+          "seconds": 30.8,
+          "review": {
+            "First Impression": "A jolt of neon menace: a rabbit with toxic-green eyes clutching a belt-fed gun, dead-center against a searing magenta sky. The halftone/dither grain and channel shifts feel like a corrupted postcard from a flooded street. It’s absurd, funny, and unsettling at once.",
+            "Interpretation": "The work weaponizes cuteness—turning a harmless rabbit into an icon of volunteered violence—while the glitch grain, chromatic misregistration, and posterized palette implicate media systems in manufacturing that image. “The Volunteer” reads as a critique of recruitment mythologies and meme-ified conflict: innocence conscripted, broadcast, and repeated until it becomes propaganda. The flooded ground and telephone poles situate it in a broken civic space, amplifying collapse and broadcast as twin conditions.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Halftone dithering, channel splits, and blown-out gamut are handled with intention; the silhouette reads crisply and the errors feel embedded rather than filtered. A touch of sky banding and heavy saturation veer toward poster art, but it supports the concept."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A commanding central silhouette framed by poles and reflections guides the eye, with ample negative space intensifying the icon. The strict centering is a bit static, but the verticals/horizontals balance the visual noise."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The militarized lapine figure fused with corruption aesthetics and a toxic palette creates a distinct, memorable emblem. It avoids canned filter tropes, though the meme-adjacent premise keeps it shy of radical novelty."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The cute/violent dissonance lands—humor curdles into dread, and the glowing eyes linger as an afterimage. The flooded setting adds stakes beyond mere absurdity."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The title activates readings around propaganda, gamified warfare, and the weaponization of innocence via media glitch. Clear and effective, if not densely layered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "A strong fit for a collection centered on digital failure: the artist bends halftone, channel misalignment, and gamut clipping into an authored language rather than an off‑the‑shelf effect. The piece delivers a potent, memorable icon with relevant cultural critique; despite conservative centering, its material intelligence and conceptual hook warrant acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-15T18:39:49-06:00",
+          "seconds": 31.0,
+          "review": {
+            "First Impression": "A neon, heat‑map sky engulfs a flooded street while a rabbit with phosphor‑green eyes grips a belt‑fed gun. The crunchy dithering, posterized palette, and channel shifts read like a corrupted postcard from a war zone. It’s absurd, menacing, and instantly memorable.",
+            "Interpretation": "The piece turns a symbol of innocence into a combatant, and the title “The Volunteer” frames that shift as willful or coerced by culture. The corrupted color space, halftone noise, and misregistered channels function as more than style—they evoke propaganda glitches, night‑vision optics, and the way digital systems distort our sense of danger and heroism. The flooded street and utility poles hint at infrastructural failure and a society underwater, while the rabbit’s glowing eyes suggest algorithmic sight. Humor rubs against dread, pointing to the meme‑ification of violence and how cute surfaces can be weaponized.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Artifacts—dither, channel misalignment, and raster texture—are layered with control, and the silhouette is clean and legible. The handling feels intentional rather than filter‑driven."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A centered, iconic figure anchors the frame; the ammo belt’s vertical and the rifle’s horizontal set up a clear cross‑structure against the horizon and poles. Slight over‑centering limits dynamism but suits the poster‑like punch."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The armed‑lapine icon within a corrupted, toxic palette feels fresh and pointed, even if the animal‑with‑weapon trope exists. The integration of glitch as meaning rather than veneer elevates it."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It lands as funny, disturbing, and weirdly heroic at once—the green eyes and flooded ground create a lingering unease. The image is sticky and memorable."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The volunteerism/militarization critique, refracted through broken signal aesthetics, gives it layers to unpack, though it stops short of a complex narrative."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This aligns tightly with a collection seeking beauty and meaning inside error: the glitches are the content, not a costume. It delivers a strong, collectible icon with clear intent and a sharp cultural read on propaganda and gamified violence. Recommend acquisition, ideally with process notes to underscore the artist’s experimental method."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-15T18:40:04-06:00",
+          "seconds": 14.2,
+          "review": {
+            "First Impression": "An assault on the senses—vibrant, 'deep-fried' digital textures that transform a familiar rabbit silhouette into a terrifying, pixelated soldier. The color palette is radioactive and arresting.",
+            "Interpretation": "The work utilizes digital corruption as a metaphor for the moral or physical mutation required by conflict; the rabbit has not just taken up arms but has been processed and dithered by the system of war. The 'Volunteer' is rendered in a limited but violent palette of neon green and searing magenta, suggesting a loss of natural identity in favor of a corrupted, high-contrast digital persona. The use of dithering patterns serves as a physical barrier between the viewer and the subject, mimicking the interference of a broken signal.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The command over color indexing and dithering creates a tactile, 'crunchy' texture that suggests deep system manipulation rather than a surface filter."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, symmetrical framing gives the subject a monumental, iconic status, turning a chaotic scene into a formal portrait."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While 'combat animals' are a known trope, the specific marriage of hyper-saturated neon and retro-computing artifacts feels distinct and intentional."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The aggressive palette and the juxtaposition of the soft subject with heavy weaponry create a jarring, high-anxiety response."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "It explores the subversion of innocence through the lens of digital decay, where the subject and its environment are literalized as corrupted data."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "The piece aligns perfectly with the collector's interest in digital failure and corruption aesthetics, moving beyond commercial glitch styles into a space of genuine experimentation with noise and color. Its technical execution of dithered textures and its high-impact originality make it a strong addition to a collection focused on the beauty of broken systems."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-15T18:40:18-06:00",
+          "seconds": 14.5,
+          "review": {
+            "First Impression": "A jarring, high-decibel image that feels like a corrupted transmission from a violent cartoon. The neon-green glow of the eyes against the suffocating reds creates an immediate, visceral impact.",
+            "Interpretation": "'The Volunteer' operates in the space between 'cursed images' and high-concept glitch art. By stripping away fine detail through what appears to be bit-depth reduction and heavy compression, the artist emphasizes the raw silhouette and the 'noise' of the environment. The rabbit, a traditional symbol of vulnerability, is transformed into a militant figure, mirroring the way the digital image itself has been 'weaponized' through aesthetic corruption. It speaks to a world where even the innocent are forced into combat, and where the medium of the image is as battered as its subject.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The work displays a controlled use of color crushing, dithering, and compression artifacts that feel intentional and tactile rather than accidental."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the subject creates an iconic, confrontational silhouette, balanced by the vertical line of the utility pole and the wet, reflective ground."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the 'killer bunny' is a trope, the execution leans into a specific 'deep-fried' or corrupted data aesthetic that feels fresh and punk-inflected."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The aggressive palette and the juxtaposition of the soft animal subject with heavy weaponry create an immediate sense of unease and frantic energy."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The title 'The Volunteer' provides a narrative weight to the absurdity, suggesting themes of conscription, lost innocence, and the survival instinct within a decaying digital landscape."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece aligns perfectly with your preference for 'broken renderers' and 'distortion as beauty.' It captures a punk-rock digital energy reminiscent of XCOPY, moving beyond simple filters to create a cohesive, corrupted atmosphere."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-15T18:40:33-06:00",
+          "seconds": 15.2,
+          "review": {
+            "First Impression": "Aggressive, abrasive, and undeniably striking. The image vibrates with a 'deep-fried' intensity that feels like a corrupted transmission from a digital wasteland.",
+            "Interpretation": "'The Volunteer' utilizes the aesthetics of digital decay—specifically heavy dithering, color indexing, and extreme saturation—to depict a subversion of innocence. The rabbit, typically a symbol of fragility, is rendered as a mutated, militant entity, suggesting a world where even the most harmless are forced into conflict. The formal choices aren't just stylistic; the digital noise functions as a metaphor for the 'noise' of war and the corruption of the natural world through technological and social breakdown.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Excellent use of dithering and color indexing to create volume and texture out of digital noise, avoiding the look of a simple filter."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the subject is anchored by the verticality of the power lines and the rabbit's ears, balanced by the strong horizontal of the weapon."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "The work successfully elevates the 'deep-fried' or heavily compressed internet aesthetic into a deliberate and sophisticated artistic language."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The oppressive red palette and the blank, glowing gaze of the subject create a palpable sense of heat, urgency, and digital dread."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The title 'The Volunteer' complicates the image, turning a trope of a militant animal into a commentary on the loss of innocence and the conscription of the vulnerable."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece aligns perfectly with the stated preference for 'digital failure as a material.' It avoids the traps of generic AI or polished commercial glitch, instead offering a raw, textured exploration of digital grit that feels both technically accomplished and conceptually relevant."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-15T18:41:00-06:00",
+          "seconds": 27.1,
+          "review": {
+            "First Impression": "A jolt of neon menace: a rabbit with glowing green eyes grips a belt‑fed weapon against a toxic pink sky. The halftone/grain gives it a pulp‑poster, VHS-afterimage feel. It’s funny and alarming at once, like propaganda from a parallel world.",
+            "Interpretation": "The piece uses pop‑surrealist juxtaposition—innocence (a rabbit) enlisted as a soldier—to skewer voluntarism and militarized spectacle. The flooded street, power lines, and radioactive palette suggest a dystopian civic space where recruitment thrives on myth and glow. The halftone/CRT texture positions it as a found poster or zine fragment, implicating media aesthetics in how violence is normalized. The title, The Volunteer, sharpens the irony: choice under propaganda is hardly free.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Cohesive control of digital texture and color; the halftone wash and glow effects are purposeful and well-integrated. Some edges read intentionally crunchy, trading refinement for graphic punch."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Centered, totemic figure anchors the frame; poles and horizon give depth and a weak triangle. The symmetry is strong but a bit static, relying on color more than spatial dynamics."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Animal-as-combatant pop surrealism is familiar, but the zine/propaganda treatment and irradiated palette give it a distinct voice. It feels like a poster pulled from a believable alternate history."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The collision of cute and lethal lands viscerally—uneasy, darkly comic, and a little sad. The glowing eyes and sodden street keep the image lingering."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The critique of recruitment/weaponized innocence reads clearly, though it leans on a single juxtaposition. There are hints of media criticism and climate dread that could be pushed further."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 61,
+              "Decision": "PASS",
+              "Rational": "Striking and memorable as pop‑surreal graphic art, but it departs from the collector’s preference for honest, slow‑looking photography and minimally processed, in‑camera moments. Its heavily stylized, composite feel and emphasis on concept over place conflict with the stated priorities. Strong work in its lane, yet misaligned for this collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-15T18:41:26-06:00",
+          "seconds": 25.3,
+          "review": {
+            "First Impression": "A lurid, pop‑surreal jolt: a rabbit with glowing green eyes cradles a belt‑fed gun in a flooded street under a toxic magenta sky. The halftone grain and neon palette feel like a risograph poster crossed with a dystopian video‑game still—immediately striking, a bit sardonic.",
+            "Interpretation": "The work stages an absurd collision of innocence and militarism. By placing a cute, nocturnal creature as a front‑line ‘volunteer,’ it satirizes conscription, gun culture, and the normalization of violence in pop media. The centralized silhouette, toxic complementary colors (magenta/acid green), and coarse print texture push it toward icon or propaganda—inviting a read of how images recruit attention and allegiance more than they tell truth.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident control of palette, silhouette, and deliberate halftone/dither texture. Some edges and compositing read intentionally rough, suiting the poster aesthetic but limiting nuance."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong, centered icon framed by poles and horizon; reflections ground the figure. The heavy centering flattens depth and reduces dynamism, though it reinforces the propagandistic feel."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The militarized‑mascot conceit is familiar, yet the neon‑noir atmosphere and print‑like processing give it a distinctive pop‑apocalyptic voice."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "Provokes unease and dark humor more than sustained feeling; impact leans on shock and irony."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Clear innocence‑versus‑violence critique with media‑image overtones, but it reads as a sharp one‑liner rather than a layered thesis."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 65,
+              "Decision": "PASS",
+              "Rational": "Compelling as pop‑surreal imagery, but it appears heavily stylized or composited, running counter to the collector’s preference for truthful, minimally processed photography and a strong sense of place. While the composition and color punch are notable, the work’s poster‑like directness and constructed feel make it a weaker fit for this collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-15T18:42:03-06:00",
+          "seconds": 37.4,
+          "review": {
+            "First Impression": "A jolt of neon dystopia: a rabbit with glowing eyes cradling a belt‑fed gun in a flooded street under a hot pink sky. The halftone texture and posterized colors read like vaporwave or zine graphics. Arresting and mischievous—equal parts cute and menacing.",
+            "Interpretation": "The work stages an absurd mascot-like figure as a combatant, turning the language of propaganda posters and arcade shooters into a single icon. “The Volunteer” implies naïve enlistment or coerced zeal: innocence recruited into violence. The waterlogged street and telephone poles hint at civic breakdown, while the radioactive palette pushes the scene into hyperreal nightmare. The centered, heroic pose and ammo belt mimic war iconography, undercut by the ridiculousness of a rabbit—satire of militarized culture and the seduction of spectacle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Digital manipulation and screen-printed/halftone treatment are handled confidently, with consistent glow and grain, but edges feel muddy and detail collapses, yielding a generalized poster effect."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong central silhouette and flanking poles frame the figure; reflections help anchor space. However, static centering and a clipped weapon at right limit spatial dynamism."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The mash-up of cute-animal iconography with dystopian vaporwave color is distinctive and memorable, even if it nods to meme and street-poster aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It produces an immediate jolt—unease mixed with dark humor—but the sensation skews punchline over lingering pathos."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The innocence‑weaponized theme reads clearly, yet offers few secondary layers or contextual cues to deepen the inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "PASS",
+              "Rational": "Bold, memorable image with competent design, but it is heavily stylized and likely composited, prioritizing graphic impact over the truth of a photographic moment. The collector favors documentary and fine‑art photography with patient light and a strong sense of place; this reads as poster art/overprocessed and sits outside those priorities. Recommend passing unless expanding into experimental prints beyond the current brief."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-15T18:42:20-06:00",
+          "seconds": 17.3,
+          "review": {
+            "First Impression": "The image is a high-energy digital work that utilizes aggressive saturation and lo-fi textures. It presents a stark, surreal contrast between the natural world and modern warfare.",
+            "Interpretation": "The work subverts the traditional symbolism of the rabbit, replacing vulnerability with militarized aggression. Its heavy digital processing suggests a fragmented, media-saturated reality where the line between nature and violence is blurred.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "The use of digital distortion and high-contrast dithering shows a deliberate stylistic choice."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central framing creates a clear focal point, though the balance remains somewhat conventional."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "It utilizes familiar internet-era aesthetics and tropes rather than offering a unique visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "The vibrant palette and jarring imagery provoke an immediate, if fleeting, visceral response."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The juxtaposition of innocence and violence is evident but leans toward a literal interpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "The artwork contradicts the collector's preference for honest photography and slow looking. Its heavy digital manipulation and lack of photographic reality make it an unsuitable addition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-15T18:42:36-06:00",
+          "seconds": 15.3,
+          "review": {
+            "First Impression": "An aggressive digital image defined by high-contrast neon tones and heavy pixelation. The visual tension is immediate and chaotic.",
+            "Interpretation": "The work subverts the rabbit’s traditional innocence through military imagery and a distorted, post-apocalyptic aesthetic. It uses digital artifacts to suggest a breakdown of reality or a synthetic fever dream.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "The glitch-heavy digital style is executed consistently, though it lacks the subtle nuance of traditional media."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central subject is effectively anchored, providing a clear focal point amidst the digital noise."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The use of anthropomorphic animals in military contexts is a familiar trope within digital art."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The jarring neon palette and aggressive subject matter generate a quick, visceral sense of unease."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "It explores the subversion of innocence but prioritizes aesthetic impact over deeper narrative layers."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "The piece relies on heavy digital manipulation and non-photographic techniques that directly contradict the collector's preference for honest, patient photography."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-15T18:42:49-06:00",
+          "seconds": 13.4,
+          "review": {
+            "First Impression": "This is a high-energy, digitally distorted image that feels like a chaotic transmission. The intense neon greens and reds create an immediate visual shock.",
+            "Interpretation": "The piece uses a vulnerable animal as a vessel for militant aggression, suggesting a loss of innocence or the militarization of the mundane. The digital artifacts act as a veil, implying that this reality is mediated through broken technology or corrupted data.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The artist demonstrates a clear intent in using digital dithering and saturation to create a specific aesthetic."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The centered subject creates a clear focal point, though the surrounding elements feel somewhat unbalanced."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "While the 'armed animal' trope is common in digital art, the specific low-fidelity treatment is distinctive."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The aggressive color palette and subject matter evoke an immediate sense of unease and tension."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The work explores the contrast between nature and violence through a familiar but effective juxtaposition."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "The artwork is entirely antithetical to the collector's stated preference for honest, un-manipulated photography. Its heavy digital processing and lack of 'photographic truth' make it an unsuitable match for this collection."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

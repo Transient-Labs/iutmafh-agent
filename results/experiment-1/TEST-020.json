@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-020",
+    "artwork": "sparkles",
+    "artwork_title": "Sparkles",
+    "artist": "Bear Otto",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/bad/sparkles.jpeg",
+    "models": [
+      "gpt-5-mini",
+      "gemini-2.5-flash"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-13T15:54:05-06:00",
+    "updated_at": "2026-07-13T16:01:26-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:54:23-06:00",
+          "seconds": 18.3,
+          "review": {
+            "First Impression": "Calm, meditative concentric rings on a dark ground; the glittering lines turn a simple spiral into something jewel-like and quietly mischievous. The hand-drawn irregularity keeps it human and immediate rather than mechanical.",
+            "Interpretation": "This work stages a private center — a spiral or series of rings that can read as tree rings, a planetary cross-section, or an eye. The artist chooses a dark, matte paper and contrasts brown marker with metallic/glitter lines so that the image alternates between absorbing and reflecting light; that choreography of shimmer against void makes the modest motif feel like an intimate excavation. The irregular, slightly wobbly line acknowledges the maker's hand and suggests memory, accumulation, and the slow passage of time rather than a polished, conceptual gesture.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The materials are handled with confidence: steady marker strokes and controlled glitter application create a deliberate look. Execution is straightforward and effective, though the technique remains simple and occasionally patchy in the glittering passages."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "A clear central focus and balanced negative space give the piece structural clarity and a hypnotic pull. The composition is static by design, which supports the theme but also limits visual development across the plane."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric rings and spirals are familiar motifs, so the basic idea is not new; the pairing of earthy brown ink with iridescent lines on dark paper provides a modest, pleasant twist but not a dramatically original invention."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The work elicits a quiet, meditative feeling and a small surprise when light catches the glitter. Its emotional register is gentle and accessible rather than intense or unsettling."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There are suggestive thematic notes—time, inner life, accumulation—but they are lightly sketched rather than rigorously developed, which limits the piece’s capacity to reward repeated viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "I pass. The piece is visually pleasing and has moments of quiet interest, but it doesn't demonstrate the sustained technical or conceptual complexity I require to endorse acquisition. It reads as a confident, small-scale gesture rather than a fully resolved artwork."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:54:37-06:00",
+          "seconds": 14.5,
+          "review": {
+            "First Impression": "A hypnotic set of concentric rings — glittering metallic lines interrupted by a warm brown loop — sits on matte dark paper. The work reads as both playful and quietly meditative.",
+            "Interpretation": "This piece explores repetition and centripetal focus through hand-drawn rings that recall tree rings, topographic maps, or a pupil’s iris. The artist pairs a flat, velvety charcoal or dark stock with metallic/glitter gel lines and a brown marker, creating tension between shimmer and matte, precision and wobble. The irregularity of the loops keeps the rhythm human and alive, turning a simple geometric motif into a study of accumulation, time, and interiority.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Materials are used deliberately — metallic gel on dark paper reads well and the marker line is confident — but the execution is straightforward and not highly refined; glitter application is uneven in places."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The concentric structure provides a strong central focus and effective use of negative space; the eye is drawn inward naturally and the irregular spacing keeps the composition dynamic."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Concentric rings are a familiar motif, yet the tactile glitter and the hand-made wobble give the idea a fresh, intimate spin rather than a purely decorative repetition."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece elicits a quiet, meditative response with hints of wonder from the shimmering material; it can also unsettle slightly, like looking into something interior and unknowable."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There are suggestive themes (time, growth, center/edge) but they remain implicit rather than fully developed; the work largely invites projection from the viewer."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "This is an appealing, modestly successful exploration of repetition and material contrast, but its ambitions are limited. The work's charm lies in its simplicity rather than depth or technical virtuosity, so I would not acquire it for a focused collection."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:54:51-06:00",
+          "seconds": 13.2,
+          "review": {
+            "First Impression": "Immediate and quietly arresting: the concentric spirals read like a slow heartbeat or the rings of a tree, calming and insistent. The contrast between the matte dark ground and the metallic, glittering lines gives the piece a small, luminous charge.",
+            "Interpretation": "This work takes a very simple, archetypal motif — the spiral/concentric ring — and treats it as an object of meditation. The artist uses a dark, likely black or deep gray ground and lays down two registers of mark-making: a steady, warm-brown drawn line that defines the outer and inner contours, and an intermittent metallic/glitter line that catches the light. The irregularity of the loops and the slight wobble of the hand emphasize human presence and temporality, while the metallic accents introduce a sense of depth and small-scale preciousness; together they suggest time (rings, growth), attention (repetition), or an inward gaze.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Execution is confident and controlled; the hand is steady where it needs to be and intentionally loose elsewhere. The use of metallic pigment on dark paper is effective, though technically straightforward rather than virtuoso."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "A strong central focus and balanced negative space make the structure immediately legible and stable. The concentric arrangement is predictable but well-proportioned, and the irregularities prevent it from feeling mechanical."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The spiral and concentric-ring vocabulary is iconic and commonly explored, so the idea itself is familiar. The material interplay (matte ground with glittery lines) provides a modest twist but not a wholly new visual proposition."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "There is a quietly hypnotic, almost meditative quality to the piece; the glitter adds a small thrill of light that turns a simple doodle into something intimate and contemplative."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "While the imagery is simple, it supports multiple readings — time, inner life, mark as ritual — that reward a second look. The work gestures toward thoughtfulness more than it fully articulates a complex concept."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "ACQUIRE",
+              "Rational": "I would acquire this work because it transforms a familiar, elementary motif into a quiet, tactile meditation through material contrast and deliberate hand. It isn’t revolutionary, but its restraint, intimacy, and modest lyricism make it worth adding to a collection as a reflective, atmospheric piece."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:54:59-06:00",
+          "seconds": 8.8,
+          "review": {
+            "First Impression": "The shimmer of the glitter against the dark background is immediately captivating, drawing the eye into what feels like a cosmic or organic vortex. It possesses a quiet, meditative quality that is both simple and intriguing.",
+            "Interpretation": "This abstract work features a series of hand-drawn, concentric ovals on a dark, matte surface. Alternating between a solid, earthy brown line and a sparkling, iridescent glitter line, the composition evokes natural phenomena such as tree rings, ripples on water, or perhaps a spiraling galaxy. The deliberate irregularity of the lines imbues the piece with an organic, human touch, contrasting with the geometric precision often associated with such patterns. It explores the interplay of light and dark, stability and dynamism, and the quiet beauty found in fundamental forms.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates good control over both the solid and glitter mediums, creating distinct and relatively clean lines, especially considering the inherent challenges of working with glitter. The material choices are well-suited to the intended effect."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The concentric arrangement is balanced and draws the viewer's eye to the center, creating a strong focal point. The slight imperfections in the ovals add an organic quality without detracting from the overall structural integrity."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "While concentric patterns are a common motif, the specific combination of dark paper, a muted brown, and iridescent glitter creates a somewhat fresh aesthetic. It feels distinct in its material application, if not entirely novel in concept."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The shimmering glitter against the dark evokes a sense of subtle wonder and introspection, hinting at hidden beauty or cosmic calm. It produces a gentle, pleasant, and quietly engaging felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The work touches upon themes of natural cycles, growth, and the universe's fundamental patterns without delving into overt intellectual complexity. It offers a meditative reflection rather than a profound philosophical statement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece, while understated, successfully leverages its chosen materials and simple forms to create a compelling visual experience. The delicate shimmer and organic irregularity offer a quiet intrigue and beauty that makes it a worthy addition. It's a work that rewards sustained, peaceful looking."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:55:10-06:00",
+          "seconds": 10.7,
+          "review": {
+            "First Impression": "The piece presents an immediate sense of quiet contemplation, with its concentric, shimmering forms drawing the eye inward. The dark ground lends a cosmic or deep-sea quality to the composition, while the sparkling lines feel almost alive.",
+            "Interpretation": "This work explores themes of repetition, organic growth, and the interplay of light and shadow through its series of hand-drawn concentric ellipses. The artist utilizes two distinct line qualities – a matte, earthy brown and a glittering, iridescent silver – to create a visual rhythm that suggests natural phenomena like tree rings, ripples in water, or perhaps even celestial orbits. The slight irregularities in the curves prevent a sterile, mechanical feel, imbuing the abstract form with a subtle, human vulnerability and a sense of slow, unfolding motion.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The application of the glitter medium is consistent and effective, creating a lovely shimmer. The lines, while intentionally imperfect, show a controlled hand in their execution."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The composition is simple and balanced, drawing the viewer's eye to the center. However, the slightly off-kilter nature of the ellipses adds a dynamic tension to the otherwise symmetrical arrangement."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric circles and ellipses are a fundamental motif in art. While the specific material choice of glitter on a dark ground has a certain appeal, it does not break significant new ground conceptually or formally."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The work evokes a peaceful, meditative state, with the subtle sparkle providing a quiet sense of wonder. It invites introspection without demanding a strong emotional reaction."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The piece touches upon ideas of cycles, growth, and cosmic patterns. It offers a gentle inquiry into these concepts, providing a pleasant visual metaphor rather than a challenging philosophical statement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "While possessing a quiet beauty and competent execution, the work ultimately feels more decorative than conceptually robust. It lacks the critical originality and profound depth required for acquisition, offering pleasantries where I seek provocation or deeper insight."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:55:21-06:00",
+          "seconds": 10.5,
+          "review": {
+            "First Impression": "The piece presents a series of concentric, hand-drawn ovals on a dark ground, some rendered in a shimmering, glittery medium, others in a plain brown line. It immediately brings to mind cross-sections of geological formations or perhaps a diagram of an astral body. There's a humble, almost meditative quality to its simplicity.",
+            "Interpretation": "This work appears to be an abstract exploration of organic growth or universal patterns, using the universal motif of concentric circles or ellipses. The irregularities in the lines suggest a natural, rather than mechanical, process, lending an immediate hand-made charm. The interplay between the matte brown and the iridescent glitter lines against the dark background creates a subtle visual tension, hinting at hidden depths or the ephemeral nature of light on a dark expanse. It seems to be an attempt to capture a quiet sense of wonder found in repetitive natural structures, without being overtly illustrative.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The command of the medium is adequate; the lines are a little wobbly but this contributes to the organic feel. The glitter medium is used effectively for visual interest."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The composition is straightforward and effective, drawing the eye towards the center with its radial arrangement. It is balanced, if not particularly dynamic."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric circles are a very common motif, and while the glitter adds a pleasant twist, the overall concept does not feel particularly novel or challenging."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The piece evokes a mild sense of calm and contemplation, perhaps a fleeting moment of wonder at natural patterns. However, it does not stir a strong or lasting emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "It touches upon themes of growth, cycles, or universal patterns, offering a gentle invitation for reflection. Yet, it remains on the surface, without delving into profound or complex conceptual territory."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "While possessing a quiet charm and a pleasing aesthetic, this artwork ultimately lacks the conceptual rigor, emotional impact, or distinctive originality that would merit acquisition. It's a pleasant piece, but one that doesn't demand repeated engagement or offer new insights upon further viewing."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Sparkles and circles"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:55:39-06:00",
+          "seconds": 18.0,
+          "review": {
+            "First Impression": "At first glance the work reads like a hand-drawn spiral set against a deep matte field; the glitter catches the light and gives the linework a jewel-like tremor. It feels intimate and playful — the sort of small, immediate object that invites leaning in.",
+            "Interpretation": "This piece works with concentric rings to stage a quiet, meditative focus: a single center that radiates outward. The artist pairs an earthy brown marker with iridescent glitter lines on dark paper, creating a tension between the humble, tactile mark and flashes of preciousness. The unevenness of the rings keeps the work human and gestural, suggesting a topography of memory, orbiting thought, or a ritual doodle made slowly and repeatedly. The large surrounding negative space emphasizes containment and stillness; the glitter draws attention to surface and light, making the piece shift as the viewer moves.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Materials are handled plainly — the marker lines are confident but irregular, and the glitter application reads effective but not meticulously controlled. The work's strength is immediacy rather than technical refinement."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The concentric structure provides a solid organizing principle and a clear focal center, with ample negative space allowing the form to breathe. The slight irregularities introduce a pleasant rhythm without destabilizing the piece."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Concentric motifs are familiar, but pairing a casual, hand-drawn spiral with shimmering iridescence on dark paper gives it a modestly fresh, personable note."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The image has a calming, hypnotic quality and the glitter adds a touch of delight; it elicits gentle attention more than strong affect, inviting quiet contemplation."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There are readable metaphors (layers of self, memory rings, orbit), but they remain suggestive rather than developed; the work feels immediate and pictorial rather than conceptually worked-through."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "I appreciate the intimacy and the luminous surprise of glitter against deep paper, but the piece lacks the technical refinement and conceptual development that would justify acquisition. It functions well as a charming, contemplative object, yet not one I would add to a collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:55:56-06:00",
+          "seconds": 17.5,
+          "review": {
+            "First Impression": "Calm and a little mischievous: the concentric rings read like a private mandala drawn quickly by hand, the glitter catching light against the matte ground. It feels intimate and immediate — a small ritual rendered with a child's surety and an adult's restraint.",
+            "Interpretation": "The work stages a quiet inward movement through repeated, irregular concentric lines: a brown marker defines the human hand while bands of metallic glitter register light and time. On the dark paper the glitter acts like a fleeting aperture, making the center seem to breathe; formally this is an exploration of focus, iteration, and the tension between rough gesture and shimmering ornament. The irregularities in line and the alternation of matte and reflective material suggest geological rings, an iris, or a small private shrine — an object meant to pull attention to a single, cumulative center.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The handling is confident and economical: the marker line is steady and the glitter application is controlled enough to read as intentional rather than accidental. It does not show technical virtuosity, but the materials are used thoughtfully for their optical effects."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong, single-axis composition makes the piece legible at a glance and gives it visual authority; the generous negative space on the dark ground heightens the impact of the rings. The irregularity of the circles keeps the structure from feeling mechanical and adds visual rhythm."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Concentric circles are a well-worn motif, but the pairing of a plain brown hand-drawn line with restrained glitter on a dark, absorbent ground yields a small, specific freshness. It's more of an original combination of materials than a formally revolutionary idea."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The work has a quietly meditative quality: the eye is drawn inward and the sparkle adds a small, pleasing surprise. Its simplicity produces an immediate, gentle affect rather than a grand catharsis."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The piece suggests ideas — layering, focused attention, the contrast of permanence and ephemera — but these remain at the level of suggestion rather than being rigorously developed. It rewards contemplation but does not demand reinterpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "ACQUIRE",
+              "Rational": "Its modest means deliver a distinct, contemplative voice: the work's formal clarity and tactile sparkle create a memorable, intimate presence. Though not conceptually dense, it resolves its premise neatly and offers repeated small pleasures, meriting acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:56:08-06:00",
+          "seconds": 11.8,
+          "review": {
+            "First Impression": "A quietly hypnotic image — simple, childlike lines set against a near-black field, brightened by shards of glitter that catch the light. The work feels both intimate and elemental: a small ritual drawn on paper.",
+            "Interpretation": "The piece works with concentricity and material contrast to produce a meditative object: the repeated circular gestures read like a topographic map, an iris, or a small orbiting system. The brown marker provides an earthy, hand-made line while the glittery metallic rings introduce an accidental luminosity that shifts with viewing angle; together they stage a tension between the mundane and the precious. The irregular spacing and wobble of the rings keep the work human and immediate rather than mechanical, suggesting an act of drawing as an event — a focused, repetitive movement that marks time.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The technical execution is modest but assured: the marker lines are steady and intentional, and the glitter is applied with enough restraint to accentuate rather than overwhelm. It is not highly refined or labor-intensive, but the materials are handled confidently."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The strong central focus and rhythmic repetition create a clear visual logic and pull the eye inward effectively; the off-center irregularities add tension and keep the circle from becoming static."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric circles are a very familiar motif in art, ritual, and design, but the pairing of a dark ground, earthy marker, and scattered glitter offers a small, personal twist rather than a wholly new proposition."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The image produces a gentle, meditative calm and a hint of wonder when the glitter catches light; however its affect is understated and quickly comprehensible rather than deeply affecting."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "There are readable metaphors (core, orbit, map) but the work does not develop them beyond surface implication; it gestures toward ideas of ritual and time without elaborating a sustained concept."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 56,
+              "Decision": "PASS",
+              "Rational": "This is a quietly pleasing, well-made small work that communicates a mood effectively, but it lacks the conceptual weight or originality that would compel acquisition. I admire the material contrast and the human irregularity, yet as an endorsement it feels too modest to justify acquiring."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:56:17-06:00",
+          "seconds": 8.6,
+          "review": {
+            "First Impression": "A rather unassuming drawing that attempts to capture a sense of cosmic energy or organic growth through simple concentric forms. The glitter adds a playful, almost childlike quality, which contrasts with the dark, serious background.",
+            "Interpretation": "This work explores themes of repetition, growth, and perhaps the micro- or macrocosmic. The artist employs a basic geometric motif – the circle – rendered imperfectly to suggest a natural, rather than mechanical, process. The alternating use of matte brown and iridescent glitter lines creates a subtle visual rhythm and texture, hinting at layers of existence or a shimmering core. It evokes a sense of quiet introspection, like observing a slow, natural phenomenon.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The craft is competent for what it attempts, though the lines could have more variation or intentionality in their 'imperfection' to elevate the work."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The composition is effective in its simplicity, creating a focused center of attention that draws the eye inward."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The piece doesn't break new ground conceptually or formally, but it executes a familiar idea with a certain charm."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "There's a subtle meditative quality that resonates, inviting a moment of calm observation."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The work hints at natural or cosmic patterns, but the exploration remains at a surface level without inviting deeper philosophical inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "This piece, while aesthetically agreeable, does not transcend its basic premise to offer a truly distinctive voice or profound statement. The execution is competent, but the overall impact remains modest, failing to justify a place in a curated collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:56:23-06:00",
+          "seconds": 6.2,
+          "review": {
+            "First Impression": "My initial reaction is to a somewhat wobbly, hand-drawn concentric pattern against a dark background, enlivened by glitter. It feels spontaneous, almost like a doodle, with a touch of cosmic whimsy due to the shimmering material.",
+            "Interpretation": "This work presents a series of concentric, organic rings, drawn with a mix of a reddish-brown line and lines heavily infused with iridescent glitter, all set on a muted, dark grey or black ground. The formal choices of simple, irregular circles suggest natural growth patterns like tree rings or ripples in water, but the dominant material choice of glitter introduces a disconnect, pushing the interpretation towards something more ethereal, perhaps a microscopic view of a glittering organism or a simplified representation of a celestial body. The varied thickness and shimmer of the lines create a subtle sense of texture and depth, despite the overall flatness.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The lines are quite uneven and wobbly, lacking precision. The application of glitter, while inherent to the material, appears somewhat haphazard, contributing to a less refined finish."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The composition is a straightforward, centered arrangement of concentric rings. While balanced, it lacks dynamic interest or any particular innovative use of the space beyond the basic form."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric circles are a fundamental, almost archetypal shape, and the use of glitter, while adding sparkle, does not elevate this piece into a territory of significant novelty or fresh perspective."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The work evokes a mild sense of calm or perhaps a gentle wonder at the sparkling effect. However, it doesn't provoke a deep or lasting emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The concept appears to be a direct exploration of 'sparkles and circles,' as stated. There's little beyond the immediate visual to invite prolonged intellectual engagement or reinterpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "While there's a certain charm to the raw, glittering lines, the work ultimately lacks the refinement, originality, and conceptual weight required for acquisition. It reads more as an exploratory sketch than a resolved piece that holds substantial aesthetic or intellectual value."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:56:30-06:00",
+          "seconds": 7.2,
+          "review": {
+            "First Impression": "A simple, almost meditative arrangement of concentric circles. The glitter adds a touch of ephemeral magic against the dark background, making it feel somewhat cosmic or cellular, yet also grounded.",
+            "Interpretation": "The artwork presents a series of roughly concentric, organic circles on a dark, matte surface. The lines alternate between a solid, earthy brown and a shimmering, iridescent glitter. This creates a visual rhythm, drawing the eye inward towards the sparkling core. The form suggests natural patterns found in tree rings, water ripples, or even microscopic structures, exploring themes of growth, time, and inner worlds through a minimal, almost diagrammatic aesthetic. The contrast between the dull brown and the vibrant glitter lends a tactile and somewhat mysterious quality.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The lines possess a human imperfection that could be seen as charming or slightly unrefined, while the glitter medium is handled competently, showing a deliberate contrast."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The composition is direct and effective, guiding the eye without being overly rigid, though it lacks significant dynamic tension beyond its central focus."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "While the execution is appealing, the fundamental elements and their arrangement draw heavily on well-established visual tropes of concentric patterns."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The work provides a gentle, reflective experience, akin to observing a quiet, natural phenomenon, but does not stir intense emotional depths."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "It hints at themes of growth, nature, or the cosmos, but these ideas feel more like a starting point for contemplation rather than a profound inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "The artwork is aesthetically pleasing and demonstrates a competent handling of materials, creating a serene visual. However, it lacks the originality and profound conceptual depth that would warrant acquisition for a collection seeking works with lasting impact and significant artistic contribution."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Bear Otto"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:56:40-06:00",
+          "seconds": 10.5,
+          "review": {
+            "First Impression": "Calm, intimate, and a little playful — the image reads as a quiet performance of a single gesture repeated outward. The metallic lines on deep paper catch the light and give an otherwise simple spiral a surprising presence.",
+            "Interpretation": "This work reduces image-making to one fundamental act: circling outward from a center. The concentric, hand-drawn rings — alternating brown marker and a glittering metallic medium on dark paper — set up a tension between precision and human irregularity. The dark ground recedes while the shimmering lines advance, producing a jewel-like focus that reads as both a meditative mandala and a diagram of growth (tree rings, ripples, or an interior self expanding). The deliberate simplicity makes the viewer supply narrative and scale, turning a humble mark into a locus for reflection.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The artist shows control of line and a confident economy of means; the metallic medium is well-applied and responds to the dark support. Some lines wobble and the hand is evident — that character works conceptually but also signals limited technical refinement."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A single centered motif carried across the surface creates a strong, stable composition. Slight off-centering and variable spacing keep it visually active rather than static."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric forms and spirals are a well-worn visual trope; the piece doesn't reinvent the motif, though the material pairing (dark paper with metallic glitter) gives it a modest twist."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "There is a quietly hypnotic quality — the work can be soothing or slightly uncanny depending on viewing distance. Its intimacy invites lingering, which is an emotional achievement for such a spare work."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The concept is legible and has resonant metaphors (growth, time, interiority) but it doesn't develop beyond the central trope; the idea is suggestive rather than elaborated."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "This piece is honest, visually pleasing, and quietly effective, but it falls short of the distinctiveness and conceptual elaboration I require to acquire work. I respect its restraint and material presence, yet as an acquisition it feels more like a successful study than a statement deserving investment."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:56:50-06:00",
+          "seconds": 9.6,
+          "review": {
+            "First Impression": "A quiet, meditative piece: concentric loops sit like a slowly expanding ripple on deep grey paper. The interplay of matte brown line and iridescent glitter gives the work a subtle, tactile glow that catches the eye without shouting.",
+            "Interpretation": "The drawing reads as a study of centripetal calm — rings suggesting growth-rings, ripples, or an inner pulse. Formal choices are spare: a single continuous brown line loops outward while parallel bands of metallic glitter trace alternate paths, introducing temporal shimmer and slight spatial ambiguity. On the dark ground the glitter becomes the active narrator, turning a simple motif into a steady negotiation between handcrafted mark and reflective materiality; it feels less like illustration and more like a quiet ritualized tracing of time or presence.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The execution is steady and confident; line work is controlled and the glitter application is deliberate, but the technique is elementary rather than virtuoso."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centralized spiral holds the picture plane well and creates a clear focal rhythm; however, it relies on a single motif and offers little formal contrast beyond the shimmer."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric rings and spiral motifs are ubiquitous, and while the glitter on dark paper gives a modest twist, the idea itself is not uncommon."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The piece has a calming, contemplative effect — the repeated loops invite slow looking — but the emotional reach remains gentle rather than profound."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There is an implied meditation on time, center, and repetition, but the work gestures to these themes without developing surprising or layered conceptual complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "This is a pleasant, well-made modest work that rewards quiet attention, yet it does not push formal or conceptual boundaries enough to warrant acquisition. I appreciate its restraint and tactile charm, but as a single piece it lacks the sustained depth or novelty I look for in works I acquire."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:57:05-06:00",
+          "seconds": 15.0,
+          "review": {
+            "First Impression": "Calm and intimate: a hand-drawn spiral of warm brown lines threaded with iridescent glitter on dark paper. The glitter's catch turns an otherwise simple doodle into something quietly insistent and slightly mysterious.",
+            "Interpretation": "This work concentrates on radial repetition — concentric rings that read as tree-rings, an iris, a target, or a small planetary system. The artist uses a matte, dark ground so that the brown marker provides an earthy anchor while the glitter gel pens introduce a shimmering, transient layer; the irregular hand-drawn line makes the piece feel like a private ritual or meditation rather than a mechanical diagram. Together the materials and gestures suggest time, memory, and inner focus: slow accumulation around a core.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The materials are handled with a competent, deliberate hand: the marker lines are steady enough and the glitter is applied with care. However the execution remains plainly vernacular — competent but not highly refined."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centered spiral establishes a strong, immediately readable structure and the surrounding negative space amplifies its presence. Slight irregularities in spacing and line weight lend character, though they also limit formal polish."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Concentric rings are a familiar motif in contemporary art and craft, but the pairing of a dark ground with iridescent glitter and an earthy brown marker gives the motif a modest, fresh twist."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The piece reliably produces a meditative, slightly hypnotic feeling; the glitter adds a touch of wonder. Emotional range is limited, however — it soothes more than it unsettles or provokes."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There are readable metaphors (growth rings, inner vision, time), but the work doesn't develop them beyond suggestion; the concept feels present but undeveloped."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "I appreciate the quiet presence and the tactile contrast between matte and sparkle, but the work is modest in ambition and depth. It reads as a thoughtful sketch or personal talisman rather than a fully realized piece worthy of acquisition."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:57:14-06:00",
+          "seconds": 9.0,
+          "review": {
+            "First Impression": "My immediate reaction is a sense of calm from the repetitive, organic lines. The glitter adds a surprising, almost magical quality against the dark background. It feels like a meditative doodle that stumbled into something more contemplative.",
+            "Interpretation": "This work presents a series of concentric, undulating rings, executed with both a solid brown line and a shimmering, glitter-infused medium, against a muted, dark grey background. The slightly irregular, organic quality of the circles suggests natural forms, perhaps tree rings, ripples in water, or a cross-section of a geode, rather than perfectly geometric constructs. The interplay of the matte brown and the iridescent glitter introduces a contrast between the grounded and the ethereal. It seems to explore themes of natural patterning, quiet growth, and perhaps a subtle celebration of inner luminescence or hidden beauty. The composition focuses entirely on this central form, drawing the eye inward.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The lines are fairly controlled, and the glitter application is mostly even, but it lacks a level of precision that would elevate it further."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The composition is balanced and clear, but it adheres to a very conventional central motif without exploring more complex arrangements."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The use of concentric rings is a very common motif; the glitter offers a slight variation but doesn't fundamentally redefine the visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It provides a gentle aesthetic experience, offering a sense of calm and visual interest, but it doesn't deeply stir the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The piece touches upon universal patterns and a subtle duality, but the exploration remains on a surface level without inviting deeper, complex intellectual engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "While the artwork demonstrates a pleasant aesthetic and competent handling of materials, it ultimately lacks the distinctive voice and compelling conceptual underpinning necessary for acquisition. The forms are familiar, and the emotional and intellectual engagement remains too superficial for a significant addition to a collection."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:57:24-06:00",
+          "seconds": 9.7,
+          "review": {
+            "First Impression": "The image immediately feels like a cosmic ripple or a cross-section of something organic, perhaps a tree trunk or an agate. The interplay of the dark background with the shimmering lines is quite striking and draws the eye inward, creating a sense of quiet fascination.",
+            "Interpretation": "This abstract piece presents a series of concentric, undulating lines against a dark, somber background. The lines alternate between a dull reddish-brown and a vibrant, shimmering glitter that catches the light, suggesting iridescence. The form is not a perfect circle but an organic, slightly irregular ellipse, implying natural growth or a spontaneous, hand-drawn gesture. The work seems to explore themes of hidden complexity, the subtle beauty in natural patterns, or perhaps a meditative journey inward; the glitter lines suggest energy or light emanating from a core, while the dark lines provide a grounding, almost subterranean contrast.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The application of the glitter is somewhat inconsistent, though the overall impression of the shimmering effect is achieved. The brown lines are clean but simple in their execution."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the concentric form is classically balanced and effectively draws the eye, yet it remains quite static and predictable in its arrangement."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The aesthetic is pleasing but relies on well-trodden paths of abstract forms and shimmering effects, lacking a truly fresh perspective or novel approach."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "There is a gentle pull to the piece, offering a moment of quiet contemplation and visual pleasure through its glimmering surface and rhythmic form."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "While open to multiple interpretations, the work doesn't push beyond surface-level aesthetic appreciation to provoke deeper, more complex conceptual reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "This piece is aesthetically pleasing with its subtle shimmer and organic form, creating a calm visual experience. However, it ultimately lacks the robust originality and conceptual depth to warrant acquisition for a collection that seeks truly impactful and challenging works."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:57:32-06:00",
+          "seconds": 7.7,
+          "review": {
+            "First Impression": "A simple, shimmering spiral or concentric circle drawing on dark paper. It feels a bit like a doodle, with a decorative, almost craft-like quality due to the glitter.",
+            "Interpretation": "The work presents a series of concentric, hand-drawn ovoid shapes, executed on a dark, matte surface. Some lines are rendered in a deep, earthy brown, while others sparkle with a fine, iridescent glitter, shifting from silver to subtle hints of gold and pastel hues. The central, smaller rings are predominantly glittery, drawing the eye inward, suggesting a nucleus or a point of origin. The organic, slightly irregular nature of the lines, combined with the glitter's fleeting light, evokes a sense of natural phenomena, perhaps tree rings, a thumbprint, or ripples in water, observed through a somewhat mystical or ethereal lens. It seems to be exploring themes of repetition, organic growth, and a quiet, subtle beauty.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The hand-drawn lines, particularly the brown ones, are somewhat unsteady, and the application of glitter is not entirely uniform, indicating a less than masterful command of the medium."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The concentric oval form is a classic and inherently stable composition, well-centered on the page, providing a sense of balance despite its simplicity."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "While the use of glitter provides a touch of distinctiveness, the core motif of concentric circles or spirals is extremely common and does not feel particularly innovative in this presentation."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The shimmering quality and the gentle, repetitive forms evoke a mildly calming or meditative sensation, but the work does not stir profound or lasting emotional responses."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The piece gestures towards organic patterns and an internal focus, but its execution doesn't invite deep philosophical inquiry or complex intellectual engagement; it remains largely an aesthetic exploration."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "The artwork, while possessing a pleasant, shimmering aesthetic, ultimately lacks the distinctive craft, originality, and substantial conceptual depth necessary for acquisition. Its simple motif and execution do not offer enough to truly engage or challenge the viewer beyond a fleeting appreciation of its decorative qualities."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Sparkles and circles",
+        "artist": "Bear Otto"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:57:44-06:00",
+          "seconds": 12.2,
+          "review": {
+            "First Impression": "A simple, hypnotic set of concentric rings drawn on dark paper where glitter threads through the lines and catches the light. It reads as both playful and slightly meditative — a doodle that wants to be ritual.",
+            "Interpretation": "Bear Otto's work reduces image to a single repeated act: drawing a ring and stepping outward. The dark ground makes the glittery lines and warm brown marker assert themselves as luminous gestures; the irregular hand-drawn spirals insist on the presence of the maker. The piece oscillates between childlike doodle and a topo/mandala reference, using repetition and the shimmer of glitter to convert a basic form into a focus for attention.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Execution is honest and direct: the marker lines are confident but uneven and the glitter application is attractive though uneven, suggesting modest technical control rather than virtuosity."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The concentric arrangement centers the eye effectively and the surrounding negative space amplifies the motif; slight irregularities in the rings provide visual tension rather than detracting from the whole."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric circles and sparkle are familiar devices in contemporary amateur and professional practices; the combination offers only a small, personal twist rather than a novel proposition."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "There is a quiet, meditative calm to the piece and a playful delight when the glitter catches light — it elicits a modest, pleasant response rather than a powerful one."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond formal repetition and tactile contrast, the work offers little conceptual complexity to return to; its meaning remains close to its making."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 54,
+              "Decision": "PASS",
+              "Rational": "While the piece has a sincere charm and strong central focus, it lacks the technical refinement and conceptual ambition I expect before endorsing acquisition. It functions well as a small, intimate gesture but not as an artwork I would add to a collection."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:57:57-06:00",
+          "seconds": 13.6,
+          "review": {
+            "First Impression": "Immediate and quietly pleasing: the concentric rings sit like a small universe on a matte black field, and the glitter catches the light with a gentle, magnetic shimmer. The drawing feels both playful and meditative — a simple gesture that demands to be looked at for a moment.",
+            "Interpretation": "The work presents a series of hand-drawn concentric circles rendered in a warm brown line and punctuated by iridescent glitter lines on a dark ground. Formally, it trades on contrast — matte paper vs. reflective material — and on repetition and elapsed time (rings suggesting growth rings, ripples, or an inward focus). The irregular, humanized line breaks the geometric read, turning a diagram into an intimate, ritualized mark-making: an exercise in centering, attention, and material play rather than an illustration of an external subject.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The execution is confident and clean; the glitter is applied in a way that reads intentionally rather than accidental. It remains a modest technical accomplishment rather than a demonstration of virtuoso handling."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "A clear, central focus gives the piece immediate presence, and the negative space supports the spiral. The near-center placement and steady rhythm of rings work visually, though the composition is essentially static and simple."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric motifs are ubiquitous, but the specific pairing of warm brown marker with iridescent glitter on black has a fresh, tactile character. Still, the idea itself is familiar."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "There is a meditative, slightly hypnotic quality that invites slow looking; the glitter introduces a childlike delight that balances the austerity of the ground."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The piece gestures toward themes—time, centering, ritual—but does not substantially develop them. It feels more like a study or evocative fragment than a conceptually layered work."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 54,
+              "Decision": "PASS",
+              "Rational": "This is a charming, intimate object with appealing material contrasts and an honest hand, but it lacks the formal or conceptual depth I require to endorse acquisition. It reads best as a small study or element of a larger exploration rather than a stand-alone work worth collecting."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:58:10-06:00",
+          "seconds": 12.2,
+          "review": {
+            "First Impression": "My first reaction is quietly amused and soothed: the image reads like a simple, hand-drawn meditation. The glitter catches light against the matte dark ground and turns an otherwise childlike motif into something unexpectedly luminous.",
+            "Interpretation": "This work deploys concentric circles—drawn in a steady brown marker—interleaved with irregular bands of glitter to create a focus on center and radiance. The formal choices (a dark, neutral field, repetition of round forms, and the contrast between flat marker and sparkling particulate) push the motif away from mere doodle toward a small study in orbit, pulse, or a palimpsest of time (like tree rings or ripples). The hand-made unevenness keeps the piece intimate and bodily: it reads as an honest trace of a gesture rather than a mechanical pattern.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The materials are handled with competence—the marker lines are confident and the glitter is applied in ways that catch the light—but the application is uneven and lacks refinement that would lift the work technically."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centered concentric structure creates an immediate, stable focal point and a pleasing rhythm; slight irregularities in spacing give it momentum rather than dead symmetry."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric circles are a very familiar visual trope, though the use of glitter on dark paper introduces a modest, idiosyncratic twist."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The piece has a meditative, almost lullaby quality—comforting and a little whimsical—its shimmer producing a small, tactile pleasure when seen close-up."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "There are suggestive readings (orbit, inner life, time), but the work does not develop a robust conceptual frame; it gestures toward ideas without fully interrogating them."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "ACQUIRE",
+              "Rational": "I would acquire this piece as a modest, intimate work that reliably produces a quiet affective pleasure: its material contrast and earnest mark-making make it more than a doodle. It is not a major conceptual achievement, but it functions well as a small, luminous object that animates close viewing."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T15:58:18-06:00",
+          "seconds": 8.5,
+          "review": {
+            "First Impression": "The dark background and shimmering concentric circles immediately evoke a sense of the cosmic or a geological cross-section. It's simple, yet there's an undeniable allure in the way the light catches the glitter.",
+            "Interpretation": "This work presents a series of roughly concentric ovoid shapes, drawn on a dark, matte surface. Some lines are rendered in a plain, earthy brown, while others sparkle with iridescent glitter, creating a striking contrast against the muted background. The arrangement, though appearing hand-drawn and slightly irregular, suggests natural forms like tree rings, an agate slice, or perhaps the ripples from a dropped stone. The glitter introduces a celestial or mystical quality, transforming a potentially mundane pattern into something subtly luminous and ethereal, hinting at hidden layers or energetic fields.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The lines are generally consistent, and the glitter application creates the intended visual effect without appearing accidental or sloppy."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The concentric arrangement is balanced and effectively draws the eye inward, though it doesn't offer a particularly dynamic or innovative spatial solution."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The use of concentric forms is common, but the juxtaposition of raw brown lines with sparkling glitter on a dark surface provides a somewhat unique textural and material contrast."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The shimmering effect against the dark background creates a subtle sense of wonder and invites a quiet, contemplative gaze."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The concentric forms inherently suggest growth, time, or layers, offering a modest conceptual entry point, but it doesn't delve into profound philosophical territory."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "While the piece possesses a quiet charm and effective use of materials, its formal and conceptual simplicity ultimately limits its impact. It doesn't present a sufficiently compelling vision or offer enough original depth to warrant acquisition."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T15:58:26-06:00",
+          "seconds": 8.3,
+          "review": {
+            "First Impression": "The piece presents a series of concentric, somewhat irregular circles on a dark background. The use of glitter in some lines offers a subtle shimmer, creating a sense of quiet cosmic energy or an organic cross-section. It feels somewhat rudimentary, yet there's a meditative quality to the repetitive forms.",
+            "Interpretation": "This work, \"Sparkles and circles,\" explores the fundamental abstract form of the circle through repetition and a contrast of materials. The concentric rings, some rendered in a matte reddish-brown and others in a shimmering glitter, suggest natural growth patterns, like tree rings or ripples in water, or perhaps a simplified celestial body. The slightly imperfect hand-drawn quality of the circles adds an organic, human touch, contrasting with the potentially sterile geometry, while the glitter introduces a playful, almost magical element that catches the light and draws the eye inward. It speaks to cycles, centrality, and perhaps the simple beauty found in elemental forms.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The lines are somewhat uneven, and the glitter application, while intentional, isn't always uniform, suggesting a less refined command of the medium."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The concentric arrangement is clear and centered, but lacks dynamic tension or a more sophisticated engagement with the dark field, appearing somewhat static and predictable."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "While the combination of glitter and simple circular forms has a certain charm, it doesn't break new ground in abstract drawing or conceptual art; it feels like a familiar exploration of basic elements."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The gentle shimmer and repetitive nature can induce a mild sense of calm or contemplation, but it doesn't evoke a strong or complex emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The work hints at ideas of growth, cycles, and cosmic forms, but these are largely archetypal and not deeply explored or challenged in a novel way."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "While possessing a quiet charm and a certain meditative quality, \"Sparkles and circles\" ultimately offers little in the way of significant artistic innovation or compelling execution. The rudimentary craft and uninspired composition prevent it from transcending its simple premise into something truly memorable or thought-provoking."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T15:58:34-06:00",
+          "seconds": 8.0,
+          "review": {
+            "First Impression": "My immediate reaction is a sense of quietude, almost like looking into a calm, dark pool reflecting faint stars. The concentric circles are meditative, and the glitter adds a subtle shimmer that catches the eye.",
+            "Interpretation": "This work presents a series of hand-drawn, somewhat irregular concentric ovals on a dark, matte background. The artist utilizes two distinct line types: a solid, earthy brown and a shimmering, iridescent glitter. This interplay of matte and sparkle, dark and light, suggests an exploration of subtle contrasts and textures. The organic imperfection of the circles, rather than mechanical precision, imbues the piece with a human touch, perhaps hinting at introspection or the natural, imperfect cycles of growth and experience, drawing the viewer into a soft, glowing core.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The lines, particularly the brown ones, exhibit some wavering and inconsistency, suggesting a lack of precise control. The glitter application is also somewhat uneven, though this could be intentional to some degree."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The concentric circular composition is inherently balanced and draws the eye inward effectively. While basic, its simplicity is a strength here, though the slightly off-center placement and irregularity add a touch of dynamic tension."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric circles are a foundational motif, and the use of glitter on a dark background is a common aesthetic choice. The piece does not offer a truly novel visual language or approach."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The work evokes a gentle, contemplative calm with a touch of whimsy from the glitter. It is pleasant and invites a moment of quiet reflection, but does not stir deeper or more complex emotions."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The conceptual framework appears relatively straightforward, focusing on form and material. While interpretations of introspection or organic processes can be drawn, the visual language itself does not deeply challenge or provoke intellectual inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "While possessing a simple, appealing aesthetic, this piece ultimately lacks the exceptional command of craft, compelling originality, or significant conceptual depth required for acquisition. It is a pleasant visual exercise, but not a work that truly distinguishes itself or offers lasting impact."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Sparkles and circles",
+        "artist": "Bear Otto"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Painting\",\n    \"Digital Painting\",\n    \"Figurative\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"technicalExecution\": 2,\n    \"emotionalImpact\": 3,\n    \"originality\": 4,\n    \"colorAndAesthetics\": 5,\n    \"conceptOrMeaning\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to painters with a distinctive visual language and exceptional command of light, color, edges, and composition. Whether the surface is oil or pixels, I want to feel deliberate mark-making, confident drawing underneath, and an emotional temperature — every brushstroke intentional, nothing rendered on autopilot.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Sam Spratt\",\n    \"James Jean\",\n    \"Jeremy Mann\",\n    \"Craig Mullins\",\n    \"Jenny Saville\"\n  ],\n  \"avoid\": \"Generic fantasy illustration, low-effort fan art, overly rendered work without personality, and trend-driven aesthetics.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Glitch Art\",\n    \"Databending / Corruption Aesthetics\",\n    \"Experimental Digital\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"innovation\": 2,\n    \"technicalExecution\": 3,\n    \"conceptOrMeaning\": 4,\n    \"colorAndAesthetics\": 5,\n    \"composition\": 6,\n    \"emotionalImpact\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm fascinated by work that embraces digital failure as a material — databending, compression artifacts, corrupted signals, broken renderers, and misused tools. I gravitate toward artists who push systems until they break interestingly and find real beauty and meaning inside distortion, noise, and error.\",\n  \"favoriteArtistsOrWorks\": [\n    \"XCOPY\",\n    \"Rosa Menkman\",\n    \"JODI\",\n    \"Sarah Zucker\",\n    \"Domenico Barra\"\n  ],\n  \"avoid\": \"Overly polished commercial aesthetics, off-the-shelf glitch filters, generic AI imagery, and work that wears experimentation as a surface style.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/painting.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/glitch.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-13T15:58:49-06:00",
+          "seconds": 14.2,
+          "review": {
+            "First Impression": "A simple, direct spiral rendered on dark paper where glitter catches light like small constellations. The work reads as playful and meditative — intimacy and modesty instead of spectacle.",
+            "Interpretation": "This is an exercise in repetition and the interplay of matte and reflective surfaces. Concentric, hand-drawn spirals in a brown marker are interleaved with iridescent glitter or metallic lines that pick up ambient light; the dark grey support keeps the focus on the tactile, luminous bands. Formally it privileges a centered, inward-pulling rhythm: the spiral becomes both a focal device and a temporal record of the artist's hand. The piece functions more like a focused sketch or charm — a study of mark, light, and containment — than a worked, layered painting with resolved pictorial ambition.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "The marks are steady and intentional but technically simple; glitter application is neat enough to read as a deliberate material choice rather than accidental, yet there is little evidence of advanced manipulation of medium."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The concentric layout provides a clear, strong focal pull and uses negative space effectively, but the composition is static and offers limited formal tension or development beyond the central motif."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The spiral is an archetypal motif and glitter-on-dark-paper is familiar; the combination is pleasant but not particularly novel in contemporary practice."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There is a modest meditative quality and a small, immediate pleasure from the sparkles, but it produces only a gentle affect rather than a sustained emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work suggests possible readings (ritual mark-making, map, or time-lapse of gesture) but offers few cues or complexities to sustain deeper interpretation on repeated viewings."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "Charming as a material experiment and intimate gesture, the piece feels like a resolved sketch rather than an artwork with the technical command, compositional ambition, and conceptual density necessary for acquisition. It succeeds modestly at what it sets out to do but does not warrant endorsement as a collectible object."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-13T15:58:59-06:00",
+          "seconds": 10.4,
+          "review": {
+            "First Impression": "A quiet, childlike charm greets you: looping concentric rings punctuated by glitter that catches the light against a somber ground. The work feels immediately intimate and meditative, but also intentionally minimal.",
+            "Interpretation": "This piece reduces image-making to its essentials: a central point expanded outward through repeated hand-drawn rings, alternating between a warm brown marker and iridescent glitter lines on a dark paper. The formal choices—centralized spiral, repetition, and the contrast between matte ground and shimmering material—turn a simple motif into a study of rhythm, surface and attention. It reads as an exercise in mark repetition and material contrast rather than a narrative or figurative statement; the glitter introduces a preciousness that complicates the otherwise naïf drawing.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The marks are confident and steady but technically undemanding; materials are handled cleanly (glitter adheres and lines are deliberate) though there is little evidence of layering, modulation, or advanced technique."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The concentric structure is balanced and visually stable, producing a hypnotic focal pull, but the compositional strategy is singular and undeveloped—effective at a small scale but not exploratory."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric motifs and glitter embellishment are familiar visual moves; the combination is pleasant but doesn’t stake out a distinct formal language or surprising twist."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "There is a calm, meditative quality to the repetition and shimmer that can be quietly affecting; however the emotional range is narrow and understated."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work functions more as a formal vignette than a conceptually rich project—there’s little to unpack beyond surface and repetition."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "Charming and cleanly executed as a small, intimate object, but it doesn’t meet the collector’s priority for disciplined painterly control, compositional complexity, or conceptual payoff. For a collection seeking distinctive visual language and deliberate mark-making, this piece feels exploratory rather than resolved; I would pass."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-13T15:59:15-06:00",
+          "seconds": 16.3,
+          "review": {
+            "First Impression": "A deceptively simple, hypnotic image: concentric hand-drawn rings on a dark ground that come alive where glitter catches the light. It reads simultaneously as playful and slightly solemn — like a child's drawing under a jeweler's light.",
+            "Interpretation": "The work stages a basic archetype (concentric circles/target/tree-rings/galaxy) using two very different materials: a warm brown marker and a metallic, iridescent glitter or pigment on a deep, matte background. The deliberate irregularity of the lines keeps the piece from becoming a mechanical pattern and gives it a human pulse; the glitter introduces a shifting, luminous surface that complicates the otherwise simple geometry. Together these choices create a quiet tension between naiveté and a small, refined spectacle — an invitation to slow looking rather than a fixed narrative.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Materials are handled cleanly but plainly; the marker lines are steady and the glitter is applied in a way that catches light effectively, but there is no complex technique or layered modulation of surface that suggests high technical ambition."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The concentric layout is a strong, economical compositional choice that centers attention and creates rhythmic movement inward; the generous negative space on the dark ground reinforces the motif and gives the piece visual presence."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Concentric circles are a ubiquitous formal trope, but the juxtaposition of humble marker and shimmering pigment on a dark paper offers a modest, pleasant novelty rather than a radical formal innovation."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "There is a quietly meditative, slightly nostalgic affect — the childlike drawing mixed with shimmering material produces a small emotional warmth and curiosity that lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The work gestures to multiple readable ideas (growth rings, targets, celestial bodies), but it doesn't elaborate them beyond suggestion; the conceptual field is pleasant and evocative but not developed into a sustaining idea."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "This piece has charm, strong compositional clarity, and an effective use of surface shimmer, but it lacks the painterly depth, refined mark-making, and conceptual development that would justify acquisition given the stated preferences. I admire its immediacy, but as an acquisition it doesn't meet the threshold of deliberate technical and conceptual ambition I look for."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-13T15:59:36-06:00",
+          "seconds": 20.2,
+          "review": {
+            "First Impression": "My initial reaction is to its simplicity, a meditative doodle rendered with glitter. There's a certain casual charm to the hand-drawn lines, but it lacks an immediate compelling presence.",
+            "Interpretation": "This piece presents a series of concentric, hand-drawn ellipses or circles on a dark ground, alternating between a reddish-brown line and a shimmering, glittery medium. The artist appears to be exploring elemental mark-making and the interplay of light on a surface, creating a visual rhythm that is both cosmic and organic, despite the clear imperfections in form.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "While the chosen medium of glitter offers a specific aesthetic, the control over line quality and consistency of application feels tentative, lacking the precision or deliberate command one seeks."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The concentric arrangement is an inherently balanced and classic motif. However, the slightly uneven and wobbly execution detracts from its structural strength without introducing meaningful tension or complexity."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The combination of concentric circles and glitter, while visually appealing, does not present a novel visual language or offer a fresh perspective within contemporary art practice."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "The work is visually pleasant and somewhat soothing due to its repetitive form, but it fails to evoke a strong or lasting emotional response beyond mild contemplation."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The piece seems to primarily be an aesthetic exercise in form and material, offering limited conceptual avenues for deeper exploration or sustained intellectual engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 25,
+              "Decision": "PASS",
+              "Rational": "This work, while possessing a certain decorative appeal, falls short of the rigorous standards for technical command, originality, and conceptual depth I value. It does not exhibit the distinctive visual language or intentional mark-making that would merit acquisition into a discerning collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-13T15:59:45-06:00",
+          "seconds": 8.8,
+          "review": {
+            "First Impression": "My first impression is of a simple, almost meditative drawing. The glitter adds an immediate sense of whimsy and catches the light, drawing the eye to the irregular concentric forms on the dark background. It feels somewhat understated, yet the sparkle gives it a certain allure.",
+            "Interpretation": "This work presents a series of organic, hand-drawn concentric ovals, some rendered in a muted brown, others in a shimmering glitter. The forms suggest natural growth patterns, like tree rings or ripples in water, or perhaps a cosmic lens. The irregularity of the lines hints at a human touch, an eschewal of perfect geometry in favor of something more earthen or spontaneous. The interplay between the flat dark surface and the iridescent glitter creates a subtle tension, exploring light and texture within a minimalist composition.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The lines are generally steady, and the glitter is applied with a certain consistency. However, the materials themselves (glitter pen on dark paper) feel somewhat limited in their expressive range, and there isn't a demonstration of advanced technical skill in their handling."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The composition is straightforward and balanced, centered around a clear focal point. While effective in its simplicity, it lacks complexity or dynamic tension, relying on a universally recognized symmetrical pattern."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric circles are a fundamental and widely explored motif in art. While the specific combination of glitter and organic irregularity offers a minor variation, it doesn't break new ground or present a truly distinctive visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The work evokes a mild sense of calm or introspection, perhaps a gentle wonder at the shimmering effect. However, it doesn't provoke a strong emotional response or linger with a deep, felt impact."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The work is open to interpretation (growth, cosmos, meditation), but these ideas are largely brought by the viewer rather than deeply embedded or provoked by the formal choices. The conceptual framework feels more illustrative than profound."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 40,
+              "Decision": "PASS",
+              "Rational": "While possessing a certain visual appeal through its use of glitter, this work's fundamental simplicity in composition and concept, combined with a lack of distinctive technical mastery or profound emotional impact, falls short of the rigorous standards for acquisition. It does not exhibit the confident drawing, deliberate mark-making, or complex visual language I seek."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-13T16:00:00-06:00",
+          "seconds": 15.3,
+          "review": {
+            "First Impression": "My immediate reaction is a sense of quiet observation, like looking into a dark pool or at a distant, simple cosmic event. The contrast of the dark paper with the shimmering lines is appealing, but the overall form feels somewhat unrefined.",
+            "Interpretation": "This work presents a series of concentric, hand-drawn circles on a dark, almost black, background. The lines alternate between a reddish-brown ink and a glittery, iridescent medium that catches the light with subtle shifts in color. The subject is purely abstract, focusing on the primal form of the circle and the suggestion of expansion or emanation from a central point. The informal, slightly wobbly quality of the lines suggests a direct, unmediated hand, lending a certain intimacy or vulnerability to the simple gesture. It feels like an exploration of light, shadow, and basic geometry, rendered with a playful, almost childlike material.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The mark-making is somewhat crude, lacking the precision or deliberate control one might expect from a confident hand. The glitter is applied consistently, but the lines themselves are wobbly."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The concentric circles are centered and symmetrical, creating a balanced but largely uninventive composition that feels rather inert and lacks dynamic tension."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The use of concentric circles and glitter, while visually engaging, feels like a familiar trope in abstract or decorative art, offering little in the way of novel expression or perspective."
+              },
+              "Emotional Resonance": {
+                "Score": 3,
+                "Reasoning": "The artwork offers a fleeting moment of visual appeal with its sparkle, but it fails to elicit a deeper or more enduring emotional response beyond mild contemplation."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The concept seems limited to the exploration of simple, concentric forms and material effect, without developing into a more complex idea or offering layered meaning for sustained intellectual engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 25,
+              "Decision": "PASS",
+              "Rational": "This piece, while possessing a simple, shimmering charm, ultimately falls short of the rigorous standards for acquisition. The execution lacks precision and deliberate mark-making, and its compositional and conceptual offerings are too basic to warrant a place in the collection. It does not align with the collector's preference for exceptional command of medium and distinctive visual language."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-13T16:00:13-06:00",
+          "seconds": 13.6,
+          "review": {
+            "First Impression": "Quiet and intimate — a hand-drawn set of concentric rings that shimmers when it catches light. The work reads more like a small, domestic ritual than a manifesto, pleasant but modest in ambition.",
+            "Interpretation": "The piece stages a simple, almost archetypal motif (concentric circles/targets/tree rings) executed with brown marker and metallic/glitter lines on dark paper. The material contrast — matte dark ground against intermittent iridescent or glitter bands — makes the work dependent on light and viewing angle; the hand-drawn, wobbling line invites a sense of private, bodily gesture rather than machine precision. The artist seems interested in repetition and aura (shimmer vs. plain ink) and in the space between controlled geometry and the irregularity of the hand, but the work does not engage with the collector’s declared focus on digital failure or system-level experimentation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Materials are handled with an assured, tidy hand; the glitter application catches light attractively. However the technique is simple and shows few advanced manipulations or surprises."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The centered concentric structure is stable and legible, with slight irregularities that give it personality, but the formal device is static and offers limited spatial tension or progression."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric rings and glitter are familiar visual tropes; there’s little here that reads as a distinctive new move, especially relative to the collector’s interest in digital corruption and glitch aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The piece can feel meditative or soothing in person because of its shimmer and repetition, but it elicits only a gentle, domestic affect rather than a strong emotional impact."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "There is a simple metaphorical range (rings as time, orbit, wound), but the work stops at surface effect and doesn’t develop a layered conceptual argument or interrogate systems in the way the collector values."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "Charming and materially pleasant, this work nevertheless fails to meet the collector’s prioritized criteria of originality and innovation — it does not pursue or reveal system-level experimentation or digital failure. I recommend passing: it’s a modest, domestic piece rather than the kind of experimental, edge-driven work the collector prizes."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-13T16:00:25-06:00",
+          "seconds": 12.0,
+          "review": {
+            "First Impression": "A modest, intimate sketch: concentric brown rings on dark paper, punctuated by discreet runs of iridescent glitter. The work feels tactile and playful, like a private ritual caught between crude drawing and decorative shine.",
+            "Interpretation": "The piece stages a simple centrifugal gesture — a repeated circling that pulls attention inward. The artist pairs crude, human line (brown marker) with a granular, refractive material (glitter) so that light becomes an active element: shimmer traces emphasize the spiral while also fracturing it. Formally it trades on repetition, imperfection, and material contrast to create a quiet, meditative object; conceptually it gestures toward ritual, focus, and the way small domestic materials can sediment attention, but it resists any sustained theoretical elaboration or overt technological framing.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Execution is competent but elementary — steady hand for the rings and a reasonably even application of glitter, but no advanced technique or surprising handling of materials."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The concentric structure reads clearly and the irregularities in line give it life; the centered focus is effective though the format is visually conservative."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Concentric motifs and glitter-decoration are familiar gestures in contemporary craft and minimal drawing; the work doesn’t stake out a novel formal territory or method."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "There is a quietly contemplative, almost childlike affect — the glitter introduces warmth and play that can engage the viewer on a tactile level."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the immediate material and meditative pleasures, the piece offers limited conceptual complexity or layers to return to."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "Charming and materially tactile, but not aligned with the collector’s prioritized interest in digital failure, databending, or experimental corruption; it does not display the originality or technological innovation the collector values, so I recommend passing."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-13T16:00:40-06:00",
+          "seconds": 14.9,
+          "review": {
+            "First Impression": "A small, intimate work: hand-drawn concentric circles on dark paper punctuated by iridescent glitter. It reads like a quietly meditative doodle — playful and tactile, but modest in ambition.",
+            "Interpretation": "Bear Otto presents a concentric ring structure executed with a brown marker and a sparkly/iridescent drawing medium on dark paper. The formal choice of uneven, hand-drawn circles produces a human, improvisational rhythm; the glitter introduces a transient, light-catching quality that contrasts the matte background. Together the gestures read as a pared-down mandala or tree-ring motif — quiet repetition and workmanship as a kind of small ritual — rather than a formally aggressive or system-breaking experiment.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Materials are used competently: the glitter picks up light effectively and the marker lines are confident, but execution is simple and shows no advanced handling or refinement of technique."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The centered concentric structure is stable and readable, with a pleasing cadence of rings, but it is also predictable and offers little structural surprise or tension."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Circles and sparkles are familiar motifs and the piece doesn’t demonstrate a distinct conceptual or formal novelty beyond an appealing, handmade simplicity."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The work can evoke calm, nostalgia, or a playful impulse to doodle; its impact is gentle and intimate rather than powerful or unsettling."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "There is a hint of contemplative intent (mandala/tree-ring), but the piece offers limited layers or provocations to return to on closer inspection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "This is a sincere, tactile object with modest charm, but it does not align with a priority on originality and experimental, system-breaking practice. It feels like an intimate handmade doodle rather than a risky or conceptually deep work worthy of acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-13T16:01:03-06:00",
+          "seconds": 22.7,
+          "review": {
+            "First Impression": "My initial reaction is to a simple, somewhat decorative drawing. The shimmering lines add a touch of whimsy, contrasting with the dark background and solid brown lines. It feels like a moment of quiet contemplation captured on paper.",
+            "Interpretation": "This work presents a series of concentric, hand-drawn rings that appear to oscillate between precise brown ink and shimmering, glitter-infused lines. It evokes a sense of organic growth or perhaps a meditative, cosmic void. The artist seems to be exploring the interplay of regularity and irregularity, permanence and ephemeral sparkle, within a minimalist, archetypal form. The material choice of glitter against a dark, matte surface suggests an interest in light, reflection, and perhaps a subtle subversion of traditional drawing materials.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The lines are generally steady, and the glitter application creates an interesting texture, though there are slight inconsistencies in the line work. It demonstrates competent handling of the chosen mediums."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The concentric circles create a strong focal point and inherent balance. The off-center placement adds a dynamic, almost hand-drawn quality that avoids sterile perfection."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "While the combination of shimmering and matte lines is pleasant, the motif of concentric circles is foundational and widely used. It does not present a particularly fresh or unexpected visual language, especially in the context of digital experimentation."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It elicits a gentle, calming response, perhaps a feeling of introspection due to the simple, repetitive form. It doesn't provoke strong emotions but rather a quiet aesthetic appreciation."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The work hints at themes of cycles, growth, or meditation, but these are largely implied by the form itself rather than explored through complex layers of meaning or innovative approaches. It feels more like an aesthetic exercise than a profound conceptual statement in this context."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "While the artwork possesses a modest charm and a certain meditative quality, it fundamentally misses the collector's explicit preference for glitch art, digital failure, and experimental digital work. This analog piece, with its conventional subject matter and execution, does not align with the desired aesthetic of systems pushed to their interesting breaking points, nor does it offer significant innovation or conceptual depth within that specific context."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-13T16:01:14-06:00",
+          "seconds": 10.8,
+          "review": {
+            "First Impression": "The concentric rings immediately bring to mind natural patterns, like tree rings or ripples on water, rendered with a touch of sparkle. It feels like a simple, meditative doodle, pleasant but not immediately arresting.",
+            "Interpretation": "This work presents a series of hand-drawn, concentric ovals on a dark background, alternating between a matte brown and an iridescent glitter. The subject is pure abstraction, an exploration of basic organic form. The choice of glitter introduces an element of simple beauty and playfulness, relying on the material's reflective qualities to add visual interest. It appears to be a direct, unmediated expression of form, with an emphasis on texture and subtle light interaction.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 4,
+                "Reasoning": "The lines are somewhat uneven and the application of glitter appears slightly inconsistent, suggesting a casual approach rather than a refined command of the drawing medium."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The concentric arrangement creates a clear central focus, but the overall oval shape is somewhat lopsided and the composition feels rather elementary."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "Concentric forms are a foundational motif, and the use of glitter pens is a common decorative choice, offering little in the way of novel artistic exploration."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "While mildly calming due to its repetitive nature, the piece evokes only a gentle aesthetic pleasure without provoking a deeper or more complex emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The conceptual framework seems limited to the aesthetic interplay of simple forms and shimmering material, lacking layers that invite sustained intellectual engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 20,
+              "Decision": "PASS",
+              "Rational": "This work does not align with the collector's distinct interest in glitch art, digital failure, and experimental digital aesthetics. Furthermore, while not without its own quiet charm, it lacks the originality, technical ambition, or conceptual rigor to warrant acquisition based on my own aesthetic standards. It's a pleasant, but ultimately unremarkable, piece."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-13T16:01:26-06:00",
+          "seconds": 12.0,
+          "review": {
+            "First Impression": "My immediate reaction is to a simple, somewhat decorative drawing. The interplay of the matte brown lines with the shimmering, iridescent glitter creates a modest visual interest, but the overall impression is quite understated.",
+            "Interpretation": "This work presents a series of hand-drawn, concentric ovals, centered on a dark ground. The choice of two distinct line qualities—one a solid, earthy brown, the other a sparkling, almost ephemeral glitter—creates a dialogue between permanence and fleeting light. It feels like a fundamental exploration of pattern and material contrast, perhaps a rudimentary diagram or a meditation on natural forms like tree rings or ripples.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The lines are drawn with a steady hand, and the application of glitter appears consistent. However, there's nothing here that demonstrates exceptional command or innovative use of the medium."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The concentric arrangement is balanced and clear, creating a stable focal point. Yet, it's a very conventional and expected compositional choice, lacking dynamism or surprise."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "Concentric circles are a universal, ancient motif. While the specific material combination offers a minor variation, the overall concept and execution do not offer a genuinely fresh or innovative artistic statement."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "The piece is pleasant and visually calm, but it doesn't evoke a strong or complex emotional response. It remains largely observational rather than deeply affecting."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work explores basic formal elements and material properties, but it does not seem to delve into a broader intellectual or philosophical inquiry that would invite deeper contemplation or repeated engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 25,
+              "Decision": "PASS",
+              "Rational": "This piece, while competently executed, offers neither the formal innovation nor the conceptual depth that aligns with my aesthetic standards. Crucially, it stands in direct opposition to the collector's articulated interest in digital art, glitch aesthetics, and and the beauty found in system failure, presenting a conventional, analog drawing instead."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

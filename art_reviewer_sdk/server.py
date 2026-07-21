@@ -42,11 +42,12 @@ def post_review(
     preferences: str = Form(default=""),
     artwork_name: str = Form(default=""),
     artist: str = Form(default=""),
-    price: str = Form(default=""),
     work_type: str = Form(default=""),
-    max_spend: str = Form(default=""),
     review_prompt: str = Form(default=""),
 ):
+    # Inputs mirror the workbook harness (description, artist, work type,
+    # preferences, prompt version). Pricing is deliberately not exposed here —
+    # pricing experiments run through workbooks/workbook_pricing.toml.
     model = model or os.environ.get("ART_REVIEWER_MODEL", DEFAULT_MODEL)
     data = image.file.read()
     if not data:
@@ -74,7 +75,7 @@ def post_review(
 
     try:
         review = review_image(model, data, mime, knobs, description, preferences,
-                              artwork_name, artist, price, work_type, max_spend,
+                              artwork_name, artist, work_type=work_type,
                               instruction=instruction)
     except Exception as exc:  # surface provider errors to the page
         raise HTTPException(502, f"{type(exc).__name__}: {exc}")

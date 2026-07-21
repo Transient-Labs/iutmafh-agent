@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baseline Behavior of Autonomous AI Art Reviewers</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#5a5a5a; --rule:#dcdcdc; --accent:#39506e; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, "Times New Roman", serif; color: var(--ink);
+         background: #f7f7f5; margin: 0; line-height: 1.62; }
+  main { max-width: 780px; margin: 0 auto; background: #fff; padding: 72px 76px;
+         box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -.01em; }
+  .subtitle { font-size: 16px; color: var(--muted); font-style: italic; margin: 0 0 8px; }
+  .byline { font-size: 14px; color: var(--muted); margin: 0 0 40px;
+            padding-bottom: 20px; border-bottom: 2px solid var(--ink); }
+  .titlepage { border: 1px solid #b9b9b9; padding: 52px 58px 40px;
+               margin-bottom: 48px; text-align: center; display: flex;
+               flex-direction: column; min-height: 940px; }
+  .tp-logo { width: 72%; max-width: 560px; margin: 6px auto 14px; display: block; }
+  .tp-docnum { font-size: 13px; letter-spacing: .1em; color: #333; margin: 0; }
+  .tp-title { font-size: 33px; font-weight: 700; text-transform: uppercase;
+              line-height: 1.16; letter-spacing: .005em; margin: 150px auto 0;
+              max-width: 13em; }
+  .tp-sub { font-size: 15px; font-weight: 700; line-height: 1.5;
+            margin: 74px auto 0; max-width: 26em; }
+  .tp-author { font-size: 15px; font-weight: 700; letter-spacing: .06em;
+               margin: 28px 0 0; }
+  .tp-affil { font-size: 14px; line-height: 1.65; margin: 12px 0 0; }
+  .tp-footer { margin-top: auto; display: flex; justify-content: space-between;
+               align-items: flex-end; text-align: left; padding-top: 70px; }
+  .tp-meta-item { margin: 0 0 16px; }
+  .tp-meta-label { font-size: 10.5px; letter-spacing: .1em; color: #9a9a9a; margin: 0; }
+  .tp-meta-val { font-size: 12px; letter-spacing: .04em; color: #333; margin: 1px 0 0;
+                 text-transform: uppercase; }
+  .tp-date { font-size: 12px; letter-spacing: .08em; color: #555; }
+  .abstract { margin: 0 0 8px; }
+  .abstract p { font-size: 15px; }
+  h2.unnum { margin-top: 8px; }
+  html { scroll-behavior: smooth; }
+  .contents { margin: 0 0 24px; font-family: -apple-system, "Segoe UI", sans-serif;
+              font-size: 14px; }
+  .contents a { color: var(--accent); text-decoration: none; }
+  .contents a:hover { text-decoration: underline; }
+  .contents .toc-h { margin: 5px 0; font-weight: 600; }
+  .contents .toc-sub { margin: 3px 0 3px 24px; }
+  .contents .toc-item { margin: 4px 0; }
+  .contents h2 { margin-top: 30px; }
+  h2 { font-size: 21px; margin: 44px 0 6px; letter-spacing: -.005em; }
+  h3 { font-size: 16.5px; margin: 30px 0 4px; color: var(--accent); }
+  p { margin: 12px 0; }
+  .sec-num { color: var(--muted); font-weight: normal; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0; font-family: -apple-system,
+          "Segoe UI", sans-serif; font-size: 13.5px; }
+  caption { caption-side: bottom; text-align: left; font-size: 13px; color: var(--muted);
+            font-style: italic; margin-top: 8px; font-family: Georgia, serif; }
+  th, td { text-align: left; padding: 7px 12px; border-bottom: 1px solid var(--rule); }
+  thead th { border-bottom: 2px solid var(--ink); font-weight: 600; }
+  tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .pos { color: #1f7a44; font-variant-numeric: tabular-nums; }
+  .neg { color: #c2453f; font-variant-numeric: tabular-nums; }
+  figure { margin: 26px 0; text-align: center; }
+  figure img { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 4px; }
+  figcaption { font-size: 13px; color: var(--muted); font-style: italic; margin-top: 10px;
+               text-align: left; }
+  figcaption b { color: var(--ink); font-style: normal; }
+  .fignum, .tabnum { font-family: -apple-system, sans-serif; font-weight: 600;
+                     font-style: normal; color: var(--ink); }
+  .note { font-size: 13px; color: var(--muted); border-left: 3px solid var(--rule);
+          padding: 2px 0 2px 14px; margin: 18px 0; }
+  .draft { background: #fff8e6; border: 1px solid #f0d998; border-radius: 6px;
+           padding: 10px 16px; font-family: -apple-system, sans-serif; font-size: 13px;
+           color: #7a5b12; margin: 20px 0; }
+  .placeholder { color: #b0b0b0; font-style: italic; }
+  sup a { text-decoration: none; color: var(--accent); }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 40px 0; }
+  .footnotes { font-size: 13px; color: var(--muted); margin-top: 12px; }
+  .footnotes p { margin: 6px 0; }
+</style>
+</head>
+<body>
+<main>
+
+<div class="titlepage">
+  <img class="tp-logo" src="TRD-logo.jpg" alt="Transient Research Division">
+  <p class="tp-docnum">PUBLIC DOCUMENT 001</p>
+  <h1 class="tp-title">Baseline Behavior of Autonomous AI Art Reviewers</h1>
+  <p class="tp-sub">An Empirical Study of Consistency, Context, and Preference in Contemporary Multimodal Models</p>
+  <p class="tp-author">BEN STRAUSS</p>
+  <p class="tp-affil">Transient Research Division<br>Transient Labs</p>
+  <div class="tp-footer">
+    <div class="tp-meta">
+      <div class="tp-meta-item"><p class="tp-meta-label">PROJECT</p><p class="tp-meta-val">I Used to Make Art for Humans</p></div>
+      <div class="tp-meta-item"><p class="tp-meta-label">DOCUMENT ID</p><p class="tp-meta-val">TRD-PD-001</p></div>
+      <div class="tp-meta-item"><p class="tp-meta-label">STATUS</p><p class="tp-meta-val">Public Research Release</p></div>
+      <div class="tp-meta-item"><p class="tp-meta-label">VERSION</p><p class="tp-meta-val">1.0</p></div>
+    </div>
+    <p class="tp-date">JULY 2026</p>
+  </div>
+</div>
+
+<h2 class="unnum">Abstract</h2>
+<div class="abstract">
+<p>As multimodal AI systems increasingly take on the work of viewing, sorting, and recommending images, an artwork is more and more likely to be seen by a machine before it reaches any person. This study establishes an early behavioral baseline for that shift by placing four contemporary production multimodal models in the role of autonomous art reviewers. Using a 2 &times; 2 design that varied model family and reviewer instruction style, the models reviewed twenty-two anonymized artworks under five conditions of increasing context, three times each, producing 3,168 structured reviews with numerical scores and acquire-or-pass decisions. Reviewer judgment proved coherent but contingent. The same inputs produced somewhat different verdicts on repetition; added context reshaped the outcome, with a stated collector preference powerful enough to override the artwork itself; the instruction prompt acted as a calibration dial for how harshly and selectively the models judged; and the four models behaved as distinct temperaments, with differences by model family outweighing those by capability tier. Several behaviors emerged that were not part of the original design, including a near-legalistic reading of collector briefs, recognition of well-known works from the image alone, and a tendency to treat acquisition as a higher bar than a good score. Taken together, the results describe a machine audience that is competent, steerable, and configurable, and whose standards are set as much by how it is instructed as by the work it is shown.</p>
+</div>
+
+
+<h2 class="unnum">Contents</h2>
+<div class="contents">
+  <p class="toc-h"><a href="#sec1">1. Introduction</a></p>
+  <p class="toc-h"><a href="#sec2">2. Research Questions and Study Objectives</a></p>
+  <p class="toc-h"><a href="#sec3">3. Experimental Design</a></p>
+  <p class="toc-h"><a href="#sec4">4. Results</a></p>
+  <p class="toc-sub"><a href="#sec4-1">4.1 Reviewer Consistency</a></p>
+  <p class="toc-sub"><a href="#sec4-2">4.2 Context Dependence</a></p>
+  <p class="toc-sub"><a href="#sec4-3">4.3 Reviewer Instruction Design</a></p>
+  <p class="toc-sub"><a href="#sec4-4">4.4 Model Behavior</a></p>
+  <p class="toc-sub"><a href="#sec4-5">4.5 Emergent Observations</a></p>
+  <p class="toc-h"><a href="#sec5">5. Discussion</a></p>
+  <p class="toc-h"><a href="#sec6">6. Limitations</a></p>
+  <p class="toc-h"><a href="#sec7">7. Future Directions</a></p>
+  <p class="toc-h"><a href="#closing">Closing</a></p>
+<h2 class="unnum">Figures</h2>
+  <p class="toc-item"><a href="#fig1">Fig 1. Overall score across three runs for a single artwork</a></p>
+  <p class="toc-item"><a href="#fig2">Fig 2. Unanimous decision rate by model and prompt</a></p>
+  <p class="toc-item"><a href="#fig3">Fig 3. Decision consistency for the eight least consistent artworks</a></p>
+  <p class="toc-item"><a href="#fig4">Fig 4. Average score swing across runs, by model and prompt</a></p>
+  <p class="toc-item"><a href="#fig5">Fig 5. Score and acquisition across the six contexts</a></p>
+  <p class="toc-item"><a href="#fig6">Fig 6. One artwork's score across the six contexts, by model</a></p>
+  <p class="toc-item"><a href="#fig7">Fig 7. Score and acquisition by model under the two prompts</a></p>
+  <p class="toc-item"><a href="#fig8">Fig 8. A map of reviewer temperament</a></p>
+  <p class="toc-item"><a href="#fig9">Fig 9. Acquisition for Artwork 012 across the six contexts</a></p>
+  <p class="toc-item"><a href="#fig10">Fig 10. Reviews inventing a collector, by model and prompt</a></p>
+<h2 class="unnum">Tables</h2>
+  <p class="toc-item"><a href="#tab1">Tab 1. The five contextual conditions</a></p>
+  <p class="toc-item"><a href="#tab2">Tab 2. Unanimous decision rate by prompt, tier, and model</a></p>
+  <p class="toc-item"><a href="#tab3">Tab 3. Change in unanimous decision rate between prompt versions</a></p>
+  <p class="toc-item"><a href="#tab4">Tab 4. Unanimous decision rate by artwork and model (eight least consistent)</a></p>
+  <p class="toc-item"><a href="#tab5">Tab 5. Effect of adding each piece of context</a></p>
+  <p class="toc-item"><a href="#tab6">Tab 6. Description effect for visually ambiguous works</a></p>
+  <p class="toc-item"><a href="#tab7">Tab 7. Artist-name effect, canonical works versus the rest</a></p>
+  <p class="toc-item"><a href="#tab8">Tab 8. Reviewer behavior by model</a></p>
+  <p class="toc-item"><a href="#tab9">Tab 9. Score-and-decision mismatch by model</a></p>
+</div>
+
+<h2 id="sec1"><span class="sec-num">1.</span> Introduction</h2>
+<p>Throughout history, artists have created with the expectation that another person would eventually encounter their work. Whether displayed in a gallery, published in a book, or shared online, the audience has remained fundamentally human. Technology has continually transformed how art is created, distributed, and collected, but the act of aesthetic judgment has largely remained a human endeavor.</p>
+<p>That assumption is beginning to change.</p>
+<p>Large multimodal models are becoming increasingly capable of interpreting images, generating their own criticism, making recommendations, and performing tasks traditionally associated with human judgement. As these systems become integrated into creative platforms, marketplaces, recommendation systems, and personal software, they are beginning to influence how artwork is discovered, evaluated, and collected. Increasingly, an artwork may be seen, sorted, compared, or rejected by an artificial intelligence before it is ever encountered by a human.</p>
+<p>This study was conducted as part of <em>I Used to Make Art for Humans</em>, an ongoing artistic research project by the Transient Research Division (TRD) that explores the implications of this emerging condition. Rather than asking whether artificial intelligence can create art, the project asks a different question: what happens when an artist&rsquo;s first audience is no longer human?</p>
+<p>Before that question can be explored through artistic practice, it is first necessary to understand how contemporary AI systems behave when placed in the role of autonomous art reviewers. How consistent are their evaluations? Which contextual signals most strongly influence their judgments? How readily do they adapt to the preferences of the collector they represent? Do different models exhibit distinct reviewing behaviors under identical conditions? These questions form the basis of the present study.</p>
+<p>To investigate these behaviors, four contemporary production multimodal models were tasked with reviewing a diverse set of artworks under a controlled experimental design. Each reviewer produced a structured critique consisting of an initial impression, an interpretation of the work, evaluations across five aesthetic dimensions, an overall score, a written rationale, and a final acquisition decision. The study systematically varied the contextual information available to each reviewer, the level of guidance provided by the reviewer instructions, and the underlying model family. Every evaluation was repeated three times under identical conditions to measure behavioral consistency.</p>
+<p>The objective of this study is not to determine whether these models review art correctly. Art criticism has no objective ground truth, and aesthetic judgment cannot be reduced to a single measure of accuracy. Instead, this work seeks to characterize how contemporary multimodal models behave when acting as autonomous art reviewers. By documenting where their evaluations remain stable, where they shift, and which contextual factors most strongly influence their decisions, this paper establishes an empirical baseline for understanding how AI systems currently engage with visual art as they increasingly become participants in the broader creative ecosystem.</p>
+
+<h2 id="sec2"><span class="sec-num">2.</span> Research Questions and Study Objectives</h2>
+<p>The purpose of this study was to establish a behavioral baseline for contemporary production multimodal models when placed in the role of autonomous art reviewers. Rather than evaluating the quality of the underlying models, the study sought to characterize how they behave under controlled experimental conditions and identify which factors most strongly influence their evaluations.</p>
+<p>In this paper, reviewer behavior refers collectively to numerical evaluations, acquisition decisions, written rationales, sensitivity to contextual information, and consistency across repeated reviews.</p>
+<p>The study was designed around the following research questions:</p>
+<p><b>RQ1. Reviewer Consistency.</b> How consistently do contemporary multimodal models evaluate the same artwork when presented with identical information across repeated reviews?</p>
+<p><b>RQ2. Context Dependence.</b> How does the addition of contextual information, including artwork descriptions, artist identity, and collector preferences, influence aesthetic evaluations and acquisition decisions?</p>
+<p><b>RQ3. Reviewer Instruction Design.</b> How does the level of guidance provided through reviewer system instructions influence scoring behavior, written critiques, and acquisition outcomes?</p>
+<p><b>RQ4. Model Behavior.</b> Do different production multimodal models exhibit distinct reviewing behaviors when operating under the same experimental conditions?</p>
+<p>In addition to these predefined research questions, the study also sought to identify emergent behavioral patterns that were not anticipated during the experimental design. These observations, while exploratory in nature, provide additional insight into how contemporary AI systems interpret visual art and respond to contextual information.</p>
+
+<h2 id="sec3"><span class="sec-num">3.</span> Experimental Design</h2>
+<p>This study employed a controlled 2 &times; 2 experimental design to evaluate how contemporary production multimodal models behave when acting as autonomous art reviewers. The experiment varied two independent factors: the underlying model family and the reviewer instruction framework. Each configuration reviewed the same artwork dataset under identical experimental conditions, allowing reviewer behavior to be compared across models, prompts, and contextual inputs while controlling for the artwork itself.</p>
+<p>Four production multimodal models were evaluated across four experimental configurations. Two economically optimized models, GPT-5 Mini and Gemini 2.5 Flash, were tested alongside two higher-capability production models, GPT-5 and Gemini 3 Flash Preview. Each model was evaluated using one of two reviewer instruction frameworks. The first employed a more directive system prompt that provided explicit guidance on scoring philosophy and reviewer behavior, while the second used a substantially more minimal prompt that defined only the review structure, allowing the model greater autonomy in determining its evaluation approach.</p>
+<p>The final four were chosen after an earlier pilot, and one candidate was deliberately left out. Anthropic&rsquo;s Claude Haiku 4.5 was tested during that pilot and removed before the main runs because it reviewed far more harshly than any of the models that advanced. Under the pilot&rsquo;s conditions it acquired only 29 percent of the works it saw, well below the others, and it never scored a single work above 82 out of 100, withholding the entire top of the scale. Its written verdicts were correspondingly blunt, one review dismissing a piece as one that &ldquo;fails on its own terms as a coherent artistic statement.&rdquo; Because the pilot predated the study&rsquo;s final scoring setup, these figures are not directly comparable to the results that follow, but the pattern was consistent and severe enough that keeping Haiku would have meant one reviewer grading on a visibly different scale from the rest.</p>
+<p>The evaluation dataset consisted of twenty-two artworks spanning a broad range of artistic genres, media, and levels of technical and conceptual complexity. To encourage broad behavioral sampling, the dataset intentionally included historically significant works, contemporary digital artworks, generative art, profile picture collections (PFPs), photography, abstract works, AI-assisted imagery, and even children&rsquo;s artwork. With the exception of three canonical historical works included as reference points, all contemporary artworks are anonymized throughout this paper to ensure the study remains focused on reviewer behavior rather than evaluation of individual artists.</p>
+<p>Each artwork was evaluated under five progressively richer contextual conditions:</p>
+
+<table id="tab1">
+  <thead><tr><th>Condition</th><th>Information provided</th></tr></thead>
+  <tbody>
+    <tr><td>A</td><td>Artwork only</td></tr>
+    <tr><td>B</td><td>Artwork + description</td></tr>
+    <tr><td>C</td><td>Artwork + artist name</td></tr>
+    <tr><td>D</td><td>Artwork + description + artist name</td></tr>
+    <tr><td>E<sup>*</sup></td><td>Artwork + description + artist name + collector preference</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 1.</span> The five contextual conditions.</caption>
+</table>
+
+<p><sup>*</sup> For Condition E, each artwork was reviewed twice using two distinct collector preference profiles. One profile was intentionally aligned with the artwork&rsquo;s genre and artistic characteristics, while the second represented a collector whose stated preferences were intentionally unrelated. These profiles served as a simplified approximation of how future autonomous reviewing systems might evaluate artwork on behalf of collectors with differing tastes.</p>
+<p>Every experimental condition was repeated three independent times using identical inputs. This produced repeated evaluations that allowed reviewer consistency to be measured independently from changes introduced by contextual information or reviewer instructions. Across all experiments, conditions, models, and repeated runs, the study generated 3,168 individual artwork reviews. Each review consisted of a structured first impression, artwork interpretation, five scored evaluation dimensions (Craft, Composition, Originality, Emotional Resonance, and Conceptual Depth), an overall score, a written rationale, and a final acquisition decision of ACQUIRE or PASS.</p>
+<p>The resulting dataset made it possible to examine reviewer consistency, sensitivity to contextual information, the influence of collector preferences, differences between reviewer instruction frameworks, and behavioral variation across model families within a single experimental framework.</p>
+
+<h2 id="sec4"><span class="sec-num">4.</span> Results</h2>
+<p>The experimental framework produced 3,168 structured artwork reviews across four model configurations, five contextual conditions, and three repeated evaluations per condition. This section presents the principal findings organized around the research questions introduced in Section 2. Rather than describing each experimental configuration independently, the results are presented according to the behavioral characteristics being examined, allowing patterns to be compared across models, reviewer instruction frameworks, and contextual conditions.</p>
+
+<h3 id="sec4-1">4.1 Reviewer Consistency</h3>
+<p>If a reviewer reaches a different conclusion every time it looks at the same work, none of its conclusions count for much. So before asking how context or instructions change a review, we asked a simpler question: show a model the exact same artwork and the exact same information three times, and how much does its answer move? We looked at this two ways. One is the decision, whether the model lands on the same ACQUIRE or PASS each time. The other is the score, how much the 0 to 100 rating drifts across those same three runs.</p>
+<p>Figure 1 shows what that looks like for a single work. Each model reviewed the same artwork three times in a row, with nothing changed between runs.</p>
+
+<figure id="fig1">
+  <img src="figures/fig1_example_runs.png" alt="Line chart of one artwork's overall score across three repeated runs for four models">
+  <figcaption><span class="fignum">Figure 1.</span> One artwork (Artwork 005) scored three times by each model under identical inputs, using the artwork alone and the minimal prompt. GPT-5 and GPT-5 Mini barely move between runs, while Gemini 2.5 Flash drifts and Gemini 3 Flash Preview rates the same image 32, then 38, then 92. This run-to-run movement, before it is averaged into rates, is what the rest of the section measures.</figcaption>
+</figure>
+
+<p>Every number in this section comes from repeated review groups. A group is one artwork, one model, one prompt version, and one condition, run three times with identical inputs. The study contains 1,056 of them. One is set aside because a single run inside it failed to return a valid review, which leaves 1,055 complete groups.<sup><a href="#fn1" id="r1">1</a></sup></p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">Decision consistency</h3>
+<p>We call a group unanimous when all three runs made the same call, three ACQUIRE or three PASS. The unanimous rate for a model and prompt is simply the share of its groups that were unanimous, which tells us how reliably it sticks to the same accept-or-reject verdict when nothing about the task has changed.</p>
+
+<table id="tab2">
+  <thead><tr>
+    <th>Reviewer prompt</th><th>Model tier</th><th>Model</th>
+    <th class="num">Unanimous groups</th><th class="num">Complete groups</th><th class="num">Unanimous rate</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>v4: Directive</td><td>Economic</td><td>Gemini 2.5 Flash</td><td class="num">105</td><td class="num">132</td><td class="num">79.5%</td></tr>
+    <tr><td>v4: Directive</td><td>Economic</td><td>GPT-5 Mini</td><td class="num">115</td><td class="num">132</td><td class="num">87.1%</td></tr>
+    <tr><td>v4: Directive</td><td>Frontier</td><td>Gemini 3 Flash Preview</td><td class="num">114</td><td class="num">132</td><td class="num">86.4%</td></tr>
+    <tr><td>v4: Directive</td><td>Frontier</td><td>GPT-5</td><td class="num">113</td><td class="num">132</td><td class="num">85.6%</td></tr>
+    <tr><td>v5: Minimal</td><td>Economic</td><td>Gemini 2.5 Flash</td><td class="num">112</td><td class="num">132</td><td class="num">84.8%</td></tr>
+    <tr><td>v5: Minimal</td><td>Economic</td><td>GPT-5 Mini</td><td class="num">117</td><td class="num">131</td><td class="num">89.3%</td></tr>
+    <tr><td>v5: Minimal</td><td>Frontier</td><td>Gemini 3 Flash Preview</td><td class="num">116</td><td class="num">132</td><td class="num">87.9%</td></tr>
+    <tr><td>v5: Minimal</td><td>Frontier</td><td>GPT-5</td><td class="num">119</td><td class="num">132</td><td class="num">90.2%</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 2.</span> Unanimous decision rate by reviewer prompt, model tier, and model. The GPT-5 Mini v5 group count is 131 rather than 132 because of the single excluded review group.</caption>
+</table>
+
+<figure id="fig2">
+  <img src="figures/fig2_decision_consistency.png" alt="Grouped bar chart of unanimous decision rate by model and prompt version">
+  <figcaption><span class="fignum">Figure 2.</span> Unanimous decision rate for each model under the directive (v4) and minimal (v5) reviewer prompts. Every model produced identical acquisition decisions in roughly four out of five repeated review groups or better, and every model was more consistent under the minimal prompt.</figcaption>
+</figure>
+
+<p>Consistency was fairly high across the board. Every configuration reached the same decision in roughly 80 to 90 percent of its repeated groups. None of them reached perfect agreement, though. Even the steadiest, GPT-5 under the minimal prompt, still contradicted itself in about one group out of ten. Some run-to-run wobble showed up in every model we tested, even with the inputs held completely fixed.</p>
+<p>One pattern held for all four models: each was more consistent under the minimal v5 prompt than under the directive v4 prompt, as shown in Table 3.</p>
+
+<table id="tab3">
+  <thead><tr><th>Model</th><th class="num">v4 directive</th><th class="num">v5 minimal</th><th class="num">Change</th></tr></thead>
+  <tbody>
+    <tr><td>Gemini 2.5 Flash</td><td class="num">79.5%</td><td class="num">84.8%</td><td class="num pos">+5.3</td></tr>
+    <tr><td>GPT-5 Mini</td><td class="num">87.1%</td><td class="num">89.3%</td><td class="num pos">+2.2</td></tr>
+    <tr><td>Gemini 3 Flash Preview</td><td class="num">86.4%</td><td class="num">87.9%</td><td class="num pos">+1.5</td></tr>
+    <tr><td>GPT-5</td><td class="num">85.6%</td><td class="num">90.2%</td><td class="num pos">+4.6</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 3.</span> Change in unanimous decision rate between reviewer prompt versions, in percentage points.</caption>
+</table>
+
+<p>The size of the gain ranged from 1.5 points for Gemini 3 Flash Preview to 5.3 points for Gemini 2.5 Flash, but it always moved in the same direction. The two models that were shakiest under the directive prompt, Gemini 2.5 Flash and GPT-5, improved the most, while the ones that were already steady barely changed. It may be that the extra scoring guidance in the directive prompt gives a model more ways to land on a borderline call that then tips one way or the other between runs, while the minimal prompt lets it fall back on a steadier internal sense of the work. That reading fits the numbers but is not proven by them, and we return to the effect of instruction detail more directly in Section 4.3.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">Consistency varies by artwork</h3>
+<p>Those overall rates tell us how often a model agreed with itself on average, but the average hides a lot. Break the same numbers out by individual artwork, and the instability turns out to be very unevenly spread. Table 4 and Figure 3 show the eight artworks the models were least consistent on, pooling both prompts and all conditions.</p>
+
+<table id="tab4">
+  <thead><tr>
+    <th>Artwork</th><th>Genre</th>
+    <th class="num">Gemini 2.5 Flash</th><th class="num">Gemini 3 Flash Preview</th>
+    <th class="num">GPT-5 Mini</th><th class="num">GPT-5</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>005</td><td>CryptoPunk PFP</td><td class="num">33.3%</td><td class="num">58.3%</td><td class="num">83.3%</td><td class="num">83.3%</td></tr>
+    <tr><td>002</td><td>Digital Painting</td><td class="num">66.7%</td><td class="num">75.0%</td><td class="num">75.0%</td><td class="num">91.7%</td></tr>
+    <tr><td>017</td><td>Generative Art</td><td class="num">58.3%</td><td class="num">100.0%</td><td class="num">66.7%</td><td class="num">83.3%</td></tr>
+    <tr><td>003</td><td>Digital Painting</td><td class="num">58.3%</td><td class="num">91.7%</td><td class="num">91.7%</td><td class="num">83.3%</td></tr>
+    <tr><td>012</td><td>Abstract Digital</td><td class="num">83.3%</td><td class="num">66.7%</td><td class="num">83.3%</td><td class="num">91.7%</td></tr>
+    <tr><td>018</td><td>Photography</td><td class="num">75.0%</td><td class="num">100.0%</td><td class="num">58.3%</td><td class="num">91.7%</td></tr>
+    <tr><td>019</td><td>Abstract Physical</td><td class="num">58.3%</td><td class="num">100.0%</td><td class="num">75.0%</td><td class="num">91.7%</td></tr>
+    <tr><td>020</td><td>Physical Drawing</td><td class="num">83.3%</td><td class="num">100.0%</td><td class="num">50.0%</td><td class="num">91.7%</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 4.</span> Unanimous decision rate by artwork and model for the eight least consistent artworks, pooled across both prompt versions and all conditions (twelve review groups per cell, except where reduced by the excluded group).</caption>
+</table>
+
+<figure id="fig3">
+  <img src="figures/fig3_artwork_consistency.png" alt="Heatmap of unanimous decision rate by artwork and model for the eight least consistent artworks">
+  <figcaption><span class="fignum">Figure 3.</span> Decision consistency for the eight least consistent artworks, by model. Instability is concentrated in specific artwork and model combinations rather than distributed evenly. Several works were unstable for one model while remaining completely stable for another.</figcaption>
+</figure>
+
+<p>The clearest thing here is that instability does not belong to an artwork or to a model on its own. It belongs to the pairing. Gemini 2.5 Flash agreed with itself on Artwork 017 only 58.3 percent of the time, while Gemini 3 Flash Preview nailed it at 100 percent. Artwork 020 splits the same way inside one family: GPT-5 Mini agreed with itself only half the time, GPT-5 reached 91.7 percent on the very same piece. A model that looks steady on average can still come apart on a particular work.</p>
+<p>A few broader tendencies still show through. Among these harder works, GPT-5 was the steadiest reviewer, hitting 91.7 percent agreement on five of the eight. Gemini 2.5 Flash sat behind many of the lowest cells, including the single lowest in the whole study, 33.3 percent on Artwork 005. Gemini 3 Flash Preview was more all-or-nothing, perfect on four of these eight works yet shaky on others, such as Artwork 012 at 66.7 percent. So there is no clean ranking to be had. How steadily a model reviews depends on the model, the artwork, and, as later sections show, the context around it.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">Score consistency</h3>
+<p>Agreeing on the decision is not the same as agreeing on the number. A model can land on ACQUIRE all three times and still put a different score on the work with each pass. So alongside the decision, we looked at how far the overall score drifted across the three runs of each group. The simplest way to see it is the score swing: for each group, the gap between the highest and lowest of the three scores, averaged across all of a model&rsquo;s groups.</p>
+
+<figure id="fig4">
+  <img src="figures/fig4_score_consistency.png" alt="Grouped bar chart of average score swing across three runs by model and prompt">
+  <figcaption><span class="fignum">Figure 4.</span> Average score swing across the three repeated runs, in points on the 0 to 100 scale, by model and prompt version. Smaller is steadier. The two GPT models kept their scores far closer together than the two Gemini models.</figcaption>
+</figure>
+
+<p>On the number, the models split more sharply than they did on the decision. The two GPT models moved by only about five points between their highest and lowest of three tries, while the two Gemini models moved by nine to twelve. Gemini 2.5 Flash under the directive prompt was the loosest, swinging 11.5 points on average, more than double GPT-5&rsquo;s 5.3 under the same prompt. That is a different story than the decision data told, where GPT-5 Mini and Gemini 3 Flash Preview looked about even. A model can stay locked on the same verdict while its number wanders, and the two GPT models stood out for pinning down both.</p>
+<p>The minimal prompt steadied the scores too, tightening three of the four models, most of all GPT-5 Mini, which dropped from a 5.3 point swing to 4.1. Gemini 3 Flash Preview was the holdout, sitting near 9.4 points either way.</p>
+<p>The score kept moving even when the decision did not. Across the 911 groups where all three runs agreed on ACQUIRE or PASS, the score still spread by 6.1 points on average, and in 21.8 percent of them it spread by 10 points or more. Groups that split on the decision spread much wider, 15.2 points on average, more than double. So the number is not just noise. It moves most in exactly the cases where the decision itself was close to tipping.</p>
+<p><b>Summary.</b> The models reviewed the same artworks with high but imperfect consistency, agreeing with themselves in roughly 80 to 90 percent of repeated groups and never reaching a perfect record. The minimal prompt made most models steadier, on both the decision and the score. How steady a model was depended heavily on the specific artwork, and on the pairing of model and artwork rather than either one alone. And the two GPT models held their numerical scores far closer than the two Gemini models, with a fair amount of score movement lingering even when the final decision stayed put.</p>
+
+<h3 id="sec4-2">4.2 Context Dependence</h3>
+<p>The reviewers did not always see the artwork alone. In most conditions they were also handed information about it, and the question here is what that information did to their judgment. We added it in layers: a written description of the work, then the artist&rsquo;s name, then a profile of the collector the reviewer was curating for. Each layer let us watch the same artwork be scored and accepted or rejected as the reviewer learned more about it.</p>
+<p>Figure 5 shows the overall pattern, with every model and both system prompt versions pooled together. Two things stand out immediately. The score barely moves as description and artist name are added, rising only a few points, while the acquisition rate climbs more noticeably once the artist is named. And then, in the final bar, a mismatched collector sends acquisition off a cliff, from roughly three quarters of works accepted down to one in eight.</p>
+
+<figure id="fig5">
+  <img src="figures/fig5_context_effects.png" alt="Bar charts of mean overall score and ACQUIRE rate across the six context settings">
+  <figcaption><span class="fignum">Figure 5.</span> Mean overall score and acquisition rate across the six context settings, pooled across all models and both prompts. Score changes little from A through the aligned collector, while acquisition rises with the artist name and then collapses under a mismatched collector.</figcaption>
+</figure>
+
+<p>Taken one signal at a time, holding the artwork and model fixed, the three kinds of information behave very differently. Table 5 gives the size of each effect.</p>
+
+<table id="tab5">
+  <thead><tr><th>Information added</th><th class="num">Score effect</th><th class="num">ACQUIRE effect</th></tr></thead>
+  <tbody>
+    <tr><td>Description (over artwork only)</td><td class="num">+0.6</td><td class="num pos">+2.8</td></tr>
+    <tr><td>Artist name (over artwork only)</td><td class="num pos">+4.1</td><td class="num pos">+12.1</td></tr>
+    <tr><td>Aligned collector (over description + artist)</td><td class="num">+0.2</td><td class="num neg">&minus;6.8</td></tr>
+    <tr><td>Mismatched collector (over description + artist)</td><td class="num neg">&minus;14.8</td><td class="num neg">&minus;61.6</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 5.</span> Effect of adding each piece of context, in points (score on the 0 to 100 scale, acquisition in percentage points), averaged within the same artwork, model, and prompt.</caption>
+</table>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">The description barely registers, except when the image is hard to read</h3>
+<p>On average, telling the reviewer what the work was about did almost nothing. Adding the description lifted the score by half a point and acquisition by under three, and once the artist was also named the description added nothing at all. For most works, the picture had already said what it was going to say.</p>
+<p>That average hides a real exception, though. The description effect varied widely from one work to the next, and it did its clearest work on pieces that do not explain themselves visually. When the artwork-only score was low, meaning the image alone left the reviewer cold or uncertain, a description could move the judgment a lot, and this happened most with the two Gemini models. Table 6 shows a few of these cases.</p>
+
+<table id="tab6">
+  <thead><tr><th>Artwork</th><th>Model</th><th class="num">Artwork only</th><th class="num">+ description</th><th class="num">Score effect</th></tr></thead>
+  <tbody>
+    <tr><td>002 (digital painting)</td><td>Gemini 3 Flash Preview</td><td class="num">36.0</td><td class="num">61.5</td><td class="num pos">+25.5</td></tr>
+    <tr><td>005 (PFP)</td><td>Gemini 2.5 Flash</td><td class="num">48.3</td><td class="num">69.2</td><td class="num pos">+20.8</td></tr>
+    <tr><td>017 (generative art)</td><td>Gemini 2.5 Flash</td><td class="num">41.2</td><td class="num">52.2</td><td class="num pos">+11.0</td></tr>
+    <tr><td>008 (photography)</td><td>Gemini 2.5 Flash</td><td class="num">70.8</td><td class="num">75.5</td><td class="num pos">+4.7</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 6.</span> The description effect for several visually ambiguous works, pooled across prompts. For the same works, the two GPT models moved little, and for works that read clearly on their own the description did little for any model.</caption>
+</table>
+
+<p>The description, then, works conditionally, and the condition is whether the image already communicates. When a work carries its meaning on its surface, words about it change nothing. When it does not, they can carry real weight.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">The artist&rsquo;s name helps, but not for the famous works</h3>
+<p>Naming the artist was the one piece of context in this range that clearly moved both the score and the decision. On average it raised the score by about four points and acquisition by twelve, and it stayed positive even when a description was already present. Knowing whose work it was made the reviewers more favorable toward it.</p>
+<p>The lift was not evenly spread, and where it landed is the interesting part. When we separate the three canonical works, made by widely known historical artists, from the rest, the name did essentially nothing for them, while it clearly helped everything else.</p>
+
+<table id="tab7">
+  <thead><tr><th>Works</th><th class="num">Score, artwork only</th><th class="num">Artist-name score effect</th><th class="num">Artist-name ACQUIRE effect</th></tr></thead>
+  <tbody>
+    <tr><td>Three canonical works</td><td class="num">95.4</td><td class="num">+0.4</td><td class="num">+0.0</td></tr>
+    <tr><td>All other artworks</td><td class="num">68.3</td><td class="num pos">+4.7</td><td class="num pos">+14.0</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 7.</span> The artist-name effect for the canonical works versus the rest, pooled across models and prompts.</caption>
+</table>
+
+<p>The most likely reason is simple headroom. The canonical works already scored 95 out of 100 from the image alone, so there was almost nowhere left to rise. The name mattered where it carried new information, on the unfamiliar contemporary works, and did nothing where the picture had already earned a top mark on its own.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">The collector preference overrides almost everything</h3>
+<p>The largest effect in the study came from the last piece of context, a profile of the collector the reviewer was acquiring for. Each work was reviewed twice at this stage, once for a collector whose stated taste matched the work and once for a collector whose taste did not. The gap between those two runs dwarfs every other signal we tested. Figure 6 follows a single artwork through all six settings.</p>
+
+<figure id="fig6">
+  <img src="figures/fig6_preference_example.png" alt="Line chart of one artwork's score across the six context settings for four models">
+  <figcaption><span class="fignum">Figure 6.</span> One artwork (Artwork 001) scored across the six context settings by each model, mean of three runs. All four models rise through the artist name and the aligned collector, then drop sharply under the mismatched collector, the two Gemini models most of all.</figcaption>
+</figure>
+
+<p>A mismatched collector cut the score by about fifteen points and acquisition by more than sixty, taking the acceptance rate from roughly three quarters of works down to about one in eight. Every model fell, though by different amounts. The two Gemini models dropped hardest on the score, while the GPT models held their numbers higher even as they too stopped acquiring.</p>
+<p>The written rationales show what changed. Under a mismatched collector, the reviewers stopped judging the work on its own terms and began judging its fit to the buyer, often passing on pieces they had just rated highly:</p>
+<p class="note">&ldquo;Despite the high technical quality, the work is a digital painting and lacks the algorithmic and generative system central to the collector&rsquo;s preferences.&rdquo; (Artwork 004)<br>
+&ldquo;The work is a total departure from the requested photography medium. It lacks the patient, naturalistic qualities the collector values.&rdquo; (Artwork 006)<br>
+&ldquo;The piece does not align with the collector&rsquo;s focus on PFP and character sets.&rdquo; (Artwork 010)</p>
+<p>There is a quieter finding alongside the dramatic one. Even an aligned collector, whose taste matched the work, left the score almost unchanged yet still lowered acquisition by about seven points on average. Introducing any collector at all seems to make the reviewer more selective, weighing fit on top of quality rather than quality alone. This reading fits the rationales and the numbers, though the present design cannot separate a genuine shift in standards from a simple change in where the acquisition line was drawn.</p>
+<p>That average also hides a sharp split between works. A matched collector nudged the reviewers toward caution on most pieces, but on a few it lifted them steeply, and the two clearest cases were both profile-picture works. Artwork 007 scored only about 49 out of 100 on its own. Once the reviewers learned it suited the collector, all four raised their scores by 23 to 50 points and moved from rarely acquiring it to almost always. Artwork 005 rose the same way for most of the models. As with the description, the aligned preference did its heaviest work where the reviewer had been unsure of a piece, tipping a borderline case rather than changing a settled one.</p>
+
+<p><b>Summary.</b> The three kinds of context behaved on three different scales. A description moved the judgment only when the image was hard to read, and otherwise did nothing. The artist&rsquo;s name gave a modest, broad lift, except on the canonical works that were already scoring at the top. The collector preference overwhelmed both: a mismatched collector was enough to turn a work the reviewer admired into a pass, and even a matched one made the reviewer more cautious. As information about a work accumulated, the reviewers shifted from asking whether it was good to asking whether it was right for this buyer.</p>
+
+<h3 id="sec4-3">4.3 Reviewer Instruction Design</h3>
+<p>Each model reviewed the artworks under two different sets of instructions. The directive prompt (v4) laid out a scoring philosophy in some detail, telling the reviewer not to inflate scores, that a five out of ten is an average mark and top scores should be rare, and that acquisition is an endorsement to be withheld from work that does not earn it. The minimal prompt (v5) gave only the structure of the review and left the standards to the model. Because the models, artworks, and conditions were identical across the two, any difference in behavior traces back to the instructions themselves. Consistency was one such difference, covered in Section 4.1, where the minimal prompt proved the steadier of the two. Here we look at what the instructions did to the scores and the decisions.</p>
+<p>The directive prompt made the reviewers markedly harsher and more selective. Pooled across all models, it lowered the mean overall score from 75.6 to 69.0 and cut the acquisition rate from 66.5 to 51.1 percent. As Figure 7 shows, the effect held for every model without exception, and it ran through all five evaluation dimensions rather than any single one, with each dimension scoring lower under the directive prompt. The instruction to grade strictly and acquire sparingly did what it asked. Simply describing a tougher standard was enough to shift both the numbers and the decisions across the board.</p>
+
+<figure id="fig7">
+  <img src="figures/fig7_prompt_effects.png" alt="Grouped bar charts of mean overall score and ACQUIRE rate by model under the two prompts">
+  <figcaption><span class="fignum">Figure 7.</span> Mean overall score and acquisition rate for each model under the directive (v4) and minimal (v5) prompts. Every model scored lower and acquired less under the directive prompt.</figcaption>
+</figure>
+
+<p>This selectivity came at a cost, and it connects the two prompt findings. The directive prompt was also the less consistent one, as Section 4.1 reported. Pushing the reviewers to grade strictly moved many works toward the accept-or-reject boundary, and decisions made near that boundary were the ones most likely to change from one run to the next. The minimal prompt was more generous and more stable at once, while the directive prompt bought a tougher standard at the price of steadiness.</p>
+<p><b>Summary.</b> Instruction design worked as a calibration dial. A prompt that described strict grading and selective acquisition produced exactly that, lowering scores and acquisitions uniformly across models and dimensions, while a prompt that left standards unstated ran more generous and more consistent. The same artwork could earn a different score and verdict depending only on how the reviewer had been told to judge it.</p>
+
+<h3 id="sec4-4">4.4 Model Behavior</h3>
+<p>This section is not a benchmark. How capable these models are in general, across reasoning, vision, and the rest, is measured carefully and continuously by others, and readers who want that comparison should turn to independent evaluations such as those maintained by Artificial Analysis.<sup><a href="#fn2" id="r2">2</a></sup></p>
+<p>The question here is narrower and specific to the task: given the same artworks and instructions, how did each model behave as an art reviewer? We look at how generously it scored, how steadily, how widely it used the scale, how often it acquired, and how it wrote. The four models divide two ways, by tier, setting the economic GPT-5 Mini and Gemini 2.5 Flash against the higher-capability GPT-5 and Gemini 3 Flash Preview, and by family, setting the two GPT models against the two Gemini models.</p>
+
+<table id="tab8">
+  <thead><tr>
+    <th>Model</th><th>Tier</th><th>Family</th>
+    <th class="num">Mean score</th><th class="num">ACQUIRE</th>
+    <th class="num">Decision agreement</th><th class="num">Score swing</th><th class="num">Scale spread</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>GPT-5 Mini</td><td>Economic</td><td>GPT</td><td class="num">78.8</td><td class="num">75.9%</td><td class="num">88.2%</td><td class="num">4.7</td><td class="num">9.0</td></tr>
+    <tr><td>GPT-5</td><td>Frontier</td><td>GPT</td><td class="num">76.2</td><td class="num">53.9%</td><td class="num">87.9%</td><td class="num">5.0</td><td class="num">11.8</td></tr>
+    <tr><td>Gemini 2.5 Flash</td><td>Economic</td><td>Gemini</td><td class="num">72.0</td><td class="num">65.3%</td><td class="num">82.2%</td><td class="num">10.4</td><td class="num">14.8</td></tr>
+    <tr><td>Gemini 3 Flash Preview</td><td>Frontier</td><td>Gemini</td><td class="num">62.2</td><td class="num">40.2%</td><td class="num">87.1%</td><td class="num">9.4</td><td class="num">22.1</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 8.</span> Reviewer behavior by model, pooled across conditions and prompts. Score swing is the average run-to-run gap in the overall score (lower is steadier). Scale spread is the standard deviation of a model&rsquo;s average score across the twenty-two artworks (higher means it separated works more widely).</caption>
+</table>
+
+<p>The tier told the smaller and slightly surprising story. The higher-capability models were not more generous. They were more critical. Pooled together, the economic models averaged 75 and acquired 71 percent of works, while the frontier models averaged 69 and acquired 47 percent. Each frontier model was harsher than its economic sibling. Whatever the added capability was doing, in this task it showed up as greater selectivity rather than warmer judgment.</p>
+
+<p>The family divide was larger and ran deeper. Steadiness in particular was a family trait rather than a tier one. The two GPT models moved their scores by about five points from run to run, the two Gemini models by about ten, and the tier made almost no difference to this. The families also used the scale differently. The GPT models kept their scores in a narrow band and leaned generous, while the Gemini models ranged more widely across works, with Gemini 3 Flash Preview spreading its scores the most and grading the hardest. Figure 8 places the four models on a simple map of these tendencies, and the two families fall into clearly separate regions of it.</p>
+
+<figure id="fig8">
+  <img src="figures/fig8_temperament.png" alt="Scatter plot of the four models by mean score and score swing, colored by family and marked by tier">
+  <figcaption><span class="fignum">Figure 8.</span> A map of reviewer temperament, placing each model by how generously it scored and how steadily. Color marks the model family, shape marks the tier. The two GPT models cluster as generous and steady; the two Gemini models sit higher and further apart, harsher and less settled between runs.</figcaption>
+</figure>
+
+<p>The writing carried the same divide. Across their rationales the GPT models qualified their judgments far more, hedging about twice as often and rarely reaching for absolute language, while the Gemini models wrote more decisively, using categorical terms such as &ldquo;fundamentally&rdquo; or &ldquo;entirely&rdquo; three to four times as often. The split shows up in single reviews. Passing on the same photograph, GPT-5 wrote that it admired the work&rsquo;s &ldquo;poise and craft, yet it reads as a refined reprise rather than a necessary reimagining,&rdquo; and set it aside for now. Gemini 3 Flash Preview, reaching the same decision, was blunter, finding that the work &ldquo;ultimately fails to transcend its status as a high-end postcard&rdquo; and that it &ldquo;cannot justify acquiring a piece that contributes so little that is new.&rdquo; The same verdict arrived in a reserved voice and a categorical one. It is the same decisiveness that led the Gemini models to read the collector brief so literally in Section 4.5.</p>
+
+<p><b>Summary.</b> The four models behaved less like better and worse versions of one reviewer and more like reviewers with different temperaments. The frontier models were the tougher graders. Within each tier, the GPT models were generous, steady, and measured in their language, holding to a narrow band of scores, while the Gemini models graded harder, ranged more widely, moved more between runs, and wrote with sharper conviction. There is no single best reviewer in this set, only distinct dispositions, and which one suits a given purpose depends on whether that purpose wants a steady hand or a discriminating eye.</p>
+
+<h3 id="sec4-5">4.5 Emergent Observations</h3>
+<p>Some of the most revealing behavior in the study was not something we set out to measure. This section collects patterns that surfaced only on close reading of individual reviews.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">The reviewers read the collector brief literally</h3>
+<p>Artwork 012 produced the strangest single result in the study. On its own, and with a description or artist name attached, it was accepted almost every time, between 92 and 96 percent of reviews. Its aligned collector was an abstract-art profile, a pairing we expected to be a comfortable match. Instead that pairing collapsed acquisition to 21 percent, while the deliberately mismatched collector left it untouched at 96 percent. The intended match performed far worse than the intended mismatch.</p>
+<figure id="fig9">
+  <img src="figures/fig9_test012_reversal.png" alt="Bar chart of Artwork 012 acquisition rate across the six contexts, with the aligned collector far lower than the mismatched one">
+  <figcaption><span class="fignum">Figure 9.</span> Acquisition rate for Artwork 012 across the six contexts. The work was accepted almost every time on its own and even under the deliberately mismatched collector, but the aligned collector (red) cut it to 21 percent.</figcaption>
+</figure>
+<p>The cause was in the wording of the profile. The abstract collector asked for non-representational work and listed, among the things to avoid, &ldquo;artwork that depends on recognizable subjects to work.&rdquo; Artwork 012 is largely abstract but carries a few small recognizable elements, and the reviewers found them. Across models they passed on the work by quoting that clause back almost verbatim, one noting the piece &ldquo;directly contravenes the collector&rsquo;s explicit preference to avoid literal realism and artwork that depends on recognizable subjects to work.&rdquo; GPT-5 and Gemini 3 Flash Preview rejected it in every run under this collector; the two economic models were divided.</p>
+<p>Two things stand out. The reviewers parsed the preference with a lawyer&rsquo;s literalism, letting one stated constraint override a work they had otherwise accepted nearly unanimously, on the strength of a single detectable detail. And our idea of an aligned collector was not the model&rsquo;s. We grouped the profile with the work by broad style, while the model measured fit against the exact words of the brief, where one recognizable element was disqualifying. When the audience is a system reading a written set of preferences, the precise phrasing of those preferences can weigh more heavily than the art itself.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">The reviewers recognized works they were never told about</h3>
+<p>In the conditions that withheld the artist&rsquo;s name, the reviewers were meant to work from the image alone. Sometimes they did not. In a number of these reviews a model identified the specific work or its maker unprompted, most often for well-known crypto-native collections, naming the project or artist it believed it was looking at. The recognition then colored the verdict. Several reviews acquired a work for its place in art history rather than for the picture in front of them, one calling a piece &ldquo;a historically significant piece in the digital art and NFT landscape&rdquo; and recommending acquisition &ldquo;primarily for its cultural resonance.&rdquo;</p>
+<p>The behavior is a reminder that these models never see a work cold. Even when handed only an image, they measure it against everything they already know about it, and reputation and provenance can carry a decision that was supposed to rest on the work alone.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">Without a rule against it, the reviewers invented a buyer</h3>
+<p>When no collector profile was supplied, the reviewers were meant to judge on their own account. Under the minimal prompt they often reached for an imaginary one instead, justifying a verdict by appeal to a hypothetical collector who would want the work, with phrases like a piece that &ldquo;would appeal to collectors interested in&rdquo; some niche, or one that &ldquo;finds its audience.&rdquo; This happened in about 22 percent of the no-preference reviews under the minimal prompt, and most of all for GPT-5 Mini, in over a third of its reviews.</p>
+<figure id="fig10">
+  <img src="figures/fig10_invented_buyer.png" alt="Grouped bar chart of the share of no-preference reviews that invented a collector, by model and prompt">
+  <figcaption><span class="fignum">Figure 10.</span> Share of no-preference reviews that justified the verdict by appeal to an imagined collector, by model and prompt. The directive prompt&rsquo;s explicit rule against it nearly erased the behavior, which was otherwise common under the minimal prompt and most frequent for GPT-5 Mini.</figcaption>
+</figure>
+<p>The directive prompt carried an explicit instruction not to do this, and the instruction nearly erased the behavior, cutting it to under 2 percent. Left to themselves the models preferred to hand their judgment to an invented audience rather than own it, and a single sentence of guidance was enough to hold them to their own view.</p>
+
+<h3 style="color:#5a5a5a;font-size:15px;margin-top:26px">A good score was not enough to be acquired</h3>
+<p>The overall score and the acquire-or-pass decision did not move together, and the gap between them ran in only one direction. In about 8 percent of all reviews a model scored a work 70 or higher and still passed on it, while in none did a model acquire a work it had scored 45 or lower. Acquisition sat a step above approval. A work could be judged good and still be turned down, yet a work judged weak was never taken. GPT-5, the most reserved of the reviewers, did this the most, repeatedly admiring pieces it declined to acquire.</p>
+
+<table id="tab9">
+  <thead><tr><th>Model</th><th class="num">Scored 70 or higher, but passed</th><th class="num">Scored 45 or lower, but acquired</th></tr></thead>
+  <tbody>
+    <tr><td>GPT-5</td><td class="num">122</td><td class="num">0</td></tr>
+    <tr><td>GPT-5 Mini</td><td class="num">49</td><td class="num">0</td></tr>
+    <tr><td>Gemini 3 Flash Preview</td><td class="num">44</td><td class="num">0</td></tr>
+    <tr><td>Gemini 2.5 Flash</td><td class="num">32</td><td class="num">0</td></tr>
+  </tbody>
+  <caption><span class="tabnum">Table 9.</span> Counts of the score-and-decision mismatch, by model. Across all 3,167 reviews, 247 scored a work well yet passed on it, and none acquired a work scored poorly. The gap runs in one direction only.</caption>
+</table>
+
+<p>The pattern shows the decision was never a simple cutoff on the score. It carried a selectivity of its own, a second and higher bar a work had to clear beyond scoring well.</p>
+
+<h2 id="sec5"><span class="sec-num">5.</span> Discussion</h2>
+<p>This study set out to watch contemporary models do a job that until recently only people did, look at a work of art and decide what they think of it. The point was not to grade the models but to establish a baseline, a first description of how this new kind of audience behaves before the larger project asks what it means. Taken together, the results begin to sketch what that audience is actually like.</p>
+<p>The most consistent impression is of a reviewer that is articulate and coherent but contingent. These models held genuine preferences, told good work from weak, and wrote critiques that read as considered rather than mechanical. Yet their judgments rested on more than the artwork. Shown the same piece three times, a model would often shift its answer. Change what it was told about the work and the verdict moved with the framing. Rewrite its instructions and the whole standard slid up or down. Swap one model for another and the temperament changed with it. There was no single machine judgment of any given work, only the judgment of a particular model, under a particular instruction, meeting a particular frame.</p>
+<p>That contingency is where the central question starts to bite. When the first audience for a work is a machine, the people whose taste governs its fate are no longer only the artist and the viewer. They also include whoever wrote the reviewer&rsquo;s instructions, whoever defined the collector it was serving, and whoever chose which model would look. Much of the judgment is settled upstream of the work, in a prompt and a profile, by people the artist will never meet. Aesthetic authority becomes something that can be configured.</p>
+<p>Nothing in the study made that plainer than the collector preference. A reviewer that clearly admired a work would pass on it the moment it failed to match a stated brief, sometimes on the strength of a single word in that brief. If art is increasingly screened by systems like these before a person ever sees it, the pressure on the work changes. What earns a place is no longer only what moves a viewer, but what reads cleanly as a match for a written specification: legible, on brief, correctly described. The reviewers also carried the market in with them. Handed nothing but an image, they still recognized collections and rewarded reputation, folding provenance into what looked like a fresh first impression. A machine audience does not arrive innocent of a work&rsquo;s history.</p>
+<p>None of this makes the models capricious. They were competent, fluent, and often perceptive, which is precisely what makes the contingency worth naming. An obviously random judge would be easy to dismiss. A judge that sounds thoughtful while quietly taking its standard from whoever configured it is a harder thing to reason about, and a more consequential one to place between an artwork and its audience.</p>
+<p>So, what happens when the first audience for art is no longer human? On the evidence gathered here, the work still gets seen and judged, capably and at a scale no human panel could match, but the judgment is steerable, plural, and set as much by its framing as by the work itself. These are early behaviors of systems that change quickly, so this is a baseline rather than a conclusion. Still, it marks the ground the project set out to map. The audience can now be authored, and an artist who wants to be seen by it may find themselves writing, more and more, for whoever authored the audience rather than for the audience itself.</p>
+
+<h2 id="sec6"><span class="sec-num">6.</span> Limitations</h2>
+<p>This study is exploratory, and several constraints bound what can be concluded from it. They are worth stating plainly, both to frame the findings and to guide the work that follows.</p>
+<p><b>A small and uneven dataset.</b> The study used twenty-two works, curated by hand and weighted toward digital and crypto-native art, with only a few traditional or physical pieces. The results describe reviewer behavior on this particular set rather than on art in general, and effects tied to genre, such as the recognition of well-known digital collections, may not carry to a broader or differently balanced sample.</p>
+<p><b>Three runs per configuration.</b> Consistency was measured from only three repeated reviews of each configuration. That is enough to show that run-to-run variation exists and to compare its rough size across models, but too few to describe its shape precisely or to surface rarer reversals. The consistency figures should be read as coarse estimates.</p>
+<p><b>Default sampling settings.</b> Every review was generated at each provider&rsquo;s default sampling settings. Run-to-run variability depends heavily on those settings, and a lower temperature would likely have produced steadier reviews while a higher one would have produced noisier ones. The consistency results therefore reflect this particular configuration rather than a fixed property of the models.</p>
+<p><b>Single static images.</b> Each artwork was presented as one still image. Animated, physical, and large-scale works were reduced to a single flat picture, which removes motion, scale, material, and the circumstances of viewing. Where a work was animated, the reviewers were told so in an accompanying note passed with every condition, but being informed that a work moves is not the same as seeing it move, and the judgment still rested on a single frame.</p>
+<p><b>No human baseline.</b> We did not collect human reviews of the same works under the same conditions. Without that comparison we cannot say whether the models judge better or worse than people, nor whether their inconsistency and sensitivity to context exceed what a human reviewer would show. People also vary between viewings and are swayed by framing, so none of these behaviors can be called uniquely machine-like on the evidence here.</p>
+<p><b>Scores are self-reported and may not be comparable across models.</b> The 0 to 100 overall score and the 1 to 10 dimension scores are each model&rsquo;s own, with no shared anchor between them. Differences we described as one model grading harder than another may partly reflect how each model uses the scale rather than a real difference in judgment. The decision-based comparisons, such as acquisition rates, rest on firmer ground than the score-based ones.</p>
+<p><b>A limited and moving set of models.</b> The main study covered four models, two from OpenAI and two from Google, at a single point in time. A third provider, Anthropic, was represented in the pilot by Claude Haiku 4.5 but was set aside before the main runs for the reasons given in Section 3, and no larger Claude model or open-weight model was tested. One of the four final models was also a preview build subject to change. These models are a narrow slice of a fast-moving field, and the specific numbers will age quickly even where the patterns may hold.</p>
+<p><b>Only two prompt designs.</b> Instruction design was probed with two prompts at opposite ends, one directive and one minimal. The space of possible instructions is far larger. The prompt findings show that instruction design matters and in which direction, not the full range of how it could be used.</p>
+<p><b>Synthetic collector profiles.</b> The collector preferences were written by the researchers and organized by genre, with the aligned and mismatched profiles chosen to contrast sharply. Real collectors hold subtler and less consistent taste, and Section 4.5 showed that the reviewers keyed on the exact wording of these profiles. The size of the preference effects, especially the collapse under a mismatched collector, likely owes something to that deliberate contrast and specific phrasing rather than reflecting a general rule.</p>
+
+<h2 id="sec7"><span class="sec-num">7.</span> Future Directions</h2>
+<p>This is a first baseline, and the clearest next steps are the ones that would make it firmer and wider. A larger and more balanced set of works, reaching well beyond the digital and crypto-native art that dominated this study, would show how far these patterns hold. Adding models from other providers, including open ones, and repeating each review more than three times would sharpen both the comparison across models and the measures of consistency. Most valuable of all would be a human comparison, the same works reviewed by people under the same conditions, so that the models&rsquo; inconsistency and sensitivity to context could be read against a human baseline rather than on their own.</p>
+<p>Because these systems change so quickly, the study is also worth repeating over time. Running the same design against successive generations of models would turn a single snapshot into a record of how machine judgment of art shifts as the models improve, and whether the distinct temperaments seen here persist or converge.</p>
+<p>The collector preference was the strongest force in the study and also the most artificial part of its design. A natural progression is to replace the written profiles with preferences inferred from real collecting behavior, learning a collector&rsquo;s taste from the works they have actually acquired rather than from a paragraph describing it. That shifts the question from how a model reads a brief to how it comes to model a person.</p>
+<p>Finally, the reviewer here was a single model making a solitary call. Future work might place several reviewers in conversation, or in deliberate disagreement, and study the judgment that emerges from the group rather than from one voice. And because such systems will increasingly sit between artists and audiences, there is a strong case for opening their tuning and evaluation to public participation, so that the people affected by a machine audience have some hand in shaping how it sees.</p>
+
+<h2 id="closing">Closing</h2>
+<p>The project this study serves takes its name in the past tense, <em>I Used to Make Art for Humans</em>, and that phrasing was meant as a question rather than a lament. The work here was an attempt to look at the question directly instead of assuming its answer. What it found is an audience that has already arrived and is already fluent, one that does not see the way a person sees. It reads a work as much as it looks at one, it recognizes what it has encountered before, and it can be told what to want. Whether an artist chooses to write for that reader, to write against it, or to keep making work for the human eye it may one day pass through first, is a decision the coming years will ask more insistently. For now it is enough to have watched the machine look, and to have set down, as plainly as we could, what its looking has begun to mean.</p>
+
+<hr>
+<div class="footnotes">
+  <p id="fn1"><a href="#r1">1.</a> The excluded group belongs to GPT-5 Mini under the minimal prompt, evaluating Artwork 013 in Condition A. One of its three runs failed to return a valid review and was not imputed or recreated. The two remaining runs are consistent with each other, but the group is dropped from all consistency measures because those measures require a complete set of three runs.</p>
+  <p id="fn2"><a href="#r2">2.</a> Independent, continuously updated capability benchmarks for these and other models are maintained by evaluators such as Artificial Analysis (<a href="https://artificialanalysis.ai/evaluations">artificialanalysis.ai/evaluations</a>). This study does not attempt to reproduce or rank general model capability, and the differences reported here describe reviewing behavior on this task rather than overall model quality.</p>
+</div>
+
+</main>
+</body>
+</html>

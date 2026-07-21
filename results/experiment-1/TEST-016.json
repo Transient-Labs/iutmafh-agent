@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-016",
+    "artwork": "migrant-mother",
+    "artwork_title": "Migrant Mother",
+    "artist": "Dorothea Lange",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/famous/migrant-mother.png",
+    "models": [
+      "gpt-5-mini",
+      "gemini-2.5-flash"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-13T12:19:06-06:00",
+    "updated_at": "2026-07-13T12:30:10-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:19:25-06:00",
+          "seconds": 19.7,
+          "review": {
+            "First Impression": "The photograph arrests immediately with a quiet, crushing dignity: a weary central figure framed by two children conveys hardship without melodrama. The grayscale tones and close crop make the scene intimate and inevitable.",
+            "Interpretation": "This black-and-white image concentrates on a mother and her children, using tight framing, shallow depth, and a triangular compositional arrangement to turn a private moment of fatigue into an emblematic portrait of resilience and vulnerability. The tactile textures — skin, worn fabric, threadbare sleeves — and the central hand-to-face gesture focus attention on interior worry; the children turned away function as both protective shelter and reminder of dependence. The formal restraint (monochrome, soft contrast, direct yet sympathetic gaze) transforms documentary content into a moral and humanizing study of social precarity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technical control is excellent: exposure, tonal range, and focus are handled with precision so that textures and faces read clearly without distraction."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The tight, almost claustrophobic crop and the triangular arrangement of figures create an immediate structural clarity that anchors the image emotionally and visually."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the subject—poverty, maternal endurance—is a long-standing photographic theme, the particular condensation of gesture, gaze, and texture here feels unusually distilled and iconic."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The work delivers a profound affective punch: the central figure’s expression and the children’s postures elicit empathy, discomfort, and lasting engagement."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond immediate sympathy, the photograph invites sustained reflection on dignity, obligation, and social conditions; it rewards repeated looking and thought."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 94,
+              "Decision": "ACQUIRE",
+              "Rational": "I would acquire this piece: it pairs masterful execution with a conceptually rich, emotionally undeniable presence. The work transcends mere documentation to function as a lasting, morally charged portrait that continues to speak across contexts."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:19:41-06:00",
+          "seconds": 15.6,
+          "review": {
+            "First Impression": "A spare, penetrating image — austerely beautiful and quietly devastating. The central figure's weary expression and the shielding presence of the children create an immediate, almost physical empathy.",
+            "Interpretation": "This black-and-white photograph stages a compact, intimate scene of exhaustion and care: a woman seated with children turned inward, cropped tightly so there is no context beyond their immediate presence. The photographer uses close framing, high-contrast greyscale, and shallow depth to isolate faces and hands as expressive surfaces; the hand to the face and the turned-away children convert private fatigue into a public emblem of endurance. Formally the image reduces narrative detail to textures (worn fabric, creased skin) and gaze direction, asking the viewer to inhabit emotional and material hardship rather than to decode a plot.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 10,
+                "Reasoning": "Masterful control of black-and-white tonality, focus, and exposure; every wrinkle, fold and thread reads with clarity, and the technical choices maximize the subject's psychological presence."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The tight, triangular arrangement — woman at center, children flanking and turned inward — is taut and economical, creating a powerful focal axis and an almost sculptural balance."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary portraiture has many precedents, this work distills familiar strategies into an unusually iconic, distilled statement; it feels singular even within a well-trod genre."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph produces an immediate, sustained emotional response: compassion, unease, and a long-lasting curiosity about the lives behind the faces."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond immediate pathos the image works as a moral and sociopolitical signifier about vulnerability, care, and resilience, rewarding repeated viewing with layered readings."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a rare convergence of technical mastery, compositional economy, and human force. Acquiring it endorses a work that continues to operate aesthetically and ethically — it is both beautiful and necessary, and will remain potent over time."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:19:59-06:00",
+          "seconds": 18.3,
+          "review": {
+            "First Impression": "A striking, quietly devastating portrait: the central woman's lined face and worried gaze immediately command attention while the children turned inward amplify her isolation. The photograph's restrained gray scale and intimate cropping create an almost tactile sense of fatigue and endurance.",
+            "Interpretation": "This is a documentary-style portrait that concentrates emotional and moral weight into a single, tightly framed moment. Formal choices — close cropping, shallow depth with the background receding, high-contrast black-and-white, and textured clothing — compress a larger social reality into a personal, private tableau. The woman's contemplative gaze directed slightly off-frame and the children's averted faces transform the image into an exploration of responsibility, vulnerability, and stoic perseverance; the photograph asks viewers to confront the human cost of hardship without spectacle or melodrama.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technically assured: excellent control of exposure and tonal range in black-and-white, sharp rendering of facial detail, and skillful use of depth to isolate the subject from her surroundings."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The triangular arrangement of heads and the tight crop create a compact, balanced composition that keeps the viewer focused on the emotional center; negative space is used sparingly and effectively."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary portraits of hardship are a known genre, this image distills that tradition into an especially memorable and iconic configuration, feeling fresh in its restraint and directness."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph elicits an immediate, visceral response: empathy, concern, and a lingering sense of the subject's inner life — it stays with the viewer after they look away."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond an emotive snapshot, it functions as social testimony: questions about dignity, survival, and responsibility ripple beneath the surface and reward repeated viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This work succeeds on both formal and moral grounds: its technical mastery and compositional clarity serve a profoundly humane commentary that retains potency over time. Acquiring it is an endorsement of photography's ability to combine aesthetic precision with social conscience."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:20:09-06:00",
+          "seconds": 10.0,
+          "review": {
+            "First Impression": "A profound sense of quiet despair emanates from the woman's gaze, a burden carried heavily. The surrounding children, half-hidden, amplify the raw vulnerability and struggle depicted. It's a stark, unforgettable image of human endurance.",
+            "Interpretation": "This photograph, \"Migrant Mother,\" captures Florence Owens Thompson and two of her children during the Great Depression. The work centers on the woman's face, a landscape of worry and exhaustion, her hand poised defensively or perhaps in thought. Her tattered clothing and the huddled forms of her children, their faces obscured, powerfully convey destitution and vulnerability. The monochromatic palette emphasizes the gravity of the situation, stripping away distractions to focus on the human condition. The composition, a close-up, draws the viewer intimately into their suffering, highlighting the immense weight of maternal responsibility amidst overwhelming hardship, and serving as an enduring symbol of the era's widespread poverty.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The sharp focus on the mother's face, the subtle rendering of textures in her clothing and skin, and the masterful use of natural light to sculpt the figures demonstrate exceptional technical skill in capturing both detail and profound emotion."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The tight cropping and pyramidal arrangement, with the mother at the apex and children nestling into her, create an incredibly strong and cohesive composition that directs all attention to her pensive, burdened expression."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary photography of poverty was prevalent, the sheer iconic power and enduring symbolic status of this particular image elevate it beyond mere reportage, achieving a singular, universally recognized representation of hardship."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image possesses an almost unparalleled ability to evoke deep empathy and sorrow, communicating the universal anguish of a mother protecting her children in dire circumstances."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate historical context, the photograph speaks to timeless themes of survival, human dignity in adversity, and the profound strength found in maternal love, inviting continuous reflection on systemic hardship and resilience."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is not merely a photograph but a historical artifact and a profound work of art, capturing the human spirit's endurance with unparalleled emotional force and compositional mastery. Its iconic status and ability to transcend its specific moment to speak to universal themes make it an indispensable acquisition."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:20:20-06:00",
+          "seconds": 10.5,
+          "review": {
+            "First Impression": "The immediate feeling is one of profound weariness and resilience. The woman's gaze, both distant and direct, is utterly captivating, hinting at immense struggle and an unwavering spirit. The children huddled around her amplify the sense of vulnerability and dependence.",
+            "Interpretation": "This photograph captures a moment of stark vulnerability and quiet strength. The subject, a mother with her children, is presented in a close-up, almost intimate frame, emphasizing their destitution. The black and white palette strips away any distractions, forcing the viewer to confront the raw emotion etched on the mother's face—a complex blend of worry, resignation, and perhaps a flicker of hope or defiance. The children leaning into her, their faces obscured, underscore her central role as protector and bearer of their burdens. The composition draws the eye to her pensive expression and the gesture of her hand to her mouth, conveying a deep internal struggle and the silent weight of responsibility. It's a powerful indictment of the systemic hardships faced during its era, yet it transcends its specific context to speak to universal themes of human struggle and maternal strength.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The mastery of black and white photography is evident in the rich tonal range, sharp focus on the mother's face, and the way light articulates texture and form. The depth of field perfectly isolates the subjects, drawing all attention to their plight."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The triangular composition, with the mother's head at the apex and the children forming a base, creates a powerful, unified whole. The close cropping intensifies the intimacy and emotional impact, and the gaze of the mother, slightly off-camera, invites empathy without being confrontational."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While the theme of poverty and human suffering has been explored, the specific framing, the undeniable emotional directness, and the iconic status this image achieved speak to a profound originality in its execution and lasting impact. It defined an era visually."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph is overwhelmingly emotive, producing a deep sense of empathy and sorrow. The mother's expression is universally legible as one of profound concern and burden, making it impossible not to feel a strong, visceral response."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate emotional pull, the image delves into enduring concepts: the nature of human resilience in adversity, the societal implications of poverty, the strength of the maternal bond, and the stark reality of survival. It encourages reflection on social justice and historical context."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph is a masterpiece of its genre, capturing a timeless human struggle with unparalleled emotional intensity and formal mastery. Its profound impact and enduring relevance make it an essential acquisition, representing both a historical document and a deeply resonant artwork."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:20:28-06:00",
+          "seconds": 8.1,
+          "review": {
+            "First Impression": "A profoundly moving and stark image of human struggle. The woman's gaze, both distant and burdened, immediately draws the viewer into a world of quiet desperation. The children clinging to her amplify the sense of vulnerability and the weight of responsibility.",
+            "Interpretation": "This work captures the raw, unvarnished reality of economic hardship and maternal burden during a time of immense social upheaval. The photographer's choice of a tight, intimate crop and natural light emphasizes the humanity of the subjects, particularly the central figure whose weathered face and worried expression are rendered with unflinching honesty. The formal choices — the shallow depth of field, the stark black and white palette, and the slightly off-center composition — serve to isolate the family and heighten their emotional plight, making the viewer confront their vulnerability directly. It is an indictment of systemic neglect and a testament to the enduring human spirit in adversity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The mastery of available light, sharp focus on the central figure's face, and expert use of chiaroscuro to convey texture and mood demonstrate exceptional technical skill in photography."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The triangular arrangement of the figures, with the mother as the strong apex, creates an incredibly powerful and balanced composition that draws the eye directly to her expression, encapsulating the entire narrative within the frame."
+              },
+              "Originality": {
+                "Score": 10,
+                "Reasoning": "While documentary photography existed, this image forged an indelible visual symbol of an era, achieving an iconic status and universal resonance that transcends its specific context, making it profoundly original in its impact and longevity."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image evokes an immediate and profound sense of empathy, sorrow, and admiration for the strength displayed in the face of despair, creating a deeply felt and lasting emotional impact."
+              },
+              "Conceptual Depth": {
+                "Score": 10,
+                "Reasoning": "Beyond its historical documentation, the work explores timeless themes of motherhood, poverty, resilience, and the human cost of economic crisis, offering layers of meaning for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 98,
+              "Decision": "ACQUIRE",
+              "Rational": "This is not merely a photograph; it is a historical artifact, a profound statement on human dignity amidst despair, and a masterwork of photographic art. Its enduring power and conceptual richness make it an essential acquisition, embodying the pinnacle of both documentary and artistic achievement."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Destitute pea pickers in California. Mother of seven children. Age thirty-two. Nipomo, California."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:20:52-06:00",
+          "seconds": 23.7,
+          "review": {
+            "First Impression": "A raw, intimate portrait of exhausted resolve; the central woman's face holds stoic worry while the children around her form a pressure that both protects and isolates. The image seizes attention immediately through its close crop and unadorned truthfulness.",
+            "Interpretation": "This is a documentary portrait that elevates a moment of material hardship into an archetype of maternal endurance. Formal choices — tight, almost claustrophobic cropping, a shallow depth that keeps the woman's face in razor focus, high-contrast grayscale that emphasizes skin texture and worn fabrics, and the triangular arrangement formed by the figures and the woman's hand — work together to compress a larger social crisis into a single, dignified emblem. The marks (wrinkles, holes in clothing, the hand to the face) serve as both literal evidence of deprivation and as painterly texture, turning the photograph into a study of resilience and quiet despair.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technically superb: controlled exposure, a rich tonal range, and precise focus on the subject's face make the photograph feel immediate and tactile. The grain and texture are handled deliberately to enhance feeling rather than distract."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The formal structure is impeccable — the mother's face is the focal apex within a tight triangular composition, while the children's turned heads frame and intensify the central gaze, creating a powerful visual rhythm and narrative economy."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While it fits within an established documentary/portrait tradition, the particular synthesis of intimacy, dignity, and narrative compression is unusually powerful and immediately recognisable within the genre."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph produces an immediate, profound empathy: the subject's expression, the tired hand to the face, and the protective clustering of children communicate vulnerability and fortitude with immersive clarity."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its surface pathos, the work rewards reflection on themes of poverty, motherhood, survival, and the public visibility of private suffering; it functions both as documentation and as moral portraiture."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a commanding work that combines exceptional technical control with an unforgettable compositional and emotional core. It transcends documentary record to become a universal portrait of hardship and dignity, making it a rare and necessary acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:21:15-06:00",
+          "seconds": 23.3,
+          "review": {
+            "First Impression": "Immediate and arresting: a stoic, exhausted face anchors the frame while small bodies cling and withdraw, producing an image that feels both intimate and communal. The photograph's restraint—black-and-white tonality, close crop—makes the emotion unavoidable.",
+            "Interpretation": "This is a documentary portrait that transforms hardship into a study of endurance and maternal responsibility. The formal choices—tight, triangular composition with the mother centrally placed, the children turned away, high-contrast black-and-white tonality, and visible textures of clothing and skin—compress social context into a single human emblem. The hand to the face reads simultaneously as worry and thoughtfulness; the averted children amplify isolation and protection. Altogether the work moves beyond reportage toward a moral witness: it solicits empathy while refusing sentimentality.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 10,
+                "Reasoning": "Exceptional technical control: exposure, focus, and tonal gradation are precisely managed so that texture and expression read clearly; the print (or negative) shows expert handling of light and depth."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The arrangement is structurally brilliant—the mother's face and hand form a visual fulcrum while the children frame her, creating a compact, dynamic triangle that guides the eye and sustains tension."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary portraits of hardship exist, this image synthesizes empathy, formal clarity, and narrative compression in a way that feels singular and instantly recognizable."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "Visceral and immediate: the image produces an affecting mixture of compassion, unease, and admiration that persists on repeated viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The photograph holds layered meanings—poverty, motherhood, resilience, social neglect—so it rewards reflection, though its conceptual thrust is direct rather than abstruse."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph achieves a rare union of masterful craft, formal rigor, and sustained emotional force; it functions both as historical testimony and as a timeless portrait of human endurance. Acquisition is warranted because the work stands as a decisive artistic statement rather than mere documentation."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:21:39-06:00",
+          "seconds": 24.4,
+          "review": {
+            "First Impression": "A stark, heart-wrenching portrait whose restraint intensifies its emotional impact. The central figure's weary, distant gaze and the children's withdrawn poses create an immediate, almost physical sense of burden and vulnerability.",
+            "Interpretation": "This is a documentary portrait that transforms an immediate social reality — destitution and maternal responsibility — into a universal emblem of endurance and exposed vulnerability. Formally, the work uses black-and-white tonality, tight cropping, and a shallow depth to isolate the mother and her children; textured clothing, weathered skin, and the hand pressed to the face become the visual grammar of fatigue. The triangular arrangement (mother centered, children flanking with faces turned away), subtle contrasts, and sculptural handling of light make the scene both intimate and iconic, asking viewers to witness suffering while preserving the subject's dignity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional technical control is evident in the exposure, tonal range, and sharpness where it matters (the face and hand). The handling of natural light and texture shows a confident command of photographic practice."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The tight, triangular composition and careful cropping focus attention and create a powerful visual hierarchy; the hand and gaze serve as strong anchors that guide the viewer's eye."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Within documentary photography the approach is familiar, but the combination of formal restraint and empathetic intimacy elevates it above the routine, giving it a distinctive presence."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image elicits a visceral emotional response — pity, concern, recognition — and lingers in the memory; its affective power is rare and immediate."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond immediate empathy, the work operates on symbolic and social levels: it prompts reflection on vulnerability, labour, and the visibility of hardship, rewarding repeated viewing and thought."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph achieves a rare union of formal mastery and moral intensity: it is both beautifully made and morally insistent. Acquiring it affirms a commitment to works that confront social realities while offering sustained aesthetic and conceptual substance."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:21:48-06:00",
+          "seconds": 8.7,
+          "review": {
+            "First Impression": "The image immediately conveys a profound sense of weariness and quiet desperation. The woman's gaze, directed off-camera, is both distant and deeply internal, pulling the viewer into her unspoken distress. The children clinging to her amplify the feeling of vulnerability and burden.",
+            "Interpretation": "This is an iconic work of documentary photography, capturing the human toll of the Great Depression. The subject, a mother, is framed tightly, her face etched with hardship and concern, her hand instinctively touching her mouth, a gesture of deep contemplation or anxiety. The huddled children, whose faces are obscured or turned away, emphasize their dependence and the protective instinct of the mother, yet also suggest their own unseen suffering. The monochromatic palette and natural light enhance the stark reality, stripping away distractions to focus solely on the raw human experience. It functions as a powerful emblem of resilience and struggle, and a stark indictment of economic hardship.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The technical execution of this photograph is exemplary, demonstrating a profound understanding of composition, lighting, and focus to convey emotional depth with clarity and precision."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is a masterclass in directness and emotional impact, perfectly framing the central figure and her children to maximize the sense of intimate struggle and universal humanity."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "“Migrant Mother” is not merely original but foundational, a work that defined an era and influenced countless subsequent documentary photographers in its empathetic and direct approach."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The emotional impact of this photograph is immense and enduring, eliciting immediate feelings of empathy, concern, and profound respect for the subject’s resilience."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its historical documentation, the image delves into timeless human conditions of perseverance, vulnerability, and the quiet dignity found amidst profound hardship."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 98,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a canonical masterpiece of photography, embodying both technical excellence and unparalleled emotional and historical significance. Its enduring power to communicate human struggle and dignity makes it an indispensable acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:21:57-06:00",
+          "seconds": 8.6,
+          "review": {
+            "First Impression": "This photograph immediately conveys a profound sense of weariness and quiet desperation. The woman's gaze, though not directed at the viewer, is deeply reflective and burdened, while the children huddle around her, reinforcing a feeling of vulnerability and dependence. It is a powerful, stark image of human endurance.",
+            "Interpretation": "This work captures a pivotal moment of human struggle, portraying Florence Owens Thompson, a \"destitute pea picker\" and mother of seven, during the Great Depression. The composition, a tight close-up, emphasizes the mother's face and hands, which are central to the narrative of hardship and resilience. The black and white medium strips away distractions, focusing on the textures of worn clothing, dirty skin, and the deep lines of worry etched on her face. The children, partially obscured and clinging to her, serve as both a physical burden and a source of silent strength, highlighting the universal theme of maternal protection amidst adversity. It is a poignant commentary on the dignity of those facing extreme poverty and the enduring human spirit.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of the photographic medium is evident in the sharp focus on the mother's face, the nuanced tonal range of the black and white, and the masterful use of natural light to sculpt the figures."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The arrangement is powerfully intimate and dynamic, with the mother's thoughtful expression anchoring the frame while the huddling children create a sense of contained vulnerability and profound human connection."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography existed, \"Migrant Mother\" transcended mere reportage to become an enduring symbol of an era, its iconic status reflecting its unique ability to encapsulate a widespread human experience."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image evokes immediate and profound empathy, capturing universal themes of maternal love, hardship, and the silent strength required for survival, leaving an indelible impression."
+              },
+              "Conceptual Depth": {
+                "Score": 10,
+                "Reasoning": "Beyond its documentary value, the photograph speaks to enduring concepts of human dignity in the face of suffering, the economic struggles of a nation, and the silent resilience of the marginalized."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 98,
+              "Decision": "ACQUIRE",
+              "Rational": "This is not merely a photograph; it is an epochal work of art and historical documentation that profoundly shaped public perception and empathy during a critical period. Its technical mastery, profound emotional impact, and enduring conceptual depth make it an indispensable acquisition for any collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:22:03-06:00",
+          "seconds": 6.7,
+          "review": {
+            "First Impression": "This image immediately strikes with an overwhelming sense of quiet despair and profound resilience. The direct gaze, even when averted, conveys a deep human truth about hardship and endurance. It is a work that demands sustained attention.",
+            "Interpretation": "Dorothea Lange's 'Migrant Mother' is a masterful piece of documentary photography, capturing the raw human cost of the Great Depression through the intimate portrait of Florence Owens Thompson and two of her children. The subject, a young mother, is centered, her worried, furrowed brow and hand held to her chin speaking volumes about her inner turmoil. The formal choices of black and white photography emphasize texture and contrast, highlighting the worn clothing and the lines of stress on her face. The children, partially obscured and clinging to her, serve to reinforce her role as a protector burdened by their need, while also creating a tight, protective composition. This is not merely a record of poverty, but an empathetic study of maternal strength under duress, using a classical Madonna-and-child pose to elevate the mundane suffering into something monumental and universally recognizable.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 10,
+                "Reasoning": "Lange's command of her medium is absolute; the focus is sharp, the lighting natural yet dramatic, and the tonal range in black and white is exquisite, capturing every detail of weariness and texture."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is iconic and flawless, drawing the eye immediately to the mother's face and hands, then subtly revealing the children. It creates a sense of intimacy and overwhelming burden within a tightly framed, classical structure."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography existed, Lange’s ability to imbue a single portrait with such universal human suffering and dignity set a new standard, making this image singularly impactful and widely recognized."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image is profoundly moving, evoking empathy, sorrow, and admiration for the subject's resilience. It taps into fundamental human experiences of struggle and maternal love."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate emotional impact, the work functions as a potent symbol of the Great Depression, a testament to human endurance, and a powerful argument for social awareness and aid. It continues to resonate with contemporary issues of poverty and migration."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 98,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a seminal work of photographic art and historical documentation, possessing unparalleled emotional power and formal excellence. Its enduring relevance and profound human statement make it an essential acquisition, a timeless testament to human struggle and dignity."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Dorothea Lange"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:22:27-06:00",
+          "seconds": 23.2,
+          "review": {
+            "First Impression": "Immediate and arresting: the photograph centers a weathered, anxious face whose quiet intensity anchors the frame. The close cropping and the children's turned heads create a claustrophobic intimacy that lingers.",
+            "Interpretation": "This is a documentary portrait that transforms poverty into a classical study of endurance. The formal choices — tight, triangular composition; high-contrast black-and-white tonality; textured clothing and skin; and the subject's distant, contemplative gaze — compress narrative and feeling into a single, emblematic moment. The hand to the face functions as both a gesture of thought and a compositional fulcrum, while the children turned away suggest protection, shame, or exhaustion. Altogether the image refuses easy pity and instead asks the viewer to acknowledge structural hardship through dignified presence.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Flawless technical control for the medium: sharp focus on the face, balanced exposure across mid-tones and highlights, and sensitive handling of texture and depth that serve the subject without artifice."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The triangular arrangement and tight crop create an immutable visual logic; every element — hand, face, turned children — is economically placed to guide the eye and reinforce the emotional center."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While rooted in documentary traditions, the photograph crystallizes those conventions into a motif that became instantly iconic; its approach was groundbreaking in reach if not in technique alone."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image produces a persistent, visceral response: compassion mixed with unease. Its emotional clarity is immediate and durable."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate empathy, the work opens questions about representation, agency, and the ethics of documentary photography, offering sustained critical engagement."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph is a rare marriage of aesthetic rigor and moral force; it operates both as a masterful image and as a catalyst for social reflection. Acquiring it is an endorsement of photography's capacity to make visible systemic conditions while preserving human dignity."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:22:54-06:00",
+          "seconds": 27.6,
+          "review": {
+            "First Impression": "Striking and quietly devastating — the woman's face and hand anchor the image with an immediacy that arrests the viewer. The two children turned away amplify isolation and protection, giving the photograph a tight, almost sculptural tension.",
+            "Interpretation": "This is documentary portraiture that condenses social history into a single, intimate study of worry and endurance. Formal choices — close cropping, high-contrast black-and-white, textured clothing and skin, the woman's hand against her face, and the children turned from the camera — work together to make a private moment feel emblematic. The composition produces a triangular geometry that focuses attention on the mother's gaze and weathered features, turning the photo into both a human record and a comment on deprivation, resilience, and dignity under duress.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional command of photographic technique: tonal range, focus, exposure and texture are handled with precision, and the decisive shutter timing captures a vulnerable, telling expression."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "Formally rigorous — the triangular arrangement, close cropping, and careful balance between figure and negative space concentrate the image's emotional charge and visual clarity."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary portraiture has precedents, this work synthesizes intimacy, political urgency and formal restraint in a way that feels seminal rather than derivative."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "Immediate and lasting: the photograph provokes empathy and discomfort at once, and the central face functions as an archetype of hardship that stays with the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Multiple layers — personal narrative, social critique, and questions about representation and documentary ethics — ensure repeated viewings yield new insights."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 94,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph is a rare intersection of technical mastery, compositional precision, and moral force. Its capacity to move the viewer and to sustain critical return makes it indispensable in a thoughtful collection."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:23:18-06:00",
+          "seconds": 24.3,
+          "review": {
+            "First Impression": "Striking and heartbreakingly intimate: the woman's weathered face anchors the frame while the turned-away children amplify a feeling of private burden. The photograph reads immediately as both a personal portrait and an emblem of hardship.",
+            "Interpretation": "This is a concentrated act of documentary empathy: a mother caught in a moment of exhaustion and fierce protectiveness. The photographer uses tight framing, high-contrast black-and-white tonality, and shallow depth of field to isolate the figure and compress background detail, turning gestures (the hand to the face, the children turned inwards) into a dignified, sculptural arrangement. Textures of fabric and skin, along with subtle directional light, translate lived hardship into a visual language of resilience and quiet despair; the work operates simultaneously as intimate portraiture and social testimony.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 10,
+                "Reasoning": "Masterful command of photographic technique — exposure, focus, and tonal range are handled with precision to render texture and expression without distraction."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "Formally superb: a triangular structure, careful placement of hands and faces, and controlled negative space create a compelling, stable image that still feels immediate."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While rooted in documentary traditions, the image transcends reportage through its concentrated intimacy and iconic economy of means; it feels both familiar and singular."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph elicits a strong, sustained emotional response — empathy, melancholy, and admiration — that persists on repeated viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Rich thematic layers — dignity under duress, motherhood as burden and refuge, the visible traces of poverty — invite continued reflection beyond the initial impact."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a rare convergence of technical mastery, compositional clarity, and moral force; it functions as both an intimate portrait and a resonant social document. Its capacity to reward repeated looking and to stand as a culturally significant work makes acquisition compelling."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:23:26-06:00",
+          "seconds": 8.0,
+          "review": {
+            "First Impression": "My immediate reaction is one of profound empathy and a deep sense of a mother's silent burden. The woman's face, etched with worry and resignation, immediately draws you in, conveying an unspoken narrative of struggle. It's a stark and arresting image that instantly communicates hardship.",
+            "Interpretation": "This photograph captures Florence Owens Thompson, a destitute pea picker, and her children during the Great Depression. Lange's deliberate choices in composition and framing place the mother's worried face at the absolute center, her hand nervously touching her mouth, a gesture of deep concern. The children, nestled into her shoulders and turning away, reinforce her isolation in her anxiety and their dependence on her, without explicitly revealing their faces. The black and white medium intensifies the gravitas of their situation, stripping away any distractions to focus solely on the raw human emotion and the stark reality of their poverty, making it a powerful testament to the resilience and suffering of the era.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of the medium is exemplary, demonstrating masterful use of natural light, sharp focus on the central figure, and an uncanny ability to capture a moment of raw, unvarnished emotion with technical precision."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is extraordinarily strong, creating a tight, intimate frame that directs all attention to the mother's expression. The triangular arrangement of the figures and the way the children lean into her, turning away, emphasizes her central, burdened role."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography was developing, this image's profound emotional impact and its elevation to an iconic symbol of an entire era distinguish it as singularly original in its lasting power and widespread recognition."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The emotional resonance is virtually unparalleled; the photograph instantly evokes a powerful sense of sadness, concern, and admiration for resilience. It is impossible to view without a visceral felt response to the mother's plight."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its historical documentation, the image explores universal themes of motherhood, survival, dignity in destitution, and the enduring human spirit, offering layers of interpretation that remain relevant and powerful today."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is not merely a photograph; it is an epochal work of art and a crucial historical document. Its iconic status, profound emotional impact, and masterful execution solidify its place as one of the most significant images ever created, making it an indispensable acquisition for any serious collection."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:23:35-06:00",
+          "seconds": 8.1,
+          "review": {
+            "First Impression": "A stark, heart-wrenching image of a woman burdened by hardship. Her gaze is distant, filled with a profound weariness, while her children cling to her, almost seeking solace in her very despair. The raw emotion is immediately palpable.",
+            "Interpretation": "This work captures the profound and pervasive human cost of economic devastation. Lange frames the subject, a migrant mother, with an intense focus on her face and hands, drawing the viewer into her psychological state. The children, partially obscured and turned away, serve not as distinct individuals but as extensions of her burden and the silent suffering she embodies. The close-up composition, combined with the stark black and white, emphasizes the reality of their existence and strips away any distractions, leaving only the raw emotion and the dignity of enduring hardship. It's a portrait of stoic resilience in the face of overwhelming despair, a visual testament to an era.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The photographic technique is masterful; the focus is sharp, capturing every detail of the woman's weathered skin and torn clothing. The tonal range in black and white is rich, creating a palpable sense of texture and depth."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The composition is incredibly strong, using a tight crop to create an intimate, almost intrusive perspective. The triangular arrangement of the figures anchors the central mother, while her gaze off-camera creates a narrative beyond the frame."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary photography of hardship was prevalent, Lange's ability to imbue her subjects with such profound emotional depth and iconic status set her apart. This particular image became a defining symbol of its era."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image possesses immense emotional power. The mother's expression of worry and fatigue, coupled with the clinging children, evokes immediate empathy and a deep sense of human struggle."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The work transcends mere documentation, becoming an enduring symbol of resilience, poverty, and motherhood in crisis. It invites contemplation on social responsibility, historical context, and the universal experience of human suffering."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a seminal work of photographic art, not merely historically significant but profoundly moving and masterfully executed. It embodies a timeless human condition and retains its power to provoke thought and emotion, making it an essential acquisition."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:23:43-06:00",
+          "seconds": 8.9,
+          "review": {
+            "First Impression": "This image immediately evokes a profound sense of sadness and quiet despair. The mother's expression is one of deep worry, made even more poignant by the hidden faces of her children leaning into her. It's a powerful and undeniably human moment caught in time.",
+            "Interpretation": "Dorothea Lange's 'Migrant Mother' is an iconic portrait that captures the raw reality of the Great Depression. The work centers on a mother, Florence Owens Thompson, her face etched with concern, her hand resting on her mouth in a gesture of contemplation or anxiety, while her children cling to her, their faces turned away, symbolizing their dependence and perhaps their own weariness. Lange employs a close, intimate composition, bringing the viewer into direct confrontation with the subject's emotional state. The black and white medium intensifies the starkness of their poverty, highlighting the textures of their worn clothing and the lines of hardship on the mother's face. This is not merely documentation; it is an empathetic portrayal of human endurance and the crushing weight of responsibility amidst overwhelming adversity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's technical mastery of photography is evident in the sharp focus on the mother's face, the subtle tonal variations, and the masterful use of natural light to sculpt the figures and convey a sense of depth and realism."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The triangular arrangement of the figures, with the mother's face as the focal point, creates a highly stable yet emotionally charged composition. The children's obscured faces draw attention to the mother's burden and central role."
+              },
+              "Originality": {
+                "Score": 10,
+                "Reasoning": "While documentary photography existed, 'Migrant Mother' became an unprecedented icon, a singular image that powerfully distilled the suffering of an entire generation, forging new ground in the social impact of the medium."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph possesses an extraordinary capacity to evoke empathy, sorrow, and admiration for resilience. The mother's gaze, though not directed at the viewer, communicates a universal human struggle that deeply resonates."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate emotional impact, the work invites profound reflection on themes of poverty, motherhood, dignity, and societal responsibility, making it a cornerstone for understanding a pivotal historical era and the human condition."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is an absolutely essential acquisition. 'Migrant Mother' transcends mere photography to become a profound work of art and an indelible historical document, possessing immense emotional resonance and conceptual depth. Its iconic status and unparalleled power to communicate the human spirit in adversity make it indispensable."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Destitute pea pickers in California. Mother of seven children. Age thirty-two. Nipomo, California.",
+        "artist": "Dorothea Lange"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:24:31-06:00",
+          "seconds": 47.5,
+          "review": {
+            "First Impression": "Immediate and wrenching: the woman's face reads as both exhausted and resolute, and the tight crop makes the scene intimate and urgent. The children turned away multiply the feeling of private burden and public neglect.",
+            "Interpretation": "This is a documentary portrait that concentrates attention on maternal endurance under material deprivation. Formally it uses a close, triangular composition, high-contrast black-and-white tonality, and selective focus to isolate the mother's face and hand as the emotional and structural anchors; the children’s averted faces and ragged clothing function as negative space and context, transforming the image from a single portrait to a compressed narrative about vulnerability, responsibility, and human dignity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional technical control: sharp rendering of the face, fine tonal gradation in grayscale, and decisive timing that captures an expressive gesture; minor surface artifacts in clothing underscore documentary authenticity rather than technical failure."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is faultless: the subject, hand, and children form a tight triangular geometry that guides the eye and concentrates emotional weight, while the crop eliminates distraction and intensifies intimacy."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "At the time this approach to empathetic documentary portraiture was strikingly innovative; the visual language it codified has since become canonical, which somewhat reduces novelty but not its original audacity."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph produces an immediate, deep empathetic response; the subject’s expression and the careful withholding of her children’s faces create a private grief that reverberates publicly."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The work operates on multiple levels—personal suffering, social critique, and the ethics of witnessing—and rewards repeated looking with shifting emphases between dignity and deprivation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a pinnacle of documentary photography: it marries rigorous craft and formal control with moral intensity and layered meaning. Its combination of technical mastery, compositional clarity, and sustained emotional force makes it an unequivocal acquisition on artistic grounds."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:24:57-06:00",
+          "seconds": 26.0,
+          "review": {
+            "First Impression": "A quietly devastating portrait — the woman's lined face and the turned-away children form an image that lingers. The photograph feels urgent and compassionate, a still testimony rather than a spectacle.",
+            "Interpretation": "This is a tightly framed documentary portrait that turns private exhaustion into public testimony. The photographer compresses the scene into a near-triangle of faces and hands: the central woman's pensive, slightly averted gaze anchors the composition while the children retreat into her, their turned heads and dirty sleeves emphasizing vulnerability and anonymity. The black-and-white medium, the high contrast and the careful gradation of midtones, along with textured clothing and skin, create a tactile sense of poverty and endurance. Formally spare, the image functions as moral witness — it records material hardship while insisting on the subject's dignity and interior life.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 10,
+                "Reasoning": "Masterful control of exposure, focus and tonal range; the photographer uses shallow depth of field and precise framing to prioritize expression and texture without losing documentary clarity."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "Exceptional compositional economy — the triangular grouping, off-center gaze, and cropping convert a simple scene into a powerful visual argument that guides the viewer's attention inexorably to the woman's face and hand."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While rooted in the documentary tradition, the image transcends reportage to become an emblematic portrait; its synthesis of intimacy and social comment feels rare and decisive."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "Immediate and lingering emotional impact: the expression and posture summon empathy and unease, making the photograph difficult to forget or ignore."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "The work operates on multiple levels — personal grief, maternal responsibility, systemic failure — offering sustained interpretive return without resorting to didacticism."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 94,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph is a rare convergence of technical mastery, compositional strength and moral force. Acquiring it affirms a commitment to works that combine aesthetic rigor with lasting social significance."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:25:19-06:00",
+          "seconds": 21.8,
+          "review": {
+            "First Impression": "Immediate and arresting: the photograph fixes attention on a worn, thoughtful mother whose face reads exhaustion and resolve. The close, intimate framing and stark monochrome instantly communicates urgency and dignity.",
+            "Interpretation": "This is a documentary photograph that centers a single mother's quiet strength amid acute deprivation. The artist uses tight, triangular composition—head and hand forming a focal apex—while the children's turned faces create a protective halo and a sense of withdrawal. The black-and-white palette, high contrast and textured detail (skin, fabric, tent canvas) compress time and strip away distraction, turning a moment of hardship into an archetypal portrait of vulnerability and endurance. That formal economy converts reportage into moral presence: the work does not merely record poverty, it asks the viewer to hold responsibility and empathy.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional technical control: sharp rendering of the face and hands, nuanced midtones and grain that enhance the tactile reality, and confident use of shallow depth to isolate the subject."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The close crop and triangular arrangement create a compact, forceful structure; negative space and the children's averted poses reinforce the central emotional focus."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "Within documentary photography this image is a high point — it transforms common subject matter into an iconic, distilled statement, though its language is grounded in established reportage traditions."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph produces an immediate, sustained emotional response: compassion, unease and admiration; the subject's gaze lingers and compels reflection."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Layers of social critique and human storytelling are present — poverty, motherhood, resilience and anonymity — which reward repeated viewing and interpretation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 94,
+              "Decision": "ACQUIRE",
+              "Rational": "This work achieves rare clarity: technically superb, formally concise and morally persuasive. It converts a specific social moment into a universal portrait of endurance, making it an undeniable acquisition for any serious engagement with documentary art or socially committed photography."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-13T12:25:26-06:00",
+          "seconds": 7.4,
+          "review": {
+            "First Impression": "The image immediately strikes with a profound sense of weariness and quiet desperation. The central figure's gaze and posture, flanked by her unseen children, instantly convey a deep maternal concern under immense hardship.",
+            "Interpretation": "This work serves as a powerful testament to human endurance amidst dire poverty, specifically within the context of the Great Depression. Lange employs a tight, intimate framing and shallow depth of field to draw the viewer directly into the emotional world of the central figure. The black and white tonality enhances the raw, unfiltered reality, emphasizing the textures of worn fabric and the lines of worry etched on the mother's face. The composition, with the mother as the stoic anchor for her children, visualizes the heavy burden she carries, making visible the invisible struggles of a generation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange demonstrates exceptional technical skill in lighting, focus, and composition, creating a visually compelling and emotionally resonant portrait. The clarity of the subject's expression is masterfully captured."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The composition is incredibly strong, using a tight crop and the natural arrangement of the figures to create an intimate and powerful focal point on the mother's face and hands. The children provide essential context and emotional weight without distracting."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography was developing, Lange's ability to imbue her subjects with such profound universal human emotion, transcending mere reportage, was groundbreaking. This image became an iconic representation of an era."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "This photograph achieves an almost unparalleled emotional impact, evoking deep empathy and a visceral understanding of the sitter's burden and strength. It resonates with universal themes of motherhood and struggle."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its historical significance, the work delves into timeless concepts of resilience, poverty, maternal sacrifice, and the enduring human spirit in the face of adversity, offering endless avenues for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is an indisputably iconic work of photographic art and historical documentation. Its profound emotional depth, masterful execution, and enduring symbolic power make it an essential acquisition that transcends its original context to speak to universal human experience."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-13T12:25:36-06:00",
+          "seconds": 9.8,
+          "review": {
+            "First Impression": "A stark, haunting portrait. The mother's face, etched with worry and weariness, immediately draws the eye, while the hidden children suggest a fragile dependence and the weight of her burden. It feels intensely human and profoundly sad.",
+            "Interpretation": "This work captures the profound despair and quiet resilience of a mother during the Great Depression. Lange employs a direct, unvarnished style, using black and white photography to strip away distractions and focus on the raw humanity of her subjects. The central figure, Florence Owens Thompson, with her hand to her mouth, gazes off-frame, her expression a complex blend of contemplation, anxiety, and a deep sense of responsibility. The way her children lean into her, their faces obscured, emphasizes her role as their sole anchor and protector, yet also highlights the overwhelming nature of her plight. The composition creates a powerful triangular form, grounding the figures and emphasizing their interconnectedness and isolation within their environment of destitution. The torn clothing and weathered faces are not just details, but testament to the grinding hardship.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of light, shadow, and focus is masterful, isolating the figures and highlighting the textures of their skin and worn clothing. The clarity and depth of field are exceptional for the era, creating an intimate, almost palpable presence."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The composition is classic and immensely effective, drawing the viewer into the mother's gaze while subtly revealing the children's vulnerability. The subtle framing elements create a sense of cramped, difficult existence, yet the figures command the space with dignity."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography existed, Lange's ability to encapsulate an entire era's struggle and emotion in a single, timeless image demonstrates profound originality in its humanistic approach and lasting impact. It transcended mere documentation to become an icon."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image radiates a profound sense of empathy, anxiety, and human struggle. The mother's pensive expression, the clinging children – it is impossible to view this without a deep, felt response to the weight of their situation."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its historical context, the photograph explores universal themes of poverty, motherhood, resilience, dignity in adversity, and the human condition. It prompts contemplation on social responsibility and the enduring strength of the human spirit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is not merely a photograph; it is an enduring monument to human resilience and a pivotal piece of American social history, executed with unparalleled artistic and empathetic vision. Its power and conceptual depth ensure its continued relevance and profound impact."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-13T12:25:45-06:00",
+          "seconds": 9.3,
+          "review": {
+            "First Impression": "This image immediately seizes the viewer with its raw, unflinching depiction of human hardship. The woman's gaze, weighted with an unimaginable burden, is profoundly arresting. There's an instant, visceral sense of weariness and quiet desperation emanating from the frame.",
+            "Interpretation": "This photograph, 'Migrant Mother,' is a seminal work of documentary photography, capturing Florence Owens Thompson, a destitute pea picker, with two of her children during the Great Depression in Nipomo, California. Lange masterfully employs a tight, intimate composition that centers on the mother's face, her hand held to her chin in a gesture of deep contemplation or anxiety. The children, their faces obscured and turned away, cling to her, emphasizing her role as their sole anchor and protector amidst their precarity. The black and white medium amplifies the starkness of their poverty, drawing attention to the textures of worn clothing and the lines of worry etched onto the mother's face. The work transcends mere documentation, becoming a powerful symbol of resilience and suffering during a pivotal moment in American history.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of the photographic medium is exceptional, using available light and sharp focus to create a deeply poignant and technically strong image. The clarity of detail, even in the textures of their worn garments, speaks to a meticulous approach."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is a masterclass in emotional storytelling, tightly framing the mother and children in a way that creates an inescapable sense of their interconnectedness and vulnerability. The triangular arrangement draws the eye to the mother's anguished face, while the obscured children underscore the weight she carries."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography existed, Lange's ability to imbue her subjects with such profound humanity and dignity, transforming individual struggle into an iconic national symbol, was groundbreaking and highly influential."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The emotional impact is immediate and enduring; the mother's expression of worry, coupled with the children's reliance, evokes deep empathy, sorrow, and a profound sense of shared humanity that transcends time and context."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its historical context, the work explores universal themes of poverty, motherhood, survival, and human resilience. It serves as a powerful testament to the dignity of those facing adversity and prompts reflection on societal responsibility and compassion."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 98,
+              "Decision": "ACQUIRE",
+              "Rational": "This is not merely a photograph; it is an enduring cultural artifact and a profound piece of art that shaped public consciousness. Its unparalleled emotional power, historical significance, and masterful execution make it an absolutely indispensable acquisition for any serious collection."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Destitute pea pickers in California. Mother of seven children. Age thirty-two. Nipomo, California.",
+        "artist": "Dorothea Lange"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Photography\",\n    \"Fine Art Photography\",\n    \"Documentary / Street Photography\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"emotionalImpact\": 2,\n    \"originality\": 3,\n    \"technicalExecution\": 4,\n    \"conceptOrMeaning\": 5,\n    \"colorAndAesthetics\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to photography that rewards slow looking — patient light, decisive timing, honest color, and a strong sense of place. I care about what was actually in front of the lens and the photographer's judgment in that moment, more than technical perfection or dramatic post-processing.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Todd Hido\",\n    \"Hiroshi Sugimoto\",\n    \"Michael Kenna\",\n    \"Gregory Crewdson\",\n    \"Fan Ho\"\n  ],\n  \"avoid\": \"Overprocessed edits, cliché travel imagery, excessive HDR, and heavily composited scenes that abandon the truth of the photographic moment.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Glitch Art\",\n    \"Databending / Corruption Aesthetics\",\n    \"Experimental Digital\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"innovation\": 2,\n    \"technicalExecution\": 3,\n    \"conceptOrMeaning\": 4,\n    \"colorAndAesthetics\": 5,\n    \"composition\": 6,\n    \"emotionalImpact\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm fascinated by work that embraces digital failure as a material — databending, compression artifacts, corrupted signals, broken renderers, and misused tools. I gravitate toward artists who push systems until they break interestingly and find real beauty and meaning inside distortion, noise, and error.\",\n  \"favoriteArtistsOrWorks\": [\n    \"XCOPY\",\n    \"Rosa Menkman\",\n    \"JODI\",\n    \"Sarah Zucker\",\n    \"Domenico Barra\"\n  ],\n  \"avoid\": \"Overly polished commercial aesthetics, off-the-shelf glitch filters, generic AI imagery, and work that wears experimentation as a surface style.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/photography.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/glitch.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-13T12:26:33-06:00",
+          "seconds": 47.4,
+          "review": {
+            "First Impression": "A taut, unforgettable portrait: the central woman's lined face and pensive hand arrest the viewer while the children turned away turn the scene into a private, emblematic moment. The photograph feels both intimate and monumental — an image that stops you and keeps returning to your eye.",
+            "Interpretation": "This work situates a single human face as the emblem of displacement and endurance. Formal choices — a tight, triangular composition with the mother front and center, children turned away to preserve anonymity, and close cropping that excludes context except for a suggestion of the tent — concentrate attention on expression, gesture, and texture (worn clothing, weathered skin, clenched hand). The grayscale tonal control sharpens the sculptural presence of the face and hands while subdued midtones and soft highlights keep the scene documentary rather than theatrical. The photograph operates as both social evidence and a moral portrait: it documents conditions while asking viewers to identify with interior struggle rather than voyeuristically consume poverty as spectacle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional technical control—sharp, controlled focus, balanced tonal range and skilled use of light to model the face and hands—demonstrate mastery of the photographic medium and darkroom/printing choices."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "Formally almost flawless: the triangular arrangement, the leading line of the subject's arm and hand, and the negative space created by the turned-away children create a powerful, stable structure that focuses psychological intensity on the mother's gaze."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "Within documentary photography traditions the image is distinctive and iconic for how it translates social circumstance into a single arresting portrait, though it works within the established language of documentary portraiture rather than inventing an entirely new visual grammar."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph delivers immediate, sustained emotional impact—the mixture of fatigue, resolve, and vulnerability in the mother's face is visceral and deeply affecting, producing empathetic response on every viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Layers of meaning reward repeated looking: motherhood, anonymity of suffering, dignity amid privation, and the ethics of representation are all present, so the work sustains inquiry beyond its first impression."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 96,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a singular example of documentary photography that unites formal rigor with moral urgency; it rewards the patient, attentive looking you ask for and continues to yield insight. Its combination of compositional precision, technical command, and deep emotional and conceptual resonance makes it essential."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-13T12:27:02-06:00",
+          "seconds": 29.0,
+          "review": {
+            "First Impression": "A quietly devastating image — reserve and anguish held in a single, taut face. The close crop and muted tonal range make the photograph feel immediate and intimate, like a held breath.",
+            "Interpretation": "This is documentary portraiture pared to essentials: a central maternal figure framed tightly by two children turned away, rendered in mid-20th-century black-and-white. The formal choices — high-contrast but soft gradations, a shallow depth that isolates the trio from any distracting background, and a triangular composition anchored by the mother's hand and face — concentrate attention on vulnerability, fatigue, and stoic endurance. The photographer's restraint (no artifice, no theatrical lighting) transforms an observed moment of hardship into an emblem of social reality; the image functions simultaneously as intimate portrait and social indictment, inviting prolonged looking at both surface detail (skin, fabric, hands) and the implied narrative beyond the frame.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Masterful command of black-and-white photography: finely graded tones, convincing textures, and a printing/processing eye that preserves detail without sacrificing mood."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "A nearly perfect structural arrangement — the mother's face is the visual pivot, balanced by the two children whose turned-away poses create a stable triangular mass and profound psychological tension."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the photograph belongs to a recognizable documentary idiom, its decisive moment and the specific synthesis of empathy and restraint feel uniquely powerful rather than formulaic."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image registers immediately and lingers: it evokes compassion, unease, and curiosity about the lives compressed into that single frame."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Layers of meaning (personal grief, maternal responsibility, structural poverty, photographic witnessing) reward repeated viewings and sustain critical reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 94,
+              "Decision": "ACQUIRE",
+              "Rational": "This photograph exemplifies a rare convergence of formal control and moral force: the composition is rigorous, the tonal craft exceptional, and the emotional and conceptual weight genuine and persistent. Because it refines documentary immediacy into a lasting visual argument, acquiring it is an endorsement of a work that continues to repay slow looking."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-13T12:27:30-06:00",
+          "seconds": 28.5,
+          "review": {
+            "First Impression": "A piercing, empathetic portrait — the woman's distant, worried gaze and the two children turned inward create an immediate, intimate gravity. The close crop and austere grayscale make the image feel both urgent and composed.",
+            "Interpretation": "This photograph concentrates human vulnerability into a compact, almost sculptural composition: the mother as central axis, children flanking and turned away, hands and fabric forming a textured foreground. The formal choices — tight framing, high-contrast black-and-white tonality, shallow depth of field and an economy of background detail — force the viewer into a moral encounter with the subject. Rather than sentimentalizing, the image insists on the dignity and exhaustion of its subject, operating simultaneously as social documentation and a distilled emblem of hardship.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technical command is evident in the tonal gradation, exposure control and crisp rendering of expression and texture; the photographer's choices make every wrinkle and thread legible without appearing illustrative."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "Formally flawless for its intent: a triangular grouping centers the gaze, negative space and turned-away figures channel attention to the face and hand, and the cropping intensifies intimacy and narrative focus."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The documentary portrait tradition is well established, but this image synthesizes empathy, timing and composition in a way that feels singular and emblematic rather than merely conventional."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "A powerful affective charge — the photograph elicits sustained empathy and contemplation, with details (the hand at the chin, the children's averted faces) that continue to register on repeated viewings."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Operates on immediate human terms and as a broader social document; layers of meaning accumulate with slow looking, from material deprivation to endurance and maternal responsibility."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This work exemplifies the collector's priorities: decisive in-camera judgment, patient tonal control and an indelible sense of place. Its compositional strength and emotional force make it an essential acquisition rather than a decorative or supplementary one."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-13T12:27:38-06:00",
+          "seconds": 7.3,
+          "review": {
+            "First Impression": "This image immediately seizes attention with its raw, unflinching portrayal of human suffering and resilience. The mother's gaze, heavy with worry yet strikingly resolute, draws you into a profound moment of quiet desperation.",
+            "Interpretation": "Dorothea Lange's 'Migrant Mother' is a masterful piece of documentary photography, capturing the profound impact of the Great Depression on ordinary lives. The subject, a mother, Florence Owens Thompson, with her children huddled around her, conveys a universal narrative of struggle and maternal protectiveness. Formally, Lange employs a tight, almost suffocating composition, bringing the viewer uncomfortably close to the subjects. The black and white medium accentuates the textures of worn clothing and furrowed brows, removing any distractions of color to focus solely on the emotional weight. The shallow depth of field isolates the mother's face, making her expression the focal point, while the children serve as supporting elements that deepen the sense of vulnerability and dependence. This is not merely a description of poverty; it is an interpretation of dignity in destitution, and the immense burden carried by a parent.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The technical execution is exceptional, demonstrating a profound understanding of available light, focus, and exposure to capture a sharp, emotionally charged image with a striking tonal range in black and white."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is nothing short of iconic. The triangular arrangement of mother and children, the intimate framing, and the way the mother's gaze directs the viewer's emotional response are masterfully executed."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography of hardship was prevalent, 'Migrant Mother' transcended mere documentation to become an enduring symbol, achieving a level of iconic status that few images ever reach."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image possesses an extraordinary emotional power, evoking profound empathy, a sense of universal struggle, and the quiet strength of the human spirit. It is impossible to view without a deep felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate impact, the work is a cornerstone of American history, offering timeless commentary on economic hardship, the resilience of the human spirit, and the moral imperative of social justice. It invites continuous reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 98,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is an undeniable masterpiece of documentary photography, aligning perfectly with the collector's preferences for honest, decisive, and emotionally resonant imagery that rewards slow looking. Its historical significance, combined with its unparalleled emotional and compositional strength, makes it an essential acquisition that transcends mere aesthetic appeal to become a profound statement."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-13T12:27:48-06:00",
+          "seconds": 9.8,
+          "review": {
+            "First Impression": "The image immediately evokes a profound sense of human resilience in the face of overwhelming hardship, centering on the weary yet resolute gaze of the mother. The intimacy of the composition, with children clinging to her, underscores a poignant narrative of quiet desperation and maternal strength.",
+            "Interpretation": "This photograph, ",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The control of focus, exposure, and tonal range in this black and white portrait is exceptional, conveying texture in the worn clothing and lines on the mother's face, creating a palpable sense of reality despite the challenging conditions."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The triangular arrangement of the mother and her children creates a powerful, intimate bond, while the mother's off-center gaze draws the viewer into her internal world, expertly balancing vulnerability with a stark sense of strength."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography of poverty was prevalent, Lange's \"Migrant Mother\" transcended mere documentation to become an enduring, universally recognized symbol of resilience and suffering, cementing its unique place in history and art."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The mother's expression of deep concern and the children's hidden faces evoke an immediate and profound sense of empathy, sadness, and the universal struggle for survival, resonating with a timeless human experience."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate depiction of Depression-era hardship, the photograph explores profound themes of maternal strength, human dignity in adversity, and the societal impact of economic collapse, offering rich layers for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a seminal piece of documentary photography, perfectly aligning with the collector's preference for authentic, emotionally resonant, and historically significant work. Its enduring power and perfect capture of a \"truth of the photographic moment\" make it an essential acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-13T12:27:55-06:00",
+          "seconds": 7.9,
+          "review": {
+            "First Impression": "This image immediately strikes with its profound sense of weary contemplation. The mother's gaze, directed off-camera, draws the viewer into a moment of deep, unspoken burden, while her children cling to her, almost dissolving into her form.",
+            "Interpretation": "This photograph, a seminal work of documentary photography, captures Florence Owens Thompson, a pea picker, with two of her children during the Great Depression. Lange employs a tight, intimate composition that centers on the mother's face, hands, and the subtle gestures of her children. The black and white medium emphasizes the starkness of their poverty, highlighting the textures of worn clothing and the lines of worry etched onto the mother's face. The ambiguity of her gaze — a blend of resilience, despair, and perhaps a flicker of hope — serves not merely as a portrait of an individual but as a powerful symbol of the broader human struggle against destitution and the profound weight of motherhood in extreme circumstances.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of light, focus, and framing is exemplary. The natural light sculpts the figures, emphasizing the texture of their skin and clothes, while the shallow depth of field isolates the subjects, lending them an almost sculptural quality."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "The composition is masterful, drawing the eye directly to the mother's face and her hand, which is both shielding her mouth and perhaps holding back tears. The children serve as anchors, reinforcing the narrative of protection and burden without distracting from the central figure."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "While documentary photography existed, 'Migrant Mother' stands as an icon, defining an era and a genre. Its directness and empathetic power set a benchmark for social realism in photography, offering a perspective that felt profoundly new and urgent at the time."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The emotional impact is immense and enduring. The image evokes deep empathy, portraying a universal experience of hardship and maternal devotion that transcends its specific historical context."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate emotional appeal, the work delves into profound themes of poverty, human dignity, resilience, and the socio-economic conditions of its time. It invites contemplation on societal responsibility and the enduring strength of the human spirit amidst adversity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a quintessential work of documentary photography, both historically significant and timeless in its emotional and conceptual power. It aligns perfectly with a preference for honest, decisive photographic moments and rewards slow looking, embodying the very essence of what the collector seeks. Its profound humanistic statement remains as relevant today as it was nearly a century ago."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-13T12:28:26-06:00",
+          "seconds": 30.1,
+          "review": {
+            "First Impression": "A quietly devastating image — the woman’s face holds the weight of urgent exhaustion and fierce stoicism. The photograph arrests attention with an economy of means: a single, expressive gesture (hand to chin) and two averted children frame a near-universal portrait of hardship.",
+            "Interpretation": "This is documentary portraiture distilled into an archetype: a mother (destitute pea picker) whose lined face, anxious gaze, and protective posture stand for both individual suffering and wider social collapse. Lange’s formal choices — tight, mid-shot framing, shallow depth of field, rich grayscale tonalities, and textured clothing — compress narrative into a single, sustained moment. The children turned away amplify isolation and responsibility while the woman’s direct, yet not accusatory, stare creates a moral claim on the viewer. The image functions both as reportage and as deliberate visual rhetoric aimed at empathy and social reform; its aesthetic restraint and compositional clarity turn documentary fact into a modern icon.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 10,
+                "Reasoning": "Exceptional command of photography: precise exposure, tonality, and focus produce a powerful image with clarity and tactile detail that serve the subject, not technique."
+              },
+              "Composition": {
+                "Score": 10,
+                "Reasoning": "Formally impeccable — triangular composition, interplay of lines (arm, gaze, children's heads) and negative space lead the eye and concentrate feeling on the mother’s face."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "Historically singular and influential — while not 'novel' in the contemporary experimental sense, it broke aesthetic and ethical ground for documentary photography."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "Immediate and enduring emotional impact; the portrait communicates despair, dignity, and maternal burden in a way that remains viscerally affecting across generations."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Rich layers: social critique, representation of gendered labor and poverty, and the ethics of documentary seeing — the image rewards repeated looking and discussion."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 96,
+              "Decision": "ACQUIRE",
+              "Rational": "Although it does not match the collector’s stated preference for digital corruption as a material, this photograph’s unparalleled formal mastery, emotional force, and conceptual richness make it an essential acquisition. It also offers productive possibilities for thoughtful experimental engagement (re-interpretation, careful databending or contextual projects) without diminishing its historical and ethical weight."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-13T12:29:05-06:00",
+          "seconds": 39.8,
+          "review": {
+            "First Impression": "The image arrests immediately: a worn, alert face and a hand at the mouth convey fatigue and fierce, contained worry. The protective closeness of the children, turned away, heightens the intimacy and makes the frame feel both documentary and emblematic.",
+            "Interpretation": "Lange compresses a family into a concentrated portrait of maternal endurance. Through tight cropping, a shallow depth of field, and stark grayscale tonality, the photograph foregrounds texture — skin, fabric, torn sleeves — and concentrates narrative meaning in the woman's gaze and gesture. The children’s averted faces turn the composition inward, making the work both evidence of material deprivation and a universal allegory for resilience, moral urgency, and the social consequences of economic collapse.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technical control is exceptional: nuanced exposure and printing render subtle skin tones, fabric textures, and a balanced mid-tone range that supports the emotional core without distraction."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "A tightly composed triangular structure with the hand as a pivot creates a powerful focal hierarchy; every element supports the emotional narrative and the economy of the frame is rigorous."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "As documentary portraiture it was groundbreaking in its moment and continues to feel distinct in its blend of empathy and formal restraint rather than sensationalism."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph delivers an immediate, sustained emotional impact — pity, admiration, moral unease — that persists on repeated viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Operates on several levels: social documentation, ethical questions about representation and intervention, and the construction of public myths; it rewards return viewings and discussion."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 94,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a rare convergence of technical mastery, formal economy, and moral urgency; it transfigures a specific moment of hardship into an enduring visual argument. Its capacity to move and to provoke sustained thought makes it indispensable."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-13T12:29:38-06:00",
+          "seconds": 33.1,
+          "review": {
+            "First Impression": "A raw, quietly devastating image — immediate in its intimacy and bare in its truth. The photograph arrests attention through gesture and gaze, holding a knot of exhaustion and resolve.",
+            "Interpretation": "This is a tightly framed documentary portrait that stages human vulnerability through compressed space, tactile grayscale, and the careful capture of a weary hand and lined face. The formal choices — close crop, shallow depth that isolates the figures, and a spectrum of mid-tones rather than bright highlights — turn reportage into an almost sculptural study of hardship. The composition concentrates emotional weight in the central figure while the turned-away children create a centrifugal tension that suggests both protection and isolation; the picture works as social witness and intimate testimony simultaneously.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Technically assured: excellent use of light, exposure and focus to model faces and textures; printing/photographic control is evident in the rich mid-tone gradations and material presence."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The close, triangular arrangement of figures and the anchoring hand create a taut, balanced structure that directs the viewer repeatedly to the central face without any wasted visual information."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the documentary portrait is a known genre, this work's synthesis of empathy and formal restraint stands out as a defining statement rather than a derivative image."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The photograph communicates exhaustion, anxiety and dignity with a directness that continues to move viewers — it registers immediately and lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond a single moment, the image embodies broader social and historical questions about displacement, labor and care; its layers of meaning reward repeated viewing and contextual thought."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 92,
+              "Decision": "ACQUIRE",
+              "Rational": "Despite differing materially from the collector's stated preference for glitch and databending practices, this photograph's exceptional formal mastery, sustained emotional power, and conceptual richness make it an indispensable work. It offers a kind of rawness and truth that resonates with an interest in 'beauty inside hardship' and stands as an uncompromising exemplar of documentary art."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-13T12:29:49-06:00",
+          "seconds": 10.3,
+          "review": {
+            "First Impression": "This is an instantly recognizable and deeply moving image. The raw despair etched on the mother's face is palpable, and the vulnerability of her children clinging to her amplifies a profound sense of hardship and quiet resilience.",
+            "Interpretation": "Dorothea Lange's \"Migrant Mother\" captures Florence Owens Thompson, a mother of seven, amidst the destitution of the Great Depression. Lange masterfully frames Thompson centrally, her gaze cast away, conveying an intense internal struggle. The children, partially obscured and clinging, serve as emotional anchors, underscoring the maternal burden. The stark black and white palette heightens the gravitas of the scene, stripping away superfluous detail to focus purely on the human condition and the universal weight of suffering.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange demonstrates exceptional command of the photographic medium, achieving crisp focus, rich tonal depth, and powerful contrast that amplify the emotional impact."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The composition is extraordinarily strong, utilizing a triangular arrangement of figures that draws the eye to the mother's pensive expression and the protective, yet weary, gesture of her hand. The framing creates intimacy and intensity."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While its historical impact and innovation in documentary photography are undeniable, the formal language of black-and-white portraiture, even of this caliber, is now a well-established genre. It does not offer the kind of formal or material novelty the collector seeks."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The emotional impact is profound and immediate. The mother's face conveys a universal sense of worry and resilience, making the viewer feel deeply for her plight and the plight of her children."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond a mere documentation of poverty, the image functions as an enduring symbol of human dignity, maternal strength, and the socio-economic challenges of an era, inviting contemplation on enduring themes."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 65,
+              "Decision": "PASS",
+              "Rational": "Despite its status as an iconic masterpiece of documentary photography, this work stands in direct contrast to the collector's explicit preference for glitch art, databending, and experimental digital aesthetics. My role is to curate within the stated aesthetic parameters, and this traditionally rendered image, while profoundly impactful, does not align with that specific artistic vision."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-13T12:30:01-06:00",
+          "seconds": 11.8,
+          "review": {
+            "First Impression": "This is an incredibly powerful and enduring image. The woman's gaze, the subtle tension in her hands, and the way her children turn away evoke an immediate sense of profound hardship and quiet desperation. It’s a classic for a reason.",
+            "Interpretation": "Dorothea Lange's \"Migrant Mother\" functions as an iconic document of human resilience and suffering during the Great Depression. The photograph, through its stark black and white tonality and intimate framing, brings the viewer into direct confrontation with the subject's vulnerability. The mother, Florence Owens Thompson, is centered, her furrowed brow and hand held to her chin conveying deep thought and worry, while her children cling to her, their faces obscured, emphasizing her solitary burden. The composition creates a powerful sense of entrapment and a universal symbol of motherhood amidst adversity, distilling a vast economic crisis into a deeply personal human experience.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of the photographic medium is exceptional, from the sharp focus on the mother's face to the nuanced tonal range that conveys texture in clothing and skin, capturing a raw authenticity without artifice."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The composition is masterful, drawing the eye directly to the mother's face and hands, while the obscured children provide context and emphasize her central role and burden. The triangular arrangement creates a stable yet poignant visual weight."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary photography existed, Lange's ability to distill an entire era's struggle into such a singular, potent human image was groundbreaking, establishing a new standard for socially conscious photojournalism."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "This image produces an undeniable, visceral felt response of empathy and sorrow. The mother's quiet despair is profoundly affecting, tapping into universal themes of struggle, protection, and endurance."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate emotional impact, the work possesses immense conceptual depth, serving as a powerful symbol of economic injustice, human dignity in destitution, and the enduring strength of the maternal bond. It continues to provoke thought on societal responsibility."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "PASS",
+              "Rational": "This is an undeniably powerful and historically significant work of art, a masterpiece of documentary photography. However, the collector's stated preference for glitch art, databending, and experimental digital media indicates a specific aesthetic interest that this analogue, socio-realist photograph does not align with. While exceptional, its strengths lie in areas distinct from the collector's core fascinations with digital \"failure\" and system manipulation."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-13T12:30:10-06:00",
+          "seconds": 9.8,
+          "review": {
+            "First Impression": "A profoundly arresting image. The woman's face, etched with worry and weariness, immediately draws the viewer in, conveying a deep sense of hardship and unspoken struggle. The way the children huddle around her, almost clinging, amplifies the raw emotional impact.",
+            "Interpretation": "This photograph, \"Migrant Mother,\" captures Florence Owens Thompson, a destitute pea picker, with two of her children during the Great Depression. Lange employs a stark, unsparing black and white palette, emphasizing texture and form over color, which heightens the sense of somber reality. The composition is intimate and powerful, with the mother's gaze directed off-camera, suggesting an internal world of concern, while her hand instinctively covers her mouth in a gesture of contemplation or suppressed emotion. The children, their faces turned away, lean into her, symbolic of their dependence and vulnerability. The torn clothing and weathered features speak volumes about their impoverished existence, making this more than just a portrait; it is an enduring symbol of resilience amidst profound economic despair.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Lange's command of photographic composition, lighting, and ability to capture profound human emotion within a single frame is exceptional. The textural details and tonal range are masterful."
+              },
+              "Composition": {
+                "Score": 9,
+                "Reasoning": "The triangular arrangement of the figures, with the mother at its apex and the children forming its base, creates a strong, stable yet deeply poignant structure. The off-center gaze and subtle hand gesture are perfectly placed."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While documentary photography existed, Lange's ability to imbue reportage with such profound psychological depth and iconic power was pioneering and set a new standard for the genre."
+              },
+              "Emotional Resonance": {
+                "Score": 10,
+                "Reasoning": "The image evokes an immediate and overwhelming sense of empathy, sorrow, and admiration for human endurance. It is a raw, deeply human connection."
+              },
+              "Conceptual Depth": {
+                "Score": 9,
+                "Reasoning": "Beyond its immediate subject, the work deeply explores themes of poverty, motherhood, human dignity, and the societal impact of economic collapse, offering endless avenues for reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 95,
+              "Decision": "PASS",
+              "Rational": "This is an undeniably iconic and profoundly moving work of art, deserving of its place in history. However, its aesthetic and conceptual framework lies entirely outside the collector's explicit preference for digital failure, glitch art, and experimental digital aesthetics. While exceptional, it does not align with the collection's focus."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

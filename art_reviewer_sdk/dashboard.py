@@ -4,8 +4,10 @@
 Scans every results/*.json produced by run_workbook.py and builds ONE
 self-contained, interactive HTML page (Plotly) at dashboards/index.html, with a
 dropdown at the top to switch between tests. Each workbook section shows the
-summary heatmap, score spreads, ACQUIRE/PASS split, run-to-run drift, and the
-preference effect. Re-run after any new workbook to fold it into the page.
+artwork + condition key, summary heatmap, score spreads, ACQUIRE/PASS split,
+run-to-run drift, the preference effect, and a Verdicts & Rationales browser
+(every review's rationale, expandable to the full critique). Re-run after any
+new workbook to fold it into the page.
 
 Usage:
     uv run python art_reviewer_sdk/dashboard.py            # rebuild dashboards/index.html
@@ -19,6 +21,7 @@ import html
 import io
 import json
 import sys
+import textwrap
 import webbrowser
 from pathlib import Path
 
@@ -34,6 +37,8 @@ sys.path.insert(0, str(HERE))
 from review import DIMENSIONS  # noqa: E402  five dimension names — single source of truth
 
 DIMS = list(DIMENSIONS)
+# Fallback condition order for frames without the ordered categorical set by
+# flatten(); the real order always comes from the results file itself.
 COND_ORDER = ["A", "B", "C", "D", "E"]
 PALETTE = px.colors.qualitative.Set2
 DECISION_COLORS = {"ACQUIRE": "#2e9e5b", "PASS": "#c2453f"}
@@ -68,6 +73,10 @@ def flatten(data: dict) -> pd.DataFrame:
                 # A refusal/error/malformed stub has a blank decision.
                 "is_error": decision not in ("ACQUIRE", "PASS")
                 or (overall in (0, None) and not rational),
+                "rational": rational,
+                # Full review object, carried through for the rationale
+                # browser (never enters numeric aggregation).
+                "review_obj": review,
             }
             for dim in DIMS:
                 dv = ev.get(dim)
@@ -79,6 +88,10 @@ def flatten(data: dict) -> pd.DataFrame:
         return df
     for col in ["overall", "run", *DIMS]:
         df[col] = pd.to_numeric(df[col], errors="coerce")
+    # Condition order is whatever the results file defines (its conditions
+    # dict is insertion-ordered) — workbooks may use structures other than A–E.
+    df["condition"] = pd.Categorical(
+        df["condition"], categories=list(data.get("conditions", {})), ordered=True)
     return df
 
 
@@ -93,10 +106,20 @@ def with_cond_pref(v):
     return vv
 
 
+def cond_order_of(v) -> list:
+    """The workbook's condition order — from the ordered categorical set by
+    flatten(), falling back to the classic A–E for plain frames."""
+    col = v["condition"]
+    if isinstance(col.dtype, pd.CategoricalDtype):
+        return list(col.cat.categories)
+    return COND_ORDER
+
+
 def cond_pref_order(v):
-    """Ordered cond_pref categories: A, B, then C/D split by variant."""
+    """Ordered cond_pref categories: plain conditions first as-is, preference
+    conditions split into one entry per variant."""
     order = []
-    for c in COND_ORDER:
+    for c in cond_order_of(v):
         for pv in sorted(v.loc[v["condition"] == c, "preference_variant"].unique()):
             order.append(c if pv == "none" else f"{c} · {pv}")
     return order
@@ -110,15 +133,31 @@ def _clean_facet_titles(fig):
 
 # ---- individual figures (return None when there's nothing to plot) ----
 
+def _wrap_hover(text: str, width: int = 60, max_lines: int = 4) -> str:
+    """Wrap free text into <br>-joined lines for a Plotly tooltip, capped so
+    a long rationale can't cover the whole plot."""
+    lines = textwrap.wrap(str(text or ""), width)
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+        lines[-1] += " …"
+    return "<br>".join(lines)
+
+
 def fig_overall_by_condition(v, models, cmap):
     if v.empty:
         return None
     vv = with_cond_pref(v)
+    vv["hover_rational"] = [_wrap_hover(t) for t in vv["rational"]]
     fig = px.box(vv, x="cond_pref", y="overall", color="model", points="all",
                  category_orders={"cond_pref": cond_pref_order(v), "model": models},
                  color_discrete_map=cmap, boxmode="group",
-                 hover_data=["condition", "preference_variant", "run"],
+                 custom_data=["run", "decision", "hover_rational"],
                  title="Overall Score by Condition & Preference (context effect)")
+    fig.update_traces(hovertemplate=(
+        "%{x} — run %{customdata[0]}<br>"
+        "overall %{y} — %{customdata[1]}<br>"
+        "<i>%{customdata[2]}</i>"
+        "<extra>%{fullData.name}</extra>"))
     fig.update_layout(yaxis_range=[0, 100], xaxis_title="condition · preference")
     return fig
 
@@ -126,13 +165,14 @@ def fig_overall_by_condition(v, models, cmap):
 def fig_dimensions(v, models, cmap):
     if v.empty:
         return None
-    long = v.melt(id_vars=["model"], value_vars=DIMS,
+    long = v.melt(id_vars=["model", "decision", "run"], value_vars=DIMS,
                   var_name="dimension", value_name="score").dropna(subset=["score"])
     if long.empty:
         return None
     fig = px.box(long, x="dimension", y="score", color="model", points="all",
                  category_orders={"dimension": DIMS, "model": models},
                  color_discrete_map=cmap, boxmode="group",
+                 hover_data=["decision", "run"],
                  title="Evaluation Dimension Scores by Model")
     fig.update_layout(yaxis_range=[0, 10])
     return fig
@@ -155,6 +195,7 @@ def fig_decision_split(v, models):
                  color_discrete_map=DECISION_COLORS,
                  title="Decision Split per Model (ACQUIRE vs PASS by condition · preference)")
     fig.update_layout(yaxis_title="# runs", legend_title_text="decision")
+    fig.update_yaxes(dtick=1)  # run counts are integers
     fig.update_xaxes(tickangle=-40, title_text="")
     return _clean_facet_titles(fig)
 
@@ -177,7 +218,7 @@ def fig_run_drift(v, models, cmap):
         return None
     # Lines connect a model's three runs within each condition·preference facet.
     fig = px.line(vv, x="run", y="overall", color="model", facet_col="cond_pref",
-                  markers=True,
+                  markers=True, hover_data=["decision"],
                   category_orders={"cond_pref": cond_pref_order(v), "model": models},
                   color_discrete_map=cmap, title="Overall Score Across Runs (consistency)")
     fig.update_layout(yaxis_range=[0, 100])
@@ -259,6 +300,82 @@ CSS = """
           text-overflow: ellipsis; white-space: nowrap; }
   .wbtitle { margin: 0 0 4px; font-size: 18px; }
   section.wb[hidden] { display: none; }
+  .errnote { color: #c2453f; }
+  .wbhead { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;
+            padding: 8px; }
+  .wbhead img.wbart { max-width: 340px; max-height: 340px; width: auto; height: auto;
+            border-radius: 8px; border: 1px solid #ddd; flex-shrink: 0; }
+  .wbhead .condkey { flex: 1; min-width: 260px; }
+  .decsum { font-size: 13px; padding: 10px 14px; height: 100%;
+            box-sizing: border-box; display: flex; flex-direction: column; }
+  .decsum h2 { font-size: 15px; margin: 2px 0 4px; }
+  .decsum .dnote { display: block; font-size: 11px; font-weight: 400; color: #999;
+                   margin-top: 2px; }
+  .decsum { overflow-x: auto; }  /* many-model tables scroll instead of clipping */
+  .decsum table { border-collapse: collapse; width: 100%; flex: 1; margin-top: 6px; }
+  .decsum thead th { text-align: left; font-weight: 600; color: #555;
+               padding: 6px 12px 6px 0; font-size: 12px; white-space: nowrap; }
+  .decsum tbody th { text-align: left; font-weight: 600; color: #555;
+               padding: 6px 12px 6px 0; font-size: 12px; white-space: nowrap;
+               width: 1%; }
+  .decsum tbody tr { border-top: 1px solid #f0f0f0; }
+  .decsum td { padding: 6px 12px 6px 0; white-space: nowrap; }
+  .dchip { display: inline-block; min-width: 30px; text-align: center;
+           border: 0; border-radius: 6px; padding: 3px 7px; margin-right: 5px;
+           font: inherit; font-size: 13px; font-weight: 600; color: #fff;
+           cursor: pointer; font-variant-numeric: tabular-nums; }
+  .dchip:hover { filter: brightness(1.12); }
+  .dchip.dacq { background: #2e9e5b; }
+  .dchip.dpass { background: #c2453f; }
+  .dchip.derr { background: #b5b5b5; }
+  .dpop { position: absolute; z-index: 30; max-width: 440px; background: #fff;
+          border: 1px solid #ddd; border-radius: 10px; padding: 12px 14px;
+          box-shadow: 0 8px 28px rgba(0,0,0,.14); font-size: 13px; }
+  .dpop-head { font-weight: 600; margin-bottom: 6px; }
+  .dpop-text { color: #444; line-height: 1.5; }
+  .dpop-link { margin-top: 10px; border: 1px solid #d5d5d5; border-radius: 999px;
+               background: #fff; padding: 2px 10px; font: inherit; font-size: 12px;
+               cursor: pointer; color: #333; }
+  .dpop-link:hover { background: #f0f2f5; }
+  details.rev.flash { background: #fff8dc; transition: background 1.2s; }
+  .revlist { font-size: 13px; padding: 6px 10px; }
+  .revlist h2 { font-size: 15px; margin: 2px 0 8px; }
+  .filterbar { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center;
+               margin: 0 0 10px; }
+  .fgroup { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .flabel { color: #888; font-size: 11px; text-transform: uppercase;
+            letter-spacing: .04em; margin-right: 2px; }
+  .fbtn { border: 1px solid #d5d5d5; border-radius: 999px; background: #fff;
+          padding: 2px 10px; font: inherit; font-size: 12px; cursor: pointer;
+          color: #333; }
+  .fbtn:hover { background: #f0f2f5; }
+  .fbtn.active { background: #2e9e5b; border-color: #2e9e5b; color: #fff; }
+  .fcount { color: #888; font-size: 12px; margin-left: auto; }
+  details.rev[hidden] { display: none; }
+  details.rev { border-top: 1px solid #eee; padding: 7px 4px; }
+  details.rev summary { display: flex; flex-wrap: wrap; gap: 8px;
+            align-items: baseline; cursor: pointer; list-style: none; }
+  details.rev summary::-webkit-details-marker { display: none; }
+  details.rev summary::before { content: "\\25B8"; color: #999; font-size: 11px; }
+  details.rev[open] summary::before { content: "\\25BE"; }
+  .chip { border-radius: 999px; padding: 1px 9px; font-size: 11px;
+          font-weight: 600; color: #fff; white-space: nowrap; }
+  .chip.cond { background: #64748b; }
+  .chip.acq { background: #2e9e5b; }
+  .chip.passchip { background: #c2453f; }
+  .chip.errchip { background: #9a9a9a; }
+  .rmodel { font-weight: 600; }
+  .rrun { color: #888; }
+  .rscore { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .rtext { flex-basis: 100%; color: #444; line-height: 1.45; margin-top: 2px; }
+  details.rev.err summary { opacity: 0.65; }
+  .revbody { margin: 8px 0 4px 20px; color: #333; line-height: 1.5;
+             border-left: 2px solid #eee; padding-left: 12px; }
+  .revbody p { margin: 4px 0; }
+  .revbody table { border-collapse: collapse; margin-top: 6px; }
+  .revbody td { padding: 2px 10px 2px 0; vertical-align: top; }
+  .revbody td.dscore { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .revbody pre { white-space: pre-wrap; font-size: 12px; }
   @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 """
 
@@ -290,45 +407,217 @@ def thumb_data_uri(path: str, max_edge: int = 160) -> str:
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
+FIELD_LABELS = {
+    "description": "Description",
+    "artist": "Artist",
+    "price": "Price (USD)",
+    "max_spend": "Maximum spend (USD)",
+    "work_type": "Work type",
+    "media_note": "Media note",
+}
+# Send-field name -> workbook-header key, for suppressing duplicate meta lines.
+FIELD_WB_KEY = {"artist": "artist", "work_type": "work_type", "media_note": "media_note",
+                "price": "artwork_price", "max_spend": "max_spend"}
+
+
 def conditions_summary_html(data: dict) -> str:
-    """A compact key explaining what each condition (and the C/D preference
-    variants) entails, pulled straight from the results JSON."""
+    """A compact key explaining what each condition entails and which input
+    values it sent — fully data-driven from the results JSON, so workbooks
+    with non-A–E condition structures (e.g. pricing experiments) render too."""
     conds = data.get("conditions", {})
     items = [
-        f"<li><b>{c}</b> — {html.escape(conds[c].get('label', c))}</li>"
-        for c in COND_ORDER if c in conds
+        f"<li><b>{html.escape(c)}</b> — {html.escape(b.get('label', c))}</li>"
+        for c, b in conds.items()
     ]
     if not items:
         return ""
-    # Scan all conditions for the first non-empty value (description lives in
-    # B/D/E, preferences in E) — data-driven so old 4-condition files still work.
-    desc = next((conds[c].get("description_used") for c in COND_ORDER
-                 if c in conds and conds[c].get("description_used")), "")
-    prefs = next((conds[c].get("preference_variants") for c in COND_ORDER
-                  if c in conds and conds[c].get("preference_variants")), {})
 
-    # Workbook-level metadata (artist, price, prompt version) — recorded in the
-    # results JSON header by the harness.
+    # Which conditions sent which input, and with what value. New files record
+    # inputs_used per condition; old files only description_used/artist_used.
+    field_value, field_conds = {}, {}
+    pref_conds, prefs = [], {}
+    for c, b in conds.items():
+        used = b.get("inputs_used")
+        if used is None:  # pre-inputs_used results format
+            used = {}
+            if b.get("description_used"):
+                used["description"] = b["description_used"]
+            if b.get("artist_used"):
+                used["artist"] = b["artist_used"]
+        for f, val in used.items():
+            field_value.setdefault(f, val)
+            field_conds.setdefault(f, []).append(c)
+        if b.get("preference_variants"):
+            pref_conds.append(c)
+            prefs = b["preference_variants"]
+
+    # Workbook-level metadata — skip fields already listed as condition inputs.
     wb = data.get("workbook", {})
     meta = []
-    if wb.get("artist"):
-        meta.append(f'<div class="ctx"><b>Artist:</b> {html.escape(str(wb["artist"]))}</div>')
-    if wb.get("work_type"):
-        meta.append(f'<div class="ctx"><b>Work type:</b> {html.escape(str(wb["work_type"]))}</div>')
-    if wb.get("artwork_price"):
-        meta.append(f'<div class="ctx"><b>Price (USD):</b> {html.escape(str(wb["artwork_price"]))}</div>')
-    if wb.get("max_spend"):
-        meta.append(f'<div class="ctx"><b>Maximum spend (USD):</b> {html.escape(str(wb["max_spend"]))}</div>')
+    for f in ("artist", "work_type", "price", "max_spend"):
+        if f not in field_value and wb.get(FIELD_WB_KEY[f]):
+            meta.append(f'<div class="ctx"><b>{FIELD_LABELS[f]}:</b> '
+                        f'{html.escape(str(wb[FIELD_WB_KEY[f]]))}</div>')
     if wb.get("review_prompt") is not None:
         meta.append(f'<div class="ctx"><b>System prompt:</b> review_prompt_{html.escape(str(wb["review_prompt"]))}</div>')
 
     ctx = []
-    if desc:
-        ctx.append(f'<div class="ctx"><b>Description</b> (used in B &amp; D): {html.escape(desc)}</div>')
+    all_cond_keys = list(conds)
+    for f, val in field_value.items():
+        used_in = field_conds[f]
+        where = ("all conditions" if len(used_in) == len(all_cond_keys)
+                 else ", ".join(used_in))
+        label = FIELD_LABELS.get(f, f.replace("_", " ").title())
+        ctx.append(f'<div class="ctx"><b>{html.escape(label)}</b> '
+                   f'({html.escape(where)}): {html.escape(str(val))}</div>')
     for name, text in prefs.items():
-        ctx.append(f'<div class="ctx"><b>Preference - {html.escape(name)}</b> (C &amp; D): {html.escape(text)}</div>')
+        where = ", ".join(pref_conds)
+        ctx.append(f'<div class="ctx"><b>Preference - {html.escape(name)}</b> '
+                   f'({html.escape(where)}): {html.escape(str(text))}</div>')
     return ('<div class="condkey"><h2>What each condition entails</h2>'
             f'<ul>{"".join(items)}</ul>{"".join(meta)}{"".join(ctx)}</div>')
+
+
+def decision_table_html(df: pd.DataFrame, models: list) -> str:
+    """Decision Summary card: rows = condition·preference, columns = models;
+    each cell holds one chip per run — green ACQUIRE / red PASS with the
+    overall score inside. Clicking a chip opens a popover with the verdict
+    rationale (wired up in PICKER_JS via the data- attributes). Errors render
+    as a gray × chip."""
+    if df.empty:
+        return ""
+    vv = with_cond_pref(df)
+    row_order = cond_pref_order(df)
+    model_vals = [m for m in models if m in set(vv["model"])]
+
+    head = "".join(f"<th>{html.escape(m)}</th>" for m in model_vals)
+    body_rows = []
+    for cp in row_order:
+        cells = []
+        for m in model_vals:
+            sub = vv[(vv["cond_pref"] == cp) & (vv["model"] == m)].sort_values("run")
+            chips = []
+            for _, r in sub.iterrows():
+                run_attr = str(int(r["run"])) if pd.notna(r["run"]) else ""
+                if r["is_error"]:
+                    review = r["review_obj"] if isinstance(r["review_obj"], dict) else {}
+                    msg = (review.get("First Impression") or "").strip() or "no structured review"
+                    decision, score, cls, label = "ERROR", "", "derr", "×"
+                    rational = msg
+                else:
+                    decision = r["decision"]
+                    score = f"{int(r['overall'])}" if pd.notna(r["overall"]) else "?"
+                    cls = "dacq" if decision == "ACQUIRE" else "dpass"
+                    label = score
+                    rational = str(r["rational"])
+                chips.append(
+                    f'<button class="dchip {cls}"'
+                    f' data-cond="{html.escape(cp)}"'
+                    f' data-model="{html.escape(str(r["model"]))}"'
+                    f' data-run="{run_attr}"'
+                    f' data-decision="{html.escape(decision)}"'
+                    f' data-score="{html.escape(score)}"'
+                    f' data-rational="{html.escape(rational)}">{label}</button>')
+            cells.append(f'<td>{"".join(chips)}</td>')
+        body_rows.append(f'<tr><th>{html.escape(cp)}</th>{"".join(cells)}</tr>')
+
+    return ('<div class="decsum"><h2>Decision Summary '
+            '<span class="dnote">green = ACQUIRE, red = PASS · one chip per run, '
+            'score inside · click a chip for the verdict rationale</span></h2>'
+            f'<table><thead><tr><th></th>{head}</tr></thead>'
+            f'<tbody>{"".join(body_rows)}</tbody></table></div>')
+
+
+def rationale_browser_html(df: pd.DataFrame, models: list) -> str:
+    """The 'Verdicts & Rationales' card: one expandable row per review.
+    The summary line shows condition·preference, model, run, score, decision,
+    and the verdict rationale; expanding reveals the full critique (First
+    Impression, Interpretation, per-dimension reasoning). Error/refusal rows
+    render muted with their message."""
+    if df.empty:
+        return ""
+    model_index = {m: i for i, m in enumerate(models)}
+    cond_index = {c: i for i, c in enumerate(cond_order_of(df))}
+    rows = df.sort_values(
+        by=["condition", "preference_variant", "model", "run"],
+        key=lambda col: (
+            col.astype(str).map(cond_index).fillna(99) if col.name == "condition"
+            else col.map(model_index).fillna(99) if col.name == "model"
+            else col
+        ),
+    )
+
+    # Filter bar values, in display order.
+    conds, seen = [], set()
+    for _, r in rows.iterrows():
+        pv = r["preference_variant"]
+        c = r["condition"] if pv == "none" else f'{r["condition"]} · {pv}'
+        if c not in seen:
+            seen.add(c)
+            conds.append(c)
+    model_vals = [m for m in models if m in set(rows["model"])]
+
+    def fgroup(name: str, values: list) -> str:
+        btns = '<button class="fbtn active" data-val="">All</button>' + "".join(
+            f'<button class="fbtn" data-val="{html.escape(str(v))}">{html.escape(str(v))}</button>'
+            for v in values)
+        return (f'<span class="fgroup" data-group="{name}">'
+                f'<span class="flabel">{name}</span>{btns}</span>')
+
+    out = ['<div class="revlist"><h2>Verdicts &amp; Rationales</h2>'
+           '<div class="filterbar">'
+           + fgroup("condition", conds)
+           + fgroup("model", model_vals)
+           + '<span class="fcount"></span></div>']
+    for _, r in rows.iterrows():
+        review = r["review_obj"] if isinstance(r["review_obj"], dict) else {}
+        pv = r["preference_variant"]
+        cond = r["condition"] if pv == "none" else f'{r["condition"]} · {pv}'
+        run = f"run {int(r['run'])}" if pd.notna(r["run"]) else "run ?"
+        run_attr = str(int(r["run"])) if pd.notna(r["run"]) else ""
+        attrs = (f' data-cond="{html.escape(cond)}"'
+                 f' data-model="{html.escape(str(r["model"]))}"'
+                 f' data-run="{run_attr}"')
+        if r["is_error"]:
+            msg = (review.get("First Impression") or "").strip() or "no structured review returned"
+            out.append(
+                f'<details class="rev err"{attrs}><summary>'
+                f'<span class="chip cond">{html.escape(cond)}</span>'
+                f'<span class="rmodel">{html.escape(str(r["model"]))}</span>'
+                f'<span class="rrun">{run}</span>'
+                f'<span class="chip errchip">ERROR</span>'
+                f'<span class="rtext">{html.escape(msg)}</span></summary>'
+                f'<div class="revbody"><pre>{html.escape(json.dumps(review, indent=2, ensure_ascii=False))}</pre></div>'
+                f'</details>')
+            continue
+
+        decision = r["decision"]
+        chip_cls = "acq" if decision == "ACQUIRE" else "passchip"
+        score = f"{int(r['overall'])}" if pd.notna(r["overall"]) else "?"
+        ev = review.get("Evaluation")
+        ev = ev if isinstance(ev, dict) else {}
+        dim_rows = "".join(
+            f"<tr><td>{html.escape(dim)}</td>"
+            f"<td class='dscore'>{html.escape(str((ev.get(dim) or {}).get('Score', '—')))}</td>"
+            f"<td>{html.escape(str((ev.get(dim) or {}).get('Reasoning', '')))}</td></tr>"
+            for dim in DIMS
+        )
+        body = (
+            f"<p><b>First Impression.</b> {html.escape(str(review.get('First Impression', '')))}</p>"
+            f"<p><b>Interpretation.</b> {html.escape(str(review.get('Interpretation', '')))}</p>"
+            f"<table>{dim_rows}</table>"
+        )
+        out.append(
+            f'<details class="rev"{attrs}><summary>'
+            f'<span class="chip cond">{html.escape(cond)}</span>'
+            f'<span class="rmodel">{html.escape(str(r["model"]))}</span>'
+            f'<span class="rrun">{run}</span>'
+            f'<span class="rscore">{score}</span>'
+            f'<span class="chip {chip_cls}">{html.escape(decision)}</span>'
+            f'<span class="rtext">{html.escape(str(r["rational"]))}</span></summary>'
+            f'<div class="revbody">{body}</div></details>')
+    out.append("</div>")
+    return "".join(out)
 
 
 def render_workbook(data: dict, df: pd.DataFrame) -> dict:
@@ -339,28 +628,50 @@ def render_workbook(data: dict, df: pd.DataFrame) -> dict:
     cmap = {m: PALETTE[i % len(PALETTE)] for i, m in enumerate(models)}
     valid = df[~df["is_error"]] if not df.empty else df
 
-    # (figure, wide?) in display order; None figures are dropped.
+    # Cards in display order. The model-summary heatmap and the Decision
+    # Summary table are half-width so they share one grid row; the charts
+    # below span the full width. None/empty entries are dropped.
+    heatmap = fig_summary_heatmap(valid, models)
+    decision_table = decision_table_html(df, models)
     cards = [
-        (fig_summary_heatmap(valid, models), True),
-        (fig_overall_by_condition(valid, models, cmap), True),
-        (fig_dimensions(valid, models, cmap), True),
-        (fig_decision_split(valid, models), True),
-        (fig_run_drift(valid, models, cmap), True),
-        (fig_preference(valid, models, cmap), True),
+        (to_div(heatmap) if heatmap is not None else "", False),
+        (decision_table, False),
+    ] + [
+        (to_div(fig), True)
+        for fig in (
+            fig_overall_by_condition(valid, models, cmap),
+            fig_dimensions(valid, models, cmap),
+            fig_decision_split(valid, models),
+            fig_run_drift(valid, models, cmap),
+            fig_preference(valid, models, cmap),
+        ) if fig is not None
     ]
     body_cards = "".join(
-        f'<div class="card{" wide" if wide else ""}">{to_div(fig)}</div>'
-        for fig, wide in cards if fig is not None
+        f'<div class="card{" wide" if wide else ""}">{c}</div>'
+        for c, wide in cards if c
     ) or '<div class="card wide"><p>No reviews to plot yet.</p></div>'
 
+    # The verdict-rationale browser sits right below the charts.
+    rationales = rationale_browser_html(df, models)
+    if rationales:
+        body_cards += f'<div class="card wide">{rationales}</div>'
+
+    # Header card: the artwork itself next to the conditions key, so the page
+    # shows what is actually being judged.
     cond_summary = conditions_summary_html(data)
-    if cond_summary:
-        body_cards = f'<div class="card wide">{cond_summary}</div>' + body_cards
+    art_full = thumb_data_uri(wb.get("artwork_path", ""), max_edge=520)
+    art_img = f'<img class="wbart" src="{art_full}" alt="artwork">' if art_full else ""
+    if cond_summary or art_img:
+        body_cards = (f'<div class="card wide"><div class="wbhead">{art_img}'
+                      f'{cond_summary}</div></div>') + body_cards
 
     title = wb.get("artwork_title") or wb.get("artwork_id") or "Workbook"
     wid = wb.get("artwork_id") or title
+    n_err = int(df["is_error"].sum()) if not df.empty else 0
     meta = (f'{wb.get("artwork_id", "")} &middot; models: {", ".join(models)} '
             f'&middot; {len(df)} reviews')
+    if n_err:
+        meta += f' &middot; <span class="errnote">{n_err} error/refusal (excluded from charts)</span>'
     body = (f'<h2 class="wbtitle">{html.escape(title)}</h2>'
             f'<div class="meta">{meta}</div>'
             f'<div class="grid">{body_cards}</div>')
@@ -386,6 +697,90 @@ PICKER_JS = """
   }
   document.querySelectorAll('.pick').forEach(function (b) {
     b.addEventListener('click', function () { show(b.dataset.id); });
+  });
+
+  // Verdicts & Rationales filters: one single-select pill group per facet
+  // (condition, model, run); a row must match every group's selection.
+  document.querySelectorAll('.revlist').forEach(function (list) {
+    var rows = list.querySelectorAll('details.rev');
+    var count = list.querySelector('.fcount');
+    function apply() {
+      var want = {};
+      list.querySelectorAll('.fgroup').forEach(function (g) {
+        want[g.dataset.group] = g.querySelector('.fbtn.active').dataset.val;
+      });
+      var shown = 0;
+      rows.forEach(function (r) {
+        var ok = (!want.condition || r.dataset.cond === want.condition)
+              && (!want.model || r.dataset.model === want.model);
+        r.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = shown + ' of ' + rows.length + ' reviews';
+    }
+    list.querySelectorAll('.fgroup').forEach(function (g) {
+      g.querySelectorAll('.fbtn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          g.querySelectorAll('.fbtn').forEach(function (x) {
+            x.classList.toggle('active', x === b);
+          });
+          apply();
+        });
+      });
+    });
+    apply();
+  });
+
+  // Decision Summary chips: click opens a popover with the verdict rationale
+  // and a jump link to the full review in the Verdicts & Rationales browser.
+  var pop = document.createElement('div');
+  pop.className = 'dpop';
+  pop.hidden = true;
+  pop.innerHTML = '<div class="dpop-head"></div><div class="dpop-text"></div>' +
+                  '<button class="dpop-link">Show full review ↓</button>';
+  document.body.appendChild(pop);
+  var popChip = null;
+
+  pop.querySelector('.dpop-link').addEventListener('click', function () {
+    if (!popChip) return;
+    var d = popChip.dataset;
+    var sec = popChip.closest('section.wb');
+    // Reset the browser's filters so the target row can't be hidden.
+    sec.querySelectorAll('.fgroup').forEach(function (g) {
+      var all = g.querySelector('.fbtn[data-val=""]');
+      if (all && !all.classList.contains('active')) all.click();
+    });
+    sec.querySelectorAll('details.rev').forEach(function (r) {
+      if (r.dataset.cond === d.cond && r.dataset.model === d.model
+          && r.dataset.run === d.run) {
+        r.open = true;
+        r.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        r.classList.add('flash');
+        setTimeout(function () { r.classList.remove('flash'); }, 1600);
+      }
+    });
+    pop.hidden = true;
+  });
+
+  document.addEventListener('click', function (e) {
+    var chip = e.target.closest('.dchip');
+    if (!chip) {
+      if (!e.target.closest('.dpop')) pop.hidden = true;
+      return;
+    }
+    if (chip === popChip && !pop.hidden) { pop.hidden = true; popChip = null; return; }
+    popChip = chip;
+    var d = chip.dataset;
+    pop.querySelector('.dpop-head').textContent =
+      d.cond + ' · ' + d.model + ' · run ' + d.run + ' — ' + d.decision
+      + (d.score ? ' ' + d.score : '');
+    pop.querySelector('.dpop-text').textContent = d.rational || '';
+    pop.hidden = false;
+    var r = chip.getBoundingClientRect();
+    var left = Math.min(r.left + window.scrollX,
+                        window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 16);
+    pop.style.left = Math.max(left, window.scrollX + 8) + 'px';
+    pop.style.top = (r.bottom + window.scrollY + 8) + 'px';
   });
 })();
 </script>

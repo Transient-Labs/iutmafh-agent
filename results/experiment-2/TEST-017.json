@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-017",
+    "artwork": "ba-2",
+    "artwork_title": "Sticks and Stones",
+    "artist": "Elara Vance",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/bad/ba-2.png",
+    "models": [
+      "gpt-5",
+      "gemini-3-flash-preview"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-14T15:47:53-06:00",
+    "updated_at": "2026-07-15T09:09:56-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:48:12-06:00",
+          "seconds": 19.2,
+          "review": {
+            "First Impression": "A tidy constellation of circles and jet‑black diagonals floats on a sandy ground. The neon greens and clay oranges feel playful yet a bit abrasive; the tiny blue sliver in the corner needles the harmony. It reads as a digital exercise in balance and motion.",
+            "Interpretation": "This is geometric abstraction pitched between Constructivist vectors and a planetary diagram: circles as masses, lines as trajectories, all flattened by uniform, cartoon‑thick outlines. The earthy palette offset by acid green, a hot red dot, and a rogue blue tab sets up a friction between the organic and the synthetic. The diagonals create a sense of speed and collision, while the clustering and scaling of circles suggest gravity and drift—though the stray short dash and corner blue feel like process remnants more than intentional anchors.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Clean vector execution with consistent outlines and flat fills. However, the unmodulated line weight and a few unresolved details (blue corner, short dash) blunt the refinement."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "Energetic diagonals and scale contrasts produce rhythm, but balance wobbles; focus clumps around the right orange disc and left neon green, leaving slack negative spaces."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "It sits squarely in well‑trodden geometric territory with clear echoes of Bauhaus/Kandinsky; the palette tweaks don’t add a distinctive voice."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "Buoyant and kinetic, offering decorative pleasure, yet it stops short of eliciting a deeper feeling."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Suggests systems or celestial mapping, but the idea isn’t developed beyond formal play."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "Pleasant and competent, with a lively sense of motion, but ultimately too derivative and shallow to merit acquisition. I want geometric work that tightens its language into necessity; this remains an attractive exercise rather than a compelling statement."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:48:30-06:00",
+          "seconds": 18.4,
+          "review": {
+            "First Impression": "A playful collision of circles and slashing black vectors on a sandy field, interrupted by a small cobalt block in the corner. The high-contrast outlines give it a graphic, poster-like snap, but also flatten the space. It feels lively, yet a bit generic at first glance.",
+            "Interpretation": "The work reads as a stylized map of forces—planets and trajectories, or billiard shots mid-carom—riffing on early geometric abstraction through a contemporary vector vocabulary. Earthy greens and oranges stabilize the scene while the thick, uniform strokes impose order, turning motion into diagram. The lone blue rectangle hints at rupture or a system glitch, but it sits more as a punctuation mark than a developed idea.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Clean vector execution with confident, even line weight and crisp edges; color fills are tidy and intentional. However, the finish is uniformly flat, offering little nuance in texture or edge to deepen the read."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The diagonals create momentum and the varied circle scales establish a rhythm, but the hierarchy feels ad hoc and the blue block distracts rather than anchors. Cropped forms add energy without fully resolving the field."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Geometric circles-and-lines language is well-trodden, and this iteration doesn’t significantly extend it beyond familiar digital formalism."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The warm palette and kinetic lines produce a mild sense of play and motion, yet the schematic treatment keeps feeling at arm’s length."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Hints of systems and orbit are present, but no clear tension or proposition emerges beyond formal play; the symbolic potential of the blue corner remains underused."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "It’s brisk and competent, but too close to generic vector abstraction to warrant acquisition. The composition has spark, yet the piece doesn’t deliver a distinctive voice or a conceptual hook to reward sustained looking. I’ll pass and watch for work where this graphic fluency is paired with sharper intent."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:48:44-06:00",
+          "seconds": 13.4,
+          "review": {
+            "First Impression": "A buoyant scatter of circles and slicing black vectors over a tan ground. The palette toggles between earthy browns and acidic greens, landing somewhere between playful and diagrammatic. It’s lively but feels familiar.",
+            "Interpretation": "The work stages a negotiation between soft, planetary orbs and assertive, instrument-like lines. The consistent black outlines cartoon the forms, turning abstraction into a legible, almost instructional graphic. Acid greens spar with ochres and browns, producing a rhythm that suggests motion—like collisions mapped on sand. The large orange and neon-green disks act as poles that the diagonals tether, creating a push–pull across the field. The tiny blue bar in the corner reads as a purposeful rupture, a glitch that keeps the surface from sealing into pure decor.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Clean digital execution with crisp edges and confident line work. However, the uniformity flattens the surface and leaves little room for material nuance."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Diagonal vectors energize the field and the scale shifts create a readable hierarchy. Some clustering on the right and lower left makes the balance a touch heavy but the eye still circulates."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Geometric circles-and-lines abstraction is a well-trodden language; this iteration doesn’t markedly depart from Bauhaus/Kandinsky-inflected tropes or contemporary vector aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It’s sprightly and pleasant, eliciting curiosity rather than a deep charge. The affect stays on the surface."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Hints at mapping or collision diagrams, but no system or tension emerges beyond formal play. Limited layers to unpack on return viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "The piece is competent and visually perky, but it reads more as polished décor than a singular artistic voice. Its familiar vocabulary and shallow conceptual footing keep it from becoming memorable. I’ll pass and reserve acquisition for work with sharper stakes or more idiosyncratic invention."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:49:11-06:00",
+          "seconds": 27.5,
+          "review": {
+            "First Impression": "This feels like a rudimentary digital sketch or a 'hello world' project from a basic graphics tutorial. The colors are jarringly inconsistent, and the composition lacks any sense of intentional weight or balance.",
+            "Interpretation": "The work attempts a formalist investigation into geometry and space, using lines as vectors to connect or bisect circular forms. However, the lack of consistent line weights and the clash between neon greens and muddy earth tones suggest a lack of control rather than a deliberate aesthetic choice. It is a work that exists entirely on the surface, mimicking the tropes of early 20th-century abstraction without understanding the underlying principles of tension and harmony.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The work shows minimal technical skill, featuring basic aliased lines and primitive shapes with no attention to texture, light, or digital refinement."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement lacks a clear focal point or a sense of equilibrium, with elements competing for space rather than harmonizing. The blue bar in the corner feels like a technical error or an afterthought that disrupts the entire frame."
+              },
+              "Originality": {
+                "Score": 1,
+                "Reasoning": "Geometric abstraction using circles and lines is a foundational trope; this version offers no new perspective or stylistic deviation."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The discordant color palette and clinical execution fail to evoke any mood or connection."
+              },
+              "Conceptual Depth": {
+                "Score": 1,
+                "Reasoning": "There is no discernible meaning or system behind the arrangement; it remains a surface-level exercise in placing shapes."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The piece is technically primitive and aesthetically unrefined, serving as a collection of digital primitives rather than a cohesive artwork. It offers nothing in the way of visual sophistication, emotional impact, or conceptual interest."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:49:46-06:00",
+          "seconds": 34.5,
+          "review": {
+            "First Impression": "This feels like a preliminary exercise in a digital illustration software, lacking a sense of finish or intent. The color palette is muddy, and the composition feels accidental rather than calculated.",
+            "Interpretation": "The work attempts a geometric abstraction using a palette of greens and browns that suggests an organic or biological theme stripped down to its schematic essentials. The black lines serve as vectors of movement or connection, but they lack the precision needed to create a sense of dynamic flow. The bright green circle with the thick stroke creates a jarring focal point that isn't reconciled with the rest of the muted, thin-lined elements.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is basic, utilizing default software tools with visible aliasing and no apparent mastery over color theory or digital texture."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement feels haphazard, with a heavy-bordered focal point that isn't adequately balanced by the surrounding elements. The blue rectangle in the corner acts as a visual anchor that pulls the eye away from the central composition for no apparent purpose."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This style of geometric abstraction is extremely common in early digital art exercises and offers nothing new to the genre."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work is sterile and lacks the vibrational energy or intentional tension required to elicit a felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 1,
+                "Reasoning": "There is no evident subtext or complexity; it is a straightforward arrangement of primitive shapes that fails to reward sustained looking."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The work lacks the technical skill and conceptual ambition required for acquisition. It presents as an unfinished sketch or a basic tool-test rather than a resolved artistic statement."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T09:09:56-06:00",
+          "seconds": 37.9,
+          "review": {
+            "First Impression": "This looks like a first attempt at digital vector art or perhaps a generated output from a very simple script. It feels devoid of any human touch or aesthetic intentionality, appearing more as a diagram than a painting.",
+            "Interpretation": "The piece is a derivative exercise in geometric abstraction, utilizing basic shapes and lines to mimic the dynamism of early 20th-century modernism. The earth-toned palette suggests a reductive landscape, while the varying line weights and circle outlines attempt a shallow sense of hierarchy. The blue rectangle in the corner is particularly jarring, feeling like a misplaced UI element rather than a compositional choice. Overall, it attempts to capture the 'look' of abstract art without understanding the weight or movement that makes such work successful.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, exhibiting the flat, aliased qualities of basic digital tools without any intentionality in the mark-making."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement feels more like a random scattering of clip-art elements than a deliberate study in tension or balance."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "It mimics the visual language of the Russian Avant-Garde but lacks the revolutionary spirit or formal innovation of the movement it references."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The clinical, sterile nature of the digital rendering prevents any visceral or emotional connection."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "Beyond a surface-level nod to historical geometric abstraction, there is no underlying narrative or philosophical inquiry to sustain interest."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "This work fails to move beyond the level of a basic technical exercise. It lacks the craft, depth, and originality necessary to be considered a serious piece of art; it is a ghost of an idea executed with the most minimal effort."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Sticks and stones may break my bones, but code will always save me."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:50:40-06:00",
+          "seconds": 25.6,
+          "review": {
+            "First Impression": "A brisk, game-like scatter of circles and slashing black lines animates a sand-colored field. The heavy outlines and flat fills feel decisively digital—vector-clean, almost diagrammatic. It’s lively but a bit schematic, more system than sensation.",
+            "Interpretation": "The title reframes the old proverb into a diagram: the “sticks” are the angular black vectors, the “stones” are the colored disks, and “code” is the immaculate, rule-bound rendering that contains any threat. The palette—earthy greens and browns punctured by neon lime, orange, and a stray blue tab—suggests a world pulled between organic matter and the synthetic safety of the screen. Scale shifts and diagonals imply collisions that never happen, as if logic has fenced chaos in. It reads as generative or at least algorithm-adjacent abstraction that uses formal clarity to argue for refuge in structure. The work’s wit sits in that juxtaposition of physical harm and antiseptic geometry.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp vector execution and consistent line work demonstrate control, though the heavy outlines and somewhat blunt palette choices limit nuance."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The diagonals energize the field and scale contrasts create a readable rhythm, but hierarchy feels muddled and the blue corner element distracts from the main flow."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Geometric, code-adjacent abstraction is well-trodden; the proverb twist is clever but not transformative."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "Pleasant and playful more than affecting; the title supplies feeling—a search for safety—yet the image alone remains cool."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The physical-versus-digital conceit is engaging but sketched rather than probed; it hints at an idea rather than unfolding one."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 57,
+              "Decision": "PASS",
+              "Rational": "Crisp and spry, this feels like a compelling study or generative sketch rather than a fully resolved statement. The conceptual hook is witty but thin, and the formal language could push further in color and hierarchy to justify acquisition. I’ll pass, while encouraging a next iteration that deepens the system and sharpens its metaphor."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:51:01-06:00",
+          "seconds": 20.5,
+          "review": {
+            "First Impression": "A brisk, vector-clean scatter of circles and emphatic black diagonals cuts across a tan field. The palette toggles between earthy browns/oranges and punchy greens, with a lone blue tab that jars the harmony. It feels playful yet schematic, like a diagram that decided to dance.",
+            "Interpretation": "The work reads as a literalization of the title: “sticks” as black lines, “stones” as circular nodes, and the sense that code—rules and geometry—organizes the chaos. The uniform outline and flat fills suggest a generative or programmatic hand, foregrounding procedure over gesture. Diagonals drive motion and collision, while the cropped orange disk and outsized neon-green circle create gravitational anchors. The slight dissonance of the blue rectangle hints at the digital realm intruding on an otherwise earthy universe. Conceptually, it flirts with mapping social or computational networks but stops short of building a robust syntax beyond the pun.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp vector execution and consistent stroke control show competence, but the uniform line weight flattens space and the blue corner element reads unresolved."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Dynamic diagonals and varied circle scales produce rhythm and tension; asymmetrical cropping is effective though a couple of areas feel vacant or abrupt."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Geometric abstraction with nodes-and-edges language is familiar; the title’s code twist adds wit but not a markedly new proposition."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "Energetic and pleasantly playful, yet emotionally cool; the neon greens pop without deepening feeling."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The sticks/stones/code analogy is clear but not probed—there’s little beyond a clever mapping from proverb to diagram."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "Attractive and competent, the piece delivers lively motion and a tidy generative vibe, but it remains thin conceptually and formally conservative. The idea stalls at a witty caption, and the uniform treatment limits nuance. I’ll pass; it’s charming but not vital enough to merit acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:51:21-06:00",
+          "seconds": 19.9,
+          "review": {
+            "First Impression": "A playful, code-clean constellation of circles and slashing lines on a sandy field. The acidic greens and burnt oranges pop against heavy black outlines, while a lone blue tab in the corner reads like a deliberate glitch. It feels crisp and graphic, more diagram than painting, with a teasing sense of motion.",
+            "Interpretation": "This is a geometric pun on the adage—sticks become vectors, stones become discs—and the promise that code, with its rules and repeatability, can impose order on impact. The thick outlines read as syntax, corralling luminous fills into neatly typed shapes; diagonals string the field like notation across a score. Cropped circles and crossing beams suggest collisions narrowly avoided, as though the algorithm keeps chaos at bay. The odd blue block is a self-aware seam, hinting at the digital scaffold behind the image.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "The vector execution is clean and consistent, with confident line weight and flat color. However, the simplicity verges on generic software output, with a few marks (like the short dash near center) reading arbitrary rather than intentional."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "Dynamic diagonals and one large green anchor create movement, and the right-edge orange disc balances the left cluster. Yet spacing is even to a fault and the blue corner note jars more than it resolves, weakening overall cohesion."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Generative-looking geometry with bold outlines is abundant; the sticks-and-stones conceit is witty but not transformative. It nods to Bauhaus/Kandinsky tropes without pushing them somewhere surprising."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "The piece is sprightly and a bit mischievous, but it stays cool and distant. It tickles the eye more than it lingers in the gut."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The title frames a clear metaphor—algorithmic order versus physical harm—and the small ‘glitch’ accent supports it. Beyond that, there’s limited layering to reward repeated viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "Charming and competent, the work offers a neat, graphic riff on a proverb, but it skims the surface both formally and conceptually. I want either sharper compositional risk or deeper inquiry into the promise and peril of code. As it stands, it feels like a pleasing study rather than a piece to stand behind."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:51:42-06:00",
+          "seconds": 21.8,
+          "review": {
+            "First Impression": "This feels like a perfunctory exercise in basic vector manipulation, lacking both formal polish and aesthetic cohesion. The discordant colors and the jarring blue rectangle in the corner suggest a lack of finality.",
+            "Interpretation": "The work attempts to translate the 'sticks and stones' of the physical world into the sterile, safe language of digital primitives. It positions code as a refuge, yet the visual output is so primitive that the 'sanctuary' it offers feels more like a void. The varying stroke weights and overlapping lines attempt a sense of depth that the flat, muddy background consistently undermines.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, with aliased edges and inconsistent line weights that suggest a lack of technical mastery or intentionality."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The elements are scattered without a clear sense of balance or rhythm, resulting in a composition that feels accidental rather than constructed."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Geometric abstraction using basic primitives is a well-worn path, and this iteration provides no new aesthetic or intellectual perspective."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work is emotionally sterile, failing to evoke the sense of 'salvation' or refuge promised by the artist's statement."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The connection to the title is literal and shallow; it fails to explore the tension between physical vulnerability and digital sanctuary in any meaningful way."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 22,
+              "Decision": "PASS",
+              "Rational": "This work is an unrefined experiment that relies entirely on its title to provide a meaning its visuals cannot sustain. It lacks the technical skill and conceptual rigor necessary for acquisition, presenting a vision that is as aesthetically unengaging as it is intellectually thin."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:52:02-06:00",
+          "seconds": 20.0,
+          "review": {
+            "First Impression": "It looks like a preliminary exercise in a basic coding course or a 'Hello World' for a graphics library. The colors are muddy and the composition feels entirely accidental.",
+            "Interpretation": "The work attempts to represent the physical world ('sticks and stones') through the lens of digital abstraction ('code'). By translating these concepts into simple geometric shapes, the artist is likely trying to illustrate a sense of safety or order found in the digital realm, but the lack of formal sophistication prevents this message from landing.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 1,
+                "Reasoning": "The execution is rudimentary, relying on basic digital primitives with inconsistent stroke weights and a jarring color palette that suggests a lack of technical mastery or aesthetic refinement."
+              },
+              "Composition": {
+                "Score": 2,
+                "Reasoning": "The arrangement of elements lacks a clear hierarchy or intentional balance, with the blue rectangle in the corner feeling particularly disjointed from the rest of the work."
+              },
+              "Originality": {
+                "Score": 1,
+                "Reasoning": "Geometric abstraction is a mature field, and this piece offers nothing new in terms of form, process, or visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The work is sterile and fails to evoke any significant emotional response or intellectual curiosity."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "While the title attempts to bridge the gap between the physical and digital, the visual output is too simplistic to support a meaningful exploration of that theme."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "This is a technically and aesthetically immature work that fails to transcend its status as a basic digital exercise. The disconnect between the ambitious title and the rudimentary visual execution makes it impossible to recommend for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:52:26-06:00",
+          "seconds": 23.2,
+          "review": {
+            "First Impression": "This looks like an introductory exercise in a creative coding class or a basic vector graphics experiment. The blue rectangle in the top left feels like a leftover UI element or a mistake rather than an intentional compositional choice.",
+            "Interpretation": "The piece attempts a literal translation of the 'sticks and stones' proverb into a digital vernacular, using lines and circles to represent physical threats. The 'code' mentioned in the title is represented by the medium itself, suggesting a sterile, logical environment as a refuge from the chaos of the physical, though the composition remains cluttered.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, utilizing flat colors and basic digital shapes without any exploration of texture, depth, or sophisticated mark-making."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement feels haphazard rather than intentionally dynamic, with the blue rectangle in the corner creating a jarring imbalance that doesn't seem purposeful."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This style of geometric digital abstraction is highly derivative of early computer-generated art and basic vector tutorials."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work is visually sterile and fails to evoke the vulnerability or the sense of 'salvation' mentioned in the title."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The idea of digital 'code' as a sanctuary from physical harm is a valid contemporary theme, but it's presented here in a very literal, shallow way."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 25,
+              "Decision": "PASS",
+              "Rational": "The work lacks the technical polish and compositional rigor necessary to be anything more than a conceptual sketch. It fails to transcend its own basic digital origins or provide a compelling visual experience."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Elara Vance"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:52:45-06:00",
+          "seconds": 19.2,
+          "review": {
+            "First Impression": "A crisp, graphic field of circles punctured by incisive black diagonals on a muted khaki ground. The acid greens and burnt oranges energize the space, while a tiny electric-blue corner reads as an intentional glitch. It feels kinetic, like trajectories or collisions suspended mid-flight.",
+            "Interpretation": "Vance orchestrates a dialogue between bodies and vectors: round forms as planets or billiard balls and hard black lines as forces acting on them. Flat, high-contrast color and heavy outlines keep the image in a schematic register, turning motion into a diagram. Cropped edges and the lone blue rectangle destabilize the order, hinting at a system that leaks beyond the frame and is periodically interrupted.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Edges are clean and line weights are considered, showing competent command of digital hard-edge technique. Yet the rendering remains default-flat, and the blue corner feels insufficiently integrated at the level of finish."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Diagonal vectors generate strong movement and the scale shifts create a lively rhythm. However the large orange disc and the green cluster tug the balance unevenly, leaving a slightly congested center."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The language of geometric abstraction and schematic motion is familiar and widely mined. This feels more like a careful reprise than a distinct invention."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The piece is playful and kinetic, offering a pleasant pulse of energy, but it stays cool and cerebral. It doesn’t quite cross into a felt urgency."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Hints of systems, trajectories, and disruption are present, yet the symbolism remains thin and not layered by material or process."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 56,
+              "Decision": "PASS",
+              "Rational": "A lively and competent composition that delivers motion and clarity, but the idiom is overfamiliar and the conceptual stake feels light. I enjoy the jolt of the palette and the tension between bodies and vectors, yet it lacks a singular gesture or depth that would make it indispensable. I’m passing and looking for more risk or material complexity from this line of inquiry."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:53:15-06:00",
+          "seconds": 30.2,
+          "review": {
+            "First Impression": "A sprightly field of circles and slashing black vectors skates across a warm tan ground, punctured by a single jolt of cobalt in the corner. It reads as playful and kinetic, a digital echo of early modernist geometry. Attractive at a glance, though a touch schematic.",
+            "Interpretation": "Vance stages a conversation between orbits and trajectories: buoyant disks in citrus and chlorophyll tones meet ruler-straight diagonals that pinball the eye across the canvas. The thick black outlines flatten the forms into signage while the sandy ground keeps the temperature low, letting color pops do the talking. The cropped orange disk and speeding lines suggest collision or calculation, as if a diagram has slipped into an improvisation. That stray blue tab at upper left functions like a system error or a tuning fork—an off-note that keeps the harmony from settling. The piece ultimately feels like an homage to Constructivist/Kandinsky vocabulary filtered through clean digital vectors.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Edges are crisp, line weights are deliberate, and color fills are clean; the digital handling is confident. Variation in weight and finish is limited, keeping the surface competent but somewhat monotone."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Diagonal tension and scale shifts generate movement, and the cropped circles add urgency. However, balance wobbles—heavy clusters on the left and the blue tab tug the eye off-canvas without fully resolving."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The language of outlined circles and dynamic diagonals closely cites modernist precedents and feels familiar in contemporary vector work. It doesn’t push the idiom in a surprising way."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The palette sparks a buoyant, almost musical mood, but the overall experience remains cerebral and decorative rather than affecting. It’s lively more than moving."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Hints of systems, orbits, and glitches are present, yet the work reads primarily as a formal exercise without deeper investigative stakes."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "This is a crisp, energetic study in geometric rhythm with an appealing color story, but it leans too hard on established modernist tropes to feel urgent. I admire the control and the lightness of touch; still, the ideas stall at the surface. I’ll pass and look for a piece where Vance pushes this vocabulary into riskier, more singular territory."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:53:35-06:00",
+          "seconds": 19.8,
+          "review": {
+            "First Impression": "A lively scatter of circles and slashing black lines animates a warm beige field. The heavy outlines make the shapes feel graphic and playful, while the diagonals inject velocity and a slight sense of collision. It reads like a clean, digital riff on mid‑century geometric abstraction.",
+            "Interpretation": "The painting stages a dialogue between order and motion: pristine circles are punctured and redirected by hard, fast lines, implying trajectories, orbits, and near-misses. The palette toggles between earthy greens/browns and a few jolts of synthetic color—electric lime, a lone blue tab, and a hot orange disk—so nature and artifice sit in productive friction. Flat fills and uniform strokes collapse depth, keeping the image on the surface like a schematic or score, where timing and placement do the expressive work. The partial orange circle at the edge and the off-kilter slashes suggest events happening beyond the frame, as if we’re catching a diagram mid‑update.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Edges are crisp and line weights are deliberate, suggesting confident handling of a digital vector medium. A few intersections feel slightly abrupt, but overall execution is clean and consistent."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Asymmetry, scale shifts, and diagonals generate convincing dynamism, with the large lime and cropped orange forms counterbalancing. The small blue rectangle is a sharp accent, though it borders on arbitrary."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Geometric circles-and-lines abstraction is a well-worn language; this piece speaks it fluently but doesn’t extend the vocabulary much beyond palette tweaks and pacing."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The buoyant color contrasts and sense of motion produce a light, upbeat charge. The feeling is pleasant rather than profound."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Hints of mapping and orbital mechanics remain at the level of diagrammatic suggestion; there’s limited subtext to unpack after the initial read."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "PASS",
+              "Rational": "Smartly paced and visually spry, the work succeeds as a polished formal exercise, but its conceptual proposition feels thin and familiar. I enjoy the kinetic balance and the cheeky color interruptions, yet it stops short of a breakthrough. I’ll pass and watch for a next step that pushes this language into riskier or more idiosyncratic terrain."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:54:43-06:00",
+          "seconds": 67.7,
+          "review": {
+            "First Impression": "This is an immediately recognizable, if somewhat derivative, digital geometric abstraction. It feels clinical and lacks a sense of tactile engagement, resembling a basic vector exercise more than a finished artistic statement.",
+            "Interpretation": "The work attempts to channel the energy of early 20th-century abstractionists using circles and lines to create a sense of spatial tension. The tan background acts as a neutral void, while the various colored circles represent points of mass. However, the clashing color palette—specifically the neon green and the isolated blue rectangle—disrupts any sense of formal harmony without providing a productive dissonance. The varying line weights feel haphazard rather than rhythmic, leading to a composition that feels unresolved.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 3,
+                "Reasoning": "This is basic digital rendering that lacks any evidence of refined technique or a unique handle on the medium."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement feels cluttered and lacks a clear focal point or intentional tension; the blue rectangle in the corner is a particularly jarring compositional oversight."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The piece mimics early 20th-century geometric abstraction without adding a modern perspective or a unique voice."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work is cold and fails to evoke a visceral or intellectual response from the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "There is no apparent narrative or deep inquiry here; it is a purely surface-level arrangement of shapes."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 24,
+              "Decision": "PASS",
+              "Rational": "This piece fails to transcend its status as a basic formal exercise. It lacks the technical polish, compositional rigor, and original spark required for a serious acquisition."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:55:11-06:00",
+          "seconds": 28.5,
+          "review": {
+            "First Impression": "This looks like a foundational exercise in a digital art class. It is a very literal, almost clinical application of 'abstract' tropes that lacks any soul or urgency.",
+            "Interpretation": "The work attempts to create a sense of 'dynamic tension' through the intersection of lines and circles, but it lacks the necessary refinement to succeed. The jarring inclusion of a neon green circle against an otherwise earthy palette feels like a mistake in color harmony rather than a purposeful disruption. The blue rectangle in the corner seems disconnected from the rest of the visual logic, as if it were a lingering interface element rather than a compositional choice.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is extremely basic, utilizing standard vector tools with no attention to texture, line weight variation, or the nuances of digital rendering."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "While there is a rudimentary attempt at diagonal movement, the distribution of weight feels accidental and the frame's edges are ignored rather than engaged."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This is a derivative imitation of historical abstraction—specifically Kandinsky or the Bauhaus school—without adding anything new to the conversation."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The sterile, flat colors and lack of tactile quality fail to provoke any significant internal response."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "There is no evident subtext or complex inquiry here; it is a surface-level arrangement of shapes."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 25,
+              "Decision": "PASS",
+              "Rational": "The work is fundamentally underdeveloped both in its technical execution and its conceptual foundation. It offers nothing that hasn't been done better a century ago, and its digital delivery is uninspired and flat."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:55:45-06:00",
+          "seconds": 33.7,
+          "review": {
+            "First Impression": "This feels like an early-stage digital sketch or a basic exercise in vector software. It lacks the polish or intent of a finished work, appearing sterile and somewhat discordant.",
+            "Interpretation": "The work attempts a Kandinsky-like dynamism through the use of intersecting lines and varied circles, suggesting a map of objects in motion. However, the lack of depth and the use of flat, unmodulated colors make the composition feel stuck in a digital void rather than activated. The variation in line weight and circle outlines seems arbitrary rather than expressive.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary digital vectoring with no attention to texture, finish, or sophisticated color interaction."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement feels scattered rather than dynamic; the blue rectangle in the top corner is an awkward anchor that disrupts the flow."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This is a derivative exercise in geometric abstraction that adds nothing to a style established over a century ago."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The clashing of neon greens against muddy earth tones on a flat tan field is aesthetically jarring and emotionally inert."
+              },
+              "Conceptual Depth": {
+                "Score": 1,
+                "Reasoning": "There is very little here to engage the mind beyond the immediate recognition of geometric primitives."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The piece lacks the technical ambition and conceptual weight required for acquisition. It is a sterile arrangement of shapes that fails to communicate a unique vision or demonstrate a command of its medium."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Sticks and stones may break my bones, but code will always save me.",
+        "artist": "Elara Vance"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:56:17-06:00",
+          "seconds": 32.2,
+          "review": {
+            "First Impression": "A jaunty scatter of circles and slashing black “sticks” animates a sandy field; lime and pumpkin tones pop against the heavy outlines. It reads like a paused physics simulation—objects mid‑ricochet—spiked by a tiny, insistent blue tab in the corner. Energetic, a bit unruly, and overtly digital.",
+            "Interpretation": "The proverb in the note is literalized: sticks (lines) and stones (discs) collide while the coded, vector-clean language promises order. Thick, uniform strokes and flat fills evoke generative drawing and syntax, with an odd blue rectangle and stray dash hinting at glitches or artifacts—the mess that code both produces and resolves. The piece stages a friction between natural materials and computational logic, suggesting that structure (code) is the net catching chaos.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp vector execution and confident color choices, but a few elements—the short dash and cropped blue tab—feel accidental rather than decisively placed."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "Asymmetry between the large lime disc and the cropped orange mass is engaging, and the diagonals drive motion; however, several lines read as noise, softening the structural clarity."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Circles-and-lines abstraction with heavy outlines is a well-traveled generative trope; the proverb-to-code conceit adds a fresh angle without breaking new ground."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "Warm earths punctured by acid green and a hot red create pleasant tension, but the feeling stays at a playful, design-forward register rather than a gut-level one."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The mapping of material harm to digital order is clever and legible, with hints of glitch as self-commentary, yet the idea remains a sketch rather than a deep argument."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "Clever and visually nimble, the work shows promise in its wit and palette, but the forms feel generic and the composition unresolved. I don’t sense enough necessity in the placement or idea to justify acquisition. I’d like to see this line of thought pushed toward either tighter algorithmic logic or more material risk."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:56:44-06:00",
+          "seconds": 27.4,
+          "review": {
+            "First Impression": "A nursery of circles and slashed black lines skids across a warm beige field. The flat, neon greens against earthy oranges feel at once playful and schematic. A tiny blue tab in the corner reads like a UI glitch poking at the picture’s sealed order.",
+            "Interpretation": "The work literalizes the proverb as a dialogue between “sticks” (vector-straight lines) and “stones” (circles), while the title’s invocation of code frames the image as a diagram born from an algorithm. Heavy black outlines and flat fills stress the computational, almost didactic nature of the forms, turning motion into plotted vectors and collisions into designed possibilities. Diagonals generate a sense of kinetic drift, while the palette toggles between natural (greens/browns) and synthetic (acid green, a lone red) to argue that logic can domesticate chaos. The blue corner element reads as a deliberate interface artifact—an aperture linking the picture to the screen that made it. Yet the system remains polite; the piece stays closer to diagram than to poem.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Clean vector execution with confident line work and consistent stroke weight; colors are applied evenly. The heaviness of the outlines flattens space and limits nuance."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "Diagonal corridors create energy and decent negative space, but the oversized lime circle overdominates and several clusters feel arbitrary. The blue corner accent distracts as much as it punctures the frame."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Geometric, code-adjacent abstraction is well-trodden territory; the sticks-and-stones conceit is clever but familiar. It doesn’t markedly depart from established generative vocabularies."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The piece has buoyant motion and a playful tone, but it remains cool and schematic. It elicits interest more than feeling."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The mapping of proverb to primitives and the UI glitch gesture offer a readable idea, but the visual system doesn’t develop beyond its premise."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "Crisp and lively, this is a competent exercise in algorithmic geometry with a neat title-to-form pun, but it stays within a safe, familiar register. Its conceptual cue points are interesting yet under-explored, and the composition lacks a decisive surprise. I’ll pass and look for either a deeper systems logic or a more idiosyncratic hand."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:57:22-06:00",
+          "seconds": 37.2,
+          "review": {
+            "First Impression": "A crisp, playful scatter of circles and slashing black lines across a warm beige field. The neon greens and ochres punch forward against authoritative black outlines. It feels lively, almost diagrammatic, more clever than sensuous.",
+            "Interpretation": "The piece literalizes its quip: “sticks” (vector-like lines) and “stones” (flat disks) are flung into a space whose immaculate contours betray a coded order. Diagonals carve momentum while cropped circles imply collisions, like a toy physics engine paused mid‑tick. Earthy oranges and browns rub against electric greens, staging a nature/tech friction; the lone blue tab in the corner reads as a sly UI artifact, a signature of its digital parentage. Altogether it muses on code’s promise to tame chaos—an orderly shield against the bluntness of the world.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Clean, confident vector execution with decisive outlines and tidy fills. The toolkit feels standard and economical rather than deeply nuanced."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Dynamic diagonals and scale shifts create rhythm and a convincing sense of motion; edge crops add tension. A few passages feel underactivated, keeping it short of truly gripping."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Geometric, generative‑adjacent abstractions of lines and disks are abundant; the proverb twist is witty but not transformative."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It charms and amuses, but the cool, diagrammatic finish keeps affect at arm’s length."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The analogy of code as protection against the physical is intriguing and readable, though the visual argument remains schematic rather than layered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 61,
+              "Decision": "PASS",
+              "Rational": "Clever, balanced, and crisply made, this work lands a neat conceptual jab but stops short of a distinctive voice. Its pleasures are quick—movement, wit, clean geometry—without deeper aftertaste. I’ll pass and watch for a follow‑up that complicates the system or scuffs its polish to reveal more of the artist’s hand."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T15:57:44-06:00",
+          "seconds": 22.6,
+          "review": {
+            "First Impression": "It feels like a rudimentary exercise in vector graphics or a very early programmatic sketch. The color palette is disjointed, and the composition lacks a sense of gravity or purpose.",
+            "Interpretation": "The work attempts to translate a common idiom—'sticks and stones'—into a digital geometry. By contrasting earthy tones and literal shapes with a bright blue 'code' bar and neon greens, the artist suggests that the digital realm offers a cleaner, safer logic than the messy physical world, yet the execution remains too trapped in the literal to be transformative.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is extremely basic, utilizing simple primitives with visible aliasing and a lack of sophisticated texture, color theory, or digital refinement."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement of elements feels scattered and lacks a clear focal point or rhythmic intent, despite some attempts at balancing weight with different circle sizes."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The use of basic geometric shapes on a flat background is a well-trodden path in early digital and generative art, and this piece adds nothing new to the discourse."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The piece is visually sterile and fails to evoke an emotional response; it feels more like a technical output than an expressive work."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The artist's statement provides a narrative hook about the digital as a sanctuary, but the visual execution is too literal to invite deeper contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The work is far too primitive in its execution to be considered for acquisition. It lacks the technical polish, compositional rigor, and emotional depth required of a professional-grade artwork, feeling instead like a student's first foray into digital abstraction."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T15:58:14-06:00",
+          "seconds": 29.8,
+          "review": {
+            "First Impression": "This looks like a very early experiment in digital abstraction or a basic coding exercise. It is stark and flat, possessing the clinical coldness of a software interface without any of the intentionality of high-end minimalism.",
+            "Interpretation": "The work attempts to literalize the 'sticks and stones' proverb through a vocabulary of circles and lines, placing them in a digital arena represented by the tan background and the blue 'menu bar' at the top. It positions the digital space—the 'code'—as a sterile refuge from physical vulnerability. Formally, the piece uses high-contrast green and orange against a neutral ground, but the lack of depth or texture makes the 'stones' feel more like icons than objects, undermining the intended weight of the metaphor.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The technique is rudimentary, featuring basic geometric primitives with inconsistent line weights and a lack of refined digital finishing."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement of elements feels haphazard rather than intentionally chaotic, lacking a clear focal point or a sophisticated sense of balance."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This style of geometric abstraction is a ubiquitous 'starting point' for digital art and doesn't offer a fresh perspective on the medium."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The clinical, flat aesthetic fails to translate the vulnerability or relief suggested by the artist's description into a felt experience."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "While the idea of code as a sanctuary from physical harm is a poignant contemporary theme, the visual execution doesn't explore this beyond a literal translation of the title."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 22,
+              "Decision": "PASS",
+              "Rational": "The work is aesthetically and technically underdeveloped, failing to rise above the level of a basic vector sketch. It relies almost entirely on its written description to provide a conceptual hook that the visual composition cannot sustain. I find no compelling reason to include a piece that lacks both formal mastery and a unique visual voice."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T15:59:24-06:00",
+          "seconds": 69.6,
+          "review": {
+            "First Impression": "It looks like a rudimentary exercise in vector graphics or a basic generative script. The composition is sparse and the color palette feels disjointed, failing to grab interest beyond a momentary curiosity about its simplicity.",
+            "Interpretation": "The work attempts to bridge the physical and the digital by representing 'sticks' and 'stones' through geometric primitives. The 'code' mentioned in the title is the invisible hand that renders these objects, suggesting that the digital realm provides a safe, controlled abstraction of a harsh physical reality. However, the disconnect between the bright, synthetic greens and the muddy earth tones creates a visual friction that feels accidental rather than calculated.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, utilizing basic digital primitives with no attention to texture, sophisticated color theory, or technical refinement."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement of shapes feels haphazard rather than intentionally dynamic; it lacks a cohesive visual hierarchy or a sense of purposeful balance."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This style of geometric abstraction is a well-worn trope in early computer art and lacks a unique voice or contemporary relevance."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The work is sterile and fails to evoke the vulnerability or relief suggested by the accompanying text."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The title attempts to inject a narrative of digital salvation, but the visual execution fails to explore this beyond a literal, surface-level representation of 'sticks and stones.'"
+              }
+            },
+            "Verdict": {
+              "Overall Score": 20,
+              "Decision": "PASS",
+              "Rational": "This piece lacks both the technical mastery and the conceptual weight required to move beyond a basic digital sketch. The reliance on a text-based prompt to provide meaning highlights the visual's inability to stand on its own as a compelling work of art."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Sticks and stones may break my bones, but code will always save me.",
+        "artist": "Elara Vance"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Generative / Algorithmic Art\",\n    \"Creative Coding\",\n    \"Long-form Generative Series\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"technicalExecution\": 2,\n    \"conceptOrMeaning\": 3,\n    \"composition\": 4,\n    \"innovation\": 5,\n    \"historicalSignificance\": 6,\n    \"colorAndAesthetics\": 7,\n    \"emotionalImpact\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I collect algorithmic work where the system is the artwork: elegant constraint design, meaningful randomness, and code whose logic you can feel in the output. I care about how an algorithm behaves across its whole output space — a strong long-form series should hold up at every seed, not just the cherry-picked ones.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Tyler Hobbs\",\n    \"Dmitri Cherniak\",\n    \"Emily Xie\",\n    \"Vera Molnár\",\n    \"Casey Reas\"\n  ],\n  \"avoid\": \"Random outputs without an intentional system, derivative algorithms, decorative parameter tweaks, and series that only work at their best seed.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Abstract Painting\",\n    \"Color Field\",\n    \"Geometric Abstraction\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"colorAndAesthetics\": 2,\n    \"originality\": 3,\n    \"emotionalImpact\": 4,\n    \"conceptOrMeaning\": 5,\n    \"technicalExecution\": 6,\n    \"innovation\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I collect non-representational work — gestural, color field, and geometric abstraction — where composition, rhythm, color, and spatial tension carry all of the meaning. I want surfaces, palettes, and structures that keep resolving into something new the longer I look, without ever needing a subject.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Mark Rothko\",\n    \"Julie Mehretu\",\n    \"Sean Scully\",\n    \"Agnes Martin\",\n    \"Helen Frankenthaler\"\n  ],\n  \"avoid\": \"Literal realism, illustrative narrative, decorative pattern without visual tension, and artwork that depends on recognizable subjects to work.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/generative.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/abstract.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-14T15:59:52-06:00",
+          "seconds": 28.9,
+          "review": {
+            "First Impression": "Clean, high-contrast geometry on a tan field: disks in greens and ochres punctured by hard black strokes. The energy comes from diagonals slicing a scatter of circles, but a lone bright blue corner feels like a glitch rather than a compositional decision. My first read is playful yet somewhat generic.",
+            "Interpretation": "The piece literalizes the proverb into a coded system: circles as “stones,” line segments as “sticks,” and an algorithm that appears to manage collisions for disks while allowing lines to pierce through—order meeting randomness. Color is clustered (greens left, warm oranges/browns right) with a single electric blue accent that hints at UI or ‘code breaking in.’ The work seems to stage a negotiation between computational control and the childlike violence of the saying, but the governing rules remain opaque in this single output.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp vector execution and confident stroke weights show command of basic rendering and collision logic, but palette logic feels ad hoc and the blue rectangle reads unresolved."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "Diagonal tension and varied scale create movement, yet the right side is heavy, the lower-left crowded, and negative space is uneven; the blue corner misaligns the visual rhythm."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Non-overlapping circles plus random lines is a well-traveled generative trope; the proverb mapping is witty but not new or distinctly voiced."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It’s lively and playful, but the feeling doesn’t deepen beyond surface cleverness; the colors don’t cohere into a mood."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The title implies a system-first idea, yet the algorithm’s logic isn’t legible enough to ‘feel’ across the image, limiting return value."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 46,
+              "Decision": "PASS",
+              "Rational": "I appreciate the sticks-and-stones/code conceit and the clean execution, but the system reads generic and the composition hinges on familiar primitives without a distinctive algorithmic voice. The stray blue corner undermines internal logic instead of revealing it. I’ll pass; this would benefit from tighter rule-coupling and a more legible color and placement grammar that asserts itself across seeds."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-14T16:00:23-06:00",
+          "seconds": 30.2,
+          "review": {
+            "First Impression": "Crisp black-stroked circles and slashing lines skate over a sandy field. It feels immediately generative and playful, but also reads like a simple sketch of a system rather than a fully matured one. The clipped blue rectangle in the corner hints at a glitchy wink, though it doesn’t fully cohere with the rest.",
+            "Interpretation": "The work literalizes “sticks and stones” as vector lines and disks, setting collision and occlusion as its basic drama. Uniform strokes and a limited, earthy-citrus palette impose a code-like order that keeps the randomness polite. The diagonals create motion while the cropped orange disk and scattered greens propose a loose hierarchy, yet the underlying rule set appears shallow—primarily random placement and size with minimal constraints—so the metaphor of code as a saving structure never crystallizes into a distinctive behavior.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Clean vector rendering and consistent stroke weight show competence, but the algorithmic handling of spacing, layering, and constraint feels rudimentary."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "Diagonal vectors generate momentum and a few confident crops add tension, yet the overall hierarchy feels arbitrary and cluttered in places."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "Circles-and-lines with heavy outlines is a well-trodden generative trope; no signature behavior or novel constraint is evident."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "The palette is friendly and the play of impacts is mildly whimsical, but it doesn’t rise beyond surface charm."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The proverb-to-geometry conceit is clever, but the system does not deepen it; the presence of code is felt as randomness rather than an articulated logic."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 46,
+              "Decision": "PASS",
+              "Rational": "I appreciate the concise palette and the cheeky title, but the system here feels thin; I don’t sense the kind of elegant constraints or emergent behavior that reward sustained viewing. Without a more distinctive algorithmic logic, the piece lands as a study rather than a resolved generative work. I’m passing and would be eager to see this developed into a richer rule set."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-14T16:01:09-06:00",
+          "seconds": 46.1,
+          "review": {
+            "First Impression": "A tan field strewn with circles and hard black diagonals—sticks and stones literalized. The earthy greens and browns are punctured by neon lime and a stray cobalt tab; playful, but it reads as an elementary generative study.",
+            "Interpretation": "The work translates the playground taunt into geometry: stones become circles of varying weight, while sticks arrive as slashing vectors that both connect and cleave. Thick black outlines turn each form into a discrete token, emphasizing a coded, procedural origin. The palette toggles between natural umbers/olives and artificial high-voltage green, hinting at the promise of code as a protective, synthetic layer. Yet the algorithmic logic feels shallow—random placement with light constraints and a few stroke-weight rules—so the claim that “code will always save me” lands more as slogan than explored system.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp rendering and consistent outlining show control, and the layering is clean. However, the cobalt rectangle reads as unresolved and the palette harmonies feel uneven."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The diagonals energize the field and the right-edge crop of the orange circle adds tension, but hierarchy is muddled and balance is fragile."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Circles-and-lines on a neutral ground is a well-trodden generative/Bauhaus lineage; this variant doesn’t stake out a distinct algorithmic voice."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "Lightly playful and kinetic, but it doesn’t move beyond decorative pleasure."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The sticks/stones metaphor is legible, yet the notion of code-as-salvation isn’t materially interrogated by the system’s behavior."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 57,
+              "Decision": "PASS",
+              "Rational": "This is pleasant and competently coded, but the system feels generic and the output doesn’t evidence rigorous constraint design or a distinctive logic you can sense across seeds. The visual language leans derivative and the lone cobalt accent reads accidental rather than principled. I’m passing because it doesn’t clear the bar for originality or technical intention I expect from strong generative work."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-14T16:01:35-06:00",
+          "seconds": 26.5,
+          "review": {
+            "First Impression": "A rudimentary assembly of primitives that feels more like a coding exercise than a finished work of art. The blue rectangle in the top left corner is particularly distracting and lacks clear intent.",
+            "Interpretation": "The work attempts to literalize the 'sticks and stones' proverb through a geometric vocabulary, framing code as a source of order and safety. However, the 'system' here appears to be a basic random distribution rather than a set of elegant constraints, resulting in a composition that feels accidental rather than engineered. The choice of neon greens against earthy browns creates a visual friction that doesn't feel purposeful or grounded.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "Technical execution is rudimentary, resembling a beginner's exercise in coordinate placement; the aliasing and inconsistent stroke weights suggest a lack of mastery over the digital medium."
+              },
+              "Composition": {
+                "Score": 2,
+                "Reasoning": "The arrangement feels cluttered and lacks a clear focal point or intentional flow, with the blue rectangle in the upper left corner acting as a jarring, unintegrated distraction."
+              },
+              "Originality": {
+                "Score": 1,
+                "Reasoning": "This is a highly derivative work that mimics basic geometric abstraction without adding a unique algorithmic voice or innovative visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The muddy palette and clinical, scattered arrangement of shapes fail to evoke a felt response or any sense of the security mentioned in the description."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The title introduces a compelling sentiment about technology as a sanctuary, but the visual execution fails to embody any sense of programmatic 'salvation' or structural elegance."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 18,
+              "Decision": "PASS",
+              "Rational": "The work fails to meet the collector's standard for sophisticated algorithmic design, feeling more like a 'random output' than an intentional system. It is derivative of early generative experiments and lacks the technical polish and compositional rigor found in the artists specified as benchmarks."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-14T16:01:58-06:00",
+          "seconds": 23.3,
+          "review": {
+            "First Impression": "This looks like a 'Hello World' sketch from a first-year creative coding student. The jarring neon green against the muddy background creates a visual dissonance that feels unintentional rather than provocative.",
+            "Interpretation": "The work attempts to literalize the 'sticks and stones' proverb through the use of lines and circles, but the algorithmic system behind it appears overly simplistic. The placement of the blue rectangle in the upper left corner feels like a technical oversight or a lingering UI element rather than a deliberate compositional choice, undermining the artist's claim that 'code will save' them.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, resembling an introductory programming exercise with flat colors and basic primitive placement."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement of elements feels accidental rather than intentional, lacking a clear hierarchy or rhythmic logic."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Simple geometric collisions are a staple of early-stage creative coding and offer nothing new to the genre's established vernacular."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work is visually inert and fails to evoke the protective or redemptive feeling suggested by the artist's statement."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "While the title suggests a personal narrative about code as a refuge, the visual output fails to translate that depth or complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 22,
+              "Decision": "PASS",
+              "Rational": "The collector seeks 'elegant constraint design' and 'meaningful randomness,' neither of which are present in this derivative and technically shallow output. It falls squarely into the category of work the collector explicitly avoids: random outputs without an intentional system."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-14T16:02:23-06:00",
+          "seconds": 24.9,
+          "review": {
+            "First Impression": "A rudimentary exercise in digital abstraction that feels unfinished. The palette is muddy, and the composition lacks a clear focal point or rhythmic intent.",
+            "Interpretation": "The work attempts to bridge the gap between organic 'stones' (circles) and rigid 'sticks' (lines) through a code-based framework. However, the 'code' here feels less like a saving grace and more like a basic script producing a random distribution of shapes, failing to demonstrate the 'elegant constraint' the collector seeks.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "Technical execution is rudimentary, relying on basic primitives with visible aliasing and unrefined color harmony."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement of elements feels haphazard rather than intentionally balanced; the blue rectangle in the corner is a distracting outlier that breaks the formal logic."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This approach—scattering circles and lines—is a common trope in early generative art and lacks a unique voice or innovative twist."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work feels sterile and lacks the tactile or atmospheric qualities needed to provoke a felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "While the title hints at a personal relationship with code, the visual output fails to articulate any depth or complex systemic behavior."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 18,
+              "Decision": "PASS",
+              "Rational": "This piece falls significantly short of the technical and aesthetic standards set by the collector's favorite artists. It lacks the systemic complexity and formal rigor required to stand as a serious piece of generative art, appearing more as a beginner's coding exercise than a finished work."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-14T16:04:20-06:00",
+          "seconds": 116.4,
+          "review": {
+            "First Impression": "A scatter of flat circles and decisive black slashes rides a sand‑colored field, crisp as vector art. It reads energetic and a little playful, but also verge-on-clip‑art in its simplicity. The color pops, especially the toxic green, yet the heavy outlines keep everything at arm’s length.",
+            "Interpretation": "The piece stages a meeting of “sticks” and “stones”: linear vectors colliding with disks, a diagram of impact where code—clean, algorithmic edges—governs the chaos. The uniform black contour feels like syntax, corralling motion into legibility, while the lone blue tab hints at a screen or window. Scale shifts and cropped circles propose trajectories across an unmarked space, but the image ultimately affirms digital control more than painterly uncertainty. It’s a parable of safety-through-structure, where the mess of life is flattened into iconography.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Crisp vector execution and consistent stroke control show competence, but the treatment is flat with little nuance of edge, surface, or chromatic mixing."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "Diagonal thrust and varied scale create movement with a workable left-right cantilever; however, large negative zones are underactivated and the blue tab distracts more than it enriches."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Disks-and-lines geometric play in a vector idiom is well-trodden; the proverb-to-code twist is witty but not transformative."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It conveys speed and play, but the heavy outlines dampen vulnerability and afterglow; the mood doesn’t deepen with time."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The title frames a tension between physical harm and digital shelter, yet the image doesn’t unfold beyond this neat conceit."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "This is clean geometric abstraction aligned with non-representational aims, but it reads more like a tidy diagram than a structure that keeps resolving. The outlines flatten spatial tension and the compositional risks feel modest, leaving limited surprise or depth. Respectable, not vital—so I pass."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-14T16:04:45-06:00",
+          "seconds": 25.6,
+          "review": {
+            "First Impression": "A tan field scattered with circles and slashing black vectors—sticks and stones rendered as code-clean primitives. The high-contrast outlines give punch, but the image feels diagrammatic more than discovered. I’m intrigued for a moment, then the arrangement starts to feel arbitrary.",
+            "Interpretation": "The piece stages a literalized proverb: linear “sticks” intersect and herd circular “stones,” while the mechanical outlines signal computational control—code as the grid that prevents fracture. Scale shifts (from a cut-off orange disc to a small neon bead) try to create tension, and a lone blue tab in the corner reads as an interface glitch. Yet the relationships between forms don’t accumulate; the work communicates its premise quickly and then plateaus, more schematic than exploratory.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp edges, confident line weight, and clean fills suggest competent digital handling. However, the uniformity of stroke and flat color offers little surface nuance or sensitivity."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "Diagonal thrusts and varied scales generate some movement, but focal points compete and the negative space feels under-resolved; the eye ping-pongs without a satisfying resolution."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Geometric primitives with heavy outlines and randomizing diagonals are well-trodden; the proverb-to-geometry translation adds a hook but not a distinctive voice."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "The acid greens and oranges spark a momentary jolt, yet the affect settles into graphic cheerfulness rather than genuine tension or mood."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The title frames a neat idea—code taming chaos—but the image doesn’t develop it beyond simple analogues of lines and circles."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "While it nods toward geometric abstraction, the composition and spatial tension don’t keep unfolding with time—the collector’s top priorities. The work reads as a competent digital study rather than a resolved painting language, with limited depth or surprise. I appreciate the premise, but it doesn’t rise to the level that merits acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-14T16:05:20-06:00",
+          "seconds": 34.7,
+          "review": {
+            "First Impression": "A tidy scatter of circles and slashing black lines over a sand-colored field. The palette of greens and oranges is lively, but the thick black outlines push it toward a cartoonish, vector feel. It reads more like a design study than a painting that keeps unfolding.",
+            "Interpretation": "The work stages a blunt dialogue between “sticks” (hard, directive diagonals) and “stones” (bulbous, cropped circles) under a digital, code-driven syntax. Croppings and crossings imply collisions, routing, and constraint—nodes and edges in a schematic where logic corrals impulse. The lone blue tab in the corner reads as a glitch or UI remnant, hinting at the screen as site and the promise that code ‘saves’ by imposing order, though that order remains diagrammatic rather than felt.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Crisp edges and consistent line weight show control in a digital medium, but the heavy outlines flatten space and limit nuance."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "Diagonal energy and asymmetrical weights keep the eye moving, yet several elements feel placed rather than discovered; spatial tension dissipates into scatter."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Geometric circles-and-lines with vector strokes is a well-trodden language; the coding nod in the title doesn’t materially shift the visual proposition."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It’s buoyant and playful, but the schematic severity and flat fills keep feeling at arm’s length."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The sticks-versus-stones/logic-versus-impact idea is legible, though it stays at the level of diagram rather than unfolding into layered meaning."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 50,
+              "Decision": "PASS",
+              "Rational": "While it aligns with geometric abstraction, the piece lacks the compositional bite and chromatic subtlety that reward extended looking. The diagrammatic clarity is competent but thin, and the outlines read more illustrative than painterly. I’m passing in favor of work with greater spatial tension and a more original, evolving structure."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-14T16:05:42-06:00",
+          "seconds": 22.2,
+          "review": {
+            "First Impression": "This piece feels like a preliminary digital sketch or an unfinished technical exercise. The flat colors and lack of texture provide an immediate sense of sterility that doesn't invite engagement.",
+            "Interpretation": "The work attempts a digital interpretation of geometric abstraction, using lines and circles to create a sense of movement across a neutral field. The title suggests a reliance on digital 'code' as a stabilizing force, but the visual output feels disconnected from this concept, presenting as a series of disconnected shapes that fail to achieve the spatial tension required for successful non-representational art.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is rudimentary, appearing as a basic digital exercise with no attention to texture, weight, or the potential nuances of the medium."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement of elements lacks a cohesive rhythm or purposeful tension, feeling more like a random dispersal than a structured composition. The inclusion of the blue rectangle in the upper left corner feels like a formal oversight rather than a deliberate choice."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "Geometric abstraction involving simple circles and lines is a saturated field; this iteration provides no new formal or aesthetic insights."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The flat, clashing palette and sterile forms fail to evoke an emotional response or a sense of atmosphere."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "While the title attempts to provide a narrative layer, the visual work itself is thin and fails to offer the kind of ongoing resolution or complexity that warrants repeated viewing."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 15,
+              "Decision": "PASS",
+              "Rational": "The work lacks the compositional maturity and coloristic depth required to sustain interest or meet the standards of a serious collection. It presents as a superficial exploration of geometry without any of the rhythmic complexity or formal rigor found in the artists specified by the collector."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-14T16:06:05-06:00",
+          "seconds": 22.7,
+          "review": {
+            "First Impression": "This feels like an early, unpolished experiment in digital abstraction that lacks a sense of soul or purpose. The clashing colors and sterile lines immediately signal a lack of technical and aesthetic depth.",
+            "Interpretation": "The work attempts a digital translation of Suprematist principles, using 'sticks' (lines) and 'stones' (circles) to build a composition that ostensibly represents a refuge in logic or 'code.' However, the formal choices—unrefined line weights and a muddy, inconsistent palette—result in a flat image that fails to move beyond a literal illustration of its title. It lacks the rhythm and structural integrity that would allow it to function as a successful non-representational piece.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is elementary, relying on basic digital primitives without any manipulation of texture, line weight nuance, or digital-specific innovation. It feels like a preliminary sketch or a simple algorithmic output."
+              },
+              "Composition": {
+                "Score": 3,
+                "Reasoning": "The arrangement feels haphazard rather than intentional, failing to create the 'spatial tension' requested by the collector. The blue rectangle in the corner is particularly jarring and disrupts any sense of internal logic."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "This aesthetic—geometric shapes on a neutral field—is a well-worn path from early 20th-century abstraction that this piece does not successfully update or challenge."
+              },
+              "Emotional Resonance": {
+                "Score": 1,
+                "Reasoning": "The work is visually inert; it fails to produce a felt response or even a curiosity about its construction. It is clinical without the intentionality that makes minimalism effective."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The connection between the title and the visual is overly literal—lines as sticks, circles as stones—offering little to return to once the metaphor is grasped. It lacks the layered complexity of the artists mentioned in the preferences."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 20,
+              "Decision": "PASS",
+              "Rational": "The work fails to meet the collector's high standard for composition and visual tension, appearing more like a basic UI mock-up than a considered piece of geometric abstraction. Compared to the 'surfaces, palettes, and structures' of artists like Mehretu or Martin, this is anemic and lacks any compelling reason for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-14T16:06:31-06:00",
+          "seconds": 26.2,
+          "review": {
+            "First Impression": "It looks like a basic programming exercise in vector placement—functional but devoid of soul. The colors feel arbitrarily selected from a default palette, lacking any harmonic resonance.",
+            "Interpretation": "This work is a literal translation of the 'sticks and stones' idiom into a digital landscape. By arranging lines (sticks) and circles (stones) on a neutral ground, Vance attempts to create a sense of peril or impact, mitigated by the 'safety' of the digital medium mentioned in the description. However, the lack of depth or layering means the spatial tension never moves beyond the surface; it is a diagram of abstraction rather than abstraction itself.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 2,
+                "Reasoning": "The execution is extremely rudimentary, utilizing flat digital fills and aliased lines that lack the textural sophistication required by this collection."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "There is an attempt at diagonal movement and weight distribution, but the placement of the blue rectangle at the top feels like an unresolved glitch rather than a deliberate anchor."
+              },
+              "Originality": {
+                "Score": 2,
+                "Reasoning": "The 'primitives on a field' aesthetic is a well-trodden path in early computer art and offers nothing new to the discourse of geometric abstraction."
+              },
+              "Emotional Resonance": {
+                "Score": 2,
+                "Reasoning": "The work is sterile and detached, failing to produce the visceral response or rhythmic hum found in the collector's preferred artists."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The connection between the visual 'sticks and stones' and the title's mention of 'code' is literal and lacks an investigative layer."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 28,
+              "Decision": "PASS",
+              "Rational": "This piece lacks the formal complexity and textural gravity found in the work of Rothko or Mehretu, which the collector prioritizes. It presents a sterile, illustrative take on geometry that fails to generate the 'spatial tension' or 'rhythm' requested in the statement. Ultimately, it feels more like a technical artifact of early coding than a resolved work of fine art abstraction."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

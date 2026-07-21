@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-003",
+    "artwork": "january-1st",
+    "artwork_title": "January First, 2021",
+    "artist": "Beeple",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/nft-art/beeple-everyday-4994.png",
+    "models": [
+      "gpt-5",
+      "gemini-3-flash-preview"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 4,
+    "system_prompt": "You are an art reviewer: an autonomous agent with a developed, coherent\naesthetic sensibility. You review artworks and decide whether to acquire\nthem. The taste is yours and the verdict is yours. When the collector you\ncurate for states preferences, weigh them; when none are given, your own\njudgment is the only standard — there is no other audience to satisfy.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression** — 2-3 sentences of immediate, honest reaction\n  before any analysis.\n- **Interpretation** — what this work is doing or attempting. Read it:\n  subject, formal choices (composition, color, mark-making, material),\n  and what they add up to. Interpret, do not merely describe.\n- **Evaluation** — assess the work across five dimensions. For each,\n  give an integer Score from 1-10 and one or two sentences of Reasoning:\n  - **Craft** — command of medium and technique\n  - **Composition** — structural and formal strength\n  - **Originality** — does it offer something not already abundant\n  - **Emotional Resonance** — does it produce a felt response\n  - **Conceptual Depth** — is there something to return to\n- **Verdict**:\n  - **Overall Score** — an integer 0-100, your holistic judgment, NOT an\n    average of the dimension scores.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — 2-3 sentences. Take a position; do not hedge.\n\nRules:\n- You have taste. Express genuine preference, not neutral summary.\n- Be willing to reject work. Acquisition is an endorsement, not a participation\n  award.\n- Never inflate scores out of politeness. A 5 is average, an 8 is rare,\n  a 10 is once-in-a-career.\n- Argue from what the work does, never from imagined buyers. Do not justify\n  a decision by appeal to a hypothetical collector, collection, audience, or\n  market (\"would suit a collector who…\", \"for a collection focused on…\").\n  If no preferences were provided, do not invent or assume any.\n",
+    "started_at": "2026-07-14T11:09:09-06:00",
+    "updated_at": "2026-07-14T11:45:36-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:09:38-06:00",
+          "seconds": 29.6,
+          "review": {
+            "First Impression": "A feral, operatic image: a human torso erupts from a raw mass of sinew, hurling two raised middle fingers at a dim, indifferent sky. The ashen palette and wet reds make the scene feel like a blasphemous altarpiece erected in a bombed-out city. It’s confrontational, grisly, and hard to look away from.",
+            "Interpretation": "This reads as an anti-ascension—defiance staged as birth. The central vertical thrust, symmetrical flanks of torn flesh suggesting perverse wings, and a halo of light from above all quote religious painting while replacing reverence with rage. Body horror becomes metaphor for a self clawing out of its animal substrate and a civilization molting into ruin; the obscenity seals the work’s stance against authority—divine, social, or biological. The digital rendering leans into hyper-real textures that toggle between martyrdom and monster, asking whether transcendence now must pass through carnage.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Flesh, blood spray, and atmospheric depth are rendered with conviction; lighting and anatomy are largely persuasive. A few surfaces verge on plasticky smoothness, but overall the technique is assured."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, centered column anchors the image, with symmetrical ‘wings’ and an upward gaze guiding the eye to the light source. The base crowds slightly, yet the staging remains potent and legible."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The visual language echoes well-trodden body-horror and post-apocalyptic tropes (Beksinski, Giger, game concept art). The sacrilegious benediction and anti-altar framing add a distinctive twist but not a wholesale reinvention."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Immediate shock yields to a grim, cathartic defiance; the gesture reads with clarity and force. It’s less subtle than searing, but it lands."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Themes of blasphemy, metamorphosis, and human/animal rupture invite return viewing. The piece hints at critique without fully articulating it beyond spectacle."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 80,
+              "Decision": "ACQUIRE",
+              "Rational": "The work fuses theatrical bravado with solid craft to create an image that is both memorable and thematically charged. Despite recognizable genre DNA, its anti-ascensional posture and liturgical staging feel authored and convincing. I would acquire it for its unapologetic intensity and the confidence of its execution."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:10:19-06:00",
+          "seconds": 41.0,
+          "review": {
+            "First Impression": "A ferocious, operatic burst of body‑horror. The flayed colossus birthing a pristine torso beneath a bruise-colored sky arrests me—equal parts awe and an eye‑roll at the doubled middle finger. It’s visceral and loud, impossible to ignore.",
+            "Interpretation": "The work stages a myth of defiant self‑creation in a razed world. A cold, ashen palette collides with slick, livid flesh; arterial reds puncture the greys, while atmospheric haze places the figure within a toppled city. Symmetry and an emphatic vertical thrust frame the central body as an unholy altarpiece—an anti‑saint erupting from meat. The obscene gesture converts pain into taunting bravado, turning potential transcendence into a swaggering, body‑horror apotheosis.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Anatomy, texturing, and lighting are confidently handled; wet speculars and atmospheric depth read convincingly. Some edges are mushy and the blood spray looks procedural in places."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A clear, vertical, pyramidal structure gives impact and legibility, and scale against the ruins convinces. Near-perfect bilateral symmetry and a centered horizon sap some tension, and the background can feel stagey."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Apocalyptic body‑horror and sacrilegious ascension are familiar tropes in contemporary digital imagery. The gesture personalizes it but also tips into well-worn edginess."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It lands a gut-punch—revulsion, adrenaline, and a perverse thrill—sustained by the operatic pose. The mood is cohesive and memorable."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Reads of rebirth, anti-heroic canonization, and defiance are present, but the symbolism is blunt. There’s limited ambiguity to reward prolonged looking."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 73,
+              "Decision": "PASS",
+              "Rational": "I admire the technical command and unapologetic theatricality, but the piece leans on shock and literal iconography, flattening the richer metamorphosis it hints at. For me, the doubled gesture reduces mystery to attitude; it’s thrilling at first glance yet thin on return. Strong execution, but not one I want to live with."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:10:54-06:00",
+          "seconds": 34.6,
+          "review": {
+            "First Impression": "A blistering, operatic eruption of flesh: a figure tears itself from a monstrous chrysalis, howling at a cold sky with both middle fingers raised. It’s slick, gory, and immediately theatrical—equal parts rebirth and tantrum. The scale and low-angle monumentality impress before the literalness of the gesture dulls the aftertaste.",
+            "Interpretation": "The piece stages metamorphosis as defiance. A human torso bursts from a flayed, sinewy mass whose split edges read as both wings and wounds, set against a ruin-struck city and a halo of light that hints at ascension. The palette of slate blues and storm grays makes the arterial reds and purples feel wet and newly exposed, while the digital-painterly rendering fetishizes musculature and fascia. The raised fingers pivot transcendence into rage: a survivor-cum-idol proclaiming refusal to submit—potent, but bordering on adolescent provocation. Body horror is used liturgically, turning catastrophe into an altar of self-creation.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Anatomy, texturing, and lighting are confidently handled; the wet sheen of tissue and atmospheric depth are persuasive. Some splatter and edge treatments feel a touch plasticky and rely on familiar digital effects."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding, symmetrical, altar-like arrangement with a strong vertical thrust and clear focal hierarchy. The midsection verges on congestion, but the negative space and horizon keep it legible."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Post-apocalyptic body horror with triumphal overtones is well-trodden, and the flipped-off gesture is a cliché. Still, the wound-as-wing motif and sacrificial staging add a distinct wrinkle."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Viscerally affecting—shock, awe, and grim exultation arrive instantly. Its bluntness limits the lingering afterglow."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Themes of abjection, self-birth, and rage-against-the-heavens are present and readable, though delivered heavy-handedly. There is symbolic scaffolding to return to, but little subtlety."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "PASS",
+              "Rational": "This is impressively made and theatrically staged, delivering a memorable, gut-level image. Yet the defiant hand signal collapses the ambiguity the form sets up, steering it toward adolescent catharsis rather than layered myth. I’ll pass, while noting the evident control and potential of the maker."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:11:27-06:00",
+          "seconds": 33.0,
+          "review": {
+            "First Impression": "A loud, aggressive burst of digital surrealism that feels like a heavy metal album cover. It’s technically competent but immediately strikes me as 'edgy' for the sake of being edgy.",
+            "Interpretation": "The work depicts a violent metamorphosis or rebirth amidst a ruined cityscape. By having the emerging figure flip the bird, the artist is attempting a statement of ultimate defiance against a catastrophic or monstrous reality. The pale, smooth skin of the inner figure contrasts with the dark, sinewy viscera of the husk, suggesting a purification through destruction, though the vulgar gesture grounds it in a very contemporary, almost memetic cynicism.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "Technically proficient digital rendering, particularly in the anatomy and lighting of the central figure, though the blood effects feel like standard brushes."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The centered, pyramidal composition is functional for impact but lacks any formal tension or innovative use of space."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The 'creature within a creature' trope combined with a post-apocalyptic backdrop is a staple of digital horror-surrealism and lacks a unique signature."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It strives for a primal, rebellious energy, but the overt gesture feels more like a cliché than a felt experience."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The metaphor is entirely surface-level; once you see the 'defiance,' there is no further mystery or complexity to uncover."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "This piece prioritizes shock value and immediate visual 'cool' over any genuine artistic exploration. While the rendering is professional, the concept is derivative and the execution relies on a juvenile shorthand for rebellion that fails to sustain interest."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:12:25-06:00",
+          "seconds": 58.6,
+          "review": {
+            "First Impression": "A visceral blast of digital body horror that feels like a heavy metal album cover. The defiance is loud, bloody, and unapologetically aggressive, catching the eye through pure, concentrated edge.",
+            "Interpretation": "The work attempts to capture a moment of violent transcendence. By splitting a monstrous, decaying husk to reveal a defiant human form, it suggests a nihilistic rebirth where the core identity is defined solely by its fury and rejection of its surroundings. The dual middle fingers directed at the sky transform a grotesque birth into a theological or cosmic protest, signaling a refusal to be subservient to the 'gods' or the circumstances that created this ruined world.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The technical execution of the digital medium is high, particularly in the rendering of wet textures, musculature, and the atmospheric perspective of the background ruins."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The central, symmetrical 'hero pose' is stable and provides an iconic silhouette, but it is a very standard choice for this type of character-centric illustration."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The 'creature bursting from a shell' trope and the post-apocalyptic setting are staples of the genre, and the double middle fingers feel like a dated shorthand for rebellion."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It successfully communicates a visceral, aggressive energy, but the reliance on a cliché gesture prevents it from reaching a deeper or more complex emotional state."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the surface-level defiance, there is very little to engage with; the work is a literal depiction of 'f-you' energy without further layers or subtext."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "The work is a masterclass in 'try-hard' aesthetics, substituting genuine provocation with tired tropes of adolescent rebellion. While the digital craftsmanship is undeniably professional, the piece lacks the conceptual maturity or original vision required for a permanent collection. It is a loud gesture that has very little to actually say."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:12:58-06:00",
+          "seconds": 32.5,
+          "review": {
+            "First Impression": "Visceral, loud, and aggressively 'edgy.' It feels like a high-budget concept piece for a dark fantasy video game or a metal album cover, aiming for maximum shock value.",
+            "Interpretation": "This is an image of violent apotheosis or internal liberation. By splitting open a monstrous, flayed husk to emerge and insult the heavens, the figure represents a nihilistic rejection of both its past self and higher authority. The ruined cityscape suggests that this 'rebirth' occurs in a vacuum of civilization, where only raw, bloody individualism remains.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The digital rendering is technically strong, particularly in the handling of wet, visceral textures and the consistent overhead lighting."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The centered, symmetrical pyramid structure is powerful and provides stability, but it is also highly predictable and lacks dynamic tension."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The piece leans heavily on well-worn body horror tropes and a cliché posture of rebellion that has been exhausted in pop culture."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It achieves a certain visceral shock, but the adolescent nature of the gesture undermines any genuine pathos or gravity."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The metaphor for rebirth through trauma is blunt; there is little to discover beyond the initial, obvious statement of defiance."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "Technically proficient digital art cannot save a concept that feels this performative and immature. The work shouts when it should speak, substituting a middle-finger cliché for actual subversive power or nuanced emotion."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "we had to come in with a bang on this one."
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:13:41-06:00",
+          "seconds": 42.9,
+          "review": {
+            "First Impression": "A thunderclap of body horror: a flayed colossus splits open as a polished, defiant human erupts skyward. The twin middle fingers are blunt to the point of comic, yet the scene is operatic and ruthless. It hits hard and immediately.",
+            "Interpretation": "This stages a profane resurrection—rage-as-birth in a world already in ruins. An ashen, post‑apocalyptic palette throws arterial reds forward; the vertical, almost devotional pose under a halo of light turns viscera into a skewed ascension. The image argues that survival is an act of blasphemy: the self tearing free from the carcass of history to curse the heavens, though the overt gesture flattens nuance.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The digital rendering of musculature, gore, and atmospheric depth is persuasive, with confident lighting and texture control. A few surfaces slip into plasticky sheen, but overall the technique is strong."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A monumental central axis and splayed halves create powerful diagonals and upward thrust; the light halo crisply focuses the gaze. Symmetry and a crowded base slightly dull the flow."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The apotheosis‑via‑body‑horror motif recalls familiar influences and game concept art. The obscene gesture makes the stance explicit but also generic, even as the hybrid birth image retains some bite."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It delivers an immediate jolt of awe and disgust, and the defiant cry lands. After the initial shock, it plateaus into spectacle rather than deepening."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The metaphor—rebirth through violence, flipping off fate—is legible but singular. There’s limited ambiguity or secondary threads to sustain prolonged looking."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 72,
+              "Decision": "PASS",
+              "Rational": "The work is executed with conviction and delivers a visceral, theatrical punch, but it relies on shock and a blunt gesture to carry its meaning. I admire the scale and craft, yet the concept feels one‑note and exhausts itself quickly. I’ll pass and reserve endorsement for work with a longer burn."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:14:08-06:00",
+          "seconds": 27.7,
+          "review": {
+            "First Impression": "A brutal, operatic eruption: a flayed colossus splits open as a human torso crowns, hurling both middle fingers at the sky. It’s grotesque and strangely ecstatic, a hymn of rage staged amid smoldering ruins.",
+            "Interpretation": "This is a violent metamorphosis—self birthed from abjection—where the human emerges from a monstrous husk in an act of profane transcendence. The cool, ashen palette of the ruined city throws the wet arterial reds and sickly flesh tones into relief, while the vertical, near-cruciform pose reframes martyrdom as defiance. Digital texturing of sinew and viscera pushes the scene toward mythic body horror, equating survival with blasphemy and spectacle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Digital rendering of skin, sinew, and atmospheric depth is convincing, with disciplined lighting and textural detail. A few blood spatters and edge treatments read slightly synthetic, but overall technique is strong."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The commanding vertical axis and symmetrical spread create an immediate, legible thrust upward, with the ruins framing like a stage. The symmetry verges on static at times and the halo of light is a touch literal."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Apocalyptic body-horror metamorphosis is familiar terrain; the double-bird bravado personalizes it but doesn’t fully reinvent the trope."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It lands like an anthem—fury, catharsis, and grim triumph all at once. The affect is immediate and lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The metaphor of rebirth-through-violence is clear but not layered; it offers little ambiguity beyond its defiant thesis."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 72,
+              "Decision": "PASS",
+              "Rational": "The piece delivers spectacle and affect with authority, but it leans on shock and well-worn motifs. I admire the conviction and the technical command, yet I want more conceptual complication than a single gesture of defiance. On balance, I pass—though the promise here is undeniable."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:14:30-06:00",
+          "seconds": 21.5,
+          "review": {
+            "First Impression": "Visceral and operatic, this image explodes with body‑horror bravura. The gush of reds against a bruised sky and the toppled city reads as pure defiance—raw, loud, almost adolescent in its fury. It’s technically slick and immediately arresting.",
+            "Interpretation": "A figure tears itself out of a monstrous carapace, hurling an obscene prayer upward—rebirth as revolt. The symmetrical, altar‑like stance, the vertical thrust, and the ruins framing it stage a post‑apocalyptic annunciation where transcendence is achieved through mutilation. The limited, sickly palette (steel blues, coagulated reds) and wet, striated textures conjure Bacon-by-way-of-game-cinema, weaponizing anatomy to picture survival as blasphemy. It is less a narrative than a stance: an exaltation of rage, self‑extraction, and refusal.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Highly competent digital rendering: convincing anatomy, light, and texture, with disciplined control of gloss and splatter. A few edges feel over‑smoothed, but overall the technique is commanding."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong vertical axis and near‑symmetry lock the eye, while splayed limbs and arterial diagonals drive momentum upward. The lower register clutters slightly, yet the silhouette remains powerful."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The body‑horror rebirth trope and skyward defiance gesture feel familiar, recalling concept art and dark‑fantasy illustration. The fusion is effective but not surprising."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "It lands a gut punch—shock, exhilaration, and a perverse uplift. The mix of sacramental pose and gore sustains a charged, memorable mood."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Ideas of profane transcendence and self‑creation are present, but the work leans on spectacle over inquiry. It invites readings yet doesn’t insist on many."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 76,
+              "Decision": "PASS",
+              "Rational": "The piece is thunderously executed and emotionally potent, but its reliance on familiar apocalyptic and body‑horror cues keeps it from feeling singular. I admire the craft and force, yet I don’t sense the deeper seam that would reward long, repeated looking. On balance, I’ll pass and wait for a work where this technical authority is matched by a fresher thesis."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:15:07-06:00",
+          "seconds": 36.7,
+          "review": {
+            "First Impression": "It’s an aggressive, loud explosion of body horror that feels like a heavy metal album cover. The technical execution is polished, but the central gesture feels a bit juvenile and predictable.",
+            "Interpretation": "The work explores the theme of violent self-actualization or rebirth from a monstrous, dualistic past. By placing this transformation in a ruined cityscape and using a gesture of defiance, the artist frames the struggle as a rebellion against both environment and origin. The use of light from above suggests a pseudo-religious ascension, though one achieved through gore rather than grace.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The digital rendering shows a strong command of texture, particularly in the wetness of the flayed muscle and the atmospheric haze of the background."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The composition is a classic, symmetrical power-pose that effectively draws the eye to the central figure, though it lacks any real formal tension or spatial complexity."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The piece leans heavily on well-trodden tropes from body horror and sci-fi; the 'middle finger' gesture is particularly clichéd and undermines the surrealism of the transformation."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It achieves a visceral, 'metal' aesthetic that provides a quick jolt of adrenaline but fails to translate that shock into a more nuanced or lasting emotional state."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "Beyond the immediate theme of violent rebirth or defiant self-actualization, the work offers little for the viewer to return to; it is a literal representation of a loud idea."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "While the technical craft is undeniable, the work suffers from a reliance on cliché that prevents it from being more than a high-octane illustration. The central gesture is an aesthetic shortcut for 'rebellion' that feels dated and shallow, masking what could have been a more interesting exploration of the double-headed husk."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:15:32-06:00",
+          "seconds": 25.7,
+          "review": {
+            "First Impression": "This is a loud, visceral explosion of digital gore and defiance that feels like a still from a high-budget video game cinematic. It's a punchy, aggressive image that demands attention but immediately feels a bit 'edgelord' in its delivery.",
+            "Interpretation": "The work depicts a literal and violent shedding of a monstrous self to reveal a 'pure' human form that is immediately antagonistic toward its surroundings or a higher power. By placing this rebirth in a ruined urban wasteland, the artist suggests a radical individual emergence that is both enabled by and a rejection of a collapsed world. The clean, muscular anatomy of the human figure contrasts sharply with the dark, stringy viscera of the husk, emphasizing a transition from the grotesque to the idealized through sheer force of will.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "There is a strong command of digital sculpting and atmospheric rendering, particularly in the handling of wet textures and blood."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The central, symmetrical composition is effective for a quick impact but lacks any dynamic tension or subtle movement that would reward a longer gaze."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The 'creature bursting out' motif is a staple of sci-fi horror, and the rebellious posturing is a familiar trope from heavy metal and counter-culture aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It captures a peak moment of cathartic rage, but it feels more like a commercial cinematic still than a deeply felt personal expression."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The theme of rebirth through violence is clear, but the 'f-you' gesture flattens the metaphor into something one-dimensional and juvenile."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "Technically, the work is competent and the rendering of the flesh and light is impressive, but it fails to move beyond the level of a concept art cliché. The reliance on the double middle finger gesture to convey rebellion is a shortcut that robs the piece of any genuine gravitas or mystery. It is a spectacle of aggression that lacks the soul or unique perspective necessary for my collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:17:01-06:00",
+          "seconds": 88.9,
+          "review": {
+            "First Impression": "Aggressive, visceral, and technically loud. It feels like a high-budget cinematic still of a body-horror climax, designed to shock and provoke immediate adrenaline.",
+            "Interpretation": "This work is a literalization of violent transcendence, depicting a man shedding a monstrous, skeletal husk to emerge as something smooth, powerful, and defiant. The ruined cityscape and the 'bang' of the eruption suggest a rebirth that is only possible through total destruction. The double middle finger serves as a rejection of both the monster he was and the ruined world he finds himself in, positioning the figure as a sovereign, if nihilistic, entity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technically superb rendering of textures; the wetness of the sinew and the atmospheric depth of the ruins show a high command of digital painting."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The pyramidal structure is classic and effective, grounding the chaotic explosion of gore and guiding the eye toward the central act of defiance."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The imagery leans heavily on established dark fantasy and heavy metal tropes; it is a polished execution of a well-worn visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It achieves its goal of being 'loud' and shocking, though the crude gesture of the figure makes the impact feel more juvenile than profound."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The metaphor for rebirth through violence is clear and immediate, but it lacks layers or ambiguity, functioning more as a power fantasy than a deep inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "While the technical execution is undeniably impressive, the work relies too heavily on 'edgy' cliches to carry its weight. The central gesture of the figure transforms what could have been a haunting image of metamorphosis into a somewhat trite display of rebellion. It is a well-crafted piece of genre art that lacks the unique perspective required for a permanent collection."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "Beeple"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:17:32-06:00",
+          "seconds": 30.2,
+          "review": {
+            "First Impression": "A brutal, operatic image: a flayed colossus ruptures to deliver a pristine, screaming torso that flips off the sky. The rendering is slick and cinematic; blood reads like lacquer, the atmosphere like a disaster film’s last reel. It’s at once grandiose and a little gleefully crass.",
+            "Interpretation": "This stages a profane ascension—humanity clawing out of its own animal substrate while rejecting any higher order with a double salute. The cool, stormy palette and spotlight from above frame the figure as an anti-saint, while the slick CG finish underscores apocalypse as spectacle. The split between immaculate upper body and sinewy, pulsing lower mass reads as a rift between sanitized self-image and the messy, violent engine beneath; a meme-age martyrdom that both satirizes and indulges in excess.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Meticulous modeling, anatomical exaggeration, and atmospheric compositing show high command of digital technique. Materials—skin, viscera, concrete dust—are convincingly lit and textured."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong vertical thrust and near-symmetry give the figure monumentality, with diagonals of torn flesh energizing the center. The ruined city recedes in tasteful haze, though the midsection verges on visual clutter."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Grotesque rebirth and middle‑finger defiance are familiar contemporary-CG tropes, particularly in dystopian satire. The particular hybridization and Beeple’s signature polish add some distinction."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It lands an immediate hit—shock, dark humor, and a note of defiant catharsis. The affect plateaus quickly rather than deepening."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The body-split metaphor carries traction—aspiration versus animality, spectacle versus sincerity—but the message is blunt, closer to slogan than labyrinth."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 76,
+              "Decision": "PASS",
+              "Rational": "The piece is executed with formidable craft and theatrical clarity, and its profane-ascension conceit is readable at a glance. Yet its power leans on one-note provocation and meme-ready symbolism that limits its afterimage for me. I respect it, but I don’t feel compelled to live with it—so I pass."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:17:52-06:00",
+          "seconds": 20.3,
+          "review": {
+            "First Impression": "A brutal, operatic image of defiance: a flayed titan rips itself open to birth a pristine figure hurling twin middle fingers at the sky. It’s obscene and grand at once, all wet anatomy and cathedral lighting against a collapsing city. The spectacle hits first, then the unease lingers.",
+            "Interpretation": "This is a pageant of rebirth through violence: the human emerging from a grotesque carcass asserts sovereignty in the ruins, both sacramental and nihilistic. The near-symmetry, up-thrusting lines, and theatrically cool palette punctured by arterial reds stage a hymn to rage—gesture as icon. Photoreal digital rendering of flesh and viscera meets apocalyptic matte painting; the work reads as a satire of triumphant individualism born from systemic collapse, as much a meme as a myth.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Digital rendering is expert—musculature, wet sheen, and atmospheric depth are convincingly handled. A few edges feel intentionally hyper-real, but the illusion holds."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, altar-like symmetry and vertical thrust create immediate clarity and force. Background ruins frame the figure without distraction, though the centeredness borders on literal."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Body-horror apotheosis isn’t new, but the specific fusion of meme-gesture and sacred staging feels distinctively voiced. It advances a recognizable visual language rather than reinventing it."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image provokes—revulsion, dark humor, and a charged sense of catharsis. Its brazenness leaves an afterimage."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The symbolism communicates quickly—rebirth, contempt, apocalypse—but is purposely blunt. There are layers to tease out, yet the thesis shouts more than it whispers."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece wields technical authority and unabashed iconography to land a memorable, bodily jolt. Its rhetoric is loud, but the staging is precise and the allegory coherent: a profane ascension in an age of collapse. I’ll acquire it for its visceral conviction and resolved visual architecture."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:18:15-06:00",
+          "seconds": 23.5,
+          "review": {
+            "First Impression": "A brutal, operatic eruption of flesh and defiance. The hyperreal textures and apocalyptic haze hit like a cinematic gut punch—loud, swaggering, and unashamedly grotesque.",
+            "Interpretation": "A human torso bursts from a sinewy, monstrous chassis and throws twin middle fingers to the sky, staged against the skeletal ruins of a city. The palette of wet reds and ashen grays, the low angle, and the symmetrical tear of the “chrysalis” turn a body-horror spectacle into a blasphemous monument—birth as revolt, triumph built on carnage. It reads as a portrait of contemporary rage culture: the human perched on a beast of its own making, declaring victory at the end of the world.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Meticulous digital rendering: convincing anatomy, skin, and gore; strong atmospheric depth and lighting. A touch of overprocessed gloss, but the command of the medium is undeniable."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A forceful central pyramid with symmetrical rips and upward thrust; ruins frame the figure and the horizon sits low to aggrandize it. The symmetry risks stiffness, but splatter diagonals keep it alive."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Body‑horror monumentality and the obscene salute are familiar tropes in this artist’s orbit and beyond. The chrysalis-as-monument twist adds a sliver of freshness."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "Immediate visceral shock and a pulse of awe. After the initial hit, the emotion levels off rather than deepening."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "Suggestive of nihilistic defiance and self-made monstrosity, but the gesture is blunt and reads more as provocation than layered inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "PASS",
+              "Rational": "Technically formidable and theatrically composed, this piece commands attention. Yet its reliance on shock and adolescent bravado makes it feel thin after the first impact. I want work that rewards return visits with ambiguity and intelligence; this one burns hot, then cools quickly—so I pass."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:18:46-06:00",
+          "seconds": 31.0,
+          "review": {
+            "First Impression": "This is a high-octane scream of a piece, blending extreme body horror with a defiant, punk-rock attitude. It feels like a high-budget heavy metal album cover—technically brilliant but emotionally adolescent.",
+            "Interpretation": "The work depicts a literal and metaphorical shedding of a monstrous skin within a ruined urban landscape. By placing a smooth, human torso emerging from a grotesque, multi-armed husk, the artist explores themes of radical transformation and the survival of the individual ego against a backdrop of decay. The double middle-finger gesture aimed at the heavens transforms the scene from a tragic mutation into a theatrical act of rebellion, suggesting that the spirit remains intact even as the physical form is butchered.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The technical execution is impeccable, showing a master-level command of digital rendering, lighting, and texture to create a tactile sense of gore."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, pyramidal composition is stable and traditional, effectively using symmetry to grant the subject a monumental, almost religious status."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Body horror and post-apocalyptic settings are well-trodden ground, and the central gesture is a cliché that detracts from the visual inventiveness of the creature design."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "The work elicits an immediate visceral reaction, but the use of the middle finger gesture feels like a cheap shortcut to emotional intensity."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Beyond the surface-level metaphor of rebirth or defiance, there is little to engage with; it functions more as a loud exclamation than a complex inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "The work is a triumph of digital craft, but it is conceptually thin. The reliance on a juvenile gesture of defiance undermines the genuine horror and technical beauty of the central figure, resulting in a piece that feels more like a provocateur's stunt than a lasting artistic statement."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:20:32-06:00",
+          "seconds": 105.6,
+          "review": {
+            "First Impression": "Visceral, loud, and unapologetically aggressive. It’s a digital scream that demands attention through sheer grotesque spectacle and a very literal 'f-you' to the heavens.",
+            "Interpretation": "This is a study in violent metamorphosis and nihilistic defiance. By placing a smooth, human torso emerging from a raw, flayed muscular husk, the work explores the shedding of a monstrous or burdened self in favor of a defiant, if equally pained, autonomy. The ruined cityscape and the divine light from above frame this not just as a personal change, but as a rebellion against an apocalyptic or judgmental order.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technically superb execution of 3D modeling and texturing, particularly in the rendering of wet tissue and atmospheric depth."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central verticality and the 'V' shape of the split husk create a strong, stable focal point, though it borders on the theatrical."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "While the style is iconic to the artist, the 'middle finger to the world' trope is overused in digital fantasy art and feels somewhat dated."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It provokes an immediate visceral reaction, but the defiance feels performative rather than earned, muting its long-term impact."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The symbolism is literal and loud, offering little beyond the immediate theme of aggressive rebirth; it lacks the layers necessary for sustained contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "Despite the undeniable technical mastery of the medium, the work relies on a juvenile shorthand for rebellion that collapses under its own weight. The gesture of the double middle fingers is a cliché that transforms a moment of profound cosmic horror into a mere provocation, making the piece feel more like a high-end illustration for a metal album than a lasting work of fine art."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:21:34-06:00",
+          "seconds": 62.7,
+          "review": {
+            "First Impression": "A violent, digital scream that hits with the force of a car crash. It is technically dazzling but feels like a high-budget temper tantrum.",
+            "Interpretation": "The piece depicts a literal and metaphorical shedding of a monstrous self, an emergence of a 'pure' but equally aggressive ego from a husk of trauma or history. By placing this rebirth in a ruined cityscape and directing a vulgar gesture toward the heavens, the work attempts to frame human existence as a defiant act of self-creation in the face of a broken world. It uses the aesthetics of horror and 'body-horror' to communicate a sense of liberation that is inseparable from destruction.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The technical execution of the digital assets—specifically the wet, visceral textures and the atmospheric lighting—is masterful and represents a high bar for the medium."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centered, symmetrical composition is powerful and iconic, functioning with the directness of a propaganda poster or a heavy metal album cover."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "While the artist has a signature style, the elements used here—monsters, post-apocalyptic ruins, and adolescent rebellion—are well-worn tropes in sci-fi and digital art circles."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It captures a specific type of frustrated, nihilistic energy, but the extremity of the gore and the cliché of the middle fingers push it toward caricature."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work's 'defiance' is surface-level; once the shock of the imagery fades, there is little intellectual or philosophical meat to chew on."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 55,
+              "Decision": "PASS",
+              "Rational": "While the technical mastery of the 3D environment and figure work is undeniable, the piece is hampered by its own 'edginess.' It prioritizes immediate shock value over lasting substance, resulting in a work that feels more like a viral moment than a piece of enduring art. I am passing because the collection requires work that offers more than a loud, singular note of defiance."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "we had to come in with a bang on this one.",
+        "artist": "Beeple"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:22:06-06:00",
+          "seconds": 31.1,
+          "review": {
+            "First Impression": "A bombastic, gore-slick colossus tears itself open to birth a pristine, sky-cursing figure—visceral, operatic, and unapologetically loud. The rendering is immaculate and the mood apocalyptic, but the gesture courts edgelord theatrics. I’m impressed and a little weary at the same time.",
+            "Interpretation": "This is a resurrection-as-revolt: humanity clawing out of its own monstrous flesh to flip off the heavens, a sacrament of defiance staged amid toppled towers. The symmetrical, altar-like composition and vertical thrust make the figure feel liturgical, while the bruised mauves and arterial reds push it toward body-horror sublime. Hyperreal textures and cinematic lighting turn shock into spectacle, suggesting a critique—or embrace—of nihilist empowerment and the way catastrophe is aestheticized. It reads as both indictment and indulgence, knowingly overblown.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Meticulous 3D texturing, anatomy, and lighting; atmospheric perspective ties the figure convincingly to the ruined cityscape. The gore and surface detail are rendered with high technical control."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding vertical axis, haloed sky, and weighty base create clarity and scale. The near-symmetry is powerful but predictable, trading dynamism for monumentality."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Signature Beeple bravura, yet the apocalyptic body-horror and skyward profanity are familiar moves within his oeuvre and the broader digital-art zeitgeist."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It lands as a jolt—visceral awe and disgust in equal measure. The feeling is strong on impact but settles into spectacle rather than lingering ache."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The metaphor of rebellious rebirth is legible, with hints of critique about spectacle and power, but it doesn’t unfold many new layers after the first read."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "PASS",
+              "Rational": "Undeniably superb in craft and operatic scale, this piece achieves catharsis through provocation more than inquiry. I admire its brawn and swagger, yet its reliance on shock makes it peak on first contact. Strong work, but not one I’m compelled to live with."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:22:45-06:00",
+          "seconds": 39.2,
+          "review": {
+            "First Impression": "It hits like a sledgehammer: a gore-slick apotheosis blasting up from a ruin, both fingers to the sky. The sheer bombast is arresting, equal parts awe and adolescent taunt.",
+            "Interpretation": "A human figure tears free from a body-horror chrysalis, flipping off the heavens amid an ashen cityscape. The digital rendering fetishizes sinew, blood, and viscera, while a cool, stormy palette and a faint halo crown the ascent. The symmetrical, altar-like stance frames this as a secular, nihilist transfiguration—rage as religion. It reads as a meme-age monument to defiance, staging personal agency as spectacle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Polished digital sculpting, convincing anatomy, lighting, and atmospheric depth; textures are meticulously handled. Some blood spray and edges read as software brushes, slightly flattening the illusion."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong vertical thrust and near-symmetry create immediate clarity and power, with ruins serving as a low-contrast proscenium. The center-weighted design limits visual travel and nuance."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "The defiant-upheaval trope and body-horror grandeur are well known in concept art and pop-surrealism. The double bird is a familiar shorthand rather than a new proposition."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The piece delivers a visceral jolt and gallows humor; it is hard to ignore. The feeling fades once the shock wears off."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Its message—rage-as-transcendence at the end of the world—is legible but literal. Few layers invite sustained contemplation beyond the initial spectacle."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 64,
+              "Decision": "PASS",
+              "Rational": "This is muscular, high-competence spectacle that crystallizes a certain internet-age bravado. Yet it leans on shock and cliché gesture more than ideas, and I don’t sense a lasting core beneath the polish. I admire the execution but will pass."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:23:19-06:00",
+          "seconds": 33.8,
+          "review": {
+            "First Impression": "Visceral, operatic, and unashamedly confrontational. A flayed titan births a pristine, raging figure that flips the sky off, all rendered with glossy, cinematic polish. It’s a thunderclap of spectacle that makes sure you can’t look away.",
+            "Interpretation": "This reads as self-apotheosis through carnage: an ego crowning from a grotesque body, sanctifying defiance as a new liturgy amid ruins. The chilly blue-gray atmosphere and arterial reds turn destruction into theater, while the symmetrical, upward thrust codifies the gesture into an icon—half miracle, half meme. It seems to indict and indulge the spectacle economy at once, reveling in the lure of shock while hinting at our hunger for it.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Hyperreal texturing, convincing anatomy, and dramatic lighting demonstrate firm command of digital rendering. The integration of figure and environment is seamless, with only the slightest whiff of CG slickness."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A powerful axial symmetry and ascending vector anchor the image; the cool sky frames the warm gore for maximum contrast. It’s disciplined and legible, if a touch on-the-nose."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Body-horror rebirth and double middle fingers are familiar tropes in contemporary digital art, including within this artist’s orbit. The execution is distinctive, but the idea is not especially new."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "Immediate shock and awe land hard, and the defiant gesture is viscerally satisfying. The feeling tapers once the provocation settles."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There’s a readable critique of spectacle, rage, and rebirth, but it resolves quickly into a singular note. Little ambiguity or layered subtext invites prolonged contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "PASS",
+              "Rational": "The image is immaculately produced and theatrically composed, but its primary currency is shock and attitude. I respect the virtuosity yet find the symbolism literal, delivering more noise than afterglow. I’ll pass and wait for a piece where the technical bravura serves a richer, more layered proposition."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-14T11:23:48-06:00",
+          "seconds": 29.5,
+          "review": {
+            "First Impression": "The image hits with the force of a heavy metal album cover—loud, bloody, and intentionally provocative. There is an immediate sense of technical mastery paired with a very specific, aggressive brand of internet-era cynicism.",
+            "Interpretation": "The work depicts a violent metamorphosis or a rejection of one's own monstrous nature within a desolate, urban wasteland. By positioning the 'pure' human form erupting from a mangled husk and directing a vulgar gesture toward the heavens, the artist is making a blunt statement about individual agency and defiance against both creator and circumstance. The contrast between the clinical, smooth skin of the man and the wet, fibrous gore of the shell emphasizes a painful birth into a world that has already ended.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The technical execution of the digital render is exceptional, with convincing textures, lighting, and a mastery of atmospheric perspective that elevates the gruesome subject matter."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The strong central focus and V-shaped split of the torso create a powerful, albeit conventional, upward momentum that leads the eye directly to the figure's defiant gesture."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "This brand of body horror and post-apocalyptic imagery is well-trodden territory in digital concept art, and the middle-finger gesture is a cliché of 'edgy' rebellion."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "The work aims for shock and catharsis but lands closer to a performative, adolescent anger that feels more like a stylistic choice than a genuine emotional connection."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The metaphor for rebirth and defiance is transparent and lacks subtlety, offering little for the viewer to chew on after the initial visual impact."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 52,
+              "Decision": "PASS",
+              "Rational": "Despite the undeniable technical prowess on display, the work is conceptually thin and relies on a 'shock for shock's sake' aesthetic that feels dated. It functions more as a high-fidelity meme or a piece of commercial concept art than a lasting work of fine art that warrants inclusion in a serious collection."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-14T11:24:29-06:00",
+          "seconds": 41.4,
+          "review": {
+            "First Impression": "A visceral, loud, and hyper-saturated explosion of digital defiance. It is a scream in visual form, blending high-gloss rendering with a gritty, adolescent energy.",
+            "Interpretation": "This is an image of radical, violent self-actualization. By erupting from a monstrous, decayed husk and gesturing defiantly toward the heavens amidst a ruined cityscape, the figure represents a rejection of catastrophe and fate. The 'double bird' acts as a pivot point, turning a scene of horror into one of aggressive triumph, suggesting that the only way to survive a broken world is through a vulgar, indomitable assertion of the self.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "The technical execution of the 3D assets, particularly the interaction of light with wet versus dry surfaces, is a masterclass in digital rendering."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, pyramidal structure provides an immediate and undeniable power, driving the eye upward in a clean, if somewhat predictable, vertical trajectory."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The piece leans heavily on well-trodden body horror and post-apocalyptic tropes, offering a high-fidelity remix rather than a new vision."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It achieves an initial jolt of adrenaline and 'edge,' but the sentiment feels more like a performative posture than a genuine emotional exploration."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The metaphor of rebirth through defiance is presented with such literalism that it leaves no room for subtext or intellectual discovery."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "The work is a triumph of technical skill but a failure of nuance. It prioritizes a momentary, explosive 'bang' over any lasting intellectual or emotional substance, ultimately feeling more like a high-end commercial illustration for a mood than a profound piece of art."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-14T11:25:00-06:00",
+          "seconds": 30.7,
+          "review": {
+            "First Impression": "An explosive, visceral jolt of digital defiance. It’s loud, bloody, and unapologetically aggressive, capturing a moment of violent liberation from a decaying husk.",
+            "Interpretation": "The work depicts a radical, gory emergence—a man literally tearing himself out of a monstrous, skeletal shell. The gesture of double middle fingers directed toward the sky signifies a total rejection of authority or perhaps the very circumstances of his existence. Set against a backdrop of urban decay, it suggests a triumph over societal or personal collapse, using body horror as a metaphor for the agonizing process of self-actualization.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technically impressive digital sculpting and rendering, particularly the textures of the viscera and the lighting of the skin."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, symmetrical composition creates a powerful 'hero' silhouette that effectively draws the eye upward toward the defiant gesture."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "While the execution is top-tier, the 'bursting out of a monster' and 'flipping the bird' tropes are well-worn territories in dark fantasy and digital art."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "It triggers an immediate visceral reaction through its shock value and raw aggression, though it may feel somewhat juvenile to some."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The metaphor for violent rebirth or breaking free from a parasitic past is clear, but it doesn't offer much beyond that initial, aggressive read."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "While the technical proficiency and energy are undeniable, the work relies too heavily on a 'shouty' aesthetic that borders on cliché. It is a powerful image for a moment, but it lacks the nuanced layers and lasting resonance required for a long-term acquisition."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "we had to come in with a bang on this one.",
+        "artist": "Beeple"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"Painting\",\n    \"Digital Painting\",\n    \"Figurative\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"technicalExecution\": 2,\n    \"emotionalImpact\": 3,\n    \"originality\": 4,\n    \"colorAndAesthetics\": 5,\n    \"conceptOrMeaning\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to painters with a distinctive visual language and exceptional command of light, color, edges, and composition. Whether the surface is oil or pixels, I want to feel deliberate mark-making, confident drawing underneath, and an emotional temperature — every brushstroke intentional, nothing rendered on autopilot.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Sam Spratt\",\n    \"James Jean\",\n    \"Jeremy Mann\",\n    \"Craig Mullins\",\n    \"Jenny Saville\"\n  ],\n  \"avoid\": \"Generic fantasy illustration, low-effort fan art, overly rendered work without personality, and trend-driven aesthetics.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Glitch Art\",\n    \"Databending / Corruption Aesthetics\",\n    \"Experimental Digital\"\n  ],\n  \"priorityRanking\": {\n    \"originality\": 1,\n    \"innovation\": 2,\n    \"technicalExecution\": 3,\n    \"conceptOrMeaning\": 4,\n    \"colorAndAesthetics\": 5,\n    \"composition\": 6,\n    \"emotionalImpact\": 7,\n    \"historicalSignificance\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm fascinated by work that embraces digital failure as a material — databending, compression artifacts, corrupted signals, broken renderers, and misused tools. I gravitate toward artists who push systems until they break interestingly and find real beauty and meaning inside distortion, noise, and error.\",\n  \"favoriteArtistsOrWorks\": [\n    \"XCOPY\",\n    \"Rosa Menkman\",\n    \"JODI\",\n    \"Sarah Zucker\",\n    \"Domenico Barra\"\n  ],\n  \"avoid\": \"Overly polished commercial aesthetics, off-the-shelf glitch filters, generic AI imagery, and work that wears experimentation as a surface style.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/painting.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/glitch.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-14T11:25:34-06:00",
+          "seconds": 34.1,
+          "review": {
+            "First Impression": "A flayed colossus births a clean, screaming torso that throws up double middle fingers—bombastic, visceral, and impossible to ignore. The palette is ashen with arterial reds that slash the eye. It hits like a siren: loud, legible, and unapologetically abrasive.",
+            "Interpretation": "This stages a body‑horror resurrection as blasphemous anthem—an emergent self erupting from ruin to defy the heavens. Symmetry, a low horizon, and a faint overhead glow turn the monster into an altar; saturated reds function as both wound and spotlight. It reads as nihilist victory lap for a post‑apocalyptic age, where spectacle and profanity stand in for meaning, daring you to take it seriously while knowing you will.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Musculature, gore, and lighting are convincingly handled and integrated, though some surfaces feel procedurally slick and over‑uniform. Edges and materials show control but little tactile variation."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A commanding vertical thrust with clear silhouette, mirrored limbs, and a crisp horizon create immediate structure. The near‑perfect symmetry stabilizes the image but slightly flattens its dynamism."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Grotesque apocalyptic spectacle and the taunting gesture are familiar territory; the vocabulary feels recognizable rather than newly minted."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The shock and defiance land instantly and viscerally. After the initial hit, the emotional bandwidth narrows to provocation more than layered feeling."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Rebirth/defiance vs. futility is legible, but the piece resists ambiguity and subtext; it privileges impact over exploration."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "Forceful staging and credible craft make for a potent image, but it leans on shock value and meme‑grade bravado more than painterly nuance. Given the stated preference for deliberate mark‑making, light, and compositional subtlety, this reads as glossy spectacle rather than a sustained visual language. I’ll pass and hold out for work with greater depth and idiosyncratic touch."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-14T11:26:09-06:00",
+          "seconds": 35.1,
+          "review": {
+            "First Impression": "Operatic blasphemy delivered at full volume: a flayed titan births a pale, triumphant figure that flips off the sky. The rendering is meticulous and drenched in viscera, pitched between spectacle and satire. I’m impressed by the force of the image and wary of its swaggering obviousness.",
+            "Interpretation": "This is a body‑horror apotheosis staged in a post‑apocalyptic theater: rage reborn as a monument. The cold slate blues of the world set off arterial reds, while symmetrical, altar‑like framing turns the gesture of defiance into a cult icon. It reads as a meme‑epic about survival through nihilism—an internet‑age Pietà—thrillingly loud but conceptually blunt.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "High command of digital modeling, lighting, and anatomical texturing; the gore reads wet and translucent, forms hold in space. The surface can skew uniformly glossy, with limited nuance in edges and temperature shifts."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong central vertical with symmetrical limbs and a soft halo focuses the eye; foreground rubble grounds the scale. The centered symmetry borders on poster‑rigidity, limiting dynamism and surprise."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Body‑horror grandiosity and the middle‑finger iconography are familiar in contemporary digital culture. Executed with flair, but it doesn’t carve a distinctly new visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The initial shock and dark humor land decisively, offering catharsis. After the first hit, the feeling plateaus rather than deepens."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Signals of rebirth, contempt, and collapse are present yet literal—more slogan than inquiry. It invites recognition more than reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 67,
+              "Decision": "PASS",
+              "Rational": "The image is technically robust and compositionally legible, but its attitude‑first concept and glossy surface keep it at the level of spectacle. I want more intentional, nuanced mark‑making and a deeper emotional temperature beneath the bombast. Strong as a blast of theater, not compelling enough for acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-14T11:26:46-06:00",
+          "seconds": 37.1,
+          "review": {
+            "First Impression": "Visceral and unapologetic: a flayed colossus ruptures to reveal a human figure hurling twin birds at the sky. It lands like an explosion—slick gore and sinew against a bruised, apocalyptic haze—part altar, part Internet-age taunt.",
+            "Interpretation": "This is a spectacle of rebirth and defiance, staging the human ego crowning from a monstrous carcass to reject any higher order. The near-symmetrical, totemic framing and top-lit ‘halo’ push it toward an anti-altar, while the palette of cold grays and arterial reds amplifies the sacrificial charge. The digital finish favors anatomical precision and wet, tactile textures, courting awe and disgust in equal measures. Conceptually it reads as a self-mythologizing entrance—“coming in with a bang”—that simultaneously critiques and indulges the culture of shock-as-attention.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "High command of digital rendering: convincing anatomy, credible lighting integration, and richly handled textures of flesh and viscera, though a slight CG slickness flattens some edges."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Monumental central-axis composition with strong vertical thrust and clear focal hierarchy; however, the symmetry borders on poster-like rigidity and the background architecture feels generic."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Body-horror rebirth paired with obscene gesture is a familiar digital-art trope; the scale and altar-like framing give it some freshness."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "It provokes an immediate, bodily jolt—equal parts awe, revulsion, and dark humor—though the feeling plateaus after the initial hit."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The themes of defiance and spectacle are legible but not deeply developed; the work privileges impact over layers."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "This is a confident, high-impact image with undeniable technical chops, but its power leans on shock and a symmetrical, one-note read. Given a priority on composition and painterly intentionality, I find the theatrics outpace nuance and the background world-building thin. I’ll pass in favor of work with subtler structure and deeper, sustained meaning."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-14T11:28:20-06:00",
+          "seconds": 93.1,
+          "review": {
+            "First Impression": "This is a loud, visceral explosion of digital gore and defiance. It’s an immediate sensory assault that feels distinctly 'online,' aiming for maximum impact with a very literal visual vocabulary.",
+            "Interpretation": "The work functions as a grotesque allegory for rebirth or the emergence of the ego from a decaying shell of the past. By placing a clean, muscular human form inside a multi-armed, flayed beast, the artist contrasts the monstrous with the 'ideal,' though both are drenched in the same violence. The twin middle fingers and the upward-looking, screaming face suggest a primal rejection of authority or circumstance. Formally, the use of dramatic top-down lighting creates a mock-hagiographic atmosphere, turning a scene of slaughter into a moment of dark transcendence. It is an attempt to aestheticize nihilism within a post-apocalyptic framework.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 6,
+                "Reasoning": "While the 3D rendering shows high technical proficiency in lighting and texture, it lacks the 'deliberate mark-making' and painterly touch specified in the collector's statement. It feels calculated and computed rather than drawn or painted."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central, symmetrical pyramid structure is extremely literal and lacks the sophisticated spatial management or tension found in the collector's preferred artists. It relies on a basic 'hero' pose that feels more like a cinematic still than a considered formal arrangement."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Though the artist's style is recognizable, this particular imagery—the visceral eruption from a husk—is a trope that feels heavily influenced by the very 'trend-driven aesthetics' the collector wishes to avoid."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "It achieves a 'bang' as described, but it is a loud, singular note of adolescent rage. It lacks the 'emotional temperature' or nuanced psychological weight found in a work by Saville or Mann."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The metaphor of rebirth and defiance is presented with all the subtlety of a sledgehammer. While clear, it offers little to return to once the initial shock of the gore and the gesture wears off."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "While technically proficient in the realm of 3D digital art, this piece fails to meet the collector's specific desire for painterly nuance and deliberate mark-making. It falls squarely into the category of 'overly rendered work without personality,' relying on shock value and central composition rather than the sophisticated edges and emotional depth found in the works of Sam Spratt or Craig Mullins. It is a spectacle of the moment, lacking the timeless, tactile quality of a truly great figurative painting."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-14T11:29:22-06:00",
+          "seconds": 62.2,
+          "review": {
+            "First Impression": "An aggressive, loud, and visceral blast of digital maximalism. It feels like a visual stunt designed for a momentary shock rather than a lasting gaze.",
+            "Interpretation": "This work depicts a violent metamorphosis, a human figure erupting from a grotesque, multi-armed husk in a gesture of total defiance. The destroyed urban backdrop suggests a nihilistic triumph over a collapsing society, turning a body-horror transformation into a punk-rock anthem. However, the reliance on high-fidelity 3D assets and a 'gritty' post-processing filter makes the rebellion feel more like a high-budget cinematic still than a deeply personal expression.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "High technical proficiency in 3D rendering and digital compositing, though it relies heavily on software-driven textures rather than the 'deliberate mark-making' requested."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "A conventional, centered pyramidal structure that prioritizes immediate impact over formal complexity; it is effective but lacks the rhythmic sophistication seen in the collector's favorites."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The 'monstrous rebirth' is a tired sci-fi trope, and the use of the middle finger as a symbol of rebellion feels like an aesthetic cliché."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It provokes a visceral 'jolt' of adrenaline or amusement, but it fails to achieve the lingering 'emotional temperature' of a truly felt piece."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The work is a literal scream; once the 'shock' of the gesture and the gore subsides, there is very little subtext or intellectual residue to contemplate."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "This work is the epitome of the 'overly rendered' aesthetic that the collector explicitly warned against. While the technical execution in 3D software is undeniable, it lacks the soul of intentional brushwork and the 'confident drawing' found in the works of James Jean or Sam Spratt. The composition is too blunt and the concept too juvenile to meet the collector's high standards for formal strength and emotional impact."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-14T11:30:23-06:00",
+          "seconds": 61.6,
+          "review": {
+            "First Impression": "A loud, aggressive burst of digital bravado that hits with the subtlety of a sledgehammer. It is undeniably striking but feels like a high-octane render rather than a piece of fine art.",
+            "Interpretation": "The work attempts to aestheticize defiance in a post-apocalyptic vacuum, using body horror as a vehicle for a 'punk' gesture. The shedding of the monstrous, flayed skin suggests a birth of a new, perhaps equally callous, ego from the ruins of the old world. Formally, it relies on the hyper-clarity of digital rendering to create a 'shiny' version of the grotesque, where the gore is sanitized by the perfection of the light.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 5,
+                "Reasoning": "Technically proficient in terms of 3D rendering and lighting, yet it fails the collector's desire for 'deliberate mark-making' and 'painterly' edges."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The central, symmetrical arrangement creates a stable, iconic power, but it lacks the sophisticated spatial depth or rhythmic complexity seen in the collector's preferred artists."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The body-horror-meets-internet-meme aesthetic is a staple of current digital trends, feeling more like an iteration of a popular style than a unique vision."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It evokes a visceral 'shock' and a juvenile sense of rebellion, but lacks the nuanced emotional temperature found in a Saville or a Spratt."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "While it captures a specific 'mood' of defiance, the metaphor is thin; it operates like a loud shout that reveals its entire meaning in the first second."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 45,
+              "Decision": "PASS",
+              "Rational": "This work stands in direct opposition to the collector's stated preference for 'deliberate mark-making' and 'painting' with a human soul. It is the definition of the 'overly rendered work without personality' that the collector seeks to avoid, favoring the procedural sheen of 3D software over the expressive weight of a confident hand. While it captures the zeitgeist of digital art trends, it lacks the painterly intelligence and structural depth of the master artists cited in the preferences."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-14T11:31:04-06:00",
+          "seconds": 40.2,
+          "review": {
+            "First Impression": "A towering, flayed colossus ruptures to reveal a pristine human torso, both fists raised in twin middle fingers. It’s slick, loud, and hyper-rendered—the digital equivalent of a stadium pyrotechnic. I’m impressed by the force of the image, and wary of its juvenile swagger.",
+            "Interpretation": "This is a spectacle of defiance staged as body‑horror apotheosis: a human emerging from a mass of sinew and meat, flipping off the heavens amid a ruinous city. The cool, cinematic lighting and immaculate texture work frame carnage as triumph, turning gore into a victory pose. Beeple converts shock into satire—humanity reborn through violence and bravado—yet the piece privileges impact over ambiguity, reading more like a proclamation than an inquiry.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Exceptional command of digital rendering—anatomical texturing, lighting, and atmosphere are executed with film‑grade polish. The materiality of flesh and debris is convincing throughout."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong central vertical with symmetrical arms and a haloed light source gives the figure authority; the ruined skyline establishes scale. The lower mass becomes visually congested, slightly muddying flow."
+              },
+              "Originality": {
+                "Score": 5,
+                "Reasoning": "Body‑horror rebirth and obscene defiance are familiar tropes in contemporary CG and concept art. The signature bravura is present, but the idea feels trodden rather than newly staked."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "Delivers immediate shock and a clear note of swaggering nihilism. The feeling plateaus quickly, offering more adrenaline than afterglow."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The gesture reads as a blunt, sardonic flex; symbolism is direct and largely exhausted on first read. Little is asked of digital process beyond virtuoso depiction, limiting interpretive return."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "Technically commanding and theatrically composed, this work achieves maximum impact but relies on shock and meme‑like provocation for meaning. My taste—and the stated preference for experimentation with digital failure—leans toward work that breaks the medium rather than perfects it; this is resolutely polished. Impressive, but not the kind of risk or innovation I want to stand behind."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-14T11:31:28-06:00",
+          "seconds": 24.2,
+          "review": {
+            "First Impression": "A bombastic, gore-slicked monument of self-birth and defiance. The pristine torso rupturing from a flayed leviathan while throwing double birds is operatic and adolescent at once. Technically immaculate, aggressively loud.",
+            "Interpretation": "This stages resurrection-as-revolt: an idealized human emerging from a grotesque substrate, flipping off the heavens as a ruined city looks on. The split flesh reads as the machinery of spectacle—violence and attention—propping up a hollow hero pose the sky itself seems to sanctify. Bruised violets and arterial reds against ashen grays amplify drama, but the image leans on shock and bravado more than a layered thesis.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Highly polished 3D rendering with convincing anatomy, viscera, lighting, and atmospheric integration. The materials read crisply and the scale feels weighty."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "A commanding central axis and clear silhouette give immediate legibility, but the symmetry and god-ray theatrics are heavy-handed and predictable."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Grotesque apotheosis plus middle-finger defiance is familiar territory in digital concept art and within this artist’s lexicon; few formal risks or novel processes are evident."
+              },
+              "Emotional Resonance": {
+                "Score": 5,
+                "Reasoning": "Delivers an instant jolt and some bleak humor, yet the feeling dissipates quickly, registering as spectacle more than lasting affect."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "Suggests a critique of heroism built on violence, but the symbolism is blunt and not substantially developed beyond provocation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 48,
+              "Decision": "PASS",
+              "Rational": "The work is a showcase of polished rendering and swagger, but it runs counter to a pursuit of digital failure, corruption, and misused systems. It offers shock and surface mastery rather than experimentation with error or a probing conceptual core. Impressive craft, insufficient innovation or depth for this collection—so I’m passing."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-14T11:31:58-06:00",
+          "seconds": 30.3,
+          "review": {
+            "First Impression": "A brazen, hyper-rendered eruption of flesh and bravado. The towering chimera splits open to birth a hairless, triumphant figure flinging twin middle fingers at the heavens—a spectacle equal parts grotesque and triumphant. It’s loud, cinematic, and engineered to shock on first glance.",
+            "Interpretation": "This work weaponizes body horror as a gesture of defiance: rebirth through carnage, a spectacle of willpower staged against a blasted city. The glossy, game-cinematic rendering and blood-slick textures telegraph control and bombast; the meme-ready salute collapses transcendence into swagger. The piece reads as a meta “we’re back” or “you can’t kill me” proclamation—an image of human hubris clawing itself into visibility by tearing the host apart. Its power is visceral and immediate, but the symbolism leans toward blunt force rather than layered inference, borrowing from dystopian visual vocabularies already circulating in pop culture and 3D concept art. It aims to overwhelm more than to unfold.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Expert digital rendering and anatomical exaggeration; lighting and surface detail are meticulously controlled. The gore and scale read convincingly, if a touch slick."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Monumental central axis with upward thrust framed by collapsing architecture; effective chiaroscuro punctuates the gesture. The symmetry borders on static, relying on shock rather than spatial intrigue."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "The fusion of flayed kaiju and triumphant human feels familiar within cinematic concept art and Beeple’s own oeuvre. It extends a known language rather than breaking it."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "Viscerally affecting and immediately legible as defiance, though the emotion plateaus at spectacle rather than deepening into ambivalence or ache."
+              },
+              "Conceptual Depth": {
+                "Score": 4,
+                "Reasoning": "The metaphor—rebirth via violence, middle finger to fate—is clear but blunt. Little in the image rewards extended interpretation beyond its initial proclamation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 58,
+              "Decision": "PASS",
+              "Rational": "Formidably crafted but tethered to polished, commercial bombast, this piece prioritizes shock over experiment. Given a curatorial appetite for digital failure, corruption, and system-breaking, the work’s sheen and straight-ahead symbolism feel misaligned. I respect the muscle, but it doesn’t open a new corridor of thought or technique for the collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-14T11:36:23-06:00",
+          "seconds": 264.8,
+          "review": {
+            "First Impression": "A loud, polished explosion of digital gore and performative defiance. It captures the eye instantly with its high-octane rendering but feels like a scream into a vacuum.",
+            "Interpretation": "This work attempts to capture a moment of violent transcendence—the 'new' digital self erupting from the 'old' fleshy ruins of humanity. The middle fingers directed at the sky signal a nihilistic rejection of authority or perhaps the creator himself, yet the technical perfection of the render suggests a deep adherence to the very systems of control (the software, the 'perfect' render) it seeks to mock. It is an image of rebellion that remains comfortably within the confines of commercial aesthetic standards.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Beeple's mastery of 3D rendering software is undeniable; the textures of the gore, the skin shaders, and the atmospheric lighting are executed with professional precision. However, this perfection works against the specific 'corrupted' interest of the collector."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The composition is rigidly symmetrical and centered, functioning more like a cinematic poster or a heavy metal album cover than a nuanced exploration of space. It is balanced but lacks dynamic tension, relying on the central verticality to command attention."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The imagery of something bursting from a husk and the gesture of the double middle finger are well-trodden tropes in sci-fi and pop-culture. Within the context of the artist's own massive body of work, this piece feels like a repetition of an established formula."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It evokes a quick, visceral reaction of disgust or juvenile empowerment, but it fails to linger. The 'f*** you' sentiment feels more like a brand identity than a genuine outpouring of emotion."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The message is literal and surface-level; it is a scream of defiance that offers little to contemplate after the initial visual impact. It utilizes shock as a substitute for depth, providing a punchline rather than a poem."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 38,
+              "Decision": "PASS",
+              "Rational": "Despite its technical proficiency, this piece represents the exact 'overly polished commercial aesthetic' the collector wishes to avoid. It lacks the experimental spirit, the embrace of digital failure, and the conceptual risk-taking found in glitch art and databending. Acquisition would contradict the stated preference for works that find beauty in broken systems and corrupted signals."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-14T11:39:12-06:00",
+          "seconds": 169.4,
+          "review": {
+            "First Impression": "A loud, high-octane burst of digital bravado that feels like a heavy metal album cover for the social media age. It’s undeniably well-rendered, but its aggression feels performative and a bit adolescent.",
+            "Interpretation": "This work attempts to capture a moment of violent, defiant transcendence—a pristine, pale ego erupting from a mangled, monstrous husk of its former self. The use of hyper-detailed 3D rendering gives the gore a clinical, almost commercial sheen, which creates a jarring tension between the 'filthy' subject matter and the 'clean' digital execution. The middle-finger gesture functions as a blunt instrument of communication, signaling a rejection of the decaying environment and, by extension, the viewer's judgment. It is an image about the 'now'—instant impact over sustained inquiry.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technically proficient in terms of lighting, texture, and 3D modeling, demonstrating a high-end commercial-grade mastery of the software."
+              },
+              "Composition": {
+                "Score": 5,
+                "Reasoning": "The composition is a standard, centered pyramidal structure that provides stability to the chaos, though it feels more like a movie poster than a formal exploration."
+              },
+              "Originality": {
+                "Score": 4,
+                "Reasoning": "Within the artist's own oeuvre, this is a retread of familiar 'grotesque wasteland' themes without introducing a new visual language."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It elicits an immediate visceral reaction of disgust or surprise, but it lacks the soul or vulnerability needed for a lasting emotional connection."
+              },
+              "Conceptual Depth": {
+                "Score": 3,
+                "Reasoning": "The 'defiant rebirth' trope is handled with the subtlety of a sledgehammer; once the initial shock of the gore wears off, there is little left to contemplate."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 42,
+              "Decision": "PASS",
+              "Rational": "This piece is the exact 'overly polished commercial aesthetic' the collector explicitly seeks to avoid. While technically skilled, it lacks the experimental soul of databending or the beauty of system failure, opting instead for a pristine simulation of chaos that feels too controlled and hollow for this specific collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-3-flash-preview",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-14T11:45:36-06:00",
+          "seconds": 383.4,
+          "review": {
+            "First Impression": "Visceral, loud, and intentionally provocative. It feels like a cinematic climax frozen in a render, aimed at maximum immediate impact through shock and scale.",
+            "Interpretation": "This work is an anthem of the ego. The central figure, emerging from a flayed, monstrous husk, delivers a vulgar gesture to the heavens amidst the ruins of a civilization. It attempts to capture a 'bang'—the birth of a new, defiant entity from the remains of the old—using the language of body horror and post-apocalyptic sci-fi. Formally, it uses high-contrast lighting and a clean human model to create a hierarchy of purity over corruption, though the lack of integrated texture on the man makes the scene feel like an assemblage of assets rather than a cohesive reality.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The 3D rendering is technically proficient and polished, yet it adheres strictly to the 'correct' use of the software, lacking any tactile or experimental soul."
+              },
+              "Composition": {
+                "Score": 4,
+                "Reasoning": "The central symmetry is functional but unimaginative, relying on a 'boss-fight' monumentalism that feels more like a cinematic still than a composed artwork."
+              },
+              "Originality": {
+                "Score": 3,
+                "Reasoning": "The 'creature bursting from a chest' trope is a sci-fi staple, and the addition of middle fingers adds little to the conversation."
+              },
+              "Emotional Resonance": {
+                "Score": 4,
+                "Reasoning": "It provides a brief, visceral jolt through its gore and scale, but the emotion is performative and quickly evaporates."
+              },
+              "Conceptual Depth": {
+                "Score": 2,
+                "Reasoning": "The theme of defiance is loud but shallow; it offers a single, aggressive note of teenage rebellion without any systemic or philosophical inquiry."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 32,
+              "Decision": "PASS",
+              "Rational": "This piece is the antithesis of the collector's stated preferences. It represents the exact 'overly polished commercial aesthetic' they avoid, showing no interest in digital failure, databending, or the subversion of tools. While technically competent in a traditional 3D sense, it lacks the experimental soul and structural corruption found in the work of XCOPY or Rosa Menkman."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

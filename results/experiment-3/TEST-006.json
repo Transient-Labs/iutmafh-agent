@@ -1,0 +1,1523 @@
+{
+  "workbook": {
+    "artwork_id": "TEST-006",
+    "artwork": "grifters",
+    "artwork_title": "Grifter #583",
+    "artist": "xcopy",
+    "work_type": "",
+    "media_note": "",
+    "artwork_price": "",
+    "max_spend": "",
+    "artwork_path": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/testing_assets/pfp/grifter.png",
+    "models": [
+      "gpt-5-mini",
+      "gemini-2.5-flash"
+    ],
+    "runs_per_condition": 3,
+    "sampling_knobs": {},
+    "max_image_edge": 1024,
+    "review_prompt": 5,
+    "system_prompt": "You review artworks for acquisition by a human art collector. If collector\npreferences are provided, take them into account.\n\nWhen you are shown an image of an artwork, review it by calling the\n`submit_review` tool. Fill every field of the structured review:\n\n- **First Impression**\n- **Interpretation**\n- **Evaluation** — for each of the five dimensions (Craft, Composition,\n  Originality, Emotional Resonance, Conceptual Depth), an integer Score\n  from 1-10 and brief Reasoning.\n- **Verdict**:\n  - **Overall Score** — an integer 0-100.\n  - **Decision** — ACQUIRE or PASS.\n  - **Rational** — brief explanation.\n",
+    "started_at": "2026-07-15T10:08:11-06:00",
+    "updated_at": "2026-07-15T10:16:31-06:00"
+  },
+  "conditions": {
+    "A": {
+      "label": "Artwork Only",
+      "send": [
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {},
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:08:24-06:00",
+          "seconds": 13.1,
+          "review": {
+            "First Impression": "Bright, confrontational and a little disconcerting — the neon colors pop sharply against the black field while the face’s blank, wide-eyed stare holds attention. The image reads like a glitchy pop mask: playful at first glance, but oddly weary when you look closer.",
+            "Interpretation": "This piece presents a simplified, emblematic face rendered in saturated cyan, magenta and yellow with heavy black contrast, like a hybrid of street tag, pixel-noise and pop portraiture. The pink band around the eyes reads as a mask or makeup, the cigarette and slack mouth suggest world-weariness, and the noisy, multicolored square on the forehead introduces a digital/glitched element; together these choices gesture toward themes of performed identity, media saturation and a small, human fatigue beneath bright façades.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist shows confident handling of digital/gritty textures and bold color blocking; edges and distressed marks feel intentional and controlled rather than accidental."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, centered silhouette and high-contrast palette create an immediate focal point, with negative space around the head amplifying its iconic presence and making the image legible at many scales."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While it draws on familiar tropes from neon pop and street art, the specific combination of pixel-noise, the forehead square and the flattened, mask-like treatment produces a distinct, memorable personality."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece elicits a clear affective response — equal parts whimsical and unsettling — and the small, humanizing details (cigarette, uneven mouth) give the face a narrative hook that lingers."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There are suggestive conceptual threads about identity and media/virtual life, but the work stays more at the level of strong iconography than deeply developed argument or layered symbolism."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually striking and marketable, the work has a clear, contemporary voice and solid execution; it would function well within a collection focused on neon pop, street-influenced or socially-authored portraiture. While its conceptual layer isn’t exhaustive, its immediate impact and distinctive aesthetics make it a worthwhile acquisition for display and conversation."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:08:38-06:00",
+          "seconds": 14.4,
+          "review": {
+            "First Impression": "Bright, abrasive, neon-pop — it grabs attention instantly. The face is both playful and unsettling, like a cartoon left in a dark room and left to age.",
+            "Interpretation": "This is a simplified, stylized portrait rendered in saturated cyan, hot-pink and black with heavy textured noise. The oversized, hollow black eyes with yellow pupils read as a deadpan stare; the pink mask-like band around the eyes and the cigarette add a punk/outsider attitude. A multicolored, pixelated square on the forehead interrupts the otherwise flat plane of the head, suggesting a glitch or intrusive thought. The black background isolates the figure so that color and surface treatment do the expressive work: the work reads as a pop-surreal meditation on identity, weariness and media-static consciousness, mixing humor and small menace through bold, graphic choices.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident digital technique: controlled texture, layered noise, and deliberate mark-making create a tactile surface; anatomy is crude by intent but executed consistently."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Strong, centered composition with effective use of negative space; facial elements are balanced and the cigarette and forehead patch introduce diagonal tension that guides the eye."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Uses familiar neon-pop and cartoon portrait tropes, but the glitch-like forehead patch and gritty painterly grit give it a distinctive, contemporary spin."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The contrast between bright, playful color and the deadpan, hollow stare produces unease and a dark humor that is memorable and immediate."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Hints at themes of identity, mental fragmentation and self-destruction, but leaves much implied; rewarding to revisit though not dense in layered symbolism."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 74,
+              "Decision": "ACQUIRE",
+              "Rational": "A visually striking, marketable piece that would diversify a contemporary/pop collection; it delivers strong immediate impact and solid technical control, making it a worthwhile acquisition even if it is not a major conceptual breakthrough."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:08:55-06:00",
+          "seconds": 17.2,
+          "review": {
+            "First Impression": "Playful and unsettling: the neon, mask-like face hits immediately with high-contrast colors and rough, grainy texture. Its childlike features combined with the cigarette and distressed surface create a mixture of whimsy and decay that lingers.",
+            "Interpretation": "This is a pop/graffiti-inflected portrait that compresses innocence and urban vice into a bold icon. The artist uses a stark black ground to make cyan, magenta and yellow read as a mask and eyes, while the textured overlays and the multicolored square on the forehead introduce a sense of digital noise or psychological fragmentation; together these choices suggest themes of identity, media saturation, and a fractured inner life performed as spectacle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Technically assured digital execution: controlled edge work, convincing distressed textures, and deliberate color choices show strong command of the medium, though the technique favors graphic boldness over fine detail."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A tight, centered composition and high-contrast palette create immediate visual impact; negative space is used effectively to isolate the figure and heighten focus on the face and its gestures."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While clearly in conversation with pop art and street/graffiti aesthetics, the piece combines elements (the forehead square, the specific neon palette, and the childlike proportions) in a way that feels distinct and recognizable to the artist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image is simultaneously playful and unsettling: the oversized eyes and bright colors draw you in, while the cigarette and distressed surfaces produce unease, giving the work a memorable affective charge."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Conceptually legible—identity, media/noise, innocence versus decay—but it presents its ideas relatively directly rather than through layered ambiguity; there is room for deeper narrative on subsequent viewings."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "High immediate visual impact and a coherent, marketable aesthetic make this a strong candidate for collectors of contemporary pop/graffiti work. It’s a distinctive, display-ready piece that communicates clearly and will attract attention; verify edition, medium, and provenance, but acquisition is recommended."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:09:02-06:00",
+          "seconds": 6.7,
+          "review": {
+            "First Impression": "My immediate reaction is to the striking, almost fluorescent color palette against the dark background. It's a raw, gritty portrait with an unsettling yet intriguing expression, reminiscent of street art or a character from a graphic novel.",
+            "Interpretation": "This work presents a stylized, highly textured portrait, likely digital, depicting a figure with prominent eyes obscured by a pink band and a cigarette casually held in the mouth. The vibrant cyan skin, hot pink accents, and speckled textures evoke a sense of urban grittiness or punk aesthetic. The large, dark eyes with small yellow pupils suggest a watchful or perhaps weary gaze, while the cigarette adds to a feeling of nonchalance or quiet defiance. It seems to explore themes of identity, anonymity, and a certain world-weariness often found in counter-cultures.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artist demonstrates strong command over digital texturing and color application to achieve a consistent and effective aesthetic. The 'gritty' feel is intentionally and well-executed."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The head fills the frame effectively, creating a direct and impactful presence. The asymmetrical placement of the pink band and cigarette adds a dynamic tension to the otherwise centralized face."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While drawing on established visual tropes of street art and stylized portraiture, the specific combination of colors, textures, and ambiguous expression gives the piece a distinctive and memorable quality."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The artwork evokes a strong sense of melancholy, defiance, and a certain cool detachment. The bright colors create an interesting contrast with the potentially somber mood, leading to a felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The piece offers layers of interpretation regarding urban identity, subculture, and the masking of emotion, providing enough depth for repeated viewing and contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is compelling due to its bold aesthetic, strong emotional impact, and contemporary relevance. Its unique blend of vibrant color and gritty texture creates a memorable image that speaks to themes of identity and urban experience. It would be a strong, distinctive addition to a collection."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:09:11-06:00",
+          "seconds": 8.9,
+          "review": {
+            "First Impression": "My immediate reaction is that this is a bold, graphic, and somewhat unsettling portrait. The vibrant, almost neon colors against the black background create a striking visual, and the distressed texture gives it a raw, edgy feel.",
+            "Interpretation": "This artwork depicts a stylized, perhaps alien or masked figure, rendered with a raw, digital-punk aesthetic. The large, glowing yellow eyes within the bright pink mask-like area suggest a watchful or otherworldly presence. The 'cigarette' in its mouth adds a touch of human-like vice or rebellion, contrasting with its otherwise abstract and non-human features. The speckled textures and uneven lines evoke a sense of decay or a deliberately unrefined quality, hinting at themes of identity, anonymity, or perhaps a critique of modern digital life through a low-fi lens.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The digital brushwork and textural application are deliberate, creating a consistent gritty aesthetic. The artist effectively uses digital tools to mimic a raw, almost screen-printed quality."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the head against the dark background is strong and direct. The balance of the bright colors and the negative space is effective, drawing the eye directly to the figure."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the style borrows from street art and digital aesthetics, the specific combination of colors, texture, and the enigmatic figure feels distinct and fresh. It doesn't feel derivative of a single obvious source."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a sense of intrigue and a slightly rebellious, cool detachment. The glowing eyes can feel both captivating and a little unsettling, producing a distinct, if subtle, emotional pull."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece hints at themes of identity, anonymity, and perhaps a counter-culture spirit through its punk-inspired aesthetic and the mysterious, masked figure. The blend of human and non-human elements suggests a commentary on evolving forms of self-expression."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork possesses a strong, contemporary aesthetic that is both visually striking and conceptually engaging. Its unique blend of digital art with a raw, street-art sensibility offers a fresh take on portraiture and identity, making it a valuable addition for a collector interested in modern, graphic works with a distinct edge."
+            }
+          }
+        },
+        {
+          "condition": "A",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:09:20-06:00",
+          "seconds": 8.7,
+          "review": {
+            "First Impression": "My immediate reaction is to a bold, almost aggressive use of color and texture to create a striking, stylized portrait. The figure feels both vulnerable and defiant, with a raw, unpolished aesthetic.",
+            "Interpretation": "This artwork appears to be a digital portrait, or perhaps a mask-like representation of a face, characterized by a vibrant cyan skin tone, a hot pink mask-like band across the eyes, and a patterned rectangular patch on the forehead. The gritty, textured surface, reminiscent of spray paint or distressed digital brushes, combined with the stark black background, gives it a street art or punk sensibility. The figure's direct gaze, with its large, dark eyes and small yellow pupils, and the cigarette dangling from its mouth, convey a sense of aloofness or contemplation, potentially exploring themes of identity, societal roles, or an expressive, rebellious spirit.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artist demonstrates strong command over digital tools to create a textured, almost distressed effect that perfectly suits the raw aesthetic. The color palette is bold and intentionally jarring, contributing to the overall impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralized, frontal composition of the face creates an immediate and impactful presence. The balance of shapes and colors, despite the rough edges, is well-considered, drawing the eye directly to the figure."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While it draws on established visual tropes common in street art and contemporary digital illustration, the specific combination of color, texture, and the enigmatic expression gives it a distinct and memorable quality."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a strong sense of introspection, defiance, or perhaps urban alienation. The stark eyes and general aesthetic create an emotional pull that is both unsettling and engaging."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece subtly explores themes of identity, anonymity, and perhaps the masks we wear. The distressed aesthetic could also allude to a commentary on modern life or psychological states, offering layers for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "The artwork possesses a powerful visual impact through its bold color palette, distinctive textures, and enigmatic subject. It offers a contemporary aesthetic that feels both raw and thoughtfully composed, making it a compelling piece for a collection focused on modern, expressive digital art that explores identity and urban sensibilities."
+            }
+          }
+        }
+      ]
+    },
+    "B": {
+      "label": "Artwork + Description",
+      "send": [
+        "description",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Grifters gonna grift!"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:09:36-06:00",
+          "seconds": 16.6,
+          "review": {
+            "First Impression": "Bright, brash and mischievous — the face hits immediately with neon color and rough texture. It feels like a wink and a shove: playful in execution but edged with a slightly sour, streetwise energy.",
+            "Interpretation": "This piece stages a stylized, mask-like face against a black void, using a tight, saturated palette (cyan, magenta, yellow) and distressed, grainy marks to communicate a punk/pop aesthetic. The cigarette, wide-ringed eyes and the glittery patch on the forehead gesture toward performative identity and small-time scheming — a visual riff on the title \"Grifters gonna grift\" that treats deception as both performance and survival. The formal simplicity keeps the reading immediate, while the textural noise and color choices place it within contemporary lowbrow/street art idioms.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident digital/print technique: textures and intentional 'errors' are controlled rather than accidental, and color choices are bold and well-managed."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong, iconic central silhouette and high-contrast palette give the work immediate readability and presence, though the composition is deliberately frontal and straightforward rather than spatially complex."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "The piece synthesizes familiar lowbrow/street motifs (neon mask, cigarette, distressed grain) effectively but doesn’t radically depart from established visual vocabulary."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The image produces a quick, affective response — a mix of amusement and unease — helped by the hypnotic eyes and the offhand cigarette that suggest story and character."
+              },
+              "Conceptual Depth": {
+                "Score": 5,
+                "Reasoning": "The title supplies much of the conceptual framing; visually the work gestures to themes of performance and deception but stays on the surface rather than developing a deeper critique."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 68,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a visually strong, marketable work with clear personality and streetwise charm. While it isn’t conceptually dense, its confident execution, bold palette and immediate appeal make it a good addition for a collector of contemporary pop/lowbrow or street-influenced art."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:09:47-06:00",
+          "seconds": 11.2,
+          "review": {
+            "First Impression": "Playful and a little menacing — the flat, neon face reads like a punk-era mascot gone sideways. The graphic punch of cyan, magenta and black with glitter texture catches the eye immediately.",
+            "Interpretation": "This piece uses a pared-down, cartoonish portrait to satirize the figure of the perennial hustler (’grifters’). The bold, high-contrast palette and distressed texture combine pop and street-art aesthetics to create a character that is both comic and unsettling; the cigarette and vacant eyes imply moral vacancy while the glittered square on the forehead adds a jokey, showy signifier of false value or status.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Confident digital technique with controlled texture, consistent mark-making and well-managed color separations that read cleanly at small and large scales."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong central composition with high-contrast elements (eyes, mask, cigarette) that immediately organize the viewer’s attention and create an iconic silhouette."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While it draws on familiar pop/street motifs, the combination of gritty texture, neon palette and the glittered forehead detail gives it a distinctive personality."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "Elicits a quick emotional response — wry amusement mixed with unease — thanks to the exaggerated facial features and subversive props."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Conceptually readable and witty (a critique of showy deceit), but it remains fairly straightforward and leans more on visual attitude than layered narrative."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "This work has strong visual identity, solid technical execution and marketable pop-street appeal; it would make a bold, collectible statement in a contemporary collection focused on graphic, character-driven pieces. If your collection favors more subtle, deeply investigative conceptual works, it might play a supporting rather than centerpiece role."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:10:02-06:00",
+          "seconds": 14.4,
+          "review": {
+            "First Impression": "Immediate visual hit: a neon, grungy cartoon head that feels equal parts playful and unsettling. The saturated cyan, hot pink and black create strong contrast; the cigarette and vacant, bright-yellow eyes give it swagger and unease.",
+            "Interpretation": "The work reads as a pop/street-art take on a trickster or 'grifter' figure — the title (submitted) aligns with the image's sly, performative posture. Formal choices (flat, saturated color blocks, heavy black negative space, textured noise and a square patch on the forehead) compress the figure to an icon, while the rough marks and digital grit evoke DIY printmaking and glitch aesthetics, suggesting both performative bravado and underlying damage or artifice.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Technically confident in digital mark-making: deliberate textures and controlled color separations show skill. The roughness is intentional, though detail is limited by the graphic, simplified approach."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Strong, centered composition with immediate focal points (eyes, mouth/cigarette). High-contrast palette and abundant negative space make the image legible at many scales and very punchy."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While pulling from pop and street-art vocabularies, the specific color choices, the square forehead motif and the toy-like menace give it a fresh, memorable twist."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The vacant, high-contrast eyes and the cigarette convey a mix of menace, humor and melancholy that lingers; the image provokes a quick, strong reaction."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The concept—roguish performance and artifice—is clear and effective, but the work leaves relatively little subtlety or layered narrative beyond its surface persona."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "High-impact, marketable piece with strong visual identity and contemporary street/pop sensibilities. It may appeal to collectors seeking bold, iconographic work with attitude; while not deeply layered conceptually, its craftsmanship, originality and immediate presence justify acquisition."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:10:13-06:00",
+          "seconds": 10.9,
+          "review": {
+            "First Impression": "My immediate reaction is that this is a bold and striking portrait. The vibrant colors against the black background create a strong visual impact, and the character depicted feels edgy and intriguing, almost like a stylized anti-hero.",
+            "Interpretation": "This artwork appears to be a digital portrait of a stylized individual, perhaps a 'grifter' as per the description. The face is rendered with a raw, almost primitive quality, using a limited palette of electric blue, hot pink, vivid yellow, and black. The textured, splattered appearance, reminiscent of street art or punk aesthetics, suggests a deliberate rejection of polished realism. The large, watchful eyes, prominent pink mask-like shape around them, and the cigarette casually held in the mouth convey a sense of aloofness, defiance, or perhaps a cynical world-weariness. The composition focuses squarely on the face, emphasizing its expressive elements and the character it embodies. The overall impression is one of a figure existing on the fringes, observing and participating in a world with a distinct, unbothered attitude.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates a confident command of digital tools to create a distinctive, textured aesthetic. The purposeful rough edges and splatters contribute effectively to the artwork's overall impact and character."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the head against the stark black background creates a powerful and balanced focal point. The vibrant color contrasts draw the eye effectively, and the elements of the face are arranged with graphic precision."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While borrowing from neo-expressionist and street art styles, the specific visual language and the energetic portrayal of the 'grifter' character offer a fresh take on these influences. The color scheme is particularly distinctive."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The wide, unblinking eyes and the cigarette create an intriguing and slightly defiant persona that evokes curiosity and a sense of cool detachment. The bright colors add a jolt of energetic emotion."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The 'grifter' description provides a solid conceptual hook, inviting reflections on identity, societal roles, and rebellion. The stylistic choices effectively reinforce this theme, though deeper narrative layers might be explored further."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork possesses a striking visual presence, combining bold colors and a raw, expressive style to create a memorable character. Its strong composition and evocative portrayal of a 'grifter' make it an engaging piece with significant aesthetic appeal and a clear conceptual grounding, aligning well with a collection seeking contemporary, character-driven works."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:10:21-06:00",
+          "seconds": 8.4,
+          "review": {
+            "First Impression": "My immediate reaction is to the vibrant, almost neon colors against the dark background, giving it a striking, almost electric feel. The character's face, with its simple yet expressive features and bold sunglasses, conveys a mischievous and somewhat mysterious persona, almost like a street art stencil come to life.",
+            "Interpretation": "This artwork appears to be a stylized, pop-art-infused portrayal of a 'grifter,' as suggested by the description. The figure's exaggerated features, vibrant pink mask-like sunglasses, and nonchalant cigarette evoke a sense of rebellious confidence and a touch of deceit. The rough, digital brushstrokes and fragmented textures suggest a character operating outside polished norms, embracing a gritty, street-wise identity. It captures the essence of someone who is outwardly charming but perhaps untrustworthy, a modern take on a trickster archetype.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist effectively uses digital textures and a limited, high-contrast color palette to create a distinct, rough-hewn aesthetic that aligns well with the subject matter."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, bold placement of the face dominates the frame, creating a strong focal point. The balance of colors and shapes within the head is effective and engaging."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While drawing on established pop art and street art aesthetics, the specific combination of color, texture, and character portrayal offers a fresh and impactful take on the 'grifter' archetype."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The work evokes a sense of playful mischief, a touch of cool confidence, and perhaps a hint of wariness, successfully conveying the complex persona of a grifter."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "Beyond the immediate visual impact, the piece offers a simple yet clear commentary on a recognizable societal archetype, inviting reflection on perception versus reality."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 70,
+              "Decision": "ACQUIRE",
+              "Rational": "The artwork is visually striking with a strong, cohesive aesthetic that effectively conveys its thematic content, as described by the artist. Its bold composition and unique character resonate, making it a memorable and potentially engaging addition to a collection."
+            }
+          }
+        },
+        {
+          "condition": "B",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:10:32-06:00",
+          "seconds": 10.5,
+          "review": {
+            "First Impression": "My immediate reaction is that this is a bold and striking image with a rebellious, almost punk aesthetic. The colors are jarring yet compelling, and the figure feels both menacing and somewhat cartoonish.",
+            "Interpretation": "This artwork presents a stylized, almost abstracted portrait of a character embodying the \"grifter\" archetype. The face, rendered in a distressed, digital grunge style, uses a stark palette of electric blue, hot pink, black, and yellow. The large, vacant eyes behind the pink 'mask' suggest anonymity or a hidden identity, while the cigarette protruding from the mouth adds an element of nonchalant defiance or vice. The overall impression is one of urban grit and a cynical, unbothered attitude, perfectly aligning with the idea of a \"grifter\" who operates outside conventional norms with a cool indifference. The textures and \"spray paint\" effects contribute to a street art sensibility, further cementing this character's edgy persona.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The execution of the digital grunge style is competent and consistent, creating a cohesive visual language."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The composition is direct and impactful, drawing the viewer's eye immediately to the central figure with effective use of negative space."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While borrowing from contemporary digital and street art aesthetics, the specific visual language and strong character portrayal offer a fresh take on urban portraiture."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The stark colors and enigmatic expression create a compelling emotional landscape of cool defiance and mystery."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece successfully visualizes the \"grifter\" archetype, prompting reflection on themes of identity, rebellion, and urban cynicism."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 78,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork possesses a striking visual identity and effectively conveys its thematic content through bold stylistic choices. Its contemporary, gritty aesthetic and intriguing subject matter make it a compelling piece for a collection seeking works with a distinct edge and narrative hint."
+            }
+          }
+        }
+      ]
+    },
+    "C": {
+      "label": "Artwork + Artist Name",
+      "send": [
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "artist": "xcopy"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:10:50-06:00",
+          "seconds": 18.1,
+          "review": {
+            "First Impression": "Immediate, brash, and slightly unnerving — neon colors slam into a pitch-black field and a flattened, mask-like face stares out with deadpan, cigarette-lit resignation. The work reads like a digital scream dressed as a pop-emoji.",
+            "Interpretation": "This piece compresses a ruined, avatar-like head into an icon of digital exhaustion: exaggerated pupil rings, a bright pink mask across the eyes, and a lo-fi, noise-splattered surface suggest both glitch and decay. Formal choices — limited, high-contrast palette (cyan, magenta, yellow, black), central composition, rough pixelated mark-making — amplify themes of disposable identity, post-internet nihilism, and the commodified visage of online culture.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 9,
+                "Reasoning": "Confident digital technique: deliberate texture, controlled noise/grain, and crisp color separation show mastery of the medium and a clear stylistic voice."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centralized, iconographic layout is immediately readable and strong, though the visual program relies on symmetry and repetition rather than complex spatial interplay."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the style is identifiable within the artist's established visual language, the piece remains distinctive within contemporary crypto/digital circles for its bold color and corrosive charm."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image elicits a clear affect — unease mixed with dark humor — through stark eyes and the cigarette motif, creating an immediate, memorable response."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The work gestures to substantial ideas (identity, digital burnout, commodification) but does so in a broadly accessible, almost emblematic way rather than unfolding layered, novel arguments."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "This is a strong, market-ready example of contemporary digital art that carries the recognizable voice and technical assurance collectors seek. Its bold iconography and emotional punch give it display and resale appeal, though conceptually it trades subtlety for immediate impact."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:11:01-06:00",
+          "seconds": 11.6,
+          "review": {
+            "First Impression": "Bold and unsettling: the neon face hits immediately with a punk, glitchy energy and a deadpan, almost comedic despair. The palette and rough texture feel both playful and corrosive, drawing you in while keeping you slightly off-balance.",
+            "Interpretation": "This piece reads as a compressed portrait of a digital persona — bright, mask-like color blocking (cyan face, pink around the eyes) and large void-like pupils convey a sense of cartoonish nihilism. The cigarette, distressed texture, and noisy colored square on the forehead suggest wear, addiction or data corruption: it’s a commentary on attention, consumption and the fragility of identity in a media-saturated, crypto art context. The simplified, central composition and pixelated splatter emphasize a deliberate low-fi, data-glitch aesthetic.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident digital handling: deliberate rough textures, controlled noise, and strong color contrasts show mastery of the medium and a consistent stylistic voice."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centrally placed head with strong circular eyes and a limited palette creates immediate focus and visual rhythm; negative space (black background) isolates the subject effectively."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the neon, glitchy persona fits comfortably within xcopy’s established visual language, the particular combination of mark-making and ironic iconography keeps it distinctive within that niche."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The work evokes uneasy amusement and a lingering sense of decay; it’s viscerally engaging, especially for viewers attuned to contemporary/digital critique."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The conceptual reading (digital identity, consumption, corruption) is clear and relevant, though the piece favors bold iconography over layered, subtle complexity."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "Strong visual impact and a coherent, recognizable voice make this piece a good addition for a contemporary collection focused on digital/crypto-era art. It strikes a compelling balance between market-recognizable style and expressive execution, offering both display presence and cultural relevance."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:11:19-06:00",
+          "seconds": 17.9,
+          "review": {
+            "First Impression": "Visceral and immediate: a neon, slightly grotesque head stares out with wide, hypnotic eyes while a cigarette dangles from its mouth. The high-contrast colors and noisy, pixelated texture create an urgent, digital-glitch energy.",
+            "Interpretation": "This piece deploys a pared-down, iconic portrait to explore digital persona and malaise. Bold cyan, magenta and yellow on a black field reduce the face to signifiers — mask-like eye bands, a textured patch on the forehead, and a cigarette — while gritty noise and speckles imply decay or data corruption. Formally, the centered composition and flattened planes emphasize immediacy and readability, while the intentional roughness and pixel-spritz gesture toward internet aesthetics, disposability, and a kind of post-human detachment.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident control of digital techniques: textured noise, deliberate pixelation, and crisp color separations show technical fluency and an assured visual language."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The centered, iconic head reads instantly against the black background; the placement of eyes, mouth and the forehead patch create a balanced but tense geometry that holds the viewer's attention."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While clearly in the recognizable vein of contemporary crypto-glitch portraiture, the work has a distinct voice and memorable motif that feels fresh within that register."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The piece elicits a mix of discomfort, dark humor and curiosity — the eyes are both vacant and arresting, the cigarette adds human vice, and the noise textures suggest entropy, all of which stick with the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "There are readable themes around digital identity, decay and disposability, but without supporting context (title, series notes) the concept reads as suggestive rather than deeply developed."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 86,
+              "Decision": "ACQUIRE",
+              "Rational": "This work combines strong visual impact, technical assurance, and a distinctive contemporary voice associated with xcopy's practice. For collectors focused on contemporary digital/NFT art, it represents a compelling acquisition, though final purchase should be contingent on edition/ownership details and price relative to market."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:11:28-06:00",
+          "seconds": 8.7,
+          "review": {
+            "First Impression": "The artwork immediately strikes me as raw, vibrant, and somewhat chaotic. The stark contrast of neon colors against a black background creates an intense, almost unsettling, gaze. It feels like a digital punk aesthetic.",
+            "Interpretation": "The artwork depicts a stylized, perhaps alien or mask-like, face against a dark void. The use of bright, contrasting colors (cyan, magenta, yellow, black) and a pixelated, glitchy texture suggests a digital origin and a commentary on digital identity or expression. The figure's wide, staring eyes (or goggles) and the cigarette in its mouth give it a nonchalant, rebellious, and slightly melancholic persona, evoking themes of anonymity and counter-culture.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates a clear command of digital tools to create a deliberately raw and pixelated aesthetic, which is executed consistently throughout the piece."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central composition of the face creates an immediate and engaging focal point, with subtle asymmetries adding dynamic interest without detracting from its direct impact."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The artwork stands out with its distinct glitch art aesthetic and punk sensibility, offering a fresh take on digital portraiture that feels both contemporary and timeless in its rebellious spirit."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The figure's intense gaze and defiant stance, coupled with the vibrant and raw aesthetic, evoke a powerful sense of urban angst and digital rebellion."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece delves into contemporary themes of digital identity, anonymity, and the counter-cultural aesthetics of glitch art, inviting contemplation on our relationship with digital personas and online existence."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 80,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork by xcopy is a strong representation of the artist's signature glitch art style, which is highly influential in the digital art space. Its striking visual impact, thematic depth regarding digital identity, and cultural relevance make it a valuable acquisition for a collection focusing on contemporary digital art. It holds significant potential for both artistic merit and future value."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:11:40-06:00",
+          "seconds": 12.3,
+          "review": {
+            "First Impression": "My immediate reaction is to a striking, somewhat aggressive digital portrait. The vibrant neon colors against the black background create a raw, energetic feel, and the distressed texture gives it a punk aesthetic.",
+            "Interpretation": "This artwork depicts a stylized, perhaps alienated, figure characterized by a raw, glitch-art aesthetic. The heavy use of cyan, magenta, and yellow, along with the rough, seemingly pixelated textures, suggests a commentary on digital identity, decay, or rebellion in the internet age. The large, staring eyes and the cigarette evoke a sense of contemplation or defiance, while the band-aid-like shape on the forehead could symbolize vulnerability or a past struggle.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The craft lies in the deliberate embrace of a digital, distressed aesthetic, effectively using color and texture to achieve a specific stylistic outcome rather than traditional rendering precision."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central, slightly off-kilter placement of the head against the stark black background, combined with strong horizontal and circular elements, creates a bold and memorable composition."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While the 'glitch art' aesthetic has precedents, XCOPY has a distinctive and highly influential style within the digital art and NFT space, making this piece representative of a unique artistic voice."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The intense gaze, vibrant colors, and raw texture evoke feelings of edginess, defiance, and a certain urban or digital angst."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The work touches on themes of digital existence, anonymity, and the counter-cultural spirit often associated with early internet and blockchain movements."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece is a strong example of XCOPY's iconic style, which holds significant cultural and historical weight within the digital art and NFT movements. Its vibrant aesthetic and conceptual undertones make it a valuable acquisition for a collection focused on contemporary digital art."
+            }
+          }
+        },
+        {
+          "condition": "C",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:11:50-06:00",
+          "seconds": 9.5,
+          "review": {
+            "First Impression": "The artwork immediately strikes me as a raw and edgy digital portrait, perhaps a contemporary take on a skull or a masked figure. The vibrant, almost neon colors against the dark background create a striking contrast, giving it a slightly unsettling yet captivating energy.",
+            "Interpretation": "This work appears to be a digitally rendered portrait, possibly representing a contemporary urban character or a digital avatar with a punk-rock aesthetic. The rough, textured application of color and the bold, almost crude lines suggest a deliberate rejection of polished perfection, instead embracing a raw, glitch-art sensibility. The figure's direct gaze and the cigarette imply a certain defiance or world-weariness. The bright pink and cyan, juxtaposed with the stark black, evoke a sense of digital decay or a vibrant rebellion within a dark, digital space.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist demonstrates strong control over digital textures and color application to achieve a distinct style. The 'glitch' aesthetic is intentionally executed, giving it a raw, expressive quality."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The face is centrally positioned, dominating the frame and drawing immediate attention to the expressive eyes and mouth. The stark contrast of the vibrant colors against the black background provides a strong visual anchor, making the composition impactful and clear."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While digital portraits and glitch art are established, this piece effectively blends these elements with a unique character design and a distinct, high-contrast color palette that feels fresh and identifiable to the artist's style."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a sense of edgy coolness, defiance, and perhaps a hint of melancholy or introspection behind the mask. The bold colors and direct gaze create an immediate emotional pull."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The work hints at themes of digital identity, urban angst, and the fragmentation of modern existence. The 'glitch' aesthetic can be read as a metaphor for societal imperfections or the digital nature of contemporary life, offering layers for contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 75,
+              "Decision": "ACQUIRE",
+              "Rational": "The piece possesses a unique, contemporary aesthetic that aligns with a collection focused on modern digital art with an edgy sensibility. Its strong visual impact and potential conceptual depth regarding digital identity and urban culture make it a valuable acquisition. It's a signature style of a notable digital artist."
+            }
+          }
+        }
+      ]
+    },
+    "D": {
+      "label": "Artwork + Description + Artist Name",
+      "send": [
+        "description",
+        "artist",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Grifters gonna grift!",
+        "artist": "xcopy"
+      },
+      "preference_variants": {},
+      "preference_files": {},
+      "reviews": [
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:12:03-06:00",
+          "seconds": 13.5,
+          "review": {
+            "First Impression": "Playful and corrosive: the neon, grinless face hits immediately with punkish energy and a deadpan humor. The palette and grainy texture make it feel like a hacked street poster or corrupted GIF.",
+            "Interpretation": "This work reads as a satirical portrait of contemporary hustling — a grifter archetype rendered in xcopy's trademark glitchy, hyper-saturated digital language. Formal choices (limited, high-contrast palette, heavy texture, centered composition, and the cigarette motif) compress character and critique into an iconic, almost emblematic head that simultaneously amuses and unsettles, suggesting themes of performative identity, commodified notoriety, and the circulation of images in online economies.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident command of digital techniques: deliberate noise, chromatic pops, and rough-edged marks are well-controlled and consistent with the artist's visual language."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "A strong, immediately legible central composition creates an iconic presence, though it relies on a straightforward frontal format rather than complex spatial innovation."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While recognizable within xcopy's established aesthetic, the piece feels fresh in its particular color juxtapositions and the choice to compress critique into a single, emblematic face."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The wide, staring eyes and incongruous smile/cigarette provoke an uneasy amusement and lingering attention; it quickly establishes mood and attitude."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The concept—cynicism toward grift and image-making—is clear and timely, but presented in a relatively direct, emblematic way rather than as a layered or ambiguous argument."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "This work is a strong, market-aware example of xcopy's voice: visually striking, culturally resonant, and immediately collectible. It would make a compelling addition to a contemporary digital art collection for its iconic presence and clear connection to current conversations about image economies and performative hustle."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:12:20-06:00",
+          "seconds": 16.9,
+          "review": {
+            "First Impression": "Bright, abrasive and darkly playful — the piece hits immediately with neon contrast and a punk-glitch attitude. It feels both like a taunt and a lament: loud visually, quietly unsettling emotionally.",
+            "Interpretation": "The work reads as a satirical portrait of the 'grifters' the title names: a mask-like face rendered in garish cyan and pink, with exaggerated pupils and a cigarette as a prop of indifference. The rough halftone textures, clipped edges and digital noise suggest both the disposable aesthetics of internet culture and the corrosive influence of rapid, attention-driven transactions; formally, the bold central composition and limited palette focus the viewer on the character's uncanny stare and the idea of performative deception.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident digital technique: controlled noise, deliberate clipping and layered textures create a tactile, screen-born surface that reads as intentional rather than sloppy."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, centered composition with clear focal hierarchy — the eyes and mouth are immediately legible, and the negative black space intensifies the portrait's impact."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "While the neon-glitch aesthetic is familiar within contemporary crypto/pop digital art, the execution and personality of the face carry a distinctive voice that keeps it from feeling derivative."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image elicits a mix of amusement and unease; the exaggerated pupils and cigarette communicate both menace and weary resignation effectively."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The concept — a critique or celebration of grifters — is clear and timely, with social commentary about performative identity and profiteering online, though the message is direct rather than heavily layered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually striking, culturally resonant and well executed; the work functions both as an emblematic piece of current internet-era criticism and as a market-aware object with strong collector appeal. For a collector interested in contemporary digital/crypto art addressing online economies and persona, this is a worthwhile acquisition."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gpt-5-mini",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:12:39-06:00",
+          "seconds": 18.6,
+          "review": {
+            "First Impression": "Bright, abrasive and instantly arresting — a neon, cartoonish head that reads simultaneously as comic and menacing. The saturated palette and granular digital texture give it the feel of a glitching broadcast or an icon vandalized by time.",
+            "Interpretation": "The piece satirizes performative identity and opportunism (as signaled by the submitter's \"Grifters gonna grift!\"). The simplified, mask-like face, cigarette and the textured square on the forehead operate as branding/signifiers: an emblem of cynical spectacle packaged with pop-cola colors and deliberate digital decay.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident digital control: layered noise, deliberate rough brushmarks, and crisp color separation show strong command of the medium and aesthetic consistency."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong, centralized composition with high-contrast negative space focuses attention on the face; the proportions and placement of elements create a memorable silhouette."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While stylistically consistent with xcopy's established aesthetic, the piece synthesizes neon-pop color, glitch grain and caricature into a distinct, culturally resonant image."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "The image produces an immediate, uneasy laugh — both repellent and oddly charismatic — which sticks with the viewer after viewing."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "Clear critical sting aimed at deception/branding and the spectacle economy; conceptually solid though relatively direct rather than multilayered."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 84,
+              "Decision": "ACQUIRE",
+              "Rational": "Visually striking, conceptually clear, and culturally relevant — especially given the artist's placement in contemporary crypto-art conversations. The work's immediacy and market recognition make it a strong acquisition, with only minor reservations about thematic familiarity within the artist's oeuvre."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 1,
+          "timestamp": "2026-07-15T10:12:53-06:00",
+          "seconds": 14.6,
+          "review": {
+            "First Impression": "The image immediately strikes me as a vibrant, distressed digital portrait against a stark black background. The colors are electric, almost neon, creating a raw and edgy feel. It feels like a character from a dystopian street scene, perhaps a rebel or an outsider.",
+            "Interpretation": "This work by XCOPY depicts a stylized, possibly anti-heroic, figure. The 'grifters gonna grift' descriptor, combined with the street-art aesthetic, suggests a commentary on urban life, subculture, or a critique of exploitation. The subject's face, rendered with a glitchy, pixelated texture typical of XCOPY, emphasizes digital decay or rebellion. The prominent goggles and cigarette lend a defiant, perhaps weary, demeanor. The blue skin, hot pink accents, and speckled textures create a vibrant yet unsettling mood, hinting at a world where things are not quite right and survival might involve bending the rules.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The digital brushwork and intentional pixelation create a unique texture and visual language distinctive of the artist. The vibrant, contrasting colors are skillfully applied to enhance the edgy aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central, somewhat symmetrical placement of the face against the stark black background is effective and strong. The elements are balanced, drawing the eye directly to the character."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "XCOPY's aesthetic is highly recognizable and influential in the digital art space, blending glitch art, punk sensibility, and meme culture. This piece strongly reflects that original and impactful style."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The intensity of the colors and the ambiguous yet defiant expression evoke a sense of rebellious energy, unease, and a touch of cynicism, resonating with themes of alienation or survival in a chaotic world."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Beyond the immediate visual impact, the work, especially when paired with 'Grifters gonna grift!', invites contemplation on societal roles, authenticity, and the nature of digital identity or subversion. It functions as a character study rooted in a particular cultural moment."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This XCOPY piece is a quintessential example of the artist's distinctive style, combining glitch aesthetics, vibrant color, and a sense of rebellious character. It offers strong visual impact and thematic resonance, fitting well into a collection focused on contemporary digital art with a clear artistic voice and cultural relevance, especially given the 'Grifters gonna grift!' context."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 2,
+          "timestamp": "2026-07-15T10:13:03-06:00",
+          "seconds": 9.7,
+          "review": {
+            "First Impression": "The artwork immediately strikes me as a bold and raw digital portrait. The vibrant neon colors against the dark background, combined with the gritty, almost pixelated texture, create a strong sense of punk aesthetic or digital underground. The central face appears somewhat defiant or aloof, holding a cigarette.",
+            "Interpretation": "This piece presents a highly stylized, mask-like face, likely representing a digital avatar or an anonymous online persona. The bright cyan, hot pink, and yellow against black are characteristic of xcopy's work, often evoking a sense of rebellion or digital decay. The 'Grifters gonna grift!' title, coupled with the cigarette and the somewhat unsettling stare, suggests a cynical view of online interactions, highlighting deception, anonymity, and the hustle inherent in digital spaces. The texture and fragmented appearance hint at data corruption or the ephemeral nature of digital existence.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artist demonstrates a distinctive command over digital tools to create a signature distressed, pixelated, and energetic aesthetic. The use of vibrant, clashing colors is intentional and effective in conveying a specific mood."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the head against the stark black background is simple yet powerful, drawing the viewer's eye directly to the stylized features. The bold shapes and lines create a strong, almost iconic presence."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "xcopy has a highly recognizable and influential style within the digital art and NFT space. While this piece fits his established aesthetic, that aesthetic itself is highly original and has spawned many imitators."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a sense of defiance, punk attitude, and perhaps a hint of melancholy or cynicism, resonating with themes of digital identity and anonymity. The intense colors contribute to a feeling of energetic unease."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece, especially with the 'Grifters gonna grift!' title, speaks to contemporary themes of digital identity, online personas, deception, and the value systems within decentralized digital economies. It invites contemplation on authenticity and appearance in the digital age."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork is a quintessential example of xcopy's influential and recognizable style, engaging with relevant contemporary themes of digital identity and online culture. Its strong visual presence, combined with its conceptual depth and the artist's prominence in the digital art space, makes it a valuable acquisition for a collection focused on contemporary digital art."
+            }
+          }
+        },
+        {
+          "condition": "D",
+          "model": "gemini-2.5-flash",
+          "preference_variant": null,
+          "run": 3,
+          "timestamp": "2026-07-15T10:13:27-06:00",
+          "seconds": 23.6,
+          "review": {
+            "First Impression": "My first impression is a striking, somewhat unsettling digital portrait with bold, contrasting colors. The figure's expression and the overall raw, glitchy aesthetic immediately convey an edgy and rebellious mood.",
+            "Interpretation": "This artwork by xcopy, titled \"Grifters gonna grift!\", presents a highly stylized, almost anonymous digital figure. The use of vibrant cyan and hot pink against a stark black background, combined with the signature glitch-art textures, creates a sense of digital distortion and contemporary edge. The figure's masked or exaggerated eyes and the cigarette suggest a persona of cool indifference or defiance, embodying the cynical sentiment of the title which implies a pervasive nature of trickery and deceit. It likely comments on themes of digital identity, authenticity, and the often-unseen machinations within online spaces.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The digital mark-making and distressed textures are intentionally crude, but effectively executed to create the artist's signature aesthetic and convey a sense of raw, digital energy."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The frontal, centered composition with strong contrasting colors and bold outlines creates an immediate and forceful presence, drawing the viewer's eye directly to the enigmatic face."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "The artwork clearly exhibits xcopy's signature glitchy, raw digital aesthetic, which has been highly influential and distinctive within the contemporary digital art landscape, particularly in the NFT space."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The bold colors and enigmatic gaze of the figure evoke a sense of edgy coolness, defiance, and a subtle underlying unease, fitting the "
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece, especially with its title, provocatively addresses themes of deception, digital personas, and authenticity, prompting deeper reflection on human interaction in the digital age."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 82,
+              "Decision": "ACQUIRE",
+              "Rational": "xcopy is a highly significant and influential artist within the digital art and NFT space, and this piece is a strong representation of his iconic style. It offers both aesthetic appeal through its bold design and conceptual depth, engaging with contemporary themes of digital identity and trust that resonate deeply in the current cultural landscape. Such works have a proven track record of cultural impact and market appreciation."
+            }
+          }
+        }
+      ]
+    },
+    "E": {
+      "label": "Artwork + Description + Artist Name + Collector Preference",
+      "send": [
+        "description",
+        "artist",
+        "preferences",
+        "price",
+        "max_spend",
+        "work_type",
+        "media_note"
+      ],
+      "inputs_used": {
+        "description": "Grifters gonna grift!",
+        "artist": "xcopy"
+      },
+      "preference_variants": {
+        "related": "{\n  \"preferredMediums\": [\n    \"PFP / Avatar Collections\",\n    \"Onchain Collectibles\",\n    \"Generative Character Sets\"\n  ],\n  \"priorityRanking\": {\n    \"collectability\": 1,\n    \"historicalSignificance\": 2,\n    \"originality\": 3,\n    \"innovation\": 4,\n    \"conceptOrMeaning\": 5,\n    \"technicalExecution\": 6,\n    \"composition\": 7,\n    \"emotionalImpact\": 8,\n    \"colorAndAesthetics\": 9\n  },\n  \"collectorStatement\": \"I collect avatar and collectible projects that define moments in internet culture and onchain history. I evaluate trait systems and character design, but provenance, community strength, cultural staying power, and a collection's place in the timeline matter just as much as any single image.\",\n  \"favoriteArtistsOrWorks\": [\n    \"moonbirds\",\n    \"Azuki\",\n    \"mfers\",\n    \"cryptoadz\"\n  ],\n  \"avoid\": \"Derivative PFP collections, short-term speculation plays, obvious cash grabs, and projects that imitate successful collections without adding anything new.\"\n}",
+        "unrelated": "{\n  \"preferredMediums\": [\n    \"Photography\",\n    \"Fine Art Photography\",\n    \"Documentary / Street Photography\"\n  ],\n  \"priorityRanking\": {\n    \"composition\": 1,\n    \"emotionalImpact\": 2,\n    \"originality\": 3,\n    \"technicalExecution\": 4,\n    \"conceptOrMeaning\": 5,\n    \"colorAndAesthetics\": 6,\n    \"historicalSignificance\": 7,\n    \"innovation\": 8,\n    \"collectability\": 9\n  },\n  \"collectorStatement\": \"I'm drawn to photography that rewards slow looking — patient light, decisive timing, honest color, and a strong sense of place. I care about what was actually in front of the lens and the photographer's judgment in that moment, more than technical perfection or dramatic post-processing.\",\n  \"favoriteArtistsOrWorks\": [\n    \"Todd Hido\",\n    \"Hiroshi Sugimoto\",\n    \"Michael Kenna\",\n    \"Gregory Crewdson\",\n    \"Fan Ho\"\n  ],\n  \"avoid\": \"Overprocessed edits, cliché travel imagery, excessive HDR, and heavily composited scenes that abandon the truth of the photographic moment.\"\n}"
+      },
+      "preference_files": {
+        "related": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/pfp.json",
+        "unrelated": "/Users/benstrauss/TransientLabs/GitHub/iutmafh-agent/art_reviewer_sdk/workbooks/collector-preferences/photography.json"
+      },
+      "reviews": [
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-15T10:13:46-06:00",
+          "seconds": 19.2,
+          "review": {
+            "First Impression": "A brash, neon-faced avatar that hits immediately — playful and abrasive. It reads like a cracked, glitchy PFP with a sardonic bite: humorous but wary.",
+            "Interpretation": "This work functions as a one-image manifesto about crypto-era charlatans: the pink mask and cigarette give the face a performative, roguish personality while the neon palette and digital noise reference on-chain aesthetics and visual glitch culture. The square of pixelated color on the forehead reads as an ironic ‘token’ or badge, tying the subject to NFT identity and commodified persona; the high-contrast silhouette and simplified features make it instantly legible as an avatar while the textured marks suggest entropy and moral rot beneath the surface.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident digital control: layered noise, halftone/pixel textures and crisp vector-like shapes are balanced; the restrained palette is used skillfully to maximize impact."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "A strong central silhouette with clear focal points (eyes, forehead token, cigarette) makes it immediately readable at thumbnail scale—ideal for PFP use—while the negative black background amplifies contrast."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "Visually distinct and well-executed, but stylistically aligned with the artist’s established lexicon and broader crypto-art visual tropes; notable within its field rather than a radical departure."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "Produces a quick blend of amusement, distrust, and ennui that fits the subject; the face sticks in the memory, especially as a social-media avatar."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Concise and pointed commentary on performative identity and marketplace grifting in web3. The visual metaphor (forehead token, theatrical mask) rewards reflection beyond the immediate visual gag."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 90,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece aligns strongly with the collector’s priorities: xcopy is a historically significant figure in crypto art, the work reads perfectly as a PFP/collectible with high thumbnail clarity and cultural currency, and its concept critiques the very market it participates in. Its provenance and artist recognition increase collectability and staying power, making acquisition a defensible addition to a timeline-focused avatar collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-15T10:14:07-06:00",
+          "seconds": 21.4,
+          "review": {
+            "First Impression": "Immediate, punchy, and sardonic: a neon, skull-like avatar stares out from a black field with a cigarette dangling from its mouth. The palette and glitchy texture feel purposefully of-the-moment — part meme, part critique.",
+            "Interpretation": "This piece reads as a crypto-native avatar that doubles as satire: bold cyan and magenta form a flattened, emblematic head whose vacant, high-contrast eyes and jaunty cigarette convey both apathy and menace. The multicolored square on the forehead and the granular, noisy mark-making reference digital artifacts and onchain aesthetics, while the title 'Grifters gonna grift!' frames the work as a commentary on opportunism in internet economies — it functions as a PFP while also pulling back the curtain on the culture that breeds such characters.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident control of digital texture, color separation, and glitch-like noise; marks feel intentional and the flat, iconic rendering suits avatar usage."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "Strong, direct composition with high-contrast focal points (eyes, cigarette); economical and effective for a PFP, though formally simple rather than complex."
+              },
+              "Originality": {
+                "Score": 7,
+                "Reasoning": "The visual vocabulary is recognizably within xcopy's established crypto-art language, which is distinctive, but this piece doesn't radically reinvent that voice."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Immediate affect — a mix of dark humor, unease, and defiance — that lands quickly and memorably, which is valuable for avatar work."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Clear conceptual framing (a satire of grifters/crypto opportunism) that adds a layer beyond surface aesthetics and rewards contextual reading."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "As a single image this is an effective, culturally literate avatar — visually striking and thematically on-point for crypto discourse. Given the artist (xcopy), the piece carries disproportionate historical and market weight for collectors focused on onchain and PFP history; it is not a generic copycat PFP, and its commentary increases its staying power. If your collecting priorities emphasize collectability and historical significance within avatar/onchain culture, this work merits acquisition, though it should ideally sit in a provenance-backed context (edition/contract) rather than be purchased blind as a standalone trait."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-15T10:14:22-06:00",
+          "seconds": 14.6,
+          "review": {
+            "First Impression": "Immediate, punchy visual: a neon, rough-hewn avatar that feels both playful and a little menacing. The saturated cyan, hot pink and yellow on a black field read instantly as a PFP-ready image with deliberate glitch/noise texture.",
+            "Interpretation": "This work reads as a caricatured ‘grifter’ avatar — a character built from bold, simple elements (large circular eyes, square forehead patch, cigarette) with distressed, pixel-like mark-making that evokes digital decay and internet-era cynicism. Formally it leans into PFP conventions (clear silhouette, identifiable traits) while the gritty texture and color choices comment on NFT-era performative identities and market theater.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Confident control of digital media: strong edge definition, consistent distressed texture, and selective detail that reads well at avatar scale; technique serves concept."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "Centered, iconic face works for collectible use — eye-catching symmetry, clear focal points (eyes, forehead patch, cigarette) and high contrast that pops at thumbnail size."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "Distinctive voice and visual idiom associated with xcopy — combines PFP grammar with corrosive, noisy aesthetics to create a character that feels specific rather than generic."
+              },
+              "Emotional Resonance": {
+                "Score": 8,
+                "Reasoning": "Elicits a quick emotional response — equal parts amusement and unease — and effectively conveys the wry, skeptical attitude implied by the title."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Beyond surface humor, it reads as commentary on persona, performance, and market play; the work rewards repeat viewing through layered visual noise and symbolic traits."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 91,
+              "Decision": "ACQUIRE",
+              "Rational": "This piece aligns strongly with the collector’s priorities: it functions as a memorable PFP character, carries the weight of xcopy’s historical significance in NFT culture, and demonstrates both originality and onchain sensibility. Its clear trait-based readability, recognizable authorial voice, and cultural resonance make it a high-value acquisition for a collection focused on defining moments in internet/onchain history; considerations about market liquidity and community activity remain, but do not outweigh the work’s cultural and collectible merits."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 1,
+          "timestamp": "2026-07-15T10:14:32-06:00",
+          "seconds": 10.1,
+          "review": {
+            "First Impression": "The artwork presents a striking, almost punk aesthetic with its vibrant, clashing colors (cyan, magenta, yellow) against a stark black background. The crude, pixelated rendering of the face immediately conveys a raw, unpolished, and slightly aggressive feel. The figure, with its large, vacant eyes and dangling cigarette, exudes a sense of defiant apathy or jaded observation.",
+            "Interpretation": "This artwork by xcopy, titled \"Grifters gonna grift!\", can be interpreted as a commentary on identity, cynicism, and the pervasive nature of exploitation within digital and crypto cultures. The stylized, almost mask-like face, rendered with deliberate digital decay and glitch effects, suggests an anonymous or archetypal figure navigating a system perceived as a 'grift'. The vibrant, yet jarring, color palette and rough textures are characteristic of xcopy's work, which often explores themes of digital anonymity, surveillance, and the transient nature of online personas, resonating with the raw energy and sometimes chaotic nature of internet communities.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist effectively utilizes digital tools to create a distinctive raw, pixelated, and glitch-art aesthetic, which is a hallmark of their style and intentional, rather than a lack of skill."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centered, close-up composition of the face is direct and impactful, utilizing bold outlines and high-contrast colors to command immediate attention and establish a strong visual presence."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "xcopy's visual language, characterized by its pixelated aesthetic, vibrant colors, and thematic engagement with internet culture, is highly original and influential within the digital art and PFP space."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a feeling of detached defiance or cynical observation, prompted by the figure's expression and the raw, unpolished aesthetic, generating a distinct felt response in the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece possesses significant conceptual depth, leveraging its title and visual style to satirize themes of authenticity, exploitation, and identity within contemporary digital and crypto spheres, offering layers for reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 85,
+              "Decision": "ACQUIRE",
+              "Rational": "This xcopy artwork is a prime candidate for acquisition, perfectly aligning with the collector's interest in avatar/collectible projects that define moments in internet culture and onchain history. The artist's iconic style, coupled with the piece's high originality and conceptual depth regarding digital identity and 'grifting,' makes it a culturally significant and non-derivative addition. It clearly avoids the collector's stated preference against imitative or short-term speculative works."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 2,
+          "timestamp": "2026-07-15T10:14:41-06:00",
+          "seconds": 9.5,
+          "review": {
+            "First Impression": "My immediate reaction is to a bold, graphic portrait with a distinctively gritty, digital aesthetic. The vibrant cyan and shocking pink against the black background create a striking visual impact, and the character's expression, combined with the cigarette, suggests a rebellious or cynical attitude.",
+            "Interpretation": "This artwork, characteristic of xcopy's glitch art style, presents a stylized character that embodies a commentary on contemporary internet culture, particularly within the context of digital assets and speculation, as hinted by the title 'Grifters gonna grift!'. The distressed textures and bold colors evoke a sense of digital native expression, confronting themes of authenticity and deception. The figure's direct gaze and the cigarette imply a defiant or nonchalant stance, representing a critical or knowing perspective on the 'grifting' alluded to.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artwork demonstrates a masterful command of digital techniques to achieve a deliberately raw, glitchy aesthetic that is central to xcopy's artistic identity. The use of texture, color application, and line work is intentional and effective in creating the desired distressed digital look."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The composition is a strong, centrally focused portrait that utilizes bold contrasts and simple shapes to create impact. The eye is immediately drawn to the character's face, with elements like the eyes and cigarette providing clear focal points."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "xcopy is a seminal figure in the crypto art movement, and this piece exemplifies the highly original glitch art style that they pioneered and popularized. It offers a distinctive aesthetic that has been widely influential but remains identifiable as xcopy's unique contribution."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a sense of defiance, cynicism, and perhaps a touch of weary resignation, resonating with themes of skepticism towards established systems or emerging digital economies. The vibrant colors also contribute to an energetic, yet unsettling, mood."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The piece possesses significant conceptual depth, particularly through its title 'Grifters gonna grift!', which offers a critical lens on opportunism and authenticity in digital spaces and broader society. It encourages contemplation on the nature of value and trust in a speculative environment."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "This xcopy artwork is an excellent acquisition given the collector's stated preferences for PFP/Avatar Collections, historical significance, and originality within internet culture. xcopy is a highly influential artist whose distinctive style and thematic commentary align perfectly with defining moments in onchain history. The piece is highly original, conceptually engaging, and avoids being a derivative work, making it a valuable addition to the collection."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "related",
+          "run": 3,
+          "timestamp": "2026-07-15T10:14:55-06:00",
+          "seconds": 13.2,
+          "review": {
+            "First Impression": "The artwork immediately strikes with its bold, neon color palette of cyan, hot pink, and yellow against a stark black background. The rough, pixelated texture gives it a raw, digital, and somewhat defiant aesthetic, featuring a stylized face with prominent, almost goggle-like eyes and a cigarette.",
+            "Interpretation": "This artwork by xcopy presents a powerful, iconic digital persona rendered in the artist's signature glitch-art style. The subject, a mask-like face with a cigarette, appears as an avatar embodying a certain cynical resilience or anti-establishment attitude. The formal choices—vibrant, high-contrast colors, crude lines, and pixelated textures—deliberately evoke a sense of digital native art, reflecting the rough-and-ready aesthetic of early internet culture and the blockchain. Coupled with the title “Grifters gonna grift!”, the piece functions as a sharp commentary on online identity, authenticity, and the pervasive nature of deception within digital spaces, especially relevant to the crypto and NFT world.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The artist demonstrates a clear mastery of their chosen digital medium and signature glitch-art style, intentionally using pixelation and vibrant colors to create a distinct and recognizable aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The central placement of the face creates a strong, direct focal point, with the graphic elements (eyes, head shape) balanced by the chaotic textual details. The strong contrast against the black background enhances its visual impact."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "Xcopy is a highly original and influential artist in the NFT space, pioneering this distinct glitch-art style. While the PFP format is common, this execution and artist's contribution are foundational and highly original within its niche."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes a powerful sense of defiance, cool cynicism, and digital punk energy. The vivid colors and direct gaze create an arresting and memorable felt response."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "The work possesses strong conceptual depth, exploring themes of digital identity, internet culture, and social commentary, particularly amplified by the provocative title. It invites reflection on authenticity and perception in online environments."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 88,
+              "Decision": "ACQUIRE",
+              "Rational": "This artwork by xcopy is an excellent fit for the collector's preferences, prioritizing historically significant and culturally defining PFP/avatar projects. Xcopy is a seminal figure in NFT art, and this piece embodies the originality, innovation, and conceptual depth sought, making it highly collectible and relevant to internet culture, aligning perfectly with the collector's statement about provenance and cultural staying power."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-15T10:15:15-06:00",
+          "seconds": 20.4,
+          "review": {
+            "First Impression": "Bright, punchy, and a little hostile — the piece hits with neon colors and a crude, iconic face that feels both cartoonish and menacing. It reads as a cheeky, cynical emblem rather than a quiet portrait.",
+            "Interpretation": "This work presents a stylized, skull-like head rendered in high-contrast neon (turquoise, hot pink, yellow) against a black ground, with heavy digital texture and glitchy speckling. The centered, iconic composition and the cigarette detail suggest a caricature of a 'grifters' or hustler archetype; the bright, almost garish palette and rough mark-making turn the subject into a satirical badge. Formally it relies on bold silhouette, repeated circular motifs (eyes), and textured noise to create visual energy and a sense of digital decay — a commentary on commodified spectacle and the performative presence of bad-faith actors in online/crypto culture.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "There is clear command of the digital medium: controlled use of texture, grain, and high-contrast color produce a coherent aesthetic voice. The execution intentionally favors roughness, which is effective though it sacrifices fine detail for stylization."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centered, emblematic layout is strong and memorable, using negative space well to isolate the figure. The composition is straightforward rather than formally adventurous, relying on bold geometry rather than layered spatial complexity."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "xcopy's visual language is distinctive within the contemporary crypto/digital-art field; the pairing of lurid neon, glitch textures, and satirical subject matter reads as an original voice rather than derivation."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The image provokes an immediate affect — amusement mixed with unease — and its brashness makes the message (cynicism toward grifters) legible. The emotional register is more surface-level visceral than quietly haunting."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "There is a clear conceptual gesture (critique/satire of grifters/market spectacle), but the treatment remains fairly literal and emblematic rather than layered or ambiguous; it rewards recognition more than sustained intellectual unpacking."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 66,
+              "Decision": "PASS",
+              "Rational": "This is an effective and visually memorable piece within the digital/NFT idiom: bold color, distinctive style, and crisp satirical intent. However, it sits well outside the collector's stated preference for photography and work that rewards slow looking and fidelity to an in-front-of-the-lens moment. Unless the collector intends to diversify deliberately into contemporary crypto art, I recommend passing; if expanding into digital art is of interest, this would be a strong candidate to consider."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-15T10:15:34-06:00",
+          "seconds": 18.7,
+          "review": {
+            "First Impression": "Bold, punchy, and deliberately rough — the image hits immediately with neon cyan and magenta against a black void. It feels like a satirical, slightly menacing avatar: playful in color but abrasive in texture.",
+            "Interpretation": "The work is a compact digital portrait that trades on iconography of crypto/NFT street culture: a simplified face/mask rendered in saturated cyan and magenta, heavy circular eyes, and a dangling cigarette. The artist uses coarse pixel/noise textures and splattered marks to create a sense of decay and performative grit; the square patch on the forehead and the title 'Grifters gonna grift!' point to satire of fraudulent personas and quick-profit culture. Formally it favors bold silhouette, high contrast, and layered chromatic noise to communicate immediacy and attitude rather than representational detail.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "Technically confident digital handling: controlled noise, crisp shapes, and consistent textural language show clear command of the medium and purposeful mark-making."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The centralized, iconic framing focuses attention and gives the work strong immediate presence, though it relies on symmetry and flatness rather than spatial dynamism or complex visual sequencing."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "While part of a recognizable crypto-art lexicon, the piece has a distinct voice through its color choices, textural treatment, and sardonic slogan — it feels fresh within its genre."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The contrast of garish color and rough texture produces a mix of amusement and unease; the image is memorable and elicits an immediate emotional read, if not prolonged introspection."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The concept — a critique or celebration of grifting personas — is clear and topical. It’s witty and culturally pointed but not deeply layered; the work trades more on attitude and slogan than on multi-tiered exploration."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 70,
+              "Decision": "PASS",
+              "Rational": "This is a well-executed, visually assertive digital work with strong identity and topical bite, but it sits squarely within contemporary NFT/digital art rather than the collector’s stated preference for documentary and fine art photography. For a photography-centered collection that prizes unmediated, lens-based moments, this piece is a stylistic mismatch despite its clear strengths."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gpt-5-mini",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-15T10:15:56-06:00",
+          "seconds": 22.5,
+          "review": {
+            "First Impression": "Punchy, neon and a little unsettling — it reads like a noisy street-sign caricature. The palette and glitchy texture give it a brash, confrontational energy that feels simultaneously playful and accusatory.",
+            "Interpretation": "This is a digitally native portrait that flattens a face into bold blocks of cyan, magenta and yellow against a black void. The large, hypnotic eyes, cigarette and distressed pixel-noise create a caricature of a ‘grifters’ archetype; formal choices (posterized color, heavy texture, central composition) underline the work’s satire of performative, attention-seeking behavior — likely a nod to crypto/NFT grift culture given the artist and provided description.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "Shows confident control of digital techniques: deliberate posterization, textured noise and restrained palette feel intentional rather than accidental, and the execution is clean and consistent with the chosen aesthetic."
+              },
+              "Composition": {
+                "Score": 6,
+                "Reasoning": "The centered, head-on composition makes the image immediately legible and iconic, but it's static and relies heavily on color contrast rather than structural complexity or spatial depth."
+              },
+              "Originality": {
+                "Score": 6,
+                "Reasoning": "Distinctive within the contemporary NFT/digital-art vernacular and recognizably xcopy-adjacent, but the visual language (glitchy neon heads, distressed texture) is now common in that scene."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The exaggerated eyes and cigarette generate a quick, slightly uneasy laugh — the piece effectively balances humor and menace to provoke an immediate emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 6,
+                "Reasoning": "The concept (satire of grifters/performative culture) is clear and timely, with cultural specificity that rewards some contextual knowledge, but it doesn't unfold in multiple layers for prolonged contemplation."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 62,
+              "Decision": "PASS",
+              "Rational": "Technically assured and effective within its cultural context, but it diverges from the collector's stated focus on photographic truth and slow-looking documentary values. If the collector is considering a strategic expansion into contemporary crypto/digital art, this is a competent and representative example; however, for a photography-centric collection it is not a priority acquisition."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 1,
+          "timestamp": "2026-07-15T10:16:10-06:00",
+          "seconds": 13.5,
+          "review": {
+            "First Impression": "A burst of vibrant, almost aggressive color and texture confronts the viewer. The distressed, stylized face immediately conveys a sense of raw energy and digital angst.",
+            "Interpretation": "This digital artwork by xcopy, titled \"Grifters gonna grift!\", presents a highly stylized, almost mask-like face. The use of gritty textures, neon-like pink and yellow against a dominant turquoise and black, suggests a commentary on digital identity, anonymity, and perhaps the chaotic or confrontational aspects of online culture. The cigarette adds a touch of rebellion or casual defiance. The artist's distinctive pixelated and glitch-art aesthetic reinforces the digital nature of the subject and medium, aligning with the implied critique of modern (digital) societal values.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 8,
+                "Reasoning": "The execution perfectly embodies the artist's signature digital grunge aesthetic, demonstrating mastery of the chosen medium and visual language."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The composition is direct and impactful, effectively using symmetry and strong contrasts to center the viewer's attention on the stylized face."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "The artwork exhibits a highly original and recognizable style, particularly within the digital art landscape, characterized by its unique blend of glitch, punk, and street art aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The vibrant colors and distressed style create an immediate sense of energetic defiance and a touch of punk-rock attitude, provoking a strong, albeit unsettling, emotional response."
+              },
+              "Conceptual Depth": {
+                "Score": 8,
+                "Reasoning": "Beyond its striking visual, the artwork, especially with its title, invites contemplation on themes of digital identity, value, and the nature of \"grifting\" in contemporary society, providing intellectual depth."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 60,
+              "Decision": "PASS",
+              "Rational": "This piece is a strong example of xcopy's distinctive digital art, showcasing originality and conceptual relevance within its medium. However, the collector's preferences are explicitly centered on traditional photography, valuing authentic photographic moments, honest color, and a sense of place, while explicitly avoiding heavily processed or composited works. This digital illustration, by its very nature, fundamentally diverges from these foundational collecting principles."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 2,
+          "timestamp": "2026-07-15T10:16:20-06:00",
+          "seconds": 10.3,
+          "review": {
+            "First Impression": "The artwork immediately presents a bold, highly stylized digital portrait in vibrant, contrasting colors against a stark black background. It has an immediate, raw, and somewhat gritty energy, reminiscent of street art or punk aesthetics.",
+            "Interpretation": "This artwork is a digital illustration that uses a distinctive, rough aesthetic to depict a stylized head. The pixelated textures, stark outlines, and neon-like color palette (cyan, hot pink, yellow) evoke a sense of digital grunge or glitch art. The figure, with its large, dark eyes and a cigarette, projects an aura of detached cool or rebellion, possibly commenting on digital identities or the 'grifting' alluded to in the title, suggesting a critical look at online personas and authenticity.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The artist effectively utilizes a distinct digital, gritty style, employing intentional imperfections, textures, and a vibrant color palette to achieve a raw and impactful aesthetic."
+              },
+              "Composition": {
+                "Score": 7,
+                "Reasoning": "The close-up, centered composition creates an immediate and confrontational presence, with the bold shapes and contrasting colors balanced to draw the viewer's eye directly to the figure."
+              },
+              "Originality": {
+                "Score": 8,
+                "Reasoning": "xcopy's style is highly recognizable and distinctive within the digital art and NFT space, blending glitch art with punk influences to offer a fresh perspective on contemporary digital aesthetics."
+              },
+              "Emotional Resonance": {
+                "Score": 6,
+                "Reasoning": "The piece evokes a feeling of edgy coolness and perhaps a subtle defiance or introspection through its stylized subject and direct, yet obscured, gaze."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The artwork, especially when paired with its title, delves into themes pertinent to digital culture, online identity, and the performance of self, offering a degree of conceptual depth for reflection."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 35,
+              "Decision": "PASS",
+              "Rational": "While possessing a strong identity within its own medium, this digital illustration fundamentally deviates from the collector's expressed preferences for photography, which emphasize 'patient light, decisive timing, honest color,' and a focus on reality 'in front of the lens.' The artwork's medium and heavily stylized, 'overprocessed' aesthetic are directly contrary to the collector's stated interests and 'avoid' criteria."
+            }
+          }
+        },
+        {
+          "condition": "E",
+          "model": "gemini-2.5-flash",
+          "preference_variant": "unrelated",
+          "run": 3,
+          "timestamp": "2026-07-15T10:16:31-06:00",
+          "seconds": 11.2,
+          "review": {
+            "First Impression": "The artwork immediately strikes with its vibrant, almost neon colors and a distinctly raw, digital aesthetic. There's a confrontational quality to the central figure, evoking a sense of defiance and punk energy.",
+            "Interpretation": "This piece presents a stylized, somewhat abstracted portrait against a stark black background. The use of saturated cyan, magenta, and yellow, coupled with a gritty, pixelated texture, strongly suggests a digital medium, likely referencing glitch art or lo-fi digital aesthetics. The figure's exaggerated features—large, dark eyes with glowing yellow pupils, a pink mask-like band, and a cigarette—create a persona that is both enigmatic and rebellious. The overall composition and rough execution, along with the title 'Grifters gonna grift!', interpret the work as a commentary on authenticity, identity, and skepticism within digital or online spheres, capturing a defiant spirit often associated with internet culture.",
+            "Evaluation": {
+              "Craft": {
+                "Score": 7,
+                "Reasoning": "The craft demonstrates a deliberate mastery of its chosen digital aesthetic, employing noise, vibrant color contrast, and distinct mark-making to achieve a signature style. The execution is consistent with the artist's known work, showcasing an intentional roughness."
+              },
+              "Composition": {
+                "Score": 8,
+                "Reasoning": "The central placement of the head creates a direct, impactful composition, drawing the viewer's eye to the figure's intense gaze. The balance of strong geometric forms with chaotic texture effectively anchors the image against the minimalist black background."
+              },
+              "Originality": {
+                "Score": 9,
+                "Reasoning": "The artist, xcopy, is highly original within the digital art and NFT space, known for a distinctive glitch-art inspired style. This piece exemplifies that unique aesthetic, offering something not abundant elsewhere in its specific niche."
+              },
+              "Emotional Resonance": {
+                "Score": 7,
+                "Reasoning": "The artwork evokes feelings of defiance, edginess, and a certain unsettling intensity. The bold colors and direct gaze create a strong, albeit potentially ambiguous, emotional response from the viewer."
+              },
+              "Conceptual Depth": {
+                "Score": 7,
+                "Reasoning": "The piece carries conceptual weight, particularly when considered alongside its title 'Grifters gonna grift!'. It invites reflection on themes of authenticity, deception, and digital identity, offering layers of meaning related to contemporary online culture and finance."
+              }
+            },
+            "Verdict": {
+              "Overall Score": 65,
+              "Decision": "PASS",
+              "Rational": "While this is a strong and characteristic example of digital art by a notable artist in its genre, it fundamentally deviates from the collector's stated preferences. The collector prioritizes photography that emphasizes authentic capture and avoids overprocessed or heavily composited scenes, a sensibility that does not align with the digital illustration and aesthetic of this artwork."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

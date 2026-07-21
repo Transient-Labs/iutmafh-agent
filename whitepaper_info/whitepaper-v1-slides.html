@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autonomous AI Art Reviewers, Presentation</title>
+<style>
+  :root{
+    --bg:#f4f3ef; --bg-alt:#eae8e0; --ink:#1a1a1a; --muted:#6a6a6a; --rule:#d9d7d0;
+    --accent:#39506e; --warn:#c2453f; --card:#ffffff;
+    --ease:cubic-bezier(.2,.75,.25,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-snap-type:y mandatory;}
+  body{font-family:Georgia,"Times New Roman",serif; color:var(--ink);
+    background:var(--bg); -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  ::selection{background:var(--accent); color:#fff;}
+
+  .slide{min-height:100vh; scroll-snap-align:center;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    padding:9vh 7vw; text-align:center; position:relative;}
+  .slide:nth-of-type(even){background:var(--bg-alt);}
+
+  /* scroll-reveal: children start offset + faded, animate in when section is .in */
+  .slide > *{opacity:0; transform:translateY(38px);
+    transition:opacity .85s var(--ease), transform .85s var(--ease);}
+  .slide.in > *{opacity:1; transform:none;}
+  .slide.in > *:nth-child(2){transition-delay:.10s;}
+  .slide.in > *:nth-child(3){transition-delay:.20s;}
+  .slide.in > *:nth-child(4){transition-delay:.30s;}
+  .slide.in > *:nth-child(5){transition-delay:.40s;}
+  figure img{transform:scale(.965); transition:transform 1s var(--ease);}
+  .slide.in figure img{transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .slide > *,figure img{transition:none; opacity:1; transform:none;}
+  }
+
+  .kicker{font-family:-apple-system,"Segoe UI",sans-serif; font-size:clamp(11px,1.4vw,15px);
+    letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:2.4vh;}
+  h1{font-size:clamp(30px,5.4vw,68px); line-height:1.08; letter-spacing:-.01em; max-width:16em; text-wrap:balance;}
+  .big{font-size:clamp(30px,5vw,64px); line-height:1.12; max-width:15em; letter-spacing:-.01em; text-wrap:balance;}
+  .sub{font-size:clamp(15px,2vw,24px); color:var(--muted); margin-top:3vh; max-width:30em; line-height:1.5; text-wrap:pretty;}
+  .take{font-family:-apple-system,"Segoe UI",sans-serif; font-size:clamp(14px,1.9vw,22px);
+    color:var(--ink); margin-top:2.6vh; max-width:34em; line-height:1.45; text-wrap:pretty;}
+  .take b{color:var(--warn);}
+  figure{margin:1.5vh 0 0; width:100%; display:flex; justify-content:center;}
+  figure img{max-height:60vh; max-width:92%; object-fit:contain;
+    background:var(--card); border:1px solid var(--rule); border-radius:10px;
+    padding:14px; box-shadow:0 10px 40px rgba(0,0,0,.09);}
+  .slidetitle{font-family:-apple-system,"Segoe UI",sans-serif; font-weight:700;
+    font-size:clamp(20px,3vw,36px); line-height:1.15; max-width:22em; margin-bottom:1vh; text-wrap:balance;}
+  .quote{font-size:clamp(20px,2.9vw,38px); line-height:1.3; max-width:20em; font-style:italic; text-wrap:balance;}
+  .quote::before{content:"\201C";} .quote::after{content:"\201D";}
+  .stats{display:flex; flex-wrap:wrap; justify-content:center; gap:2.2vw 4vw; margin:2vh 0 1vh;}
+  .stat{display:flex; flex-direction:column; align-items:center;}
+  .stat .n{font-size:clamp(30px,4.6vw,60px); line-height:1; letter-spacing:-.02em;}
+  .stat .l{font-family:-apple-system,sans-serif; font-size:clamp(10.5px,1.2vw,14px);
+    text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-top:1vh;}
+  .models{font-family:-apple-system,sans-serif; font-size:clamp(13px,1.6vw,18px); margin-top:2vh; line-height:1.9;}
+  .models .tier{color:var(--muted); text-transform:uppercase; letter-spacing:.1em; font-size:.8em;}
+  table.cond{border-collapse:collapse; margin:0 auto; font-family:-apple-system,sans-serif; font-size:clamp(13px,1.7vw,20px);}
+  table.cond td{padding:1vh 1.4vw; border-bottom:1px solid var(--rule); text-align:left;}
+  table.cond td.k{font-weight:700; text-align:center; width:2em; color:var(--accent);}
+  ul.pts{list-style:none; text-align:left; margin:0 auto; font-size:clamp(15px,2.1vw,25px); line-height:1.9; max-width:24em;}
+  ul.pts li{padding-left:1.1em; position:relative;}
+  ul.pts li::before{content:"\2192"; position:absolute; left:0; color:var(--accent);}
+  .logo{width:min(360px,54vw); margin-bottom:5vh;}
+  .byline{font-family:-apple-system,sans-serif; font-size:clamp(13px,1.6vw,18px); color:var(--muted); margin-top:4vh; line-height:1.7;}
+  .project{font-family:-apple-system,sans-serif; font-size:clamp(10.5px,1.2vw,13px);
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:1vh;}
+
+  /* chrome */
+  .bar{position:fixed; left:0; bottom:0; height:7px; background:var(--accent); width:0; z-index:30; transition:width .12s linear;}
+  .count{position:fixed; right:22px; bottom:18px; font-family:-apple-system,sans-serif; font-size:13px; color:var(--muted); z-index:20; font-variant-numeric:tabular-nums;}
+  .cue{position:fixed; left:50%; bottom:20px; transform:translateX(-50%); z-index:20;
+    font-family:-apple-system,sans-serif; font-size:12px; letter-spacing:.05em; color:var(--muted);
+    transition:opacity .5s ease; text-align:center;}
+  .cue .arrow{display:block; font-size:18px; margin-top:2px; animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+</style>
+</head>
+<body>
+
+  <!-- 1 · Cover -->
+  <section class="slide">
+    <img class="logo" src="TRD-logo.png" alt="Transient Research Division">
+    <h1>Baseline Behavior of Autonomous AI Art Reviewers</h1>
+    <p class="sub">An empirical study of consistency, context, and preference in contemporary multimodal models</p>
+    <p class="byline">Ben Strauss &middot; Transient Research Division</p>
+    <p class="project">Project &middot; I Used to Make Art for Humans</p>
+  </section>
+
+  <!-- 2 · The question -->
+  <section class="slide">
+    <p class="kicker">The question</p>
+    <p class="big">What happens to art when its first audience is no longer human?</p>
+    <p class="take">AI systems now view, score, and sort images, so a growing share of art meets a machine before it ever reaches a person. This study is a first measurement of how that machine audience behaves.</p>
+  </section>
+
+  <!-- 3 · Method: design -->
+  <section class="slide">
+    <p class="slidetitle">The design</p>
+    <div class="stats">
+      <div class="stat"><span class="n">6</span><span class="l">Models</span></div>
+      <div class="stat"><span class="n">3</span><span class="l">Families</span></div>
+      <div class="stat"><span class="n">2</span><span class="l">Prompts</span></div>
+      <div class="stat"><span class="n">4,752</span><span class="l">Reviews</span></div>
+    </div>
+    <p class="models">
+      <span class="tier">Economical</span>&nbsp; GPT-5 Mini &middot; Gemini 2.5 Flash &middot; Claude Haiku 4.5<br>
+      <span class="tier">Frontier</span>&nbsp; GPT-5 &middot; Gemini 3 Flash Preview &middot; Claude Sonnet 4.6
+    </p>
+    <p class="take">Six leading models, three families each with an economical and a frontier tier, reviewed the same artworks under two different instruction prompts.</p>
+  </section>
+
+  <!-- 4 · Method: conditions & dataset -->
+  <section class="slide">
+    <p class="slidetitle">What each reviewer saw</p>
+    <table class="cond">
+      <tr><td class="k">A</td><td>Artwork only</td></tr>
+      <tr><td class="k">B</td><td>Artwork + description</td></tr>
+      <tr><td class="k">C</td><td>Artwork + artist name</td></tr>
+      <tr><td class="k">D</td><td>Artwork + description + artist name</td></tr>
+      <tr><td class="k">E</td><td>Artwork + description + artist name + collector preference</td></tr>
+    </table>
+    <p class="take">Each of 22 anonymized artworks was reviewed under five layers of context, from the image alone up to a collector&rsquo;s stated taste, three times over, and every review ended in ACQUIRE or PASS.</p>
+  </section>
+
+  <!-- 5 · 4.1 setup -->
+  <section class="slide">
+    <p class="kicker">Finding one &middot; Consistency</p>
+    <p class="big">Does it even agree with itself?</p>
+    <p class="take">Show a model the same work three times with nothing changed, and see whether its verdict and its score hold steady.</p>
+  </section>
+
+  <!-- 6 · 4.1 Figure 1 -->
+  <section class="slide">
+    <p class="slidetitle">The same image, scored three times, nothing changed.</p>
+    <figure><img src="figures/fig1_example_runs.png" alt="Overall score across three runs for six models"></figure>
+    <p class="take">Gemini 3 scored one picture <b>32, then 38, then 92</b>. Every model wobbled run to run, even with the inputs held completely fixed.</p>
+  </section>
+
+  <!-- 7 · 4.1 the numbers -->
+  <section class="slide">
+    <p class="slidetitle">High, but never perfect.</p>
+    <div class="stats">
+      <div class="stat"><span class="n">76&ndash;97%</span><span class="l">Agreed with itself</span></div>
+      <div class="stat"><span class="n">5 of 6</span><span class="l">Steadier under minimal prompt</span></div>
+    </div>
+    <p class="sub">Claude Sonnet was the exception, the single most consistent reviewer, and steadiest under the <em>directive</em> prompt. The GPT models and Sonnet held their scores tight; Claude Haiku swung the widest.</p>
+    <p class="take">Models agreed with themselves 76 to 97 percent of the time, and how steady a model was depended on the pairing of model and artwork, not either one alone.</p>
+  </section>
+
+  <!-- 8 · 4.2 setup -->
+  <section class="slide">
+    <p class="kicker">Finding two &middot; Context</p>
+    <p class="big">What moves the verdict?</p>
+    <p class="take">We fed the reviewers more about each work one layer at a time, a description, the artist&rsquo;s name, then a collector&rsquo;s stated taste, and watched the judgment shift.</p>
+  </section>
+
+  <!-- 9 · 4.2 Figure 5 -->
+  <section class="slide">
+    <p class="slidetitle">Context lifts the verdict. A mismatched collector ends it.</p>
+    <figure><img src="figures/fig5_context_effects.png" alt="Mean score and acquire rate across the six context settings"></figure>
+    <p class="take">A description barely mattered and the artist&rsquo;s name helped, but a mismatched collector cut acceptance from two thirds of works to <b>under one in ten</b>.</p>
+  </section>
+
+  <!-- 10 · 4.2 Figure 9 -->
+  <section class="slide">
+    <p class="slidetitle">The strangest single result in the study.</p>
+    <figure><img src="figures/fig9_test012_reversal.png" alt="Acquisition for Artwork 012 across contexts"></figure>
+    <p class="take">One work&rsquo;s <b>aligned</b> collector crashed acceptance to 14 percent, while the deliberately <b>mismatched</b> one left it at 81.</p>
+  </section>
+
+  <!-- 11 · 4.2 mechanism -->
+  <section class="slide">
+    <p class="kicker">Why</p>
+    <p class="quote">It read the brief like a lawyer</p>
+    <p class="sub">The aligned collector asked for work with no recognizable subjects. The piece had one small object, and the stricter models found it and passed, quoting the clause back word for word.</p>
+    <p class="take">The models parse a written brief with lawyerly literalism, and one disqualifying word can weigh more heavily than the art itself.</p>
+  </section>
+
+  <!-- 12 · 4.3 Figure 7 -->
+  <section class="slide">
+    <p class="slidetitle">How you word the instructions is a dial.</p>
+    <figure><img src="figures/fig7_prompt_effects.png" alt="Score and acquire rate by model under the two prompts"></figure>
+    <p class="take">A directive prompt made every model grade harsher and acquire less; a minimal one ran more generous. The same artwork earned a different verdict depending only on how the reviewer was told to judge.</p>
+  </section>
+
+  <!-- 13 · 4.4 Figure 8 -->
+  <section class="slide">
+    <p class="slidetitle">Not one audience. Six personalities.</p>
+    <figure><img src="figures/fig8_temperament.png" alt="Scatter of the six models by generosity and steadiness"></figure>
+    <p class="take">GPT ran generous and steady, Gemini harsher and noisier, Claude harshest of all. Behavior split by family more than by tier, and there is no single machine taste.</p>
+  </section>
+
+  <!-- 14 · 4.5 recognition -->
+  <section class="slide">
+    <p class="kicker">Finding &middot; Emergent behaviors</p>
+    <p class="quote">a historically significant piece in the digital art and NFT landscape</p>
+    <p class="sub">Handed only an image, with no name attached, models recognized crypto-native collections and acquired work &ldquo;primarily for its cultural resonance.&rdquo;</p>
+    <p class="take">The reviewers never see a work cold; a machine audience shows up already knowing the market, and provenance leaks into a supposedly fresh judgment.</p>
+  </section>
+
+  <!-- 15 · 4.5 more quirks -->
+  <section class="slide">
+    <p class="slidetitle">Other things nobody asked for.</p>
+    <ul class="pts">
+      <li>Invented an imaginary buyer when none was given, until one line of instruction stopped it.</li>
+      <li>Treated a good score and a decision to buy as two different bars.</li>
+      <li>Claude Haiku alone kept returning reviews with no score at all.</li>
+    </ul>
+    <p class="take">Left alone the models reached for imagined audiences, held acquisition above mere approval, and one model could not reliably fill in the form it was handed.</p>
+  </section>
+
+  <!-- 16 · Discussion -->
+  <section class="slide">
+    <p class="kicker">What it means</p>
+    <p class="big">A competent judge, quietly taking its standard from whoever set it up.</p>
+    <p class="take">Reviewer judgment was coherent but contingent, steerable by framing and plural across models. There is no single machine verdict on a work, only the verdict of one model, under one instruction, meeting one frame.</p>
+  </section>
+
+  <!-- 17 · Limitations -->
+  <section class="slide">
+    <p class="slidetitle">What this cannot tell us.</p>
+    <ul class="pts">
+      <li>Twenty-two hand-picked works, skewed toward digital art.</li>
+      <li>Three runs per configuration, and no human reviewer to compare against.</li>
+      <li>Scores are each model&rsquo;s own and may not be directly comparable.</li>
+      <li>Collector profiles were written by us and deliberately contrasted.</li>
+    </ul>
+    <p class="take">This is an early, exploratory baseline. Read it for the patterns, not the exact numbers, and against no human benchmark yet.</p>
+  </section>
+
+  <!-- 18 · Takeaway -->
+  <section class="slide">
+    <p class="kicker">The takeaway</p>
+    <p class="big">The audience can now be authored.</p>
+    <p class="take">When the first audience is a machine, aesthetic authority moves upstream, to whoever writes the instructions, defines the collector, and picks the model, people the artist will never meet.</p>
+  </section>
+
+  <!-- 19 · Close -->
+  <section class="slide">
+    <p class="kicker">I Used to Make Art for Humans</p>
+    <p class="big" style="font-style:italic; max-width:19em;">An artist who wants to be seen may find themselves writing, more and more, for whoever authored the audience rather than for the audience itself.</p>
+    <p class="byline">Transient Research Division &middot; TRD-PD-001</p>
+  </section>
+
+<div class="bar" id="bar"></div>
+<div class="count" id="count"></div>
+<div class="cue" id="cue">scroll<span class="arrow">&darr;</span></div>
+
+<script>
+(function(){
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var bar=document.getElementById('bar'), count=document.getElementById('count'), cue=document.getElementById('cue');
+  var current=0;
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && e.intersectionRatio>=0.35){ e.target.classList.add('in'); }
+      else if(e.intersectionRatio<0.1){ e.target.classList.remove('in'); }
+      if(e.isIntersecting && e.intersectionRatio>=0.5){
+        current=slides.indexOf(e.target);
+        count.textContent=(current+1)+' / '+slides.length;
+        cue.style.opacity = current===0 ? '1' : '0';
+      }
+    });
+  },{threshold:[0,0.1,0.35,0.5,0.75]});
+  slides.forEach(function(s){ io.observe(s); });
+
+  // progress bar
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0 ? (window.scrollY/h*100) : 0)+'%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // keyboard: jump between sections; F for fullscreen
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','PageDown',' '].indexOf(e.key)>=0){ e.preventDefault(); go(current+1); }
+    else if(['ArrowUp','PageUp'].indexOf(e.key)>=0){ e.preventDefault(); go(current-1); }
+    else if(e.key==='Home'){ go(0); } else if(e.key==='End'){ go(slides.length-1); }
+    else if(e.key==='f'||e.key==='F'){ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+  });
+  function go(n){ n=Math.max(0,Math.min(slides.length-1,n)); slides[n].scrollIntoView({behavior:'smooth'}); }
+})();
+</script>
+</body>
+</html>

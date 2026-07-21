@@ -28,6 +28,12 @@ def resolve_model(model_id: str):
 
 
 # Shared with art_reviewer_sdk — single source of truth for the persona.
+# The versioned prompts live in art_reviewer_sdk/review_prompts/.
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent
+                       / "art_reviewer_sdk" / "review_prompts"))
 from review_prompt_1 import INSTRUCTION
 
 def generation_config() -> types.GenerateContentConfig | None:
