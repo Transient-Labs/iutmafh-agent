@@ -1,6 +1,6 @@
 # Art-reviewer study — data bundle
 
-Generated 2026-07-20T16:02:00-06:00 from
+Generated 2026-07-24T11:45:29-06:00 from
 results/experiment-*/. An autonomous "art reviewer" agent (an LLM given a
 structured review rubric) reviewed 22 artworks and
 decided ACQUIRE or PASS for each. The study varies two factors (2×2):
@@ -11,8 +11,8 @@ scoring rules; v5 = minimal, structure only):
 - experiment-2 — gpt-5 + gemini-3-flash-preview · v4
 - experiment-3 — gpt-5-mini + gemini-2.5-flash · v5
 - experiment-4 — gpt-5 + gemini-3-flash-preview · v5
-- experiment-5 — claude-haiku-4-5 + claude-sonnet-4-6 · v4
-- experiment-6 — claude-haiku-4-5 + claude-sonnet-4-6 · v5
+- experiment-5 — claude-sonnet-4-6 + claude-sonnet-5 · v4
+- experiment-6 — claude-sonnet-4-6 + claude-sonnet-5 · v5
 
 Each artwork was reviewed under every experimental condition (A-E: which
 contextual inputs accompany the image — see metadata.md), 3 runs per

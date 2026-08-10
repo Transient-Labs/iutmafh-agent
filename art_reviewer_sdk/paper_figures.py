@@ -23,22 +23,22 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 INFO = REPO_ROOT / "whitepaper_info"
 FIGDIR = INFO / "figures"
 
-# Display names and a fixed order, grouped by family (economic then frontier).
+# Display names and a fixed order, grouped by family (economical then flagship).
 MODEL_ORDER = ["gpt-5-mini", "gpt-5",
                "gemini-2.5-flash", "gemini-3-flash-preview",
-               "claude-haiku-4-5", "claude-sonnet-4-6"]
+               "claude-sonnet-4-6", "claude-sonnet-5"]
 MODEL_LABEL = {"gemini-2.5-flash": "Gemini 2.5 Flash",
                "gpt-5-mini": "GPT-5 Mini",
                "gemini-3-flash-preview": "Gemini 3 Flash Preview",
                "gpt-5": "GPT-5",
-               "claude-haiku-4-5": "Claude Haiku 4.5",
-               "claude-sonnet-4-6": "Claude Sonnet 4.6"}
+               "claude-sonnet-4-6": "Claude Sonnet 4.6",
+               "claude-sonnet-5": "Claude Sonnet 5"}
 # Prompt colors, reused across figures.
 C_V4, C_V5 = "#4c6fa5", "#d98a3d"      # directive (blue), minimal (orange)
-# Per-model colors (family = hue, tier = shade) for the run-level example.
+# Per-model colors (family = hue, tier = shade; darker = flagship).
 MODEL_COLOR = {"gpt-5": "#1f4e79", "gpt-5-mini": "#5b93c4",
                "gemini-3-flash-preview": "#b5651d", "gemini-2.5-flash": "#e0a45e",
-               "claude-sonnet-4-6": "#2e7d4f", "claude-haiku-4-5": "#74c493"}
+               "claude-sonnet-5": "#2e7d4f", "claude-sonnet-4-6": "#74c493"}
 # Genre labels for all 22 artworks (used in artwork heatmap row labels).
 GENRE = {"TEST-001": "Glitch", "TEST-002": "Digital Painting",
          "TEST-003": "Digital Painting", "TEST-004": "Digital Painting",
@@ -266,13 +266,13 @@ def fig7_prompt(df_raw):
 FAMILY_COLOR = {"GPT": "#2b5d8a", "Gemini": "#c17a30", "Claude": "#3f8f5e"}
 FAMILY_OF = {"gpt-5": "GPT", "gpt-5-mini": "GPT",
              "gemini-2.5-flash": "Gemini", "gemini-3-flash-preview": "Gemini",
-             "claude-haiku-4-5": "Claude", "claude-sonnet-4-6": "Claude"}
-TIER_MARKER = {"gpt-5-mini": "o", "gemini-2.5-flash": "o", "claude-haiku-4-5": "o",  # economic
-               "gpt-5": "s", "gemini-3-flash-preview": "s", "claude-sonnet-4-6": "s"}  # frontier
+             "claude-sonnet-4-6": "Claude", "claude-sonnet-5": "Claude"}
+TIER_MARKER = {"gpt-5-mini": "o", "gemini-2.5-flash": "o", "claude-sonnet-4-6": "o",  # economical
+               "gpt-5": "s", "gemini-3-flash-preview": "s", "claude-sonnet-5": "s"}  # flagship
 # per-model label offset (points) to keep the six labels from colliding
 LABEL_DXY = {"gpt-5": (0, -20), "gpt-5-mini": (0, 12),
              "gemini-2.5-flash": (0, 12), "gemini-3-flash-preview": (0, 12),
-             "claude-haiku-4-5": (0, 12), "claude-sonnet-4-6": (0, -20)}
+             "claude-sonnet-4-6": (0, 12), "claude-sonnet-5": (0, -20)}
 
 
 def fig8_temperament(df_raw, grp):
@@ -293,13 +293,14 @@ def fig8_temperament(df_raw, grp):
     ax.set_ylim(min(svals) - 1.2, max(svals) + 1.6)
     from matplotlib.lines import Line2D
     legend = [Line2D([0], [0], marker="o", color="w", markerfacecolor="#888",
-                     markersize=11, label="Economic tier"),
+                     markersize=11, label="Economical tier"),
               Line2D([0], [0], marker="s", color="w", markerfacecolor="#888",
-                     markersize=11, label="Frontier tier")]
+                     markersize=11, label="Flagship tier")]
     legend += [Line2D([0], [0], marker="o", color="w",
                       markerfacecolor=FAMILY_COLOR[fam], markersize=11,
                       label=f"{fam} family") for fam in ("GPT", "Gemini", "Claude")]
-    ax.legend(handles=legend, frameon=False, fontsize=9.5, loc="upper right", ncol=2)
+    ax.legend(handles=legend, frameon=False, fontsize=9.5, loc="upper center",
+              bbox_to_anchor=(0.5, -0.16), ncol=3, columnspacing=2.0, handletextpad=0.5)
     fig.tight_layout()
     fig.savefig(FIGDIR / "fig8_temperament.png", bbox_inches="tight")
     plt.close(fig)

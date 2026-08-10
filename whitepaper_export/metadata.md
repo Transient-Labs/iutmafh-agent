@@ -10,8 +10,8 @@ The study is a 2×2 design: model set × system-prompt version. Every experiment
 | experiment-2 | gpt-5 + gemini-3-flash-preview | v4 | 3 | {} | 1024 | 2026-07-14 |
 | experiment-3 | gpt-5-mini + gemini-2.5-flash | v5 | 3 | {} | 1024 | 2026-07-15 |
 | experiment-4 | gpt-5 + gemini-3-flash-preview | v5 | 3 | {} | 1024 | 2026-07-15 |
-| experiment-5 | claude-haiku-4-5 + claude-sonnet-4-6 | v4 | 3 | {} | 1024 | 2026-07-17 |
-| experiment-6 | claude-haiku-4-5 + claude-sonnet-4-6 | v5 | 3 | {} | 1024 | 2026-07-17 |
+| experiment-5 | claude-sonnet-4-6 + claude-sonnet-5 | v4 | 3 | {} | 1024 | 2026-07-22 |
+| experiment-6 | claude-sonnet-4-6 + claude-sonnet-5 | v5 | 3 | {} | 1024 | 2026-07-24 |
 
 
 ## Experimental conditions

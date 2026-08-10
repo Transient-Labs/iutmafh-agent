@@ -134,6 +134,54 @@ def review_schema() -> dict:
     }
 
 
+def claude_flat_schema() -> dict:
+    """A flattened, single-level tool schema for Claude. Claude models under
+    forced tool use unreliably serialize the nested review_schema — they
+    stringify sub-objects or mis-nest Verdict inside Evaluation — because the
+    nesting is what they trip on. A schema of only scalar fields removes that
+    failure mode entirely. The flat response is rebuilt into the canonical
+    nested review by reassemble_flat_review(). OpenAI and Gemini keep the nested
+    review_schema, which they serialize reliably."""
+    props = {
+        "First_Impression": {
+            "type": "string",
+            "description": "2-3 sentences of immediate, honest reaction before any analysis.",
+        },
+        "Interpretation": {
+            "type": "string",
+            "description": (
+                "What this work is doing or attempting — read its subject, formal "
+                "choices (composition, color, mark-making, material) and what they "
+                "add up to. Interpret, do not merely describe what is visible."
+            ),
+        },
+    }
+    for name, measures in DIMENSIONS.items():
+        san = name.replace(" ", "_")
+        props[f"{san}_Score"] = {
+            "type": "integer",
+            "description": f"1-10 rating of {measures} ({name}).",
+        }
+        props[f"{san}_Reasoning"] = {
+            "type": "string",
+            "description": f"One or two sentences justifying the {name} score.",
+        }
+    props["Overall_Score"] = {
+        "type": "integer",
+        "description": "0-100 holistic judgment of the work — not an average of the dimension scores.",
+    }
+    props["Decision"] = {
+        "type": "string",
+        "enum": ["ACQUIRE", "PASS"],
+        "description": "ACQUIRE or PASS.",
+    }
+    props["Rational"] = {
+        "type": "string",
+        "description": "2-3 sentences justifying the decision.",
+    }
+    return {"type": "object", "properties": props, "required": list(props)}
+
+
 def _gemini_schema(node: dict, types):
     """Convert a JSON-Schema dict (review_schema) into a google-genai
     types.Schema, recursively. Supports object/string/integer + enum."""
@@ -191,6 +239,126 @@ def _restore_keys(obj):
     if isinstance(obj, list):
         return [_restore_keys(x) for x in obj]
     return obj
+
+
+def _unwrap_text(v):
+    """Claude sometimes returns a scalar field wrapped as {"text": "..."};
+    unwrap it back to the bare value."""
+    if isinstance(v, dict) and list(v.keys()) == ["text"] and isinstance(v["text"], (str, int, float)):
+        return v["text"]
+    return v
+
+
+def _lenient_json_object(s):
+    """Parse a JSON-object string that Claude closed prematurely and then
+    appended more key/value pairs to, e.g. '{dims}, "Verdict": {...}}' — a valid
+    object followed by trailing fragments that json.loads rejects as "Extra
+    data". Reads the leading object, then folds each trailing ', "Key": value'
+    fragment into it. Returns the merged dict, or None if nothing parses."""
+    dec = json.JSONDecoder()
+    s = s.strip()
+    try:
+        obj, end = dec.raw_decode(s)
+    except ValueError:
+        return None
+    if not isinstance(obj, dict):
+        return obj
+    merged = dict(obj)
+    rest = s[end:].lstrip()
+    while rest.startswith(","):
+        rest = rest[1:].lstrip()
+        wrapped = "{" + rest
+        try:
+            frag, fend = dec.raw_decode(wrapped)
+        except ValueError:
+            break
+        if isinstance(frag, dict):
+            merged.update(frag)
+        rest = wrapped[fend:].lstrip()
+        while rest.startswith("}"):  # drop the stray closer(s) from the early close
+            rest = rest[1:].lstrip()
+    return merged
+
+
+def _maybe_json(v):
+    """Claude sometimes emits a nested object as a JSON *string* instead of a
+    real object. Parse it back when it looks like JSON (tolerating a prematurely
+    closed object with trailing fragments); otherwise leave it."""
+    if isinstance(v, str):
+        s = v.strip()
+        if s[:1] in "{[":
+            try:
+                return json.loads(s)
+            except ValueError:
+                obj = _lenient_json_object(s)
+                return obj if obj is not None else v
+    return v
+
+
+def _as_int(v):
+    """Coerce a score the model returned as a float or numeric string back to
+    int; leave anything else (including None) untouched."""
+    if isinstance(v, bool) or v is None or isinstance(v, int):
+        return v
+    if isinstance(v, float):
+        return int(v)
+    if isinstance(v, str):
+        try:
+            return int(v.strip())
+        except ValueError:
+            try:
+                return int(float(v.strip()))
+            except ValueError:
+                return v
+    return v
+
+
+def reassemble_flat_review(flat) -> dict:
+    """Rebuild the canonical nested review (display keys) from Claude's flat
+    tool response (claude_flat_schema). Missing fields stay None so an
+    incomplete response still surfaces as a null rather than a crash."""
+    if not isinstance(flat, dict):
+        return flat
+    evaluation = {}
+    for name in DIMENSIONS:
+        san = name.replace(" ", "_")
+        evaluation[name] = {
+            "Score": _as_int(flat.get(f"{san}_Score")),
+            "Reasoning": flat.get(f"{san}_Reasoning"),
+        }
+    return {
+        "First Impression": flat.get("First_Impression"),
+        "Interpretation": flat.get("Interpretation"),
+        "Evaluation": evaluation,
+        "Verdict": {
+            "Overall Score": _as_int(flat.get("Overall_Score")),
+            "Decision": flat.get("Decision"),
+            "Rational": flat.get("Rational"),
+        },
+    }
+
+
+def _coerce_claude_input(raw):
+    """Repair the malformed-but-recoverable tool inputs Claude models emit under
+    forced tool use. Runs in sanitized (underscore) key space, before
+    _restore_keys. Handles three drift modes seen from Claude (esp. Haiku and
+    Sonnet 5): scalars wrapped as {"text": ...}, nested objects returned as JSON
+    strings, and a Verdict nested inside Evaluation. The data is present in every
+    case — this reshapes it to the schema so the review is not lost as a null."""
+    if not isinstance(raw, dict):
+        return raw
+    out = {k: _unwrap_text(v) for k, v in raw.items()}
+    # A nested object arriving as a JSON string (Evaluation or Verdict).
+    for key in ("Evaluation", "Verdict"):
+        if key in out:
+            out[key] = _maybe_json(out[key])
+    # A Verdict emitted inside Evaluation — lift it back to the top level.
+    ev = out.get("Evaluation")
+    if isinstance(ev, dict) and "Verdict" in ev:
+        embedded = _maybe_json(ev.pop("Verdict"))
+        if not isinstance(out.get("Verdict"), dict):
+            out["Verdict"] = embedded
+    return out
 
 
 def _reorder(d: dict, keys) -> dict:
@@ -294,12 +462,14 @@ def load_instruction(version) -> str:
         raise ValueError(f"{name} defines no INSTRUCTION")
     return instruction
 
-# Models that reject temperature/top_p at the API level (Claude 4.7+ and
-# Fable removed sampling params; OpenAI's gpt-5/o-series reasoning models
-# only accept the default). For these, knobs are silently skipped.
+# Models that reject temperature/top_p at the API level (Claude 4.7+, the
+# Claude 5 family, and Fable removed sampling params; OpenAI's gpt-5/o-series
+# reasoning models only accept the default). For these, knobs are silently
+# skipped.
 NO_SAMPLING_PREFIXES = (
     "claude-opus-4-7",
     "claude-opus-4-8",
+    "claude-sonnet-5",
     "claude-fable",
     "claude-mythos",
     "gpt-5",
@@ -324,6 +494,36 @@ def env_knobs() -> dict:
 
 def allows_sampling(model: str) -> bool:
     return not model.startswith(NO_SAMPLING_PREFIXES)
+
+
+# Reasoning parity: GPT and Gemini reason by default, but Claude's extended
+# thinking is off unless requested. We enable it so all three families reason,
+# using each Claude generation's own API: Claude 5+ uses adaptive thinking (the
+# model decides effort, like Gemini's dynamic default), Claude 4.x takes an
+# explicit token budget. Thinking also forbids forced tool_choice and sampling
+# params, so the Claude path below switches to tool_choice=auto and drops
+# temperature/top_p whenever thinking is on (see review_claude).
+CLAUDE_4X_THINKING_BUDGET = 4096
+
+
+def _claude_major_version(model: str) -> int:
+    """Major version from a Claude model id: claude-sonnet-5 -> 5,
+    claude-sonnet-4-6 -> 4, claude-haiku-4-5 -> 4. 0 if not determinable."""
+    for part in model.split("-")[2:]:
+        if part.isdigit():
+            return int(part)
+    return 0
+
+
+def claude_thinking_kwargs(model: str) -> dict:
+    """Extra messages.create kwargs enabling each Claude generation's default
+    reasoning. Empty for anything not recognized as a thinking-capable model."""
+    major = _claude_major_version(model)
+    if major >= 5:
+        return {"thinking": {"type": "adaptive"}}
+    if major == 4:
+        return {"thinking": {"type": "enabled", "budget_tokens": CLAUDE_4X_THINKING_BUDGET}}
+    return {}
 
 
 def review_gemini(model: str, image: bytes, mime: str, k: dict, prompt: str,
@@ -370,11 +570,20 @@ def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str,
     import anthropic
 
     kwargs = {}
-    if allows_sampling(model):
-        if "temperature" in k:
-            kwargs["temperature"] = k["temperature"]
-        if "top_p" in k:
-            kwargs["top_p"] = k["top_p"]
+    thinking = claude_thinking_kwargs(model)
+    if thinking:
+        # Extended thinking forbids forced tool use and sampling params: let the
+        # model choose the tool (it reliably does with this system prompt) and
+        # leave temperature/top_p at their defaults.
+        kwargs.update(thinking)
+        tool_choice = {"type": "auto"}
+    else:
+        tool_choice = {"type": "tool", "name": REVIEW_TOOL_NAME}
+        if allows_sampling(model):
+            if "temperature" in k:
+                kwargs["temperature"] = k["temperature"]
+            if "top_p" in k:
+                kwargs["top_p"] = k["top_p"]
     client = anthropic.Anthropic(timeout=REQUEST_TIMEOUT_S)  # reads ANTHROPIC_API_KEY
     response = client.messages.create(
         model=model,
@@ -384,10 +593,10 @@ def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str,
             {
                 "name": REVIEW_TOOL_NAME,
                 "description": REVIEW_TOOL_DESCRIPTION,
-                "input_schema": _sanitize_schema_keys(review_schema()),
+                "input_schema": claude_flat_schema(),
             }
         ],
-        tool_choice={"type": "tool", "name": REVIEW_TOOL_NAME},
+        tool_choice=tool_choice,
         messages=[
             {
                 "role": "user",
@@ -411,7 +620,9 @@ def review_claude(model: str, image: bytes, mime: str, k: dict, prompt: str,
     block = next((b for b in response.content if b.type == "tool_use"), None)
     if block is None:
         return _error_review("[Claude returned no structured review.]")
-    return _restore_keys(dict(block.input))
+    # Claude uses the flat schema; unwrap any {"text": ...}-wrapped scalars, then
+    # rebuild the canonical nested review. _coerce_claude_input stays as a net.
+    return reassemble_flat_review(_coerce_claude_input(dict(block.input)))
 
 
 def review_openai(model: str, image: bytes, mime: str, k: dict, prompt: str,
