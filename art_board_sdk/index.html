@@ -166,6 +166,8 @@
     <select id="work_type">
       <option value="" selected>Optional — not specified</option>
       <option value="Digitally native (NFT / digital asset)">Digitally native (NFT / digital asset)</option>
+      <option value="Digitally native, animated (static frame shown)">Digitally native, animated (static frame shown)</option>
+      <option value="Animated work (static frame shown)">Animated work (static frame shown)</option>
       <option value="Digital representation of a physical work">Digital representation of a physical work</option>
     </select>
 
@@ -543,7 +545,11 @@ go.addEventListener('click', async () => {
     fields[k] = val.trim();
     if (val.trim() !== '') form.append(k, val);
   }
+  // A catalog piece carries its own media note; otherwise an "animated" work type
+  // tells the models the image is a static frame of a moving work.
   if (mediaNote) form.append('media_note', mediaNote);
+  else if (/animated/i.test(fields.work_type)) form.append('media_note',
+    'The artwork is animated; the image provided is a static screenshot/rendition of the work.');
 
   go.disabled = true;
   status_.className = '';

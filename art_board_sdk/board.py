@@ -230,25 +230,35 @@ def _judge_claude(model, image, mime, k, prompt, instruction) -> dict:
     if resp.stop_reason == "refusal":
         return {}
     block = next((b for b in resp.content if b.type == "tool_use"), None)
-    if block is not None:
-        return dict(block.input)
+    data = dict(block.input) if block is not None else {}
+    if data.get("Decision"):
+        return data
 
-    # With thinking on we must use tool_choice=auto, and the model sometimes reasons
-    # then answers in prose without calling the tool. Force it in a follow-up (no
-    # thinking, so the tool CAN be forced), handing it its own analysis to submit.
+    # With thinking on we must use tool_choice=auto, and Sonnet 5 sometimes answers
+    # in prose, or calls the tool without filling the verdict. Force a non-thinking
+    # follow-up (forcing a tool is only allowed with thinking off) so it must submit
+    # a complete verdict, handing it its own analysis to convert. Retry a couple of
+    # times since forced tool use still does not guarantee every required field.
     analysis = "".join(getattr(b, "text", "") for b in resp.content
-                       if getattr(b, "type", None) == "text")
-    follow = client.messages.create(
-        model=model, max_tokens=max_tokens, system=instruction, tools=[tool],
-        tool_choice={"type": "tool", "name": JUDGE_TOOL_NAME},
-        messages=[
-            {"role": "user", "content": user_content},
-            {"role": "assistant", "content": analysis or "(see analysis)"},
-            {"role": "user", "content": "Now submit your adjudication and the board's "
-                                        "final verdict using the submit_panel_review tool."},
-        ])
-    block = next((b for b in follow.content if b.type == "tool_use"), None)
-    return dict(block.input) if block else {}
+                       if getattr(b, "type", None) == "text") or "(see analysis above)"
+    submit_msg = ("Now submit your adjudication and the board's final verdict by calling "
+                  "the submit_panel_review tool. Fill every field, including Overall_Score, "
+                  "Decision (ACQUIRE or PASS), Confidence, and Rationale.")
+    for _ in range(2):
+        follow = client.messages.create(
+            model=model, max_tokens=max_tokens, system=instruction, tools=[tool],
+            tool_choice={"type": "tool", "name": JUDGE_TOOL_NAME},
+            messages=[
+                {"role": "user", "content": user_content},
+                {"role": "assistant", "content": analysis},
+                {"role": "user", "content": submit_msg},
+            ])
+        fblock = next((b for b in follow.content if b.type == "tool_use"), None)
+        fdata = dict(fblock.input) if fblock is not None else {}
+        if fdata.get("Decision"):
+            return fdata
+        data = fdata or data
+    return data
 
 
 def _as_points(v):
